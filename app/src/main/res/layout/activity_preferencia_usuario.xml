@@ -1,0 +1,119 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.getyourgame.getyourgame.PreferenciaUsuario">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/tvEstadoJogo"
+        android:text="@string/estado_jogo"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spEstadoJogo"
+        android:layout_below="@+id/tvEstadoJogo"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/metodo_envio"
+        android:id="@+id/tvMetodoEnvio"
+        android:layout_below="@+id/spEstadoJogo"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop = "15dp"/>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spMetodoEnvio"
+        android:layout_below="@+id/tvMetodoEnvio"
+        android:layout_alignLeft="@+id/btSalvar"
+        android:layout_alignStart="@+id/btSalvar"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/tvGPS"
+        android:text="@string/gps"
+        android:layout_below="@+id/spMetodoEnvio"
+        android:layout_alignLeft="@+id/spMetodoEnvio"
+        android:layout_alignStart="@+id/spMetodoEnvio"
+        android:layout_marginTop = "20dp"/>
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:id="@+id/swGPS"
+        android:checked="true"
+        android:layout_alignBottom="@+id/tvGPS"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/distancia"
+        android:id="@+id/tvDistancia"
+        android:layout_below="@+id/tvGPS"
+        android:layout_alignLeft="@+id/tvGPS"
+        android:layout_alignStart="@+id/tvGPS"
+        android:layout_marginTop = "25dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/distanciaProgresso"
+        android:id="@+id/tvDistanciaProgresso"
+        android:layout_alignBottom="@+id/sbDistancia"
+        android:layout_alignRight="@+id/swGPS"
+        android:layout_alignEnd="@+id/swGPS" />
+
+    <SeekBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sbDistancia"
+        android:max="50"
+        android:layout_below="@+id/tvDistancia"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/swGPS"
+        android:layout_toStartOf="@+id/swGPS"
+        android:layout_marginTop = "15dp"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/salvar"
+        android:id="@+id/btSalvar"
+        style="@style/botao"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+
+</RelativeLayout>

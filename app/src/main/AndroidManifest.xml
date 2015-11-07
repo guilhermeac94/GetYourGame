@@ -1,0 +1,62 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.getyourgame">
+	
+    <uses-permission android:name="android.permission.INTERNET" />s
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" 
+		android:supportsRtl="true">
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/app_id" />
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name=".Login"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Cadastro"
+            android:label="@string/title_activity_cadastro" >
+        </activity>
+        <activity
+            android:name=".Principal"
+            android:label="@string/title_activity_principal" >
+        </activity>
+        <activity
+            android:name=".PreferenciaUsuario"
+            android:label="@string/title_activity_preferencia_usuario" >
+        </activity>
+        <activity
+            android:name=".CarregaCadastros"
+            android:label="@string/title_activity_carrega_cadastros" >
+        </activity>
+        <activity
+            android:name=".ListaUsuarioJogo"
+            android:label="@string/title_activity_lista_usuario_jogo" >
+        </activity>
+        <activity
+            android:name=".ListaUsuario"
+            android:label="@string/title_activity_lista_usuario"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".ListaJogo"
+            android:label="@string/title_activity_lista_jogo"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+        </activity>
+    </application>
+
+
+</manifest>

@@ -1,0 +1,46 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.getyourgame.getyourgame.ListaJogo">
+
+    <ListView
+        android:id="@+id/lvJogos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@android:color/black"
+        android:dividerHeight="2dp"
+        android:descendantFocusability="beforeDescendants"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/etBuscarJogo"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="20dp">
+    </ListView>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/etBuscarJogo"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/btBuscarJogo"
+        android:layout_toStartOf="@+id/btBuscarJogo" />
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btBuscarJogo"
+        style="@style/botaoLupa"
+        android:layout_above="@+id/lvJogos"
+        android:layout_alignRight="@+id/lvJogos"
+        android:layout_alignEnd="@+id/lvJogos"
+        android:layout_alignParentTop="true" />
+
+</RelativeLayout>

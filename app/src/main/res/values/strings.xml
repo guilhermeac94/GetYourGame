@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">GetYourGame</string>
+    <string name="app_id">1156759667671820</string>
+
+    <string name="title_activity_principal">Principal</string>
+    <string name="title_activity_preferencia_usuario">Preferências do Usuário</string>
+    <string name="title_activity_cadastro">Cadastro de Usuário</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="nome">Nome</string>
+    <string name="email">E-mail</string>
+    <string name="senha">Senha</string>
+    <string name="entrar">Entrar</string>
+    <string name="cadastrar"><u>Cadastrar-se</u></string>
+    <string name="avancar">Avançar</string>
+    <string name="salvar">Salvar</string>
+    <string name="login">Login</string>
+    <string name="estado_jogo">Estado do jogo:</string>
+    <string name="metodo_envio">Método de envio padrão:</string>
+    <string name="gps">Permite GPS:</string>
+    <string name="distancia">Distância considerada(km²):</string>
+    <string name="distanciaProgresso">0</string>
+    <string name="title_activity_carrega_cadastros">CarregaCadastros</string>
+    <string name="buscar">Buscar</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_lista_usuario_jogo">ListaUsuarioJogo</string>
+    <string name="title_activity_lista_usuario">ListaUsuario</string>
+    <string name="title_activity_lista_jogo">ListaJogo</string>
+
+
+</resources>
