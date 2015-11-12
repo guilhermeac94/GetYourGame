@@ -124,8 +124,7 @@ public class testePicture extends AppCompatActivity {
             cursor.close();
 
             ImageView imageView = (ImageView) findViewById(R.id.imgView);
-            imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
-
+            imageView.setImageBitmap(Bitmap.createScaledBitmap(BitmapFactory.decodeFile(picturePath), 256, 256, false));
         }
 
 

@@ -43,11 +43,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="34" column="28" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.5862069">
+              <caret line="43" column="69" selection-start-line="43" selection-start-column="69" selection-end-line="43" selection-end-column="69" />
               <folding>
                 <element signature="e#471#489#0" expanded="true" />
                 <element signature="e#670#686#0" expanded="true" />
@@ -56,10 +56,10 @@
                 <element signature="e#1190#1208#0" expanded="true" />
                 <element signature="e#1516#1549#0" expanded="true" />
                 <element signature="e#1654#1688#0" expanded="true" />
-                <element signature="e#1802#1846#0" expanded="true" />
-                <element signature="e#1958#2001#0" expanded="true" />
-                <element signature="e#2109#2147#0" expanded="true" />
-                <element signature="e#2321#2356#0" expanded="true" />
+                <element signature="e#1872#1916#0" expanded="true" />
+                <element signature="e#2028#2071#0" expanded="true" />
+                <element signature="e#2179#2217#0" expanded="true" />
+                <element signature="e#2322#2357#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -88,11 +88,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="testePicture.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="testePicture.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/testePicture.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3322884">
-              <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="126" column="110" selection-start-line="126" selection-start-column="110" selection-end-line="126" selection-end-column="110" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1584#1939#0" expanded="true" />
@@ -100,36 +100,6 @@
                 <element signature="e#2043#2601#0" expanded="true" />
                 <element signature="e#2600#2601#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Http.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/util/Http.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="38" column="12" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Util.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/util/Util.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="119" column="50" selection-start-line="119" selection-start-column="50" selection-end-line="119" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PreferenciaUsuario.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/PreferenciaUsuario.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="123" column="0" selection-start-line="101" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -147,21 +117,19 @@
       <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.037037">
-              <caret line="8" column="47" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
+            <state vertical-scroll-proportion="-0.6296296">
+              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MyApplication.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/MyApplication.java">
+      <file leaf-file-name="styles.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="27" column="25" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="-1.8888888">
+              <caret line="3" column="68" selection-start-line="3" selection-start-column="68" selection-end-line="3" selection-end-column="68" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1622,12 +1590,13 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/getyourgame/MyApplication.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_principal.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/getyourgame/Principal.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_teste_picture.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/getyourgame/testePicture.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/getyourgame/util/Http.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/getyourgame/util/Util.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/getyourgame/testePicture.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
       </list>
     </option>
   </component>
@@ -2057,7 +2026,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4088586" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4088586" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290469" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -2159,10 +2128,10 @@
             <element signature="e#1190#1208#0" expanded="true" />
             <element signature="e#1516#1549#0" expanded="true" />
             <element signature="e#1654#1688#0" expanded="true" />
-            <element signature="e#1802#1846#0" expanded="true" />
-            <element signature="e#1958#2001#0" expanded="true" />
-            <element signature="e#2109#2147#0" expanded="true" />
-            <element signature="e#2321#2356#0" expanded="true" />
+            <element signature="e#1872#1916#0" expanded="true" />
+            <element signature="e#2028#2071#0" expanded="true" />
+            <element signature="e#2179#2217#0" expanded="true" />
+            <element signature="e#2322#2357#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2259,14 +2228,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/settings.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2333,14 +2294,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.037037">
-          <caret line="8" column="47" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_principal.xml">
       <provider editor-type-id="android-designer">
         <state />
@@ -2349,26 +2302,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="28" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="28" />
-          <folding>
-            <element signature="e#471#489#0" expanded="true" />
-            <element signature="e#670#686#0" expanded="true" />
-            <element signature="e#888#906#0" expanded="true" />
-            <element signature="e#1071#1089#0" expanded="true" />
-            <element signature="e#1190#1208#0" expanded="true" />
-            <element signature="e#1516#1549#0" expanded="true" />
-            <element signature="e#1654#1688#0" expanded="true" />
-            <element signature="e#1802#1846#0" expanded="true" />
-            <element signature="e#1958#2001#0" expanded="true" />
-            <element signature="e#2109#2147#0" expanded="true" />
-            <element signature="e#2321#2356#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2444,14 +2377,61 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/testePicture.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3322884">
-          <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="126" column="110" selection-start-line="126" selection-start-column="110" selection-end-line="126" selection-end-column="110" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1584#1939#0" expanded="true" />
             <element signature="e#1938#1939#0" expanded="true" />
             <element signature="e#2043#2601#0" expanded="true" />
             <element signature="e#2600#2601#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.6296296">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.8888888">
+          <caret line="3" column="68" selection-start-line="3" selection-start-column="68" selection-end-line="3" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_lista_usuario_jogo.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23448277">
+          <caret line="4" column="9" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5862069">
+          <caret line="43" column="69" selection-start-line="43" selection-start-column="69" selection-end-line="43" selection-end-column="69" />
+          <folding>
+            <element signature="e#471#489#0" expanded="true" />
+            <element signature="e#670#686#0" expanded="true" />
+            <element signature="e#888#906#0" expanded="true" />
+            <element signature="e#1071#1089#0" expanded="true" />
+            <element signature="e#1190#1208#0" expanded="true" />
+            <element signature="e#1516#1549#0" expanded="true" />
+            <element signature="e#1654#1688#0" expanded="true" />
+            <element signature="e#1872#1916#0" expanded="true" />
+            <element signature="e#2028#2071#0" expanded="true" />
+            <element signature="e#2179#2217#0" expanded="true" />
+            <element signature="e#2322#2357#0" expanded="true" />
           </folding>
         </state>
       </provider>

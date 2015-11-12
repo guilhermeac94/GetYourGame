@@ -40,7 +40,8 @@
         </activity>
         <activity
             android:name=".Principal"
-            android:label="@string/title_activity_principal" >
+            android:label="@string/title_activity_principal"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
         </activity>
         <activity
             android:name=".PreferenciaUsuario"
@@ -52,13 +53,11 @@
         </activity>
         <activity
             android:name=".ListaUsuario"
-            android:label="@string/title_activity_lista_usuario"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+            android:label="@string/title_activity_lista_usuario" >
         </activity>
         <activity
             android:name=".ListaJogo"
-            android:label="@string/title_activity_lista_jogo"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+            android:label="@string/title_activity_lista_jogo">
         </activity>
         <activity android:name=".testePicture" >
         </activity>
