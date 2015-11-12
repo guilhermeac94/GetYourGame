@@ -59,13 +59,6 @@ public class Util extends Activity{
         });
     }
 
-    public void redirecionar(Activity atual, Class destino, Bundle param){
-        Intent intentPrincipal = new Intent(atual, destino);
-        intentPrincipal.putExtras(param);
-        startActivity(intentPrincipal);
-    }
-
-
     public static Object[] convertToObjectArray(Object array) {
         Class ofArray = array.getClass().getComponentType();
         if (ofArray.isPrimitive()) {
@@ -124,7 +117,7 @@ public class Util extends Activity{
 
     public String BitMapToString(Bitmap bitmap) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         byte[] b = baos.toByteArray();
         String temp = Base64.encodeToString(b, Base64.DEFAULT);
         return temp;

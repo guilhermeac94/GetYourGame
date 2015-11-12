@@ -1,5 +1,6 @@
 package com.getyourgame;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -90,7 +91,11 @@ public class Login extends AppCompatActivity {
         protected void onPostExecute(Object retorno) {
             Usuario usuario = (Usuario) retorno;
             if(!usuario.getError()) {
-                redirecionar(usuario.getId_usuario(),usuario.getChave_api(), PreferenciaUsuario.class);
+                Bundle param = new Bundle();
+                param.putInt("id_usuario", usuario.getId_usuario());
+                param.putString("chave_api", usuario.getChave_api());
+                redirecionar(Login.this, Principal.class, param);
+                util.toast(getApplicationContext(), "Login efetuado com sucesso!!!");
             }else{
                 new HttpCadastroFB((new Webservice()).cadastro(),FBmap,Usuario.class,"").execute();
             }
@@ -106,7 +111,11 @@ public class Login extends AppCompatActivity {
         protected void onPostExecute(Object retorno) {
             Usuario usuario = (Usuario) retorno;
             if(!usuario.getError()) {
-                redirecionar(usuario.getId_usuario(),usuario.getChave_api(), CarregaCadastros.class);
+                Bundle param = new Bundle();
+                param.putInt("id_usuario", usuario.getId_usuario());
+                param.putString("chave_api", usuario.getChave_api());
+                redirecionar(Login.this, PreferenciaUsuario.class, param);
+                util.toast(getApplicationContext(), "Login efetuado com sucesso!!!");
             }else{
                 util.msgDialog(Login.this, "Alerta", usuario.getMessage());
             }
@@ -198,7 +207,11 @@ public class Login extends AppCompatActivity {
         protected void onPostExecute(Object retorno) {
             Usuario usuario = (Usuario) retorno;
             if(!usuario.getError()) {
-                redirecionar(usuario.getId_usuario(),usuario.getChave_api(), Principal.class);
+                Bundle param = new Bundle();
+                param.putInt("id_usuario", usuario.getId_usuario());
+                param.putString("chave_api", usuario.getChave_api());
+                redirecionar(Login.this, Principal.class, param);
+                util.toast(getApplicationContext(), "Login efetuado com sucesso!!!");
             }else{
                 util.msgDialog(Login.this, "Alerta", usuario.getMessage());
             }
@@ -213,7 +226,11 @@ public class Login extends AppCompatActivity {
         protected void onPostExecute(Object retorno) {
             Usuario usuario = (Usuario) retorno;
             if(!usuario.getError()) {
-                redirecionar(usuario.getId_usuario(), usuario.getChave_api(), CarregaCadastros.class);
+                Bundle param = new Bundle();
+                param.putInt("id_usuario", usuario.getId_usuario());
+                param.putString("chave_api", usuario.getChave_api());
+                redirecionar(Login.this, Principal.class, param);
+                util.toast(getApplicationContext(), "Login efetuado com sucesso!!!");
             }else{
                 util.msgDialog(Login.this, "Alerta", usuario.getMessage());
             }
@@ -248,13 +265,11 @@ public class Login extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void redirecionar(int id_usuario, String apikey, Class destino){
-        Intent intentPrincipal = new Intent(Login.this, destino);
-        Bundle param = new Bundle();
-        param.putInt("id_usuario", id_usuario);
-        param.putString("chave_api", apikey);
+
+    public void redirecionar(Activity atual, Class destino, Bundle param){
+        Intent intentPrincipal = new Intent(atual, destino);
         intentPrincipal.putExtras(param);
         startActivity(intentPrincipal);
-        util.toast(getApplicationContext(), "Login efetuado com sucesso!!!");
     }
+
 }

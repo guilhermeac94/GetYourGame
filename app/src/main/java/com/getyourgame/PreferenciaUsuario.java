@@ -109,12 +109,11 @@ public class PreferenciaUsuario extends AppCompatActivity {
         protected void onPostExecute(Object retorno) {
             Usuario usuario = (Usuario) retorno;
             if(!usuario.getError()) {
-                Intent intentPrincipal = new Intent(PreferenciaUsuario.this, Principal.class);
                 Bundle param = new Bundle();
                 param.putInt("id_usuario", id_usuario);
                 param.putString("chave_api", chave_api);
-                intentPrincipal.putExtras(param);
-                startActivity(intentPrincipal);
+                redirecionar(PreferenciaUsuario.this, Principal.class, param);
+
                 util.toast(PreferenciaUsuario.this, "Preferências salvas com sucesso!");
                 PreferenciaUsuario.this.finish();
             }else{
@@ -144,4 +143,11 @@ public class PreferenciaUsuario extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void redirecionar(Activity atual, Class destino, Bundle param){
+        Intent intentPrincipal = new Intent(atual, destino);
+        intentPrincipal.putExtras(param);
+        startActivity(intentPrincipal);
+    }
+
 }

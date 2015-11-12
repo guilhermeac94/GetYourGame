@@ -2,88 +2,88 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Guilherme\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-annotations\2.3.0\f5e853a20b60758922453d56f9ae1e64af5cb3da\jackson-annotations-2.3.0.jar"
+        jar="C:\Users\Guilherme\Desktop\TCC\GetYourGame\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\libs\internal_impl-23.1.0.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="f5e853a20b60758922453d56f9ae1e64af5cb3da">
-        <dex dex="C:\Users\Guilherme\Desktop\TCC\Novo\app\build\intermediates\pre-dexed\debug\jackson-annotations-2.3.0-79f019e3f246060f973e01fce98de063f34a2038.jar" />
-    </item>
-    <item
-        jar="C:\Users\Guilherme\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.3\5fc52c41ef0239d1093a1eb7c3697036183677ce\gson-2.3.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="5fc52c41ef0239d1093a1eb7c3697036183677ce">
-        <dex dex="C:\Users\Guilherme\Desktop\TCC\Novo\app\build\intermediates\pre-dexed\debug\gson-2.3-9aa55fc5bb338931da29548b5f97580362ba21d8.jar" />
+        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
+        <dex dex="C:\Users\Guilherme\Desktop\TCC\GetYourGame\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.0-d23e728c7825c5b7429296d41561dda4ce983c7c.jar" />
     </item>
     <item
         jar="C:\Users\Guilherme\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-core\2.3.2\559b70ac8a0d5cad611da4223137a920147201ba\jackson-core-2.3.2.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="559b70ac8a0d5cad611da4223137a920147201ba">
-        <dex dex="C:\Users\Guilherme\Desktop\TCC\Novo\app\build\intermediates\pre-dexed\debug\jackson-core-2.3.2-35a2e6d94ab20bd8251d2a25041c022b2d012891.jar" />
+        <dex dex="C:\Users\Guilherme\Desktop\TCC\GetYourGame\app\build\intermediates\pre-dexed\debug\jackson-core-2.3.2-35a2e6d94ab20bd8251d2a25041c022b2d012891.jar" />
     </item>
     <item
-        jar="C:\Users\Guilherme\Desktop\TCC\Novo\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\jars\classes.jar"
+        jar="C:\Users\Guilherme\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.3\5fc52c41ef0239d1093a1eb7c3697036183677ce\gson-2.3.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="57ae0d750ff83f0c738d21720224ac7ea866a094">
-        <dex dex="C:\Users\Guilherme\Desktop\TCC\Novo\app\build\intermediates\pre-dexed\debug\classes-3875bd8fe8c2752b21ba1b25de2d46f5465df479.jar" />
+        sha1="5fc52c41ef0239d1093a1eb7c3697036183677ce">
+        <dex dex="C:\Users\Guilherme\Desktop\TCC\GetYourGame\app\build\intermediates\pre-dexed\debug\gson-2.3-9aa55fc5bb338931da29548b5f97580362ba21d8.jar" />
     </item>
     <item
-        jar="C:\Users\Guilherme\Desktop\TCC\Novo\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\classes.jar"
+        jar="C:\Users\Guilherme\Desktop\TCC\GetYourGame\app\build\intermediates\exploded-aar\com.facebook.android\facebook-android-sdk\4.1.0\jars\classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
-        <dex dex="C:\Users\Guilherme\Desktop\TCC\Novo\app\build\intermediates\pre-dexed\debug\classes-80343b8a266a09f6c90ca7ba5369e01dcfefc81e.jar" />
-    </item>
-    <item
-        jar="C:\Users\Guilherme\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.0\support-annotations-23.1.0.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="92e3fc113ec3ee36b64603a38857b95700025633">
-        <dex dex="C:\Users\Guilherme\Desktop\TCC\Novo\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.0-6036a81a97930bac6555dbd207c763a02c7388ed.jar" />
+        sha1="a78bfd2ec508b123ee7c03f4006ba7996ef9a8dc">
+        <dex dex="C:\Users\Guilherme\Desktop\TCC\GetYourGame\app\build\intermediates\pre-dexed\debug\classes-07627609d692afe6a63c2fb7d06e426af623fd12.jar" />
     </item>
     <item
         jar="C:\Users\Guilherme\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-android\1.2.0\6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd\bolts-android-1.2.0.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd">
-        <dex dex="C:\Users\Guilherme\Desktop\TCC\Novo\app\build\intermediates\pre-dexed\debug\bolts-android-1.2.0-21a2247b1cb70f9af7f282045859feea1801bb86.jar" />
+        <dex dex="C:\Users\Guilherme\Desktop\TCC\GetYourGame\app\build\intermediates\pre-dexed\debug\bolts-android-1.2.0-21a2247b1cb70f9af7f282045859feea1801bb86.jar" />
+    </item>
+    <item
+        jar="C:\Users\Guilherme\Desktop\TCC\GetYourGame\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="57ae0d750ff83f0c738d21720224ac7ea866a094">
+        <dex dex="C:\Users\Guilherme\Desktop\TCC\GetYourGame\app\build\intermediates\pre-dexed\debug\classes-1e412285c337a61e55467c3534974818b3c7ed3f.jar" />
     </item>
     <item
         jar="C:\Users\Guilherme\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-databind\2.3.2\c75edc740a6d8cb1cef6fa82fa594e0bce561916\jackson-databind-2.3.2.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="c75edc740a6d8cb1cef6fa82fa594e0bce561916">
-        <dex dex="C:\Users\Guilherme\Desktop\TCC\Novo\app\build\intermediates\pre-dexed\debug\jackson-databind-2.3.2-2ea3c11617201e48987dc80fcc58e1227b8160b3.jar" />
-    </item>
-    <item
-        jar="C:\Users\Guilherme\.gradle\caches\modules-2\files-2.1\org.springframework.android\spring-android-core\1.0.1.RELEASE\e68f0e8e4b636ee30c4de58953be38d9b72a5e3b\spring-android-core-1.0.1.RELEASE.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="e68f0e8e4b636ee30c4de58953be38d9b72a5e3b">
-        <dex dex="C:\Users\Guilherme\Desktop\TCC\Novo\app\build\intermediates\pre-dexed\debug\spring-android-core-1.0.1.RELEASE-bdaddf98250b9306991dc5c5638f67808c5a49ae.jar" />
-    </item>
-    <item
-        jar="C:\Users\Guilherme\Desktop\TCC\Novo\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\libs\internal_impl-23.1.0.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
-        <dex dex="C:\Users\Guilherme\Desktop\TCC\Novo\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.0-99eb5ccd1d03674d2d775303bdf7998383773ce0.jar" />
+        <dex dex="C:\Users\Guilherme\Desktop\TCC\GetYourGame\app\build\intermediates\pre-dexed\debug\jackson-databind-2.3.2-2ea3c11617201e48987dc80fcc58e1227b8160b3.jar" />
     </item>
     <item
         jar="C:\Users\Guilherme\.gradle\caches\modules-2\files-2.1\org.springframework.android\spring-android-rest-template\1.0.1.RELEASE\e132d929bd181941f79b0d63edafb8a86ae6fd33\spring-android-rest-template-1.0.1.RELEASE.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="e132d929bd181941f79b0d63edafb8a86ae6fd33">
-        <dex dex="C:\Users\Guilherme\Desktop\TCC\Novo\app\build\intermediates\pre-dexed\debug\spring-android-rest-template-1.0.1.RELEASE-4c7ef68f6007907510cb06c961130db61c1bb622.jar" />
+        <dex dex="C:\Users\Guilherme\Desktop\TCC\GetYourGame\app\build\intermediates\pre-dexed\debug\spring-android-rest-template-1.0.1.RELEASE-4c7ef68f6007907510cb06c961130db61c1bb622.jar" />
     </item>
     <item
-        jar="C:\Users\Guilherme\Desktop\TCC\Novo\app\build\intermediates\exploded-aar\com.facebook.android\facebook-android-sdk\4.1.0\jars\classes.jar"
+        jar="C:\Users\Guilherme\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-annotations\2.3.0\f5e853a20b60758922453d56f9ae1e64af5cb3da\jackson-annotations-2.3.0.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="a78bfd2ec508b123ee7c03f4006ba7996ef9a8dc">
-        <dex dex="C:\Users\Guilherme\Desktop\TCC\Novo\app\build\intermediates\pre-dexed\debug\classes-33d6018adf437ddd73411f8e77e550c892d1a8ad.jar" />
+        sha1="f5e853a20b60758922453d56f9ae1e64af5cb3da">
+        <dex dex="C:\Users\Guilherme\Desktop\TCC\GetYourGame\app\build\intermediates\pre-dexed\debug\jackson-annotations-2.3.0-79f019e3f246060f973e01fce98de063f34a2038.jar" />
+    </item>
+    <item
+        jar="C:\Users\Guilherme\Desktop\TCC\GetYourGame\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
+        <dex dex="C:\Users\Guilherme\Desktop\TCC\GetYourGame\app\build\intermediates\pre-dexed\debug\classes-1f47b325af8187d0ba455319f9eda4cd1b219535.jar" />
+    </item>
+    <item
+        jar="C:\Users\Guilherme\.gradle\caches\modules-2\files-2.1\org.springframework.android\spring-android-core\1.0.1.RELEASE\e68f0e8e4b636ee30c4de58953be38d9b72a5e3b\spring-android-core-1.0.1.RELEASE.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="e68f0e8e4b636ee30c4de58953be38d9b72a5e3b">
+        <dex dex="C:\Users\Guilherme\Desktop\TCC\GetYourGame\app\build\intermediates\pre-dexed\debug\spring-android-core-1.0.1.RELEASE-bdaddf98250b9306991dc5c5638f67808c5a49ae.jar" />
+    </item>
+    <item
+        jar="C:\Users\Guilherme\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.0\support-annotations-23.1.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="92e3fc113ec3ee36b64603a38857b95700025633">
+        <dex dex="C:\Users\Guilherme\Desktop\TCC\GetYourGame\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.0-6036a81a97930bac6555dbd207c763a02c7388ed.jar" />
     </item>
 
 </items>

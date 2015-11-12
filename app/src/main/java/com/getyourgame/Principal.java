@@ -1,9 +1,11 @@
 package com.getyourgame;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -29,25 +31,25 @@ public class Principal extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
-
         id_usuario = util.recebeIdUsuario(getIntent());
         chave_api = util.recebeChaveApi(getIntent());
 
         final TextView tvBemBindo = (TextView) findViewById(R.id.tvBemVindo);
+;
 
         View v = (RelativeLayout)this.findViewById(R.id.principal);
         new SwipeDetector(v).setOnSwipeListener(new SwipeDetector.onSwipeEvent() {
             @Override
             public void SwipeEventDetected(View v, SwipeDetector.SwipeTypeEnum swipeType) {
-                if (swipeType==SwipeDetector.SwipeTypeEnum.LEFT_TO_RIGHT){
-                    Intent mainIntent = new Intent(Principal.this,ListaUsuarioJogo.class);
+                if (swipeType == SwipeDetector.SwipeTypeEnum.LEFT_TO_RIGHT) {
+                    Intent mainIntent = new Intent(Principal.this, ListaUsuarioJogo.class);
                     Bundle param = new Bundle();
                     param.putInt("id_usuario", id_usuario);
                     param.putString("chave_api", chave_api);
                     mainIntent.putExtras(param);
                     startActivity(mainIntent);
                     Principal.this.finish();
-                    overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_left);
+                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
                 }
             }
         });
@@ -94,7 +96,20 @@ public class Principal extends AppCompatActivity{
         if (id == R.id.action_settings) {
             return true;
         }
+        if (id == R.id.action_meu_perfil) {
+            Bundle param = new Bundle();
+            param.putInt("id_usuario", id_usuario);
+            param.putString("chave_api", chave_api);
+            redirecionar(Principal.this, testePicture.class, param);
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void redirecionar(Activity atual, Class destino, Bundle param){
+        Intent intentPrincipal = new Intent(atual, destino);
+        intentPrincipal.putExtras(param);
+        startActivity(intentPrincipal);
     }
 }

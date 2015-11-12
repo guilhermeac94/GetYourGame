@@ -1,5 +1,6 @@
 package com.getyourgame;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -58,12 +59,10 @@ public class Cadastro extends AppCompatActivity {
         protected void onPostExecute(Object retorno) {
             Usuario usuario = (Usuario) retorno;
             if(!usuario.getError()) {
-                Intent intentPrincipal = new Intent(Cadastro.this, CarregaCadastros.class);
                 Bundle param = new Bundle();
                 param.putInt("id_usuario", usuario.getId_usuario());
                 param.putString("chave_api", usuario.getChave_api());
-                intentPrincipal.putExtras(param);
-                startActivity(intentPrincipal);
+                redirecionar(Cadastro.this, PreferenciaUsuario.class, param);
                 util.toast(getApplicationContext(), "Usuário cadastrado com sucesso!");
             }else{
                 util.msgDialog(Cadastro.this, "Alerta", usuario.getMessage());
@@ -94,4 +93,11 @@ public class Cadastro extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void redirecionar(Activity atual, Class destino, Bundle param){
+        Intent intentPrincipal = new Intent(atual, destino);
+        intentPrincipal.putExtras(param);
+        startActivity(intentPrincipal);
+    }
+
 }
