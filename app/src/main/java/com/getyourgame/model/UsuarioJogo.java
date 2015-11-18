@@ -18,6 +18,8 @@ public class UsuarioJogo {
     private Number preco_final;
     private Jogo jogoTroca;
     private Plataforma plataformaTroca;
+    private Boolean error;
+    private String message;
 
     private List<Foto> fotos;
     public UsuarioJogo() {
@@ -117,5 +119,21 @@ public class UsuarioJogo {
 
     public void setPlataformaTroca(Plataforma plataformaTroca) {
         this.plataformaTroca = plataformaTroca;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public Boolean getError() {
+        return error;
+    }
+
+    public void setError(Boolean error) {
+        this.error = error;
     }
 }

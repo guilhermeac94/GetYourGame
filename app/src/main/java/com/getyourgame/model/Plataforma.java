@@ -36,4 +36,9 @@ public class Plataforma {
     public void setMarca(String marca) {
         this.marca = marca;
     }
+
+    @Override
+    public String toString() {
+        return this.descricao;
+    }
 }
