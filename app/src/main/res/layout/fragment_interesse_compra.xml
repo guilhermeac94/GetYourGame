@@ -26,17 +26,42 @@
             android:text="@string/jogo"
             android:id="@+id/tvJogo" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/selecionar"
+            android:id="@+id/tvSelecionaJogo"
+            android:textStyle="italic"
+            android:textColor="@color/colorSecundary"/>
+
+        <!--
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/etJogo" />
+        -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/estado_jogo"
+            android:id="@+id/tvEstadoJogo"
+            android:layout_marginTop="20dp"/>
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spEstadoJogo" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/plataforma"
-            android:id="@+id/tvPlataforma" />
+            android:id="@+id/tvPlataforma"
+            android:layout_marginTop="20dp"/>
 
         <Spinner
             android:layout_width="match_parent"
@@ -49,7 +74,8 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/intervalo_preco"
-            android:id="@+id/tvPrecoFinal" />
+            android:id="@+id/tvPrecoFinal"
+            android:layout_marginTop="15dp"/>
 
         <org.florescu.android.rangeseekbar.RangeSeekBar
             android:layout_width="match_parent"

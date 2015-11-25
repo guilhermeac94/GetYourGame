@@ -13,8 +13,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.getyourgame.db.SQLiteHandler;
+import com.getyourgame.model.EstadoJogo;
 import com.getyourgame.model.Plataforma;
 import com.getyourgame.model.UsuarioJogo;
 import com.getyourgame.util.Util;
@@ -22,6 +24,7 @@ import com.getyourgame.util.Util;
 import org.florescu.android.rangeseekbar.RangeSeekBar;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -47,13 +50,23 @@ public class InteresseCompra extends Fragment {
     Util util = new Util();
 
     private OnCompraListener mListener;
-    private View fragmentView;
+    private OnAbreSelecionaJogoListener mListenerJogo;
 
-    SQLiteHandler db;
-    List<Plataforma> plataformas;
-    MultiValueMap<String, String> map;
-    Plataforma plataforma;
     int interesse;
+    int id_jogo;
+
+    private View fragmentView;
+    SQLiteHandler db;
+
+    List<Plataforma> plataformas;
+    Plataforma plataforma;
+
+    List<EstadoJogo> estados_jogo;
+    EstadoJogo estado_jogo;
+
+    MultiValueMap<String, String> map;
+
+    TextView tvSelecionaJogo;
 
     UsuarioJogo usuarioJogo;
 
@@ -98,6 +111,16 @@ public class InteresseCompra extends Fragment {
         }
 
 
+        tvSelecionaJogo = (TextView) fragmentView.findViewById(R.id.tvSelecionaJogo);
+
+        tvSelecionaJogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abreSelecionaJogo();
+            }
+        });
+
+
         final RangeSeekBar<Double> rsbPreco = (RangeSeekBar<Double>) fragmentView.findViewById(R.id.rsbPreco);
         rsbPreco.setTextAboveThumbsColor(Color.BLACK);
 
@@ -107,15 +130,17 @@ public class InteresseCompra extends Fragment {
             @Override
             public void onClick(View view) {
 
-                EditText etJogo = (EditText) fragmentView.findViewById(R.id.etJogo);
-
                 final Spinner spPlataforma = (Spinner) fragmentView.findViewById(R.id.spPlataforma);
                 plataforma = (Plataforma) spPlataforma.getSelectedItem();
 
+                final Spinner spEstadoJogo = (Spinner) fragmentView.findViewById(R.id.spEstadoJogo);
+                estado_jogo = (EstadoJogo) spEstadoJogo.getSelectedItem();
+
                 map = new LinkedMultiValueMap<String, String>();
-                map.add("id_jogo", String.valueOf(etJogo.getText().toString()));
+                map.add("id_jogo", String.valueOf(id_jogo));
                 map.add("id_usuario", "1");
                 map.add("id_interesse", String.valueOf(interesse));
+                map.add("id_estado_jogo", String.valueOf(estado_jogo.getId_estado_jogo()));
                 map.add("id_nivel", "1");
                 map.add("distancia", "");
                 map.add("id_plataforma", String.valueOf(plataforma.getId_plataforma()));
@@ -129,12 +154,16 @@ public class InteresseCompra extends Fragment {
 
         try {
             plataformas = db.selectPlataforma();
+            estados_jogo = db.selectEstadoJogo();
         }catch (Exception e){
             e.printStackTrace();
         }
 
         final Spinner spPlataforma = (Spinner) fragmentView.findViewById(R.id.spPlataforma);
         util.carregaSpinner(spPlataforma, getActivity(), plataformas);
+
+        final Spinner spEstadoJogo = (Spinner) fragmentView.findViewById(R.id.spEstadoJogo);
+        util.carregaSpinner(spEstadoJogo, getActivity(), estados_jogo);
 
         return fragmentView;
     }
@@ -143,6 +172,12 @@ public class InteresseCompra extends Fragment {
     public void salvarInteresse(MultiValueMap<String, String> map) {
         if (mListener != null) {
             mListener.onCompra(map);
+        }
+    }
+
+    public void abreSelecionaJogo(){
+        if (mListenerJogo != null) {
+            mListenerJogo.OnAbreSelecionaJogo();
         }
     }
 
@@ -170,11 +205,12 @@ public class InteresseCompra extends Fragment {
      * Called when the fragment attaches to the context
      */
     protected void onAttachToContext(Context context) {
-        if (context instanceof OnCompraListener) {
+        if (context instanceof OnCompraListener && context instanceof OnAbreSelecionaJogoListener) {
             mListener = (OnCompraListener) context;
+            mListenerJogo = (OnAbreSelecionaJogoListener) context;
             db = new SQLiteHandler(context);
         } else {
-            throw new ClassCastException(context.toString() + " must implemenet InteresseCompra.OnCompraListener");
+            throw new ClassCastException(context.toString() + " must implemenet InteresseCompra.OnCompraListener and InteresseCompra.OnAbreSelecionaJogoListener");
         }
     }
 
@@ -182,6 +218,7 @@ public class InteresseCompra extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+        mListenerJogo = null;
     }
 
     /**
@@ -194,9 +231,21 @@ public class InteresseCompra extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
+
+    public interface OnAbreSelecionaJogoListener {
+        // TODO: Update argument type and name
+        public void OnAbreSelecionaJogo();
+    }
+
+
     public interface OnCompraListener {
         // TODO: Update argument type and name
         public void onCompra(MultiValueMap<String, String> map);
     }
 
+    public void carregaJogo(int id_jogo, String nome){
+
+        this.id_jogo = id_jogo;
+        tvSelecionaJogo.setText(nome);
+    }
 }

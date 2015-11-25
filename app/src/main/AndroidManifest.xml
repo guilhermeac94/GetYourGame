@@ -53,11 +53,7 @@
         </activity>
         <activity
             android:name=".ListaJogo"
-<<<<<<< HEAD
-            android:label="@string/title_activity_lista_jogo" >
-=======
             android:label="@string/title_activity_lista_jogo">
->>>>>>> origin/master
         </activity>
         <activity android:name=".testePicture" >
         </activity>
@@ -68,7 +64,6 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".InteresseTab"

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="5dip" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="3dip"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="5dip"
+        android:id="@+id/llFotoJogo">
+
+        <ImageView
+            android:layout_width="50dip"
+            android:layout_height="50dip"
+            android:id="@+id/ivFotoJogo"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvNomeJogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:layout_alignTop="@id/llFotoJogo"
+        android:layout_toRightOf="@id/llFotoJogo"/>
+
+</RelativeLayout>

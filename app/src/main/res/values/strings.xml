@@ -28,6 +28,7 @@
     <string name="precoFinal">Preço Final</string>
     <string name="precoInicial">Preço Inicial</string>
     <string name="salvar">Salvar</string>
+    <string name="selecionar">(Selecionar)</string>
     <string name="senha">Senha</string>
     <string name="troca">Troca</string>
     <string name="venda">Venda</string>

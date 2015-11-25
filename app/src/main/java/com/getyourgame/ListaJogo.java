@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -88,10 +89,17 @@ public class ListaJogo extends AppCompatActivity {
             for(Object obj : l){
                 Map<String, String> map = (Map<String, String>) obj;
 
-                lista.add(new Item(map.get("nome"), map.get("foto").equals("")?sem_jogo : util.StringToBitMap(map.get("foto"))));
+                lista.add(new Item(Integer.parseInt(String.valueOf(map.get("id_jogo"))),  map.get("nome"), map.get("foto").equals("")?sem_jogo : util.StringToBitMap(map.get("foto"))));
             }
             adapter = new Ladapter(getApplicationContext());
             lvJogos.setAdapter(adapter);
+
+            lvJogos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    Item item = lista.get(i);
+                }
+            });
         }
     }
 
@@ -118,10 +126,12 @@ public class ListaJogo extends AppCompatActivity {
     }
 
     class Item {
+        int id_jogo;
         String nome;
         Bitmap foto;
 
-        Item(String name, Bitmap foto) {
+        Item(int id_jogo, String name, Bitmap foto) {
+            this.id_jogo = id_jogo;
             this.nome = name;
             this.foto = foto;
         }
@@ -146,13 +156,13 @@ public class ListaJogo extends AppCompatActivity {
         @Override
         public Object getItem(int position) {
             // TODO Auto-generated method stub
-            return null;
+            return lista.get(position);
         }
 
         @Override
         public long getItemId(int position) {
             // TODO Auto-generated method stub
-            return 0;
+            return position;
         }
 
         class myViewHolder {

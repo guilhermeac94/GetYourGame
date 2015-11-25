@@ -17,12 +17,13 @@ import com.getyourgame.util.Webservice;
 
 import org.springframework.util.MultiValueMap;
 
-public class InteresseTab extends AppCompatActivity implements InteresseTroca.OnTrocaListener, InteresseCompra.OnCompraListener, InteresseVenda.OnVendaListener {
+public class InteresseTab extends AppCompatActivity implements InteresseTroca.OnTrocaListener, InteresseCompra.OnCompraListener, InteresseCompra.OnAbreSelecionaJogoListener, InteresseVenda.OnVendaListener, ListaJogos.OnSelecionaJogoListener {
 
     FragmentManager manager;
     Util util;
     int tipo;
     int interesse;
+    String fragment_atual;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,15 +64,15 @@ public class InteresseTab extends AppCompatActivity implements InteresseTroca.On
                     Bundle param = new Bundle();
                     param.putInt("interesse", interesse);
 
-                    Fragment fr = getFragmentManager().findFragmentByTag("interesse_troca");
+                    Fragment fr = manager.findFragmentByTag("interesse_troca");
                     if (fr == null) {
                         InteresseTroca troca = new InteresseTroca();
                         troca.setArguments(param);
                         FragmentTransaction transaction = manager.beginTransaction();
                         transaction.add(R.id.layoutFragments, troca, "interesse_troca");
                         transaction.commit();
+                        fragment_atual = "interesse_troca";
                     }
-
 
                 } else if (i == R.id.rbCompraVenda) {
 
@@ -80,15 +81,18 @@ public class InteresseTab extends AppCompatActivity implements InteresseTroca.On
                         finalizaFragment("interesse_compra");
 
                         Bundle param = new Bundle();
-                        param.putInt("interesse", 2);
 
-                        Fragment fr = getFragmentManager().findFragmentByTag("interesse_venda");
+                        interesse = 2;
+                        param.putInt("interesse", interesse);
+
+                        Fragment fr = manager.findFragmentByTag("interesse_venda");
                         if (fr == null) {
                             InteresseVenda venda = new InteresseVenda();
                             venda.setArguments(param);
                             FragmentTransaction transaction = manager.beginTransaction();
                             transaction.add(R.id.layoutFragments, venda, "interesse_venda");
                             transaction.commit();
+                            fragment_atual = "interesse_venda";
                         }
 
                     }else if(tipo==2) { //Quero
@@ -97,15 +101,18 @@ public class InteresseTab extends AppCompatActivity implements InteresseTroca.On
                         finalizaFragment("interesse_venda");
 
                         Bundle param = new Bundle();
-                        param.putInt("interesse", 4);
 
-                        Fragment fr = getFragmentManager().findFragmentByTag("interesse_compra");
+                        interesse = 4;
+                        param.putInt("interesse", interesse);
+
+                        Fragment fr = manager.findFragmentByTag("interesse_compra");
                         if (fr == null) {
                             InteresseCompra compra = new InteresseCompra();
                             compra.setArguments(param);
                             FragmentTransaction transaction = manager.beginTransaction();
                             transaction.add(R.id.layoutFragments, compra, "interesse_compra");
                             transaction.commit();
+                            fragment_atual = "interesse_compra";
                         }
                     }
                 }
@@ -114,7 +121,7 @@ public class InteresseTab extends AppCompatActivity implements InteresseTroca.On
     }
 
     public void finalizaFragment(String tag){
-        Fragment fr = getFragmentManager().findFragmentByTag(tag);
+        Fragment fr = manager.findFragmentByTag(tag);
         if (fr != null) {
             FragmentTransaction transaction = manager.beginTransaction();
             transaction.remove(fr);
@@ -169,5 +176,43 @@ public class InteresseTab extends AppCompatActivity implements InteresseTroca.On
             UsuarioJogo usuarioJogo = (UsuarioJogo) retorno;
             util.toast(getApplicationContext(), usuarioJogo.getMessage());
         }
+    }
+
+    @Override
+    public void OnAbreSelecionaJogo() {
+        /*
+        Fragment fr = manager.findFragmentByTag("lista_jogos");
+        if (fr == null) {
+            ListaJogos listaJogos = new ListaJogos();
+            FragmentTransaction transaction = manager.beginTransaction();
+            transaction.add(R.id.layoutFragments, listaJogos, "lista_jogos");
+            transaction.commit();
+        }
+        */
+
+
+        Fragment fr = manager.findFragmentByTag(fragment_atual);
+        ListaJogos listaJogos = new ListaJogos();
+
+        manager.beginTransaction()
+          .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
+          .hide(fr)
+          .add(R.id.layoutFragments, listaJogos, "lista_jogos")
+          .commit();
+    }
+
+    @Override
+    public void OnSelecionaJogo(int id_jogo, String nome) {
+        finalizaFragment("lista_jogos");
+
+        if(interesse==4){
+            InteresseCompra fr = (InteresseCompra)manager.findFragmentByTag("interesse_compra");
+            fr.carregaJogo(id_jogo, nome);
+        }
+
+        manager.beginTransaction()
+                .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
+                .show(manager.findFragmentByTag(fragment_atual))
+                .commit();
     }
 }
