@@ -11,6 +11,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
+
+import com.getyourgame.db.SQLiteHandler;
+import com.getyourgame.model.EstadoJogo;
+import com.getyourgame.model.Jogo;
+import com.getyourgame.model.Plataforma;
+import com.getyourgame.model.UsuarioJogo;
+import com.getyourgame.util.Util;
+
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+
+import java.util.List;
 
 
 /**
@@ -31,8 +45,38 @@ public class InteresseTroca extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    Util util = new Util();
+
     private OnTrocaListener mListener;
+    private OnAbreSelecionaJogoListener mListenerJogo;
+
+    int interesse;
+    int tipo_jogo; /* 1-Jogo / 2-Jogo Desejado */
+
+    int id_jogo = 0;
+    int id_jogo_desejado = 0;
+
+    Integer id_usuario;
+    String chave_api;
+
     private View fragmentView;
+    SQLiteHandler db;
+
+    List<Plataforma> plataformas;
+    Plataforma plataforma;
+    Plataforma plataformaDesejada;
+
+    List<EstadoJogo> estados_jogo;
+    EstadoJogo estado_jogo;
+
+    MultiValueMap<String, String> map;
+
+    TextView tvSelecionaJogo;
+    TextView tvSelecionaJogoDesejado;
+    TextView tvPlataforma;
+    TextView tvPlataformaDesejada;
+
+    UsuarioJogo usuarioJogo;
 
     /**
      * Use this factory method to create a new instance of
@@ -67,35 +111,120 @@ public class InteresseTroca extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-
         fragmentView = inflater.inflate(R.layout.fragment_interesse_troca, container, false);
+
+        Bundle param = this.getArguments();
+        if(param!=null){
+            interesse = (param.getInt("interesse"));
+            id_usuario = param.getInt("id_usuario");
+            chave_api = param.getString("chave_api");
+        }
+
+        tvPlataforma = (TextView) fragmentView.findViewById(R.id.tvPlataforma);
+        tvPlataformaDesejada = (TextView) fragmentView.findViewById(R.id.tvPlataformaDesejada);
+
+        tvSelecionaJogo = (TextView) fragmentView.findViewById(R.id.tvSelecionaJogo);
+        tvSelecionaJogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                tipo_jogo = 1;
+                abreSelecionaJogo();
+            }
+        });
+
+        tvSelecionaJogoDesejado = (TextView) fragmentView.findViewById(R.id.tvSelecionaJogoDesejado);
+        tvSelecionaJogoDesejado.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                tipo_jogo = 2;
+                abreSelecionaJogo();
+            }
+        });
+
+        final Spinner spPlataforma = (Spinner) fragmentView.findViewById(R.id.spPlataforma);
+        final Spinner spPlataformaDesejada = (Spinner) fragmentView.findViewById(R.id.spPlataformaDesejada);
 
         Button btSalvarInteresse = (Button) fragmentView.findViewById(R.id.btSalvarInteresse);
 
         btSalvarInteresse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                salvarInteresse("teste interação TROCA");
+
+                if(id_jogo!=0){
+                    //plataforma = (Plataforma) spPlataforma.getSelectedItem();
+                    if(spPlataforma.getSelectedItem() instanceof Plataforma){
+                        plataforma = (Plataforma) spPlataforma.getSelectedItem();
+                    }else{
+                        plataforma = null;
+                    }
+
+                    //plataformaDesejada = (Plataforma) spPlataformaDesejada.getSelectedItem();
+                    if(spPlataformaDesejada.getSelectedItem() instanceof Plataforma){
+                        plataformaDesejada = (Plataforma) spPlataformaDesejada.getSelectedItem();
+                    }else{
+                        plataformaDesejada = null;
+                    }
+
+
+                    final Spinner spEstadoJogo = (Spinner) fragmentView.findViewById(R.id.spEstadoJogo);
+                    if(spEstadoJogo.getSelectedItem() instanceof EstadoJogo){
+                        estado_jogo = (EstadoJogo) spEstadoJogo.getSelectedItem();
+                    }else{
+                        estado_jogo = null;
+                    }
+
+                    map = new LinkedMultiValueMap<String, String>();
+                    map.add("id_jogo", String.valueOf(id_jogo));
+                    map.add("id_usuario", String.valueOf(id_usuario));
+                    map.add("id_interesse", String.valueOf(interesse));
+                    map.add("id_estado_jogo", (estado_jogo!=null)?String.valueOf(estado_jogo.getId_estado_jogo()):"");
+                    map.add("id_nivel", "1");
+                    map.add("distancia", "");
+                    map.add("id_plataforma", (plataforma!=null)?String.valueOf(plataforma.getId_plataforma()):"");
+                    map.add("preco", "");
+                    map.add("id_jogo_troca", (id_jogo_desejado!=0) ? String.valueOf(id_jogo_desejado) : "");
+                    map.add("id_plataforma_troca", (plataformaDesejada!=null)?String.valueOf(plataformaDesejada.getId_plataforma()):"");
+                    map.add("preco_inicial", "");
+                    map.add("preco_final", "");
+                    salvarInteresse(map);
+
+                }else{
+                    util.msgDialog(getActivity(), "Alerta", "Selecione o jogo!");
+                }
             }
         });
 
-        EditText etInteresse1 = (EditText) fragmentView.findViewById(R.id.etInteresse1);
-        Bundle param = this.getArguments();
-        if(param!=null){
-            etInteresse1.setText(param.getString("jogo"));
+        try {
+            //plataformas = db.selectPlataforma();
+            estados_jogo = db.selectEstadoJogo();
+        }catch (Exception e){
+            e.printStackTrace();
         }
+
+        spPlataforma.setVisibility(View.GONE);
+        tvPlataforma.setVisibility(View.GONE);
+
+        spPlataformaDesejada.setVisibility(View.GONE);
+        tvPlataformaDesejada.setVisibility(View.GONE);
+
+        final Spinner spEstadoJogo = (Spinner) fragmentView.findViewById(R.id.spEstadoJogo);
+        util.carregaSpinnerHint(spEstadoJogo, getActivity(), estados_jogo);
 
         return fragmentView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
-    public void salvarInteresse(String teste) {
+    public void salvarInteresse(MultiValueMap<String, String> map) {
         if (mListener != null) {
-            mListener.onTroca(teste);
+            mListener.onTroca(map);
         }
     }
 
+    public void abreSelecionaJogo(){
+        if (mListenerJogo != null) {
+            mListenerJogo.OnAbreSelecionaJogo();
+        }
+    }
 
     @TargetApi(23)
     @Override
@@ -121,10 +250,12 @@ public class InteresseTroca extends Fragment {
      * Called when the fragment attaches to the context
      */
     protected void onAttachToContext(Context context) {
-        if (context instanceof OnTrocaListener) {
+        if (context instanceof OnTrocaListener && context instanceof OnAbreSelecionaJogoListener) {
             mListener = (OnTrocaListener) context;
+            mListenerJogo = (OnAbreSelecionaJogoListener) context;
+            db = new SQLiteHandler(context);
         } else {
-            throw new ClassCastException(context.toString() + " must implemenet InteresseTroca.OnTrocaListener");
+            throw new ClassCastException(context.toString() + " must implemenet InteresseTroca.OnTrocaListener and InteresseTroca.OnAbreSelecionaJogoListener");
         }
     }
 
@@ -132,6 +263,7 @@ public class InteresseTroca extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+        mListenerJogo = null;
     }
 
     /**
@@ -144,8 +276,38 @@ public class InteresseTroca extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
+
+    public interface OnAbreSelecionaJogoListener {
+        // TODO: Update argument type and name
+        public void OnAbreSelecionaJogo();
+    }
+
     public interface OnTrocaListener {
         // TODO: Update argument type and name
-        public void onTroca(String teste);
+        public void onTroca(MultiValueMap<String, String> map);
+    }
+
+    public void carregaJogo(Jogo jogo){
+
+        if(tipo_jogo==1){
+            id_jogo = jogo.getId_jogo();
+            tvSelecionaJogo.setText(jogo.getDescricao());
+            plataformas = jogo.getPlataformas();
+
+            final Spinner spPlataforma = (Spinner) fragmentView.findViewById(R.id.spPlataforma);
+            util.carregaSpinner(spPlataforma, getActivity(), plataformas);
+            spPlataforma.setVisibility(View.VISIBLE);
+            tvPlataforma.setVisibility(View.VISIBLE);
+
+        }else if(tipo_jogo==2){
+            id_jogo_desejado = jogo.getId_jogo();
+            tvSelecionaJogoDesejado.setText(jogo.getDescricao());
+            plataformas = jogo.getPlataformas();
+
+            final Spinner spPlataformaDesejada = (Spinner) fragmentView.findViewById(R.id.spPlataformaDesejada);
+            util.carregaSpinner(spPlataformaDesejada, getActivity(), plataformas);
+            spPlataformaDesejada.setVisibility(View.VISIBLE);
+            tvPlataformaDesejada.setVisibility(View.VISIBLE);
+        }
     }
 }

@@ -18,15 +18,17 @@ import java.net.SocketPermission;
 
 public class Interesse extends TabActivity /*implements InteresseTroca.OnTrocaListener, InteresseCompra.OnCompraListener*/{
 
-    Util util;
-    //FragmentManager manager;
+    Util util = new Util();
+    Integer id_usuario;
+    String chave_api;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_interesse);
 
-        util = new Util();
+        id_usuario = util.recebeIdUsuario(getIntent());
+        chave_api = util.recebeChaveApi(getIntent());
 
         TabHost tabHost = (TabHost)findViewById(android.R.id.tabhost);
 
@@ -37,6 +39,8 @@ public class Interesse extends TabActivity /*implements InteresseTroca.OnTrocaLi
         Intent interesseTenho = new Intent(this, InteresseTab.class);
         Bundle param1 = new Bundle();
         param1.putInt("tipo", 1);
+        param1.putInt("id_usuario", id_usuario);
+        param1.putString("chave_api", chave_api);
         interesseTenho.putExtras(param1);
         tab1.setContent(interesseTenho);
 
@@ -44,6 +48,8 @@ public class Interesse extends TabActivity /*implements InteresseTroca.OnTrocaLi
         Intent interesseQuero = new Intent(this, InteresseTab.class);
         Bundle param2 = new Bundle();
         param2.putInt("tipo", 2);
+        param2.putInt("id_usuario", id_usuario);
+        param2.putString("chave_api", chave_api);
         interesseQuero.putExtras(param2);
         tab2.setContent(interesseQuero);
 

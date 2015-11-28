@@ -1,43 +1,110 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:rsb="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:background="@color/com_facebook_blue"
-    tools:context="com.getyourgame.Interesse">
+    tools:context="com.getyourgame.Interesse"
+    android:background="@drawable/borda">
     <!--android:layout_marginTop="155dp"-->
 
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:id="@+id/linearLayout">
 
-        <EditText
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/jogo"
+            android:id="@+id/tvJogo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/selecionar"
+            android:id="@+id/tvSelecionaJogo"
+            android:textStyle="italic"
+            android:textColor="@color/colorSecundary"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/plataforma"
+            android:id="@+id/tvPlataforma"
+            android:layout_marginTop="20dp"/>
+
+        <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/etInteresse1" />
+            android:id="@+id/spPlataforma" />
 
-        <EditText
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/estado_jogo"
+            android:id="@+id/tvEstadoJogo"
+            android:layout_marginTop="15dp"/>
+
+        <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/etInteresse2" />
+            android:id="@+id/spEstadoJogo" />
 
-        <EditText
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/jogoDesejado"
+            android:id="@+id/tvJogoDesejado"
+            android:layout_marginTop="40dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/selecionar"
+            android:id="@+id/tvSelecionaJogoDesejado"
+            android:textStyle="italic"
+            android:textColor="@color/colorSecundary"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/plataformaDesejada"
+            android:id="@+id/tvPlataformaDesejada"
+            android:layout_marginTop="20dp"/>
+
+        <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/etInteresse3" />
+            android:id="@+id/spPlataformaDesejada" />
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="salvar interesse"
-            android:id="@+id/btSalvarInteresse"
-            android:layout_gravity="center_horizontal"
-            style="@style/botao"/>
     </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="salvar interesse"
+        android:id="@+id/btSalvarInteresse"
+        android:layout_gravity="center_horizontal"
+        style="@style/botao"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>

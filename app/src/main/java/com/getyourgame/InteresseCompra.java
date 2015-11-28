@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.getyourgame.db.SQLiteHandler;
 import com.getyourgame.model.EstadoJogo;
+import com.getyourgame.model.Jogo;
 import com.getyourgame.model.Plataforma;
 import com.getyourgame.model.UsuarioJogo;
 import com.getyourgame.util.Util;
@@ -53,7 +54,10 @@ public class InteresseCompra extends Fragment {
     private OnAbreSelecionaJogoListener mListenerJogo;
 
     int interesse;
-    int id_jogo;
+    int id_jogo = 0;
+
+    Integer id_usuario;
+    String chave_api;
 
     private View fragmentView;
     SQLiteHandler db;
@@ -67,6 +71,7 @@ public class InteresseCompra extends Fragment {
     MultiValueMap<String, String> map;
 
     TextView tvSelecionaJogo;
+    TextView tvPlataforma;
 
     UsuarioJogo usuarioJogo;
 
@@ -107,12 +112,14 @@ public class InteresseCompra extends Fragment {
 
         Bundle param = this.getArguments();
         if(param!=null){
-            interesse = (param.getInt("interesse"));
+            interesse = param.getInt("interesse");
+            id_usuario = param.getInt("id_usuario");
+            chave_api = param.getString("chave_api");
         }
 
+        tvPlataforma = (TextView) fragmentView.findViewById(R.id.tvPlataforma);
 
         tvSelecionaJogo = (TextView) fragmentView.findViewById(R.id.tvSelecionaJogo);
-
         tvSelecionaJogo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -130,40 +137,60 @@ public class InteresseCompra extends Fragment {
             @Override
             public void onClick(View view) {
 
-                final Spinner spPlataforma = (Spinner) fragmentView.findViewById(R.id.spPlataforma);
-                plataforma = (Plataforma) spPlataforma.getSelectedItem();
+                if(id_jogo!=0){
 
-                final Spinner spEstadoJogo = (Spinner) fragmentView.findViewById(R.id.spEstadoJogo);
-                estado_jogo = (EstadoJogo) spEstadoJogo.getSelectedItem();
+                    final Spinner spPlataforma = (Spinner) fragmentView.findViewById(R.id.spPlataforma);
+                    plataforma = (Plataforma) spPlataforma.getSelectedItem();
+                    if(spPlataforma.getSelectedItem() instanceof Plataforma){
+                        plataforma = (Plataforma) spPlataforma.getSelectedItem();
+                    }else{
+                        plataforma = null;
+                    }
 
-                map = new LinkedMultiValueMap<String, String>();
-                map.add("id_jogo", String.valueOf(id_jogo));
-                map.add("id_usuario", "1");
-                map.add("id_interesse", String.valueOf(interesse));
-                map.add("id_estado_jogo", String.valueOf(estado_jogo.getId_estado_jogo()));
-                map.add("id_nivel", "1");
-                map.add("distancia", "");
-                map.add("id_plataforma", String.valueOf(plataforma.getId_plataforma()));
-                map.add("preco", "");
-                map.add("id_jogo_troca", "");
-                map.add("preco_inicial", String.valueOf(rsbPreco.getSelectedMinValue()));
-                map.add("preco_final", String.valueOf(rsbPreco.getSelectedMaxValue()));
-                salvarInteresse(map);
+                    final Spinner spEstadoJogo = (Spinner) fragmentView.findViewById(R.id.spEstadoJogo);
+                    if(spEstadoJogo.getSelectedItem() instanceof EstadoJogo){
+                        estado_jogo = (EstadoJogo) spEstadoJogo.getSelectedItem();
+                    }else{
+                        estado_jogo = null;
+                    }
+
+                    map = new LinkedMultiValueMap<String, String>();
+                    map.add("id_jogo", String.valueOf(id_jogo));
+                    map.add("id_usuario", String.valueOf(id_usuario));
+                    map.add("id_interesse", String.valueOf(interesse));
+                    map.add("id_estado_jogo", (estado_jogo!=null)?String.valueOf(estado_jogo.getId_estado_jogo()):"");
+                    map.add("id_nivel", "1");
+                    map.add("distancia", "");
+                    map.add("id_plataforma", (plataforma!=null)?String.valueOf(plataforma.getId_plataforma()):"");
+                    map.add("preco", "");
+                    map.add("id_jogo_troca", "");
+                    map.add("id_plataforma_troca", "");
+                    map.add("preco_inicial", String.valueOf(rsbPreco.getSelectedMinValue()));
+                    map.add("preco_final", String.valueOf(rsbPreco.getSelectedMaxValue()));
+                    salvarInteresse(map);
+
+                }else{
+                    util.msgDialog(getActivity(), "Alerta", "Selecione o jogo!");
+                }
             }
         });
 
         try {
-            plataformas = db.selectPlataforma();
+            //plataformas = db.selectPlataforma();
             estados_jogo = db.selectEstadoJogo();
         }catch (Exception e){
             e.printStackTrace();
         }
 
         final Spinner spPlataforma = (Spinner) fragmentView.findViewById(R.id.spPlataforma);
-        util.carregaSpinner(spPlataforma, getActivity(), plataformas);
+        //spPlataforma.setEnabled(false);
+        spPlataforma.setVisibility(View.GONE);
+        tvPlataforma.setVisibility(View.GONE);
+
+        //util.carregaSpinnerHint(spPlataforma, getActivity(), plataformas);
 
         final Spinner spEstadoJogo = (Spinner) fragmentView.findViewById(R.id.spEstadoJogo);
-        util.carregaSpinner(spEstadoJogo, getActivity(), estados_jogo);
+        util.carregaSpinnerHint(spEstadoJogo, getActivity(), estados_jogo);
 
         return fragmentView;
     }
@@ -237,15 +264,21 @@ public class InteresseCompra extends Fragment {
         public void OnAbreSelecionaJogo();
     }
 
-
     public interface OnCompraListener {
         // TODO: Update argument type and name
         public void onCompra(MultiValueMap<String, String> map);
     }
 
-    public void carregaJogo(int id_jogo, String nome){
+    public void carregaJogo(Jogo jogo){
 
-        this.id_jogo = id_jogo;
-        tvSelecionaJogo.setText(nome);
+        id_jogo = jogo.getId_jogo();
+        tvSelecionaJogo.setText(jogo.getDescricao());
+        plataformas = jogo.getPlataformas();
+
+        final Spinner spPlataforma = (Spinner) fragmentView.findViewById(R.id.spPlataforma);
+        util.carregaSpinner(spPlataforma, getActivity(), plataformas);
+        //spPlataforma.setEnabled(true);
+        spPlataforma.setVisibility(View.VISIBLE);
+        tvPlataforma.setVisibility(View.VISIBLE);
     }
 }

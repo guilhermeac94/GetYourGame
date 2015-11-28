@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -19,6 +20,8 @@ import com.getyourgame.util.Webservice;
 
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+
+import java.net.Inet4Address;
 
 
 public class Principal extends AppCompatActivity{
@@ -55,10 +58,24 @@ public class Principal extends AppCompatActivity{
         });
 
         MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
-        map.add("id_usuario",String.valueOf(id_usuario));
+        map.add("id_usuario", String.valueOf(id_usuario));
         Usuario usuario = new Usuario();
         Webservice ws = new Webservice();
         new HttpCadastro(ws.buscaUsuario(id_usuario),null,Usuario.class,chave_api).execute();
+
+
+        Button btCadastrarInteresse = (Button) findViewById(R.id.btCadastrarInteresse);
+        btCadastrarInteresse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent interesse = new Intent(Principal.this, Interesse.class);
+                Bundle param = new Bundle();
+                param.putInt("id_usuario", id_usuario);
+                param.putString("chave_api", chave_api);
+                interesse.putExtras(param);
+                startActivity(interesse);
+            }
+        });
     }
 
     private class HttpCadastro extends Http {

@@ -1,5 +1,7 @@
 package com.getyourgame.model;
 
+import android.graphics.Bitmap;
+
 import java.util.List;
 
 /**
@@ -13,7 +15,7 @@ public class Jogo {
     private String desenvolvedor;
     private Long soma_avaliacao;
     private Long qtde_avaliacoes;
-    private Byte capa;
+    private String foto;
 
     private List<Plataforma> plataformas;
     private List<UsuarioJogo> usuarioJogos;
@@ -93,11 +95,11 @@ public class Jogo {
         this.usuarioJogos = usuarioJogos;
     }
 
-    public Byte getCapa() {
-        return capa;
+    public String getFoto() {
+        return foto;
     }
 
-    public void setCapa(Byte capa) {
-        this.capa = capa;
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 }

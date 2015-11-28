@@ -8,8 +8,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.springframework.util.MultiValueMap;
@@ -72,6 +75,32 @@ public class Util extends Activity{
         else {
             return (Object[]) array;
         }
+    }
+
+    public void carregaSpinnerHint(Spinner spinner, Activity act, List objetos ){
+        objetos.add("Selecione");
+        ArrayAdapter spinnerArrayAdapter = new ArrayAdapter(act, android.R.layout.simple_spinner_item, objetos){
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+
+                View v = super.getView(position, convertView, parent);
+                if (position == getCount()) {
+                    ((TextView)v.findViewById(android.R.id.text1)).setText("");
+                    ((TextView)v.findViewById(android.R.id.text1)).setHint(getItem(getCount()).toString()); //"Hint to be displayed"
+                }
+
+                return v;
+            }
+
+            @Override
+            public int getCount() {
+                return super.getCount()-1;            // you don't display last item. It is used as hint.
+            }
+        };
+        spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(spinnerArrayAdapter);
+
+        spinner.setSelection(spinnerArrayAdapter.getCount());
     }
 
     public void carregaSpinner(Spinner spinner, Activity act, List objetos ){

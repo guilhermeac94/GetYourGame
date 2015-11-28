@@ -20,6 +20,10 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.getyourgame.model.Jogo;
+import com.getyourgame.model.Plataforma;
 import com.getyourgame.util.Http;
 import com.getyourgame.util.Util;
 import com.getyourgame.util.Webservice;
@@ -28,7 +32,9 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 
 /**
@@ -53,7 +59,10 @@ public class ListaJogos extends Fragment {
     Integer id_usuario;
     ListView lvJogos;
     Ladapter adapter;
-    ArrayList<Item> lista;
+
+    //ArrayList<Item> lista;
+    ArrayList<Jogo> lista;
+
     String filtro;
     Bitmap sem_jogo;
     Context context;
@@ -127,9 +136,9 @@ public class ListaJogos extends Fragment {
 
 
     // TODO: Rename method, update argument and hook method into UI event
-    public void seleciona(int id_jogo, String nome) {
+    public void seleciona(Jogo jogo) {
         if (mListener != null) {
-            mListener.OnSelecionaJogo(id_jogo, nome);
+            mListener.OnSelecionaJogo(jogo);
         }
     }
 
@@ -183,7 +192,7 @@ public class ListaJogos extends Fragment {
      */
     public interface OnSelecionaJogoListener {
         // TODO: Update argument type and name
-        public void OnSelecionaJogo(int id_jogo, String nome);
+        public void OnSelecionaJogo(Jogo jogo);
     }
 
 
@@ -193,11 +202,14 @@ public class ListaJogos extends Fragment {
         Webservice ws = new Webservice();
 
         if(filtro.equals("")) {
+           // new HttpBuscaJogos(ws.buscaJogos(), null, Object[].class, "").execute();
             new HttpBuscaJogos(ws.buscaJogos(), null, Object[].class, "").execute();
 
         }else {
             MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
             map.add("filtro", filtro);
+
+            //new HttpBuscaJogos(ws.buscaJogos(), map, Object[].class, "").execute();
             new HttpBuscaJogos(ws.buscaJogos(), map, Object[].class, "").execute();
         }
     }
@@ -207,6 +219,53 @@ public class ListaJogos extends Fragment {
         public HttpBuscaJogos(Webservice ws, MultiValueMap<String, String> map, Class classe, String apikey) {
             super(ws, map, classe, apikey);
         }
+
+        @Override
+        protected void onPostExecute(Object retorno) {
+            super.onPostExecute(retorno);
+
+            ObjectMapper jogoMapper = new ObjectMapper();
+
+            List<Jogo> jogos = jogoMapper.convertValue(retorno, new TypeReference<List<Jogo>>() { });
+            lista.addAll(jogos);
+
+            /*
+            Convertendo um a um
+
+            Object[] j = Util.convertToObjectArray(retorno);
+
+            for(Object o : j){
+
+                Jogo obj = jogoMapper.convertValue(o, Jogo.class);
+
+                Jogo jogo = new Jogo();
+                jogo.setId_jogo(obj.getId_jogo());
+                jogo.setDescricao(obj.getDescricao());
+                jogo.setFoto(obj.getFoto());
+                jogo.setPlataformas(obj.getPlataformas());
+
+                lista.add(jogo);
+            }*/
+            adapter = new Ladapter(context);
+            lvJogos.setAdapter(adapter);
+
+            lvJogos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    //Item item = lista.get(i);
+                    Jogo jogo = lista.get(i);
+
+                    seleciona(jogo);
+                }
+            });
+        }
+    }
+/*
+    private class HttpBuscaJogos extends Http {
+        public HttpBuscaJogos(Webservice ws, MultiValueMap<String, String> map, Class classe, String apikey) {
+            super(ws, map, classe, apikey);
+        }
+
         @Override
         protected void onPostExecute(Object retorno) {
             super.onPostExecute(retorno);
@@ -214,9 +273,16 @@ public class ListaJogos extends Fragment {
             Object[] l = Util.convertToObjectArray(retorno);
 
             for(Object obj : l){
-                Map<String, String> map = (Map<String, String>) obj;
+                Map<String, Object> map = (Map<String, Object>) obj;
 
-                lista.add(new Item(Integer.parseInt(String.valueOf(map.get("id_jogo"))),  map.get("nome"), map.get("foto").equals("")?sem_jogo : util.StringToBitMap(map.get("foto"))));
+                Jogo jogo = new Jogo();
+                jogo.setId_jogo(Integer.parseInt(String.valueOf(map.get("id_jogo"))));
+                jogo.setDescricao(map.get("nome").toString());
+                jogo.setFoto(map.get("foto").toString());
+                jogo.setPlataformas((ArrayList<Plataforma>)map.get("plataformas"));
+
+                lista.add(jogo);
+                //lista.add(new Item(Integer.parseInt(String.valueOf(map.get("id_jogo"))),  map.get("nome"), map.get("foto").equals("")?sem_jogo : util.StringToBitMap(map.get("foto"))));
             }
             adapter = new Ladapter(context);
             lvJogos.setAdapter(adapter);
@@ -224,13 +290,15 @@ public class ListaJogos extends Fragment {
             lvJogos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    Item item = lista.get(i);
-                    seleciona(item.id_jogo, item.nome);
+                    //Item item = lista.get(i);
+                    Jogo jogo = lista.get(i);
+
+                    seleciona(jogo);
                 }
             });
         }
-    }
-
+    }*/
+    /*
     class Item {
         int id_jogo;
         String nome;
@@ -242,6 +310,7 @@ public class ListaJogos extends Fragment {
             this.foto = foto;
         }
     }
+    */
 
     class Ladapter extends BaseAdapter {
 
@@ -299,8 +368,8 @@ public class ListaJogos extends Fragment {
                 holder = (myViewHolder) row.getTag();
             }
 
-            holder.name.setText(lista.get(position).nome);
-            holder.foto.setImageBitmap(lista.get(position).foto);
+            holder.name.setText(lista.get(position).getDescricao());
+            holder.foto.setImageBitmap(lista.get(position).getFoto().equals("")?sem_jogo : util.StringToBitMap(lista.get(position).getFoto()));
 
             if (holder.name.getText().toString().equals("")) {
                 holder.name.setVisibility(View.GONE);
