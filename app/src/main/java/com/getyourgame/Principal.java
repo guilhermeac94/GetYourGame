@@ -38,7 +38,6 @@ public class Principal extends AppCompatActivity{
         chave_api = util.recebeChaveApi(getIntent());
 
         final TextView tvBemBindo = (TextView) findViewById(R.id.tvBemVindo);
-;
 
         View v = (RelativeLayout)this.findViewById(R.id.principal);
         new SwipeDetector(v).setOnSwipeListener(new SwipeDetector.onSwipeEvent() {
@@ -53,6 +52,16 @@ public class Principal extends AppCompatActivity{
                     startActivity(mainIntent);
                     Principal.this.finish();
                     overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+
+                }else if(swipeType == SwipeDetector.SwipeTypeEnum.RIGHT_TO_LEFT) {
+                    Intent mainIntent = new Intent(Principal.this, Oportunidades.class);
+                    Bundle param = new Bundle();
+                    param.putInt("id_usuario", id_usuario);
+                    param.putString("chave_api", chave_api);
+                    mainIntent.putExtras(param);
+                    startActivity(mainIntent);
+                    Principal.this.finish();
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                 }
             }
         });
@@ -121,6 +130,13 @@ public class Principal extends AppCompatActivity{
             return true;
         }
 
+        if (id == R.id.action_multiple_fotos) {
+            Bundle param = new Bundle();
+            param.putInt("id_usuario", id_usuario);
+            param.putString("chave_api", chave_api);
+            redirecionar(Principal.this, testeMultipleImages.class, param);
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 

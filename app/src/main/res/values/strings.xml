@@ -7,6 +7,7 @@
     <string name="title_activity_cadastro">Cadastro de Usuário</string>
     <string name="action_settings">Settings</string>
     <string name="action_meu_perfil">Meu Perfil</string>
+    <string name="action_multiple_fotos">Foto</string>
 
     <string name="avancar">Avançar</string>
     <string name="buscar">Buscar</string>
@@ -22,11 +23,13 @@
     <string name="intervalo_preco">Intervalo de preço desejado (R$)</string>
     <string name="jogo">Jogo</string>
     <string name="jogoDesejado">Jogo desejado</string>
+    <string name="jogoOfertado">Jogo ofertado</string>
     <string name="login">Login</string>
     <string name="metodo_envio">Método de envio padrão:</string>
     <string name="nome">Nome</string>
     <string name="plataforma">Plataforma</string>
     <string name="plataformaDesejada">Plataforma desejada</string>
+    <string name="plataformaOfertada">Plataforma ofertada</string>
     <string name="preco">Preço (R$)</string>
     <string name="precoFinal">Preço Final</string>
     <string name="precoInicial">Preço Inicial</string>
@@ -52,6 +55,9 @@
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
     <string name="title_activity_interesse_tab">InteresseTab</string>
+    <string name="title_activity_teste_multiple_images">testeMultipleImages</string>
+    <string name="title_activity_oportunidades">Oportunidades</string>
+
 
 
 </resources>

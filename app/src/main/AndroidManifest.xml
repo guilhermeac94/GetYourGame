@@ -24,15 +24,15 @@
         <activity
             android:name=".CarregaCadastros"
             android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".Login"
             android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".Cadastro"
@@ -41,7 +41,7 @@
         <activity
             android:name=".Principal"
             android:label="@string/title_activity_principal"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
         </activity>
         <activity
             android:name=".PreferenciaUsuario"
@@ -57,18 +57,40 @@
         </activity>
         <activity
             android:name=".ListaJogo"
-            android:label="@string/title_activity_lista_jogo">
+            android:label="@string/title_activity_lista_jogo" >
         </activity>
         <activity android:name=".testePicture" >
         </activity>
         <activity
             android:name=".Interesse"
             android:label="@string/title_activity_interesse" >
-
         </activity>
         <activity
             android:name=".InteresseTab"
-            android:label="@string/title_activity_interesse_tab">
+            android:label="@string/title_activity_interesse_tab" >
+        </activity>
+        <activity android:name=".util.CustomGalleryActivity" >
+            <intent-filter>
+                <action android:name="luminous.ACTION_PICK" />
+                <action android:name="luminous.ACTION_MULTIPLE_PICK" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".testeMultipleImages"
+            android:label="@string/title_activity_teste_multiple_images"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Oportunidades"
+            android:label="@string/title_activity_oportunidades"
+            android:theme="@style/AppTheme" >
         </activity>
     </application>
 

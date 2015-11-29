@@ -4,6 +4,8 @@
     tools:context="com.getyourgame.getyourgame.Principal">
     <item android:id="@+id/action_meu_perfil" android:title="@string/action_meu_perfil"
         android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_multiple_fotos" android:title="@string/action_multiple_fotos"
+        android:orderInCategory="100" app:showAsAction="never" />
     <item android:id="@+id/action_settings" android:title="@string/action_settings"
         android:orderInCategory="100" app:showAsAction="never" />
 </menu>

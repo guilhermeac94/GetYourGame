@@ -67,4 +67,8 @@ public class Webservice {
     public Webservice insereUsuarioJogo(){
         return new Webservice("usuario_jogo", HttpMethod.POST, false);
     }
+
+    public Webservice buscaOportunidades(int id_usuario){
+        return new Webservice("oportunidades/"+id_usuario, HttpMethod.GET, false);
+    }
 }

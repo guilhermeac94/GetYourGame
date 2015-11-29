@@ -122,6 +122,11 @@ public class InteresseTroca extends Fragment {
 
         tvPlataforma = (TextView) fragmentView.findViewById(R.id.tvPlataforma);
         tvPlataformaDesejada = (TextView) fragmentView.findViewById(R.id.tvPlataformaDesejada);
+        if(interesse == 3) {
+            tvPlataformaDesejada.setText(R.string.plataformaOfertada);
+            TextView tvJogoOfertado = (TextView) fragmentView.findViewById(R.id.tvJogoDesejado);
+            tvJogoOfertado.setText(R.string.jogoOfertado);
+        }
 
         tvSelecionaJogo = (TextView) fragmentView.findViewById(R.id.tvSelecionaJogo);
         tvSelecionaJogo.setOnClickListener(new View.OnClickListener() {

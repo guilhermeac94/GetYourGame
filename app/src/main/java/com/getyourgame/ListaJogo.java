@@ -89,7 +89,7 @@ public class ListaJogo extends AppCompatActivity {
             for(Object obj : l){
                 Map<String, String> map = (Map<String, String>) obj;
 
-                lista.add(new Item(Integer.parseInt(String.valueOf(map.get("id_jogo"))),  map.get("nome"), map.get("foto").equals("")?sem_jogo : util.StringToBitMap(map.get("foto"))));
+                lista.add(new Item(Integer.parseInt(String.valueOf(map.get("id_jogo"))),  map.get("descricao"), map.get("foto").equals("")?sem_jogo : util.StringToBitMap(map.get("foto"))));
             }
             adapter = new Ladapter(getApplicationContext());
             lvJogos.setAdapter(adapter);
