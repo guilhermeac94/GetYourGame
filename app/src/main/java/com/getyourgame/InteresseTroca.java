@@ -19,7 +19,9 @@ import com.getyourgame.model.EstadoJogo;
 import com.getyourgame.model.Jogo;
 import com.getyourgame.model.Plataforma;
 import com.getyourgame.model.UsuarioJogo;
+import com.getyourgame.util.Http;
 import com.getyourgame.util.Util;
+import com.getyourgame.util.Webservice;
 
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -118,6 +120,9 @@ public class InteresseTroca extends Fragment {
             interesse = (param.getInt("interesse"));
             id_usuario = param.getInt("id_usuario");
             chave_api = param.getString("chave_api");
+            if(String.valueOf(param.getInt("id_jogo")) != null){
+                id_jogo = param.getInt("id_jogo");
+            }
         }
 
         tvPlataforma = (TextView) fragmentView.findViewById(R.id.tvPlataforma);
@@ -129,13 +134,19 @@ public class InteresseTroca extends Fragment {
         }
 
         tvSelecionaJogo = (TextView) fragmentView.findViewById(R.id.tvSelecionaJogo);
-        tvSelecionaJogo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                tipo_jogo = 1;
-                abreSelecionaJogo();
-            }
-        });
+
+        if(id_jogo==0) {
+            tvSelecionaJogo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    tipo_jogo = 1;
+                    abreSelecionaJogo();
+                }
+            });
+        }else{
+            tipo_jogo = 1;
+            new HttpCarregaJogo((new Webservice().buscaJogo(id_jogo)),null,Jogo.class,"").execute();
+        }
 
         tvSelecionaJogoDesejado = (TextView) fragmentView.findViewById(R.id.tvSelecionaJogoDesejado);
         tvSelecionaJogoDesejado.setOnClickListener(new View.OnClickListener() {
@@ -216,6 +227,19 @@ public class InteresseTroca extends Fragment {
         util.carregaSpinnerHint(spEstadoJogo, getActivity(), estados_jogo);
 
         return fragmentView;
+    }
+
+    private class HttpCarregaJogo extends Http {
+        public HttpCarregaJogo(Webservice ws, MultiValueMap<String, String> map, Class classe, String apiKey) {
+            super(ws, map, classe, apiKey);
+        }
+        @Override
+        protected void onPostExecute(Object retorno) {
+            Jogo jogo = (Jogo) retorno;
+            if(jogo!=null){
+                carregaJogo(jogo);
+            }
+        }
     }
 
     // TODO: Rename method, update argument and hook method into UI event

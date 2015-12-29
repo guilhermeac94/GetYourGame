@@ -2,18 +2,116 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Guilherme\Desktop\TCC\GetYourGame\GetYourGame\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.0\jars\classes.jar"
+        jar="C:\Users\User\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-android\1.2.0\6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd\bolts-android-1.2.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd">
+        <dex dex="C:\TRABALHO\TCC\GetYourGame\app\build\intermediates\pre-dexed\debug\bolts-android-1.2.0-78f2e36cf0a064584f67ca87abc874093383e35d.jar" />
+    </item>
+    <item
+        jar="C:\Users\User\.gradle\caches\modules-2\files-2.1\org.springframework.android\spring-android-core\1.0.1.RELEASE\e68f0e8e4b636ee30c4de58953be38d9b72a5e3b\spring-android-core-1.0.1.RELEASE.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="e68f0e8e4b636ee30c4de58953be38d9b72a5e3b">
+        <dex dex="C:\TRABALHO\TCC\GetYourGame\app\build\intermediates\pre-dexed\debug\spring-android-core-1.0.1.RELEASE-007846cf79b365fe92fe8330f346848b9452efed.jar" />
+    </item>
+    <item
+        jar="C:\TRABALHO\TCC\GetYourGame\app\build\intermediates\exploded-aar\org.florescu.android.rangeseekbar\rangeseekbar-library\0.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="b8f19036e690aaf0676a0926db48e3ebaeb12fe4">
+        <dex dex="C:\TRABALHO\TCC\GetYourGame\app\build\intermediates\pre-dexed\debug\classes-cfb7cc468f96357363558801f6fbc43676ea5268.jar" />
+    </item>
+    <item
+        jar="C:\Users\User\.gradle\caches\modules-2\files-2.1\org.springframework.android\spring-android-rest-template\1.0.1.RELEASE\e132d929bd181941f79b0d63edafb8a86ae6fd33\spring-android-rest-template-1.0.1.RELEASE.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="e132d929bd181941f79b0d63edafb8a86ae6fd33">
+        <dex dex="C:\TRABALHO\TCC\GetYourGame\app\build\intermediates\pre-dexed\debug\spring-android-rest-template-1.0.1.RELEASE-257859b52b35a01d1ea5cf7917df6ba1ce7c2172.jar" />
+    </item>
+    <item
+        jar="C:\TRABALHO\TCC\GetYourGame\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\libs\internal_impl-23.1.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
+        <dex dex="C:\TRABALHO\TCC\GetYourGame\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.0-31bef1a664ceea13cd8e1613b894fa09449c26e5.jar" />
+    </item>
+    <item
+        jar="C:\Users\User\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-core\2.3.2\559b70ac8a0d5cad611da4223137a920147201ba\jackson-core-2.3.2.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="559b70ac8a0d5cad611da4223137a920147201ba">
+        <dex dex="C:\TRABALHO\TCC\GetYourGame\app\build\intermediates\pre-dexed\debug\jackson-core-2.3.2-00fd29a0b185be765d25ea0748f240b00113e631.jar" />
+    </item>
+    <item
+        jar="C:\TRABALHO\TCC\GetYourGame\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="57ae0d750ff83f0c738d21720224ac7ea866a094">
+        <dex dex="C:\TRABALHO\TCC\GetYourGame\app\build\intermediates\pre-dexed\debug\classes-d4cc33859d72b563f115a4d9904f0d3e80b5283f.jar" />
+    </item>
+    <item
+        jar="C:\Users\User\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.3\5fc52c41ef0239d1093a1eb7c3697036183677ce\gson-2.3.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="5fc52c41ef0239d1093a1eb7c3697036183677ce">
+        <dex dex="C:\TRABALHO\TCC\GetYourGame\app\build\intermediates\pre-dexed\debug\gson-2.3-6d63b2c19b72956c34d46f3a74b11dbb0b09c3a8.jar" />
+    </item>
+    <item
+        jar="C:\TRABALHO\TCC\GetYourGame\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.0\jars\classes.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="3f151e49c316a5ab2c065969a3b3b55ef9b393fc">
-        <dex dex="C:\Users\Guilherme\Desktop\TCC\GetYourGame\GetYourGame\app\build\intermediates\pre-dexed\debug\classes-0af0b03af799c7956acad7df0050bb7eb3964a49.jar" />
+        <dex dex="C:\TRABALHO\TCC\GetYourGame\app\build\intermediates\pre-dexed\debug\classes-bcda0c5ad5710f7f270540140ce3a258219f06cb.jar" />
     </item>
     <item
-        jar="C:\Users\Guilherme\Desktop\TCC\GetYourGame\GetYourGame\app\build\intermediates\exploded-aar\com.android.support\design\23.1.0\jars\classes.jar"
+        jar="C:\TRABALHO\TCC\GetYourGame\app\build\intermediates\exploded-aar\com.android.support\design\23.1.0\jars\classes.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="19026d31f5d3ae868db81319671a642be5fbba08">
-        <dex dex="C:\Users\Guilherme\Desktop\TCC\GetYourGame\GetYourGame\app\build\intermediates\pre-dexed\debug\classes-e049d64e1b0c70a917e39eb86d19a72963748852.jar" />
+        <dex dex="C:\TRABALHO\TCC\GetYourGame\app\build\intermediates\pre-dexed\debug\classes-a9d6031f129113a13ed5ed455e223c8c5f74ba4b.jar" />
+    </item>
+    <item
+        jar="C:\Users\User\.gradle\caches\modules-2\files-2.1\com.nostra13.universalimageloader\universal-image-loader\1.9.3\a85588bec3e2c4584d593d3f15df1677321bca72\universal-image-loader-1.9.3.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a85588bec3e2c4584d593d3f15df1677321bca72">
+        <dex dex="C:\TRABALHO\TCC\GetYourGame\app\build\intermediates\pre-dexed\debug\universal-image-loader-1.9.3-151e5fea4880e5d69c540cc1bc72c0f45f3c9d08.jar" />
+    </item>
+    <item
+        jar="C:\Users\User\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-annotations\2.3.0\f5e853a20b60758922453d56f9ae1e64af5cb3da\jackson-annotations-2.3.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="f5e853a20b60758922453d56f9ae1e64af5cb3da">
+        <dex dex="C:\TRABALHO\TCC\GetYourGame\app\build\intermediates\pre-dexed\debug\jackson-annotations-2.3.0-866e0e18c4d836bda82abcae510008a2acdad510.jar" />
+    </item>
+    <item
+        jar="C:\TRABALHO\TCC\GetYourGame\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
+        <dex dex="C:\TRABALHO\TCC\GetYourGame\app\build\intermediates\pre-dexed\debug\classes-36740c36d97d010a1667f2efb76b1e4e63b95d7b.jar" />
+    </item>
+    <item
+        jar="C:\TRABALHO\TCC\GetYourGame\app\build\intermediates\exploded-aar\com.facebook.android\facebook-android-sdk\4.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a78bfd2ec508b123ee7c03f4006ba7996ef9a8dc">
+        <dex dex="C:\TRABALHO\TCC\GetYourGame\app\build\intermediates\pre-dexed\debug\classes-f757611584b063843b4d326e05ecf223a19b888b.jar" />
+    </item>
+    <item
+        jar="C:\Users\User\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.0\support-annotations-23.1.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="92e3fc113ec3ee36b64603a38857b95700025633">
+        <dex dex="C:\TRABALHO\TCC\GetYourGame\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.0-01374b0b93ae9f493d89216b246e5f28115f7069.jar" />
+    </item>
+    <item
+        jar="C:\Users\User\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-databind\2.3.2\c75edc740a6d8cb1cef6fa82fa594e0bce561916\jackson-databind-2.3.2.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="c75edc740a6d8cb1cef6fa82fa594e0bce561916">
+        <dex dex="C:\TRABALHO\TCC\GetYourGame\app\build\intermediates\pre-dexed\debug\jackson-databind-2.3.2-45c82fea7b3231f12fe16f10285f6a9fce38fcb2.jar" />
     </item>
 
 </items>

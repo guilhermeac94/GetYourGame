@@ -58,6 +58,7 @@ public class InteresseTab extends AppCompatActivity implements InteresseTroca.On
 
                     finalizaFragment("interesse_compra");
                     finalizaFragment("interesse_venda");
+                    finalizaFragment("lista_jogos");
 
                     if(tipo==1){
                         interesse = 1;
@@ -69,6 +70,7 @@ public class InteresseTab extends AppCompatActivity implements InteresseTroca.On
                     param.putInt("interesse", interesse);
                     param.putInt("id_usuario", id_usuario);
                     param.putString("chave_api", chave_api);
+                    //param.putInt("id_jogo", 1);
 
                     Fragment fr = manager.findFragmentByTag("interesse_troca");
                     if (fr == null) {
@@ -85,6 +87,7 @@ public class InteresseTab extends AppCompatActivity implements InteresseTroca.On
                     if(tipo==1) { //Tenho
                         finalizaFragment("interesse_troca");
                         finalizaFragment("interesse_compra");
+                        finalizaFragment("lista_jogos");
 
                         Bundle param = new Bundle();
 
@@ -92,6 +95,7 @@ public class InteresseTab extends AppCompatActivity implements InteresseTroca.On
                         param.putInt("interesse", interesse);
                         param.putInt("id_usuario", id_usuario);
                         param.putString("chave_api", chave_api);
+                        //param.putInt("id_jogo", 1);
 
                         Fragment fr = manager.findFragmentByTag("interesse_venda");
                         if (fr == null) {
@@ -107,6 +111,7 @@ public class InteresseTab extends AppCompatActivity implements InteresseTroca.On
 
                         finalizaFragment("interesse_troca");
                         finalizaFragment("interesse_venda");
+                        finalizaFragment("lista_jogos");
 
                         Bundle param = new Bundle();
 
@@ -114,6 +119,7 @@ public class InteresseTab extends AppCompatActivity implements InteresseTroca.On
                         param.putInt("interesse", interesse);
                         param.putInt("id_usuario", id_usuario);
                         param.putString("chave_api", chave_api);
+                        //param.putInt("id_jogo", 1);
 
                         Fragment fr = manager.findFragmentByTag("interesse_compra");
                         if (fr == null) {
