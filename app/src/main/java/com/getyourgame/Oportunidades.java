@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -27,6 +28,7 @@ import com.getyourgame.util.Webservice;
 
 import org.springframework.util.MultiValueMap;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -35,22 +37,28 @@ public class Oportunidades extends AppCompatActivity {
     Util util = new Util();
     Integer id_usuario;
     String chave_api;
-
+    DecimalFormat df = new DecimalFormat("0.00");
     ListView lvOportunidades;
     Ladapter adapter;
     ArrayList<Item> lista;
     String filtro;
     Bitmap sem_jogo;
+    Bitmap moeda;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_oportunidades);
 
+        /*
         id_usuario = util.recebeIdUsuario(getIntent());
         chave_api = util.recebeChaveApi(getIntent());
+        */
+        id_usuario = 5;
 
         sem_jogo = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.ic_jogo_default);
+        moeda = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.ic_moeda);
+
         lista = new ArrayList();
         lvOportunidades = (ListView) findViewById(R.id.lvOportunidades);
 
@@ -87,14 +95,20 @@ public class Oportunidades extends AppCompatActivity {
             for(Object obj : l) {
                 Map<String, String> map = (Map<String, String>) obj;
 
-                lista.add(new Item(Integer.parseInt(String.valueOf(map.get("id_interesse"))),
-                        Integer.parseInt(String.valueOf(map.get("id_usuario_jogo"))),
-                        Integer.parseInt(String.valueOf(map.get("id_jogo"))),
-                        Integer.parseInt(String.valueOf(map.get("id_usuario"))),
-                        map.get("descricao"),
-                        map.get("nome"),
-                        map.get("foto").equals("")?sem_jogo : util.StringToBitMap(map.get("foto"))));
+                int interesse = Integer.parseInt(String.valueOf(map.get("id_interesse")));
+
+                        lista.add(new Item(interesse,
+                                map.get("descricao_jogo"),
+                                interesse == 4 ? moeda : (map.get("foto_jogo").equals("") ? sem_jogo : util.StringToBitMap(map.get("foto_jogo"))),
+                                Integer.parseInt(String.valueOf(map.get("id_usuario_jogo"))),
+                                Integer.parseInt(String.valueOf(map.get("id_usuario_ofert"))),
+                                map.get("nome_ofert"),
+                                Integer.parseInt(String.valueOf(map.get("id_jogo_ofert"))),
+                                map.get("descricao_jogo_ofert"),
+                                map.get("foto_jogo_ofert").equals("") ? sem_jogo : util.StringToBitMap(map.get("foto_jogo_ofert")),
+                                map.get("preco_jogo_ofert") != null ? df.format(Double.parseDouble(String.valueOf(map.get("preco_jogo_ofert")))) : ""));
             }
+
             adapter = new Ladapter(getApplicationContext());
             lvOportunidades.setAdapter(adapter);
 
@@ -109,21 +123,27 @@ public class Oportunidades extends AppCompatActivity {
 
     class Item {
         int id_interesse;
+        String descricao_jogo;
+        Bitmap foto_jogo;
         int id_usuario_jogo;
-        int id_jogo;
-        int id_usuario;
-        String descricao;
-        String nome;
-        Bitmap foto;
+        int id_usuario_ofert;
+        String nome_ofert;
+        int id_jogo_ofert;
+        String descricao_jogo_ofert;
+        Bitmap foto_jogo_ofert;
+        String preco_jogo_ofert;
 
-        public Item(int id_interesse, int id_usuario_jogo, int id_jogo, int id_usuario, String descricao, String nome, Bitmap foto) {
+        public Item(int id_interesse, String descricao_jogo, Bitmap foto_jogo, int id_usuario_jogo, int id_usuario_ofert, String nome_ofert, int id_jogo_ofert, String descricao_jogo_ofert, Bitmap foto_jogo_ofert, String preco_jogo_ofert) {
             this.id_interesse = id_interesse;
+            this.descricao_jogo = descricao_jogo;
+            this.foto_jogo = foto_jogo;
             this.id_usuario_jogo = id_usuario_jogo;
-            this.id_jogo = id_jogo;
-            this.id_usuario = id_usuario;
-            this.descricao = descricao;
-            this.nome = nome;
-            this.foto = foto;
+            this.id_usuario_ofert = id_usuario_ofert;
+            this.nome_ofert = nome_ofert;
+            this.id_jogo_ofert = id_jogo_ofert;
+            this.descricao_jogo_ofert = descricao_jogo_ofert;
+            this.foto_jogo_ofert = foto_jogo_ofert;
+            this.preco_jogo_ofert = preco_jogo_ofert;
         }
     }
 
@@ -156,15 +176,21 @@ public class Oportunidades extends AppCompatActivity {
         }
 
         class myViewHolder {
-            TextView nomeUsuario;
-            TextView descricaoJogo;
-            ImageView foto;
+            TextView tvDescricaoJogo;
+            ImageView ivFotoJogo;
+            TextView tvPrecoOfert;
+            TextView tvDescricaoJogoOfert;
+            ImageView ivFotoJogoOfert;
+            TextView tvNomeUsuarioOfert;
 
             public myViewHolder(View v) {
                 // TODO Auto-generated constructor stub
-                descricaoJogo = (TextView) v.findViewById(R.id.tvDescricaoJogoOport);
-                nomeUsuario = (TextView) v.findViewById(R.id.tvNomeUsuarioOport);
-                foto = (ImageView) v.findViewById(R.id.ivFotoJogoOport);
+                tvDescricaoJogo = (TextView) v.findViewById(R.id.tvDescricaoJogo);
+                ivFotoJogo = (ImageView) v.findViewById(R.id.ivFotoJogo);
+                tvPrecoOfert = (TextView) v.findViewById(R.id.tvPrecoOfert);
+                tvDescricaoJogoOfert = (TextView) v.findViewById(R.id.tvDescricaoJogoOfert);
+                ivFotoJogoOfert = (ImageView) v.findViewById(R.id.ivFotoJogoOfert);
+                tvNomeUsuarioOfert = (TextView) v.findViewById(R.id.tvNomeUsuarioOfert);
             }
         }
 
@@ -185,14 +211,21 @@ public class Oportunidades extends AppCompatActivity {
                 holder = (myViewHolder) row.getTag();
             }
 
-            holder.nomeUsuario.setText(lista.get(position).nome);
-            holder.descricaoJogo.setText(lista.get(position).descricao);
-            if(lista.get(position).id_interesse==4) {
-                row.setBackgroundColor(getResources().getColor(R.color.azul));
+
+            if(lista.get(position).id_interesse == 4){
+                row.setBackgroundColor(getResources().getColor(R.color.compra));
+                holder.tvPrecoOfert.setText(lista.get(position).preco_jogo_ofert);
             }else{
-                row.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                row.setBackgroundColor(getResources().getColor(R.color.troca));
+                holder.tvDescricaoJogo.setText(lista.get(position).descricao_jogo);
+                holder.tvPrecoOfert.setText("");
+                holder.tvPrecoOfert.setVisibility(View.GONE);
             }
-            holder.foto.setImageBitmap(lista.get(position).foto);
+
+            holder.ivFotoJogo.setImageBitmap(lista.get(position).foto_jogo);
+            holder.tvDescricaoJogoOfert.setText(lista.get(position).descricao_jogo_ofert);
+            holder.ivFotoJogoOfert.setImageBitmap(lista.get(position).foto_jogo_ofert);
+            holder.tvNomeUsuarioOfert.setText(lista.get(position).nome_ofert);
 
             return row;
         }

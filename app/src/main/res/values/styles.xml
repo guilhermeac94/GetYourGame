@@ -1,7 +1,7 @@
 <resources>
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-
+        <item name="android:background">@android:color/white</item>
     </style>
 
 
@@ -33,6 +33,7 @@
 
     <style name="list">
         <item name="android:background">@drawable/list</item>
+        <!--<item name="android:listSelector">@drawable/list_item</item>-->
         <item name="android:dividerHeight">1px</item>
         <item name="android:divider">@android:color/black</item>
     </style>
