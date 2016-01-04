@@ -20,6 +20,7 @@ public class Usuario {
     private Integer distancia;
     private Boolean error;
     private String message;
+    private Boolean tem_transacao;
 
     private List<Telefone> telefones;
     private List<Endereco> enderecos;
@@ -113,5 +114,13 @@ public class Usuario {
 
     public void setError(Boolean error) {
         this.error = error;
+    }
+
+    public Boolean getTem_transacao() {
+        return tem_transacao;
+    }
+
+    public void setTem_transacao(Boolean tem_transacao) {
+        this.tem_transacao = tem_transacao;
     }
 }

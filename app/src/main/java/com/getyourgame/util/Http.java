@@ -36,8 +36,8 @@ public class Http extends AsyncTask<String, Void, Object> {
         try {
             //String url = "http://10.0.2.2/getYourGameWS/getyourgame/"+ws.getServico();
             //String url = "http://192.168.25.38/getYourGameWS/getyourgame/"+ws.getServico();
-            String url = "http://192.168.1.107/getYourGameWS/getyourgame/"+ws.getServico();
-
+            //String url = "http://192.168.1.107/getYourGameWS/getyourgame/"+ws.getServico();
+            String url = "http://192.168.1.102/getYourGameWS/getyourgame/"+ws.getServico();
 
             RestTemplate restTemplate = new RestTemplate();
             HttpHeaders headers = new HttpHeaders();

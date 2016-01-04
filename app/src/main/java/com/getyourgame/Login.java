@@ -1,7 +1,12 @@
 package com.getyourgame;
 
 import android.app.Activity;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
+import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
@@ -57,7 +62,7 @@ public class Login extends AppCompatActivity {
                         FBmap.add("senha", jsonObject.getString("id"));
                         String urlFoto = jsonObject.getJSONObject("picture").getJSONObject("data").getString("url");
 
-                        new HttpBuscaEmailFB((new Webservice()).buscaUsuarioEmail(jsonObject.getString("email")),null,Usuario.class,"").execute();
+                        new HttpBuscaEmailFB((new Webservice()).buscaUsuarioEmail(jsonObject.getString("email")), null, Usuario.class, "").execute();
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -65,7 +70,7 @@ public class Login extends AppCompatActivity {
                 }
             });
             Bundle params = new Bundle();
-            params.putString("fields","id,name,email,picture");
+            params.putString("fields", "id,name,email,picture");
             request.setParameters(params);
             request.executeAsync();
 
@@ -90,14 +95,21 @@ public class Login extends AppCompatActivity {
         @Override
         protected void onPostExecute(Object retorno) {
             Usuario usuario = (Usuario) retorno;
-            if(!usuario.getError()) {
+            if (!usuario.getError()) {
+                if (usuario.getTem_transacao()) {
+
+                    NotificationManager mNotificationManager =
+                            (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                    // mId allows you to update the notification later on.
+                    mNotificationManager.notify(1, util.createNotification(Login.this, Oportunidades.class, "Transações", "Existem novas transações"));
+                }
                 Bundle param = new Bundle();
                 param.putInt("id_usuario", usuario.getId_usuario());
                 param.putString("chave_api", usuario.getChave_api());
                 redirecionar(Login.this, Principal.class, param);
                 util.toast(getApplicationContext(), "Login efetuado com sucesso!!!");
-            }else{
-                new HttpCadastroFB((new Webservice()).cadastro(),FBmap,Usuario.class,"").execute();
+            } else {
+                new HttpCadastroFB((new Webservice()).cadastro(), FBmap, Usuario.class, "").execute();
             }
         }
     }
@@ -110,13 +122,13 @@ public class Login extends AppCompatActivity {
         @Override
         protected void onPostExecute(Object retorno) {
             Usuario usuario = (Usuario) retorno;
-            if(!usuario.getError()) {
+            if (!usuario.getError()) {
                 Bundle param = new Bundle();
                 param.putInt("id_usuario", usuario.getId_usuario());
                 param.putString("chave_api", usuario.getChave_api());
                 redirecionar(Login.this, PreferenciaUsuario.class, param);
                 util.toast(getApplicationContext(), "Login efetuado com sucesso!!!");
-            }else{
+            } else {
                 util.msgDialog(Login.this, "Alerta", usuario.getMessage());
             }
         }
@@ -130,7 +142,7 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         mCallbackManager = CallbackManager.Factory.create();
 
-        if(mata_sessao) {
+        if (mata_sessao) {
             LoginManager.getInstance().logOut();
         }
 
@@ -144,12 +156,12 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View arg0) {
                 MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
-                map.add("email",String.valueOf(etEmail.getText().toString()));
-                map.add("senha",String.valueOf(etSenha.getText().toString()));
+                map.add("email", String.valueOf(etEmail.getText().toString()));
+                map.add("senha", String.valueOf(etSenha.getText().toString()));
 
                 Usuario usuario = new Usuario();
                 Webservice ws = new Webservice();
-                new HttpLogin(ws.login(),map,Usuario.class,"").execute();
+                new HttpLogin(ws.login(), map, Usuario.class, "").execute();
             }
         });
 
@@ -175,7 +187,7 @@ public class Login extends AppCompatActivity {
         FBLoginButton.registerCallback(mCallbackManager, mCallBack);
 
 
-        if(AccessToken.getCurrentAccessToken() != null) {
+        if (AccessToken.getCurrentAccessToken() != null) {
             GraphRequest request2 = GraphRequest.newMeRequest(AccessToken.getCurrentAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
                 @Override
                 public void onCompleted(JSONObject jsonObject, GraphResponse graphResponse) {
@@ -206,13 +218,21 @@ public class Login extends AppCompatActivity {
         @Override
         protected void onPostExecute(Object retorno) {
             Usuario usuario = (Usuario) retorno;
-            if(!usuario.getError()) {
+            if (!usuario.getError()) {
+                if (usuario.getTem_transacao()) {
+
+                    NotificationManager mNotificationManager =
+                            (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                    // mId allows you to update the notification later on.
+                    mNotificationManager.notify(1, util.createNotification(Login.this, Oportunidades.class, "Transações", "Existem novas transações"));
+
+                }
                 Bundle param = new Bundle();
                 param.putInt("id_usuario", usuario.getId_usuario());
                 param.putString("chave_api", usuario.getChave_api());
                 redirecionar(Login.this, Principal.class, param);
                 util.toast(getApplicationContext(), "Login efetuado com sucesso!!!");
-            }else{
+            } else {
                 util.msgDialog(Login.this, "Alerta", usuario.getMessage());
             }
         }
@@ -222,16 +242,25 @@ public class Login extends AppCompatActivity {
         public HttpLogin(Webservice ws, MultiValueMap<String, String> map, Class classe, String apiKey) {
             super(ws, map, classe, apiKey);
         }
+
         @Override
         protected void onPostExecute(Object retorno) {
             Usuario usuario = (Usuario) retorno;
-            if(!usuario.getError()) {
+            if (!usuario.getError()) {
+                if (usuario.getTem_transacao()) {
+
+                    NotificationManager mNotificationManager =
+                            (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                    // mId allows you to update the notification later on.
+                    mNotificationManager.notify(1, util.createNotification(Login.this, Oportunidades.class, "Transações", "Existem novas transações"));
+
+                }
                 Bundle param = new Bundle();
                 param.putInt("id_usuario", usuario.getId_usuario());
                 param.putString("chave_api", usuario.getChave_api());
                 redirecionar(Login.this, Principal.class, param);
                 util.toast(getApplicationContext(), "Login efetuado com sucesso!!!");
-            }else{
+            } else {
                 util.msgDialog(Login.this, "Alerta", usuario.getMessage());
             }
         }
@@ -266,7 +295,7 @@ public class Login extends AppCompatActivity {
     }
 
 
-    public void redirecionar(Activity atual, Class destino, Bundle param){
+    public void redirecionar(Activity atual, Class destino, Bundle param) {
         Intent intentPrincipal = new Intent(atual, destino);
         intentPrincipal.putExtras(param);
         startActivity(intentPrincipal);
