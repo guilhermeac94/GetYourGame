@@ -6,6 +6,8 @@
     -->
     <color name="colorPrimary">#309705</color>
     <color name="colorSecundary">#006803</color>
+    <color name="cinza1">#d7d8da</color>
+    <color name="cinza2">#c9c8c8</color>
     <color name="vermelho">#FF0000</color>
     <color name="troca">#E0FFFF</color>
     <!--<color name="compra">#FAFAD2</color>-->

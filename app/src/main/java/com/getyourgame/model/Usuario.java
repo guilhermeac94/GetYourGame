@@ -21,6 +21,7 @@ public class Usuario {
     private Boolean error;
     private String message;
     private Boolean tem_transacao;
+    private String foto;
 
     private List<Telefone> telefones;
     private List<Endereco> enderecos;
@@ -122,5 +123,13 @@ public class Usuario {
 
     public void setTem_transacao(Boolean tem_transacao) {
         this.tem_transacao = tem_transacao;
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 }

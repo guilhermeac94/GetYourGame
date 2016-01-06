@@ -2,12 +2,16 @@ package com.getyourgame;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -26,6 +30,7 @@ public class Principal extends AppCompatActivity{
     Util util = new Util();
     Integer id_usuario;
     String chave_api;
+    Bitmap sem_usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +39,9 @@ public class Principal extends AppCompatActivity{
         id_usuario = util.recebeIdUsuario(getIntent());
         chave_api = util.recebeChaveApi(getIntent());
 
-        final TextView tvBemBindo = (TextView) findViewById(R.id.tvBemVindo);
+        sem_usuario = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.ic_user);
+
+        //final TextView tvPrincNomeUsuario = (TextView) findViewById(R.id.tvPrincNomeUsuario);
 
         View v = (RelativeLayout)this.findViewById(R.id.principal);
         new SwipeDetector(v).setOnSwipeListener(new SwipeDetector.onSwipeEvent() {
@@ -69,7 +76,6 @@ public class Principal extends AppCompatActivity{
         Webservice ws = new Webservice();
         new HttpCadastro(ws.buscaUsuario(id_usuario),null,Usuario.class,chave_api).execute();
 
-
         Button btCadastrarInteresse = (Button) findViewById(R.id.btCadastrarInteresse);
         btCadastrarInteresse.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,8 +99,13 @@ public class Principal extends AppCompatActivity{
         protected void onPostExecute(Object retorno) {
             Usuario usuario = (Usuario) retorno;
             if(!usuario.getError()) {
-                final TextView tvBemBindo = (TextView) findViewById(R.id.tvBemVindo);
-                tvBemBindo.setText("Bem vindo, "+usuario.getNome()+"!");
+                final TextView tvPrincNomeUsuario = (TextView) findViewById(R.id.tvPrincNomeUsuario);
+                final TextView tvPrincEmailUsuario = (TextView) findViewById(R.id.tvPrincEmailUsuario);
+                ImageView ivPrincFotoUsuario = (ImageView) findViewById(R.id.ivPrincFotoUsuario);
+
+                tvPrincNomeUsuario.setText(usuario.getNome());
+                tvPrincEmailUsuario.setText("("+usuario.getEmail()+")");
+                ivPrincFotoUsuario.setImageBitmap(usuario.getFoto().equals("") ? sem_usuario : util.StringToBitMap(usuario.getFoto()));
             }else{
                 util.msgDialog(Principal.this, "Alerta", usuario.getMessage());
             }

@@ -12,6 +12,7 @@
     <string name="avancar">Avançar</string>
     <string name="buscar">Buscar</string>
     <string name="cadastrar"><u>Cadastrar-se</u></string>
+    <string name="cadastro">Cadastro</string>
     <string name="compra">Compra</string>
     <string name="distancia">Distância considerada(km²):</string>
     <string name="distanciaProgresso">0</string>
@@ -20,6 +21,7 @@
     <string name="estado_jogo">Estado do jogo:</string>
     <string name="gps">Permite GPS:</string>
     <string name="cadastrar_interesse">Cadastrar interesse</string>
+    <string name="interesses">Interesses</string>
     <string name="intervalo_preco">Intervalo de preço desejado (R$)</string>
     <string name="jogo">Jogo</string>
     <string name="jogoDesejado">Jogo desejado</string>
@@ -33,6 +35,7 @@
     <string name="preco">Preço (R$)</string>
     <string name="precoFinal">Preço Final</string>
     <string name="precoInicial">Preço Inicial</string>
+    <string name="preferencias">Preferências</string>
     <string name="salvar">Salvar</string>
     <string name="selecionar">(Selecionar)</string>
     <string name="senha">Senha</string>
