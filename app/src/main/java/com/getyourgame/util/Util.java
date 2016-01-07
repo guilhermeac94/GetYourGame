@@ -35,6 +35,7 @@ import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -111,11 +112,22 @@ public class Util extends Activity{
         spinner.setSelection(spinnerArrayAdapter.getCount());
     }
 
-    public void carregaSpinner(Spinner spinner, Activity act, List objetos ){
+    public void carregaSpinner(Spinner spinner, Activity act, List objetos, String item){
         ArrayAdapter spinnerArrayAdapter = new ArrayAdapter(act, android.R.layout.simple_spinner_item, objetos);
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(spinnerArrayAdapter);
+        if(item!=null) {
+            int spinnerPosition = 0;
+            for (int i=0;i<spinner.getCount();i++){
+                if (spinner.getItemAtPosition(i).toString().equalsIgnoreCase(item)){
+                    spinnerPosition = i;
+                    break;
+                }
+            }
+            spinner.setSelection(spinnerPosition);
+        }
     }
+
 
     public Integer recebeIdUsuario(Intent intent){
         try{

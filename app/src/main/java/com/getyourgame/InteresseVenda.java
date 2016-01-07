@@ -295,7 +295,7 @@ public class InteresseVenda extends Fragment {
         plataformas = jogo.getPlataformas();
 
         final Spinner spPlataforma = (Spinner) fragmentView.findViewById(R.id.spPlataforma);
-        util.carregaSpinner(spPlataforma, getActivity(), plataformas);
+        util.carregaSpinner(spPlataforma, getActivity(), plataformas, null);
         //spPlataforma.setEnabled(true);
         spPlataforma.setVisibility(View.VISIBLE);
         tvPlataforma.setVisibility(View.VISIBLE);

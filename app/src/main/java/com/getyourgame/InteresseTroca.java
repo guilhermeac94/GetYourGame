@@ -324,7 +324,7 @@ public class InteresseTroca extends Fragment {
             plataformas = jogo.getPlataformas();
 
             final Spinner spPlataforma = (Spinner) fragmentView.findViewById(R.id.spPlataforma);
-            util.carregaSpinner(spPlataforma, getActivity(), plataformas);
+            util.carregaSpinner(spPlataforma, getActivity(), plataformas, null);
             spPlataforma.setVisibility(View.VISIBLE);
             tvPlataforma.setVisibility(View.VISIBLE);
 
@@ -334,7 +334,7 @@ public class InteresseTroca extends Fragment {
             plataformas = jogo.getPlataformas();
 
             final Spinner spPlataformaDesejada = (Spinner) fragmentView.findViewById(R.id.spPlataformaDesejada);
-            util.carregaSpinner(spPlataformaDesejada, getActivity(), plataformas);
+            util.carregaSpinner(spPlataformaDesejada, getActivity(), plataformas, null);
             spPlataformaDesejada.setVisibility(View.VISIBLE);
             tvPlataformaDesejada.setVisibility(View.VISIBLE);
         }

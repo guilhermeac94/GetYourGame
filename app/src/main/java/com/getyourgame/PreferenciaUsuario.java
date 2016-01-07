@@ -1,6 +1,7 @@
 package com.getyourgame;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,6 +28,7 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
 import java.util.List;
+import java.util.Map;
 
 public class PreferenciaUsuario extends AppCompatActivity {
 
@@ -36,6 +38,10 @@ public class PreferenciaUsuario extends AppCompatActivity {
     List<MetodoEnvio> metodos;
     Integer id_usuario;
     String chave_api;
+    Spinner spEstadoJogo;
+    Spinner spMetodoEnvio;
+    Switch gps;
+    SeekBar distancia;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,19 +51,10 @@ public class PreferenciaUsuario extends AppCompatActivity {
         id_usuario = util.recebeIdUsuario(getIntent());
         chave_api = util.recebeChaveApi(getIntent());
 
-        try {
-            estados = db.selectEstadoJogo();
-            metodos = db.selectMetodoEnvio();
+        spEstadoJogo = (Spinner) findViewById(R.id.spEstadoJogo);
+        spMetodoEnvio = (Spinner) findViewById(R.id.spMetodoEnvio);
 
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-        final Spinner spEstadoJogo = (Spinner) findViewById(R.id.spEstadoJogo);
-        final Spinner spMetodoEnvio = (Spinner) findViewById(R.id.spMetodoEnvio);
-
-        util.carregaSpinner(spEstadoJogo, PreferenciaUsuario.this, estados);
-        util.carregaSpinner(spMetodoEnvio, PreferenciaUsuario.this, metodos);
+        new HttpBuscaPreferencias((new Webservice()).buscaPreferencias(id_usuario),null,Object.class,"").execute();
 
         SeekBar seekBar = (SeekBar) findViewById(R.id.sbDistancia);
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -76,10 +73,8 @@ public class PreferenciaUsuario extends AppCompatActivity {
             }
         });
 
-        final Switch gps = (Switch) findViewById(R.id.swGPS);
-        final SeekBar distancia = (SeekBar) findViewById(R.id.sbDistancia);
-
-
+        gps = (Switch) findViewById(R.id.swGPS);
+        distancia = (SeekBar) findViewById(R.id.sbDistancia);
 
         Button btSalvar = (Button) findViewById(R.id.btSalvar);
         btSalvar.setOnClickListener(new View.OnClickListener() {
@@ -100,6 +95,31 @@ public class PreferenciaUsuario extends AppCompatActivity {
         });
     }
 
+    private class HttpBuscaPreferencias extends Http {
+        public HttpBuscaPreferencias(Webservice ws, MultiValueMap<String, String> map, Class classe, String apikey) {
+            super(ws, map, classe, apikey);
+        }
+        @Override
+        protected void onPostExecute(Object retorno) {
+            Map<String, String> map = (Map<String, String>) retorno;
+
+            try {
+                estados = db.selectEstadoJogo();
+                metodos = db.selectMetodoEnvio();
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+            util.carregaSpinner(spEstadoJogo, PreferenciaUsuario.this, estados, map.get("desc_estado_jogo"));
+            util.carregaSpinner(spMetodoEnvio, PreferenciaUsuario.this, metodos, map.get("desc_metodo_envio"));
+            Object gpsInt = map.get("gps");
+            gps.setChecked(Integer.parseInt(gpsInt.toString())==1 ? true : false);
+            Object distanciaInt = map.get("distancia");
+            distancia.setProgress(Integer.parseInt(distanciaInt.toString()));
+        }
+    }
+
     private class HttpAtualizaUsuario extends Http {
         public HttpAtualizaUsuario(Webservice ws, MultiValueMap<String, String> map, Class classe, String apiKey) {
             super(ws, map, classe, apiKey);
@@ -114,7 +134,7 @@ public class PreferenciaUsuario extends AppCompatActivity {
                 param.putString("chave_api", chave_api);
                 redirecionar(PreferenciaUsuario.this, Principal.class, param);
 
-                util.toast(PreferenciaUsuario.this, "Preferências salvas com sucesso!");
+                util.toast(getApplicationContext(), "Preferências salvas com sucesso!");
                 PreferenciaUsuario.this.finish();
             }else{
                 util.msgDialog(PreferenciaUsuario.this, "Alerta", usuario.getMessage());

@@ -39,6 +39,7 @@ public class Principal extends AppCompatActivity{
         id_usuario = util.recebeIdUsuario(getIntent());
         chave_api = util.recebeChaveApi(getIntent());
 
+
         sem_usuario = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.ic_user);
 
         //final TextView tvPrincNomeUsuario = (TextView) findViewById(R.id.tvPrincNomeUsuario);
@@ -81,6 +82,20 @@ public class Principal extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 Intent interesse = new Intent(Principal.this, Interesse.class);
+                Bundle param = new Bundle();
+                param.putInt("id_usuario", id_usuario);
+                param.putString("chave_api", chave_api);
+                interesse.putExtras(param);
+                startActivity(interesse);
+            }
+        });
+
+        TextView tvPrincPreferencias = (TextView) findViewById(R.id.tvPrincPreferencias);
+
+        tvPrincPreferencias.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent interesse = new Intent(Principal.this, PreferenciaUsuario.class);
                 Bundle param = new Bundle();
                 param.putInt("id_usuario", id_usuario);
                 param.putString("chave_api", chave_api);
