@@ -4,7 +4,7 @@ package com.getyourgame.model;
  * Created by Guilherme on 28/09/2015.
  */
 public class Endereco {
-    private Integer id_endereco;
+    private Integer id_usuario;
     private String logradouro;
     private Integer cep;
     private String bairro;
@@ -12,16 +12,18 @@ public class Endereco {
     private String uf;
     private Integer numero;
     private String complemento;
+    private Boolean error;
+    private String message;
 
     public Endereco() {
     }
 
-    public Integer getId_endereco() {
-        return id_endereco;
+    public Integer getId_usuario() {
+        return id_usuario;
     }
 
-    public void setId_endereco(Integer id_endereco) {
-        this.id_endereco = id_endereco;
+    public void setId_usuario(Integer id_usuario) {
+        this.id_usuario = id_usuario;
     }
 
     public String getLogradouro() {
@@ -78,5 +80,21 @@ public class Endereco {
 
     public void setComplemento(String complemento) {
         this.complemento = complemento;
+    }
+
+    public Boolean getError() {
+        return error;
+    }
+
+    public void setError(Boolean error) {
+        this.error = error;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

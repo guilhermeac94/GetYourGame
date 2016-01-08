@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.getyourgame.model.Endereco;
 import com.getyourgame.model.Usuario;
 import com.getyourgame.util.Http;
 import com.getyourgame.util.SwipeDetector;
@@ -81,12 +82,7 @@ public class Principal extends AppCompatActivity{
         btCadastrarInteresse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent interesse = new Intent(Principal.this, Interesse.class);
-                Bundle param = new Bundle();
-                param.putInt("id_usuario", id_usuario);
-                param.putString("chave_api", chave_api);
-                interesse.putExtras(param);
-                startActivity(interesse);
+                new HttpBuscaEndereco((new Webservice()).buscaEndereco(id_usuario),null,Endereco.class,"").execute();
             }
         });
 
@@ -95,12 +91,26 @@ public class Principal extends AppCompatActivity{
         tvPrincPreferencias.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent interesse = new Intent(Principal.this, PreferenciaUsuario.class);
+                Intent preferencia = new Intent(Principal.this, PreferenciaUsuario.class);
                 Bundle param = new Bundle();
                 param.putInt("id_usuario", id_usuario);
                 param.putString("chave_api", chave_api);
-                interesse.putExtras(param);
-                startActivity(interesse);
+                preferencia.putExtras(param);
+                startActivity(preferencia);
+            }
+        });
+
+        TextView tvPrincContato = (TextView) findViewById(R.id.tvPrincContato);
+
+        tvPrincContato.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent contato = new Intent(Principal.this, Contatos.class);
+                Bundle param = new Bundle();
+                param.putInt("id_usuario", id_usuario);
+                param.putString("chave_api", chave_api);
+                contato.putExtras(param);
+                startActivity(contato);
             }
         });
     }
@@ -123,6 +133,32 @@ public class Principal extends AppCompatActivity{
                 ivPrincFotoUsuario.setImageBitmap(usuario.getFoto().equals("") ? sem_usuario : util.StringToBitMap(usuario.getFoto()));
             }else{
                 util.msgDialog(Principal.this, "Alerta", usuario.getMessage());
+            }
+        }
+    }
+
+    private class HttpBuscaEndereco extends Http {
+        public HttpBuscaEndereco(Webservice ws, MultiValueMap<String, String> map, Class classe, String apikey) {
+            super(ws, map, classe, apikey);
+        }
+
+        @Override
+        protected void onPostExecute(Object retorno) {
+            Endereco endereco = (Endereco) retorno;
+
+            Bundle param = new Bundle();
+            param.putInt("id_usuario", id_usuario);
+            param.putString("chave_api", chave_api);
+
+            if(!endereco.getError()) {
+                Intent interesse = new Intent(Principal.this, Interesse.class);
+                interesse.putExtras(param);
+                startActivity(interesse);
+            }else{
+                param.putString("msg_interesse", "msg_interesse");
+                Intent contato = new Intent(Principal.this, Contatos.class);
+                contato.putExtras(param);
+                startActivity(contato);
             }
         }
     }

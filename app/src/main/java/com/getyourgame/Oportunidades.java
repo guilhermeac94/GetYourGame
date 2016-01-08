@@ -116,6 +116,7 @@ public class Oportunidades extends AppCompatActivity {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     Item item = lista.get(i);
+
                 }
             });
         }

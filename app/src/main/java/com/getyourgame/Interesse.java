@@ -56,75 +56,8 @@ public class Interesse extends TabActivity /*implements InteresseTroca.OnTrocaLi
 
         tabHost.addTab(tab1);
         tabHost.addTab(tab2);
-
-        /*
-        manager = getFragmentManager();
-        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.rgInteresses);
-
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if (i == R.id.rbInteresse1) {
-                    Bundle param = new Bundle();
-                    param.putString("jogo", "God of War");
-
-                    Fragment fr = getFragmentManager().findFragmentByTag("interesse_troca");
-                    if (fr == null) {
-                        InteresseTroca troca = new InteresseTroca();
-                        troca.setArguments(param);
-                        FragmentTransaction transaction = manager.beginTransaction();
-                        transaction.add(R.id.layoutInteresse, troca, "interesse_troca");
-                        transaction.commit();
-                    }
-
-
-                } else if (i == R.id.rbInteresse2) {
-                    Bundle param = new Bundle();
-                    param.putString("jogo", "Rocket League");
-
-                    Fragment fr = getFragmentManager().findFragmentByTag("interesse_compra_venda");
-                    if (fr == null) {
-                        InteresseCompra compra_venda = new InteresseCompra();
-                        compra_venda.setArguments(param);
-                        FragmentTransaction transaction = manager.beginTransaction();
-                        transaction.add(R.id.layoutInteresse, compra_venda, "interesse_compra_venda");
-                        transaction.commit();
-                    }
-
-                } else if (i == R.id.rbInteresse3) {
-                    finalizaFragment("interesse_troca");
-                } else if (i == R.id.rbInteresse4) {
-                    finalizaFragment("interesse_compra_venda");
-                }
-            }
-        });
-        */
     }
 
-    /*
-    @Override
-    public void onTroca(String teste){
-        util.toast(Interesse.this, ">>>>>>>>>>>>>>>>>> " + teste);
-        finalizaFragment("interesse_troca");
-    }
-
-
-    @Override
-    public void onCompra(String teste) {
-        util.toast(Interesse.this, ">>>>>>>>>>>>>>>>>> " + teste);
-        finalizaFragment("interesse_compra_venda");
-    }
-
-
-    public void finalizaFragment(String tag){
-        Fragment fr = getFragmentManager().findFragmentByTag(tag);
-        if (fr != null) {
-            FragmentTransaction transaction = manager.beginTransaction();
-            transaction.remove(fr);
-            transaction.commit();
-        }
-    }
-    */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

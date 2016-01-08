@@ -30,6 +30,8 @@ public class Cadastro extends AppCompatActivity {
         final EditText etEmail = (EditText) findViewById(R.id.etEmail);
         final EditText etNome = (EditText) findViewById(R.id.etNome);
         final EditText etSenha = (EditText) findViewById(R.id.etSenha);
+        final EditText etConfirmarSenha = (EditText) findViewById(R.id.etConfirmarSenha);
+
         etNome.requestFocus();
 
         Button btCadastrar = (Button) findViewById(R.id.btCadastro);
@@ -38,14 +40,20 @@ public class Cadastro extends AppCompatActivity {
             @Override
             public void onClick(View arg0) {
 
-                MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
-                map.add("nome",String.valueOf(etNome.getText().toString()));
-                map.add("email",String.valueOf(etEmail.getText().toString()));
-                map.add("senha", String.valueOf(etSenha.getText().toString()));
+                if(String.valueOf(etSenha.getText().toString()).equals(String.valueOf(etConfirmarSenha.getText().toString()))) {
 
-                Webservice ws = new Webservice();
+                    MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
+                    map.add("nome", String.valueOf(etNome.getText().toString()));
+                    map.add("email", String.valueOf(etEmail.getText().toString()));
+                    map.add("senha", String.valueOf(etSenha.getText().toString()));
 
-                new HttpCadastro(ws.cadastro(),map,Usuario.class,"").execute();
+                    Webservice ws = new Webservice();
+
+                    new HttpCadastro(ws.cadastro(), map, Usuario.class, "").execute();
+
+                }else{
+                    util.msgDialog(Cadastro.this, "Alerta", "As senhas são diferentes!");
+                }
             }
         });
     }

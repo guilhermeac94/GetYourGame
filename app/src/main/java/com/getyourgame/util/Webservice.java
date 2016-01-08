@@ -79,4 +79,16 @@ public class Webservice {
     public Webservice buscaPreferencias(int id_usuario){
         return new Webservice("preferencias/"+id_usuario, HttpMethod.GET, false);
     }
+
+    public Webservice buscaContatos(int id_usuario){
+        return new Webservice("contato/"+id_usuario, HttpMethod.GET, false);
+    }
+
+    public Webservice salvaContatos(int id_usuario){
+        return new Webservice("contato/"+id_usuario, HttpMethod.PUT, false);
+    }
+
+    public Webservice buscaEndereco(int id_usuario){
+        return new Webservice("endereco/"+id_usuario, HttpMethod.GET, false);
+    }
 }

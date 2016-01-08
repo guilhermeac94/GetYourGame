@@ -111,12 +111,24 @@ public class PreferenciaUsuario extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            util.carregaSpinner(spEstadoJogo, PreferenciaUsuario.this, estados, map.get("desc_estado_jogo"));
-            util.carregaSpinner(spMetodoEnvio, PreferenciaUsuario.this, metodos, map.get("desc_metodo_envio"));
-            Object gpsInt = map.get("gps");
-            gps.setChecked(Integer.parseInt(gpsInt.toString())==1 ? true : false);
-            Object distanciaInt = map.get("distancia");
-            distancia.setProgress(Integer.parseInt(distanciaInt.toString()));
+            if(map.get("desc_estado_jogo")!=null){
+                util.carregaSpinner(spEstadoJogo, PreferenciaUsuario.this, estados, map.get("desc_estado_jogo"));
+            }else{
+                util.carregaSpinner(spEstadoJogo, PreferenciaUsuario.this, estados, null);
+            }
+            if(map.get("desc_metodo_envio")!=null) {
+                util.carregaSpinner(spMetodoEnvio, PreferenciaUsuario.this, metodos, map.get("desc_metodo_envio"));
+            }else{
+                util.carregaSpinner(spMetodoEnvio, PreferenciaUsuario.this, metodos, null);
+            }
+            if(map.get("gps")!=null) {
+                Object gpsInt = map.get("gps");
+                gps.setChecked(Integer.parseInt(gpsInt.toString()) == 1 ? true : false);
+            }
+            if(map.get("distancia")!=null) {
+                Object distanciaInt = map.get("distancia");
+                distancia.setProgress(Integer.parseInt(distanciaInt.toString()));
+            }
         }
     }
 
