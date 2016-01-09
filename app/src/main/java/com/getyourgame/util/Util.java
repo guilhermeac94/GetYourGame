@@ -10,6 +10,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.util.Base64;
@@ -42,6 +44,19 @@ import java.util.List;
  * Created by Guilherme on 14/09/2015.
  */
 public class Util extends Activity{
+
+    public Boolean testaConexaoInternet(Context context){
+        ConnectivityManager conMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo i = conMgr.getActiveNetworkInfo();
+        if (i == null)
+            return false;
+        if (!i.isConnected())
+            return false;
+        if (!i.isAvailable())
+            return false;
+        return true;
+    }
+
 
     public void msgDialog(Activity act, String titulo, String msg){
         AlertDialog.Builder dlgAlert = new AlertDialog.Builder(act);

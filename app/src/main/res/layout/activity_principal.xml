@@ -120,6 +120,67 @@
         </LinearLayout>
 
 
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="15dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent">
+
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_centerInParent="true">
+
+                    <ImageView
+                        android:layout_height="160dp"
+                        android:layout_width="160dp"
+                        android:src="@drawable/jogos_usuarios"
+                        android:id="@+id/ivQuadroJogosUsuarios"
+                        android:padding="20dp"/>
+
+                    <ImageView
+                        android:layout_height="160dp"
+                        android:layout_width="160dp"
+                        android:src="@drawable/interesses"
+                        android:id="@+id/ivQuadroInteresses"
+                        android:padding="20dp"/>
+
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent">
+
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_centerInParent="true">
+
+                    <ImageView
+                        android:layout_height="160dp"
+                        android:layout_width="160dp"
+                        android:src="@drawable/oportunidades"
+                        android:id="@+id/ivQuadroOportunidades"
+                        android:padding="20dp"/>
+
+                    <ImageView
+                        android:layout_height="160dp"
+                        android:layout_width="160dp"
+                        android:src="@drawable/transacoes"
+                        android:id="@+id/ivQuadroTransacoes"
+                        android:padding="20dp"/>
+
+                </LinearLayout>
+            </RelativeLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
 

@@ -29,7 +29,12 @@ public class CarregaCadastros extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_carrega_cadastros);
-        carregaCadastros();
+
+        if(util.testaConexaoInternet(getApplicationContext())){
+            carregaCadastros();
+        }else{
+            util.msgDialog(CarregaCadastros.this, "Alerta", "Você não está conectado à Internet.");
+        }
     }
 
     public void carregaCadastros(){
