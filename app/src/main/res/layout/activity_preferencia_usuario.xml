@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/tvEstadoJogo"
-        android:text="@string/estado_jogo"
+        android:text="@string/estado_jogo_desejado"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -30,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/metodo_envio"
+        android:text="@string/metodo_envio_padrao"
         android:id="@+id/tvMetodoEnvio"
         android:layout_below="@+id/spEstadoJogo"
         android:layout_alignParentLeft="true"

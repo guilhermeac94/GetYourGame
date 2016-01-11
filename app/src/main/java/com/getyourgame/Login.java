@@ -126,7 +126,8 @@ public class Login extends AppCompatActivity {
                 Bundle param = new Bundle();
                 param.putInt("id_usuario", usuario.getId_usuario());
                 param.putString("chave_api", usuario.getChave_api());
-                redirecionar(Login.this, PreferenciaUsuario.class, param);
+                param.putString("primeiro_cadastro", "1");
+                redirecionar(Login.this, Contatos.class, param);
                 util.toast(getApplicationContext(), "Login efetuado com sucesso!!!");
             } else {
                 util.msgDialog(Login.this, "Alerta", usuario.getMessage());

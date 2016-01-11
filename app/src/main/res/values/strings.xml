@@ -9,6 +9,7 @@
     <string name="action_meu_perfil">Meu Perfil</string>
     <string name="action_multiple_fotos">Foto</string>
 
+    <string name="alerta_transacao">Obs: O GetYourGame não se responsabiliza pela veracidade das informações aqui detalhadas ou pelo não recebimento do pagamento/produto.</string>
     <string name="avancar">Avançar</string>
     <string name="bairro">Bairro</string>
     <string name="buscar">Buscar</string>
@@ -25,7 +26,8 @@
     <string name="distanciaProgresso">0</string>
     <string name="email">E-mail</string>
     <string name="entrar">Entrar</string>
-    <string name="estado_jogo">Estado do jogo:</string>
+    <string name="estado_jogo">Estado do Jogo:</string>
+    <string name="estado_jogo_desejado">Estado desejado do Jogo:</string>
     <string name="gps">Permite GPS:</string>
     <string name="cadastrar_interesse">Cadastrar interesse</string>
     <string name="interesses">Interesses</string>
@@ -35,7 +37,8 @@
     <string name="jogoOfertado">Jogo ofertado</string>
     <string name="login">Login</string>
     <string name="logradouro">Logradouro</string>
-    <string name="metodo_envio">Método de envio padrão:</string>
+    <string name="metodo_envio_padrao">Método de envio padrão:</string>
+    <string name="metodo_envio">Método de Envio:</string>
     <string name="nome">Nome</string>
     <string name="numero">Nro</string>
     <string name="ok">OK</string>

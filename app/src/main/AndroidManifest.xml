@@ -25,10 +25,6 @@
         <activity
             android:name=".CarregaCadastros"
             android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".Login"
@@ -42,6 +38,7 @@
             android:name=".Principal"
             android:label="@string/title_activity_principal"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
+
         </activity>
         <activity
             android:name=".PreferenciaUsuario"
@@ -86,6 +83,10 @@
             android:name=".Oportunidades"
             android:label="@string/title_activity_oportunidades"
             android:theme="@style/AppTheme" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".IniciarTransacao"

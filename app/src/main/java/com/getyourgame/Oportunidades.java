@@ -51,10 +51,11 @@ public class Oportunidades extends AppCompatActivity {
         setContentView(R.layout.activity_oportunidades);
 
 
-        id_usuario = util.recebeIdUsuario(getIntent());
-        chave_api = util.recebeChaveApi(getIntent());
+        //id_usuario = util.recebeIdUsuario(getIntent());
+        //chave_api = util.recebeChaveApi(getIntent());
 
-        //id_usuario = 5;
+        id_usuario = 5;
+        chave_api = "923798d42ec81ca9f07e3cffd7855748";
 
         sem_jogo = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.ic_jogo_default);
         moeda = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.ic_moeda);
@@ -99,14 +100,17 @@ public class Oportunidades extends AppCompatActivity {
 
                         lista.add(new Item(interesse,
                                 map.get("descricao_jogo"),
+                                map.get("plataforma_jogo"),
                                 interesse == 4 ? moeda : (map.get("foto_jogo").equals("") ? sem_jogo : util.StringToBitMap(map.get("foto_jogo"))),
                                 Integer.parseInt(String.valueOf(map.get("id_usuario_jogo"))),
                                 Integer.parseInt(String.valueOf(map.get("id_usuario_ofert"))),
                                 map.get("nome_ofert"),
                                 Integer.parseInt(String.valueOf(map.get("id_jogo_ofert"))),
                                 map.get("descricao_jogo_ofert"),
+                                map.get("plataforma_jogo_ofert"),
                                 map.get("foto_jogo_ofert").equals("") ? sem_jogo : util.StringToBitMap(map.get("foto_jogo_ofert")),
-                                map.get("preco_jogo_ofert") != null ? df.format(Double.parseDouble(String.valueOf(map.get("preco_jogo_ofert")))) : ""));
+                                map.get("preco_jogo_ofert") != null ? df.format(Double.parseDouble(String.valueOf(map.get("preco_jogo_ofert")))) : "",
+                                Integer.parseInt(String.valueOf(map.get("id_usuario_jogo_ofert")))));
             }
 
             adapter = new Ladapter(getApplicationContext());
@@ -116,7 +120,14 @@ public class Oportunidades extends AppCompatActivity {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     Item item = lista.get(i);
-
+                    Bundle param = new Bundle();
+                    param.putInt("id_usuario", id_usuario);
+                    param.putString("chave_api", chave_api);
+                    param.putInt("id_usuario_jogo_solic", item.id_usuario_jogo);
+                    param.putInt("id_usuario_jogo_ofert", item.id_usuario_jogo_ofert);
+                    Intent intent = new Intent(Oportunidades.this, IniciarTransacao.class);
+                    intent.putExtras(param);
+                    startActivity(intent);
                 }
             });
         }
@@ -125,26 +136,32 @@ public class Oportunidades extends AppCompatActivity {
     class Item {
         int id_interesse;
         String descricao_jogo;
+        String plataforma_jogo;
         Bitmap foto_jogo;
         int id_usuario_jogo;
         int id_usuario_ofert;
         String nome_ofert;
         int id_jogo_ofert;
         String descricao_jogo_ofert;
+        String plataforma_jogo_ofert;
         Bitmap foto_jogo_ofert;
         String preco_jogo_ofert;
+        int id_usuario_jogo_ofert;
 
-        public Item(int id_interesse, String descricao_jogo, Bitmap foto_jogo, int id_usuario_jogo, int id_usuario_ofert, String nome_ofert, int id_jogo_ofert, String descricao_jogo_ofert, Bitmap foto_jogo_ofert, String preco_jogo_ofert) {
+        public Item(int id_interesse, String descricao_jogo, String plataforma_jogo, Bitmap foto_jogo, int id_usuario_jogo, int id_usuario_ofert, String nome_ofert, int id_jogo_ofert, String descricao_jogo_ofert, String plataforma_jogo_ofert, Bitmap foto_jogo_ofert, String preco_jogo_ofert, int id_usuario_jogo_ofert) {
             this.id_interesse = id_interesse;
             this.descricao_jogo = descricao_jogo;
+            this.plataforma_jogo = plataforma_jogo;
             this.foto_jogo = foto_jogo;
             this.id_usuario_jogo = id_usuario_jogo;
             this.id_usuario_ofert = id_usuario_ofert;
             this.nome_ofert = nome_ofert;
             this.id_jogo_ofert = id_jogo_ofert;
             this.descricao_jogo_ofert = descricao_jogo_ofert;
+            this.plataforma_jogo_ofert = plataforma_jogo_ofert;
             this.foto_jogo_ofert = foto_jogo_ofert;
             this.preco_jogo_ofert = preco_jogo_ofert;
+            this.id_usuario_jogo_ofert = id_usuario_jogo_ofert;
         }
     }
 
@@ -178,18 +195,22 @@ public class Oportunidades extends AppCompatActivity {
 
         class myViewHolder {
             TextView tvDescricaoJogo;
+            TextView tvPlataformaJogo;
             ImageView ivFotoJogo;
             TextView tvPrecoOfert;
             TextView tvDescricaoJogoOfert;
+            TextView tvPlataformaJogoOfert;
             ImageView ivFotoJogoOfert;
             TextView tvNomeUsuarioOfert;
 
             public myViewHolder(View v) {
                 // TODO Auto-generated constructor stub
                 tvDescricaoJogo = (TextView) v.findViewById(R.id.tvDescricaoJogo);
+                tvPlataformaJogo = (TextView) v.findViewById(R.id.tvPlataformaJogo);
                 ivFotoJogo = (ImageView) v.findViewById(R.id.ivFotoJogo);
                 tvPrecoOfert = (TextView) v.findViewById(R.id.tvPrecoOfert);
                 tvDescricaoJogoOfert = (TextView) v.findViewById(R.id.tvDescricaoJogoOfert);
+                tvPlataformaJogoOfert = (TextView) v.findViewById(R.id.tvPlataformaJogoOfert);
                 ivFotoJogoOfert = (ImageView) v.findViewById(R.id.ivFotoJogoOfert);
                 tvNomeUsuarioOfert = (TextView) v.findViewById(R.id.tvNomeUsuarioOfert);
             }
@@ -219,12 +240,14 @@ public class Oportunidades extends AppCompatActivity {
             }else{
                 row.setBackgroundColor(getResources().getColor(R.color.troca));
                 holder.tvDescricaoJogo.setText(lista.get(position).descricao_jogo);
+                holder.tvPlataformaJogo.setText(lista.get(position).plataforma_jogo);
                 holder.tvPrecoOfert.setText("");
                 holder.tvPrecoOfert.setVisibility(View.GONE);
             }
 
             holder.ivFotoJogo.setImageBitmap(lista.get(position).foto_jogo);
             holder.tvDescricaoJogoOfert.setText(lista.get(position).descricao_jogo_ofert);
+            holder.tvPlataformaJogoOfert.setText(lista.get(position).plataforma_jogo_ofert);
             holder.ivFotoJogoOfert.setImageBitmap(lista.get(position).foto_jogo_ofert);
             holder.tvNomeUsuarioOfert.setText(lista.get(position).nome_ofert);
 

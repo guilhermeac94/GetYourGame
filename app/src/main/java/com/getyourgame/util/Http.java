@@ -53,12 +53,6 @@ public class Http extends AsyncTask<String, Void, Object> {
             restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
             restTemplate.getMessageConverters().add(new FormHttpMessageConverter());
 
-
-            //MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
-            //map.add("nome",String.valueOf(params[0]));
-            //map.add("email",String.valueOf(params[1]));
-            //map.add("senha",String.valueOf(params[2]));
-
             HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(this.map, headers);
 
             ResponseEntity<Object> retorno = restTemplate.exchange(url, ws.getMetodo(), request, this.classe);

@@ -76,6 +76,10 @@ public class Webservice {
         return new Webservice("oportunidades/"+id_usuario, HttpMethod.GET, false);
     }
 
+    public Webservice buscaDadosOportunidade(int id_usuario_jogo_solic, int id_usuario_jogo_ofert){
+        return new Webservice("dados_oportunidade/"+id_usuario_jogo_solic+";"+id_usuario_jogo_ofert, HttpMethod.GET, false);
+    }
+
     public Webservice buscaPreferencias(int id_usuario){
         return new Webservice("preferencias/"+id_usuario, HttpMethod.GET, false);
     }

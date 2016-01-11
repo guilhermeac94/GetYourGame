@@ -11,230 +11,125 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="5dip"
-        android:id="@+id/linearLayout2">
+        android:orientation="vertical">
+
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:padding="5dip"
-            android:id="@+id/linearLayout2">
+            android:background="@drawable/borda2"
+            android:id="@+id/transacaoOfert">
 
-            <RelativeLayout
-                android:layout_width="0dip"
-                android:layout_height="fill_parent"
-                android:layout_weight="0.5">
 
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="24dp"
+                android:text=""
+                android:textAlignment="center"
+                android:id="@+id/tvTDescricaoJogoOfert"
+                android:background="@null"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="@string/jogo"
-                        android:id="@+id/tvJogo" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text=""
+                android:textAlignment="center"
+                android:textStyle="italic"
+                android:id="@+id/tvTPlataformaEstadoJogoOfert"
+                android:layout_marginTop="5dp"
+                android:background="@null"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="@string/selecionar"
-                        android:id="@+id/tvSelecionaJogo"
-                        android:textStyle="italic"
-                        android:textColor="@color/colorSecundary"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/metodo_envio"
+                android:id="@+id/tvTMetodoEnvioOfert"
+                android:layout_marginTop="15dp"
+                android:background="@null"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="@string/plataforma"
-                        android:id="@+id/tvPlataforma"
-                        android:layout_marginTop="20dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="@string/selecionar"
-                        android:id="@+id/tvSelecionaPlataforma"
-                        android:textStyle="italic"
-                        android:textColor="@color/colorSecundary"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="@string/estado_jogo"
-                        android:id="@+id/tvEstadoJogo"
-                        android:layout_marginTop="15dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="@string/selecionar"
-                        android:id="@+id/tvSelecionaEstadoJogo"
-                        android:textStyle="italic"
-                        android:textColor="@color/colorSecundary"/>
-
-                </LinearLayout>
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="0dip"
-                android:layout_height="fill_parent"
-                android:layout_weight="0.5">
-
-                <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Valor ou Jogo"
-                        android:id="@+id/tvValor"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="@string/selecionar"
-                        android:id="@+id/tvSelecionaValorJogo"
-                        android:textStyle="italic"
-                        android:textColor="@color/colorSecundary"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Plataforma"
-                        android:id="@+id/tvPlataformaM"
-                        android:layout_marginTop="15dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="@string/selecionar"
-                        android:id="@+id/tvSelecionaPlataformaM"
-                        android:textStyle="italic"
-                        android:textColor="@color/colorSecundary"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="@string/estado_jogo"
-                        android:id="@+id/tvEstadoJogoM"
-                        android:layout_marginTop="15dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="@string/selecionar"
-                        android:id="@+id/tvSelecionaEstadoJogoM"
-                        android:textStyle="italic"
-                        android:textColor="@color/colorSecundary"/>
-
-                </LinearLayout>
-            </RelativeLayout>
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spTMetodoEnvioOfert"
+                />
 
         </LinearLayout>
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="5dip" >
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Opções Avançadas"
-                android:id="@+id/checkBox"/>
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="50dip"
+                android:layout_height="30dip"
+                android:id="@+id/ivTSetasDuplas"
+                android:src="@drawable/ic_setas_duplas"
+                android:layout_gravity="center_horizontal"
+                />
+
         </LinearLayout>
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="5dip" >
+            android:padding="5dip"
+            android:background="@drawable/borda2"
+            android:id="@+id/transacaoSolic">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Jogo"
-                android:id="@+id/tvNovoJogo"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/selecionar"
-                android:id="@+id/tvSelecionaNovoJogo"
-                android:textStyle="italic"
-                android:textColor="@color/colorSecundary"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Plataforma"
-                android:id="@+id/tvPlataformaNovo"
-                android:layout_marginTop="15dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/selecionar"
-                android:id="@+id/tvSelecionaPlataformaN"
-                android:textStyle="italic"
-                android:textColor="@color/colorSecundary"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Valor"
-                android:id="@+id/tvPreco"
-                android:layout_marginTop="15dp"/>
-
-            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:ems="10"
-                android:id="@+id/etPreco" />
+                android:textSize="24dp"
+                android:text=""
+                android:textAlignment="center"
+                android:id="@+id/tvTDescricaoJogo"
+                android:background="@null"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text=""
+                android:textAlignment="center"
+                android:textStyle="italic"
+                android:id="@+id/tvTPlataformaEstadoJogo"
+                android:layout_marginTop="5dp"
+                android:background="@null"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Método Envio"
-                android:id="@+id/tvMetodoEnvio"
-                android:layout_marginTop="15dp"/>
+                android:text="@string/metodo_envio"
+                android:id="@+id/tvTMetodoEnvio"
+                android:layout_marginTop="15dp"
+                android:background="@null"/>
 
             <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/spMetodoEnvioNovo" />
+                android:id="@+id/spTMetodoEnvio" />
+
         </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/alerta_transacao"
+            android:textAlignment="center"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:id="@+id/tvTAlerta"
+            android:layout_marginTop="20dp"/>
+
     </LinearLayout>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

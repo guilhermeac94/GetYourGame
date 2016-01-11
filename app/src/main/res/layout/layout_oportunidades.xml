@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="170dp"
     android:orientation="horizontal"
     android:padding="5dip" >
 
@@ -14,7 +14,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_centerInParent="true"
             android:padding="5dip" >
 
             <RelativeLayout
@@ -23,9 +22,9 @@
 
                 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:orientation="vertical">
+                    android:layout_height="170dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/borda2">
 
                     <TextView
                         android:id="@+id/tvDescricaoJogo"
@@ -35,16 +34,22 @@
                         android:textStyle="bold"
                         />
 
+                    <TextView
+                        android:id="@+id/tvPlataformaJogo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        />
+
                     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="5dip" >
+                        android:orientation="horizontal" >
                         <ImageView
                                 android:layout_width="50dip"
                                 android:layout_height="50dip"
                                 android:id="@+id/ivFotoJogo"
-                                android:layout_marginRight="20px"/>
+                            />
 
                         <RelativeLayout
                             android:layout_width="wrap_content"
@@ -58,6 +63,7 @@
                                 android:textColor="@android:color/black"
                                 android:textStyle="bold"
                                 android:layout_centerInParent="true"
+                                android:layout_marginLeft="10dp"
                                 />
                         </RelativeLayout>
                     </LinearLayout>
@@ -68,6 +74,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
                         android:textColor="@android:color/black"
+                        android:layout_marginTop="10dp"
                         />
                 </LinearLayout>
             </RelativeLayout>
@@ -108,10 +115,10 @@
                 android:layout_height="fill_parent">
 
                 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:orientation="vertical">
+                    android:layout_width="match_parent"
+                    android:layout_height="170dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/borda2">
 
                     <TextView
                         android:id="@+id/tvDescricaoJogoOfert"
@@ -119,6 +126,13 @@
                         android:layout_height="wrap_content"
                         android:textColor="@android:color/black"
                         android:textStyle="bold"
+                        />
+
+                    <TextView
+                        android:id="@+id/tvPlataformaJogoOfert"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
                         />
 
                     <ImageView
@@ -131,6 +145,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@android:color/black"
+                        android:layout_marginTop="10dp"
                         />
                 </LinearLayout>
             </RelativeLayout>

@@ -155,6 +155,20 @@ public class Contatos extends AppCompatActivity {
                 util.msgDialog(Contatos.this, "Alerta", map.get("message"));
             }else{
                 util.toast(getApplicationContext(), map.get("message"));
+
+                Bundle param = new Bundle();
+                param.putInt("id_usuario", id_usuario);
+                param.putString("chave_api", chave_api);
+
+                if(getIntent().getExtras().getString("primeiro_cadastro")!=null) {
+                    Intent intent = new Intent(Contatos.this, PreferenciaUsuario.class);
+                    intent.putExtras(param);
+                    startActivity(intent);
+                }else{
+                    Intent intent = new Intent(Contatos.this, Principal.class);
+                    intent.putExtras(param);
+                    startActivity(intent);
+                }
                 Contatos.this.finish();
             }
         }
