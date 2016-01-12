@@ -52,7 +52,7 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="88" column="28" selection-start-line="88" selection-start-column="28" selection-end-line="88" selection-end-column="28" />
+              <caret line="44" column="28" selection-start-line="44" selection-start-column="28" selection-end-line="44" selection-end-column="28" />
               <folding>
                 <element signature="e#550#568#0" expanded="true" />
                 <element signature="e#749#765#0" expanded="true" />
@@ -61,29 +61,41 @@
                 <element signature="e#1269#1287#0" expanded="true" />
                 <element signature="e#1391#1424#0" expanded="true" />
                 <element signature="e#1529#1563#0" expanded="true" />
-                <element signature="e#1749#1793#0" expanded="true" />
-                <element signature="e#1905#1948#0" expanded="true" />
-                <element signature="e#2056#2094#0" expanded="true" />
-                <element signature="e#2199#2234#0" expanded="true" />
-                <element signature="e#2408#2442#0" expanded="true" />
-                <element signature="e#2550#2588#0" expanded="true" />
-                <element signature="e#3055#3101#0" expanded="true" />
-                <element signature="e#3281#3319#0" expanded="true" />
+                <element signature="e#1952#1996#0" expanded="true" />
+                <element signature="e#2108#2151#0" expanded="true" />
+                <element signature="e#2259#2297#0" expanded="true" />
+                <element signature="e#2402#2437#0" expanded="true" />
+                <element signature="e#2611#2645#0" expanded="true" />
+                <element signature="e#2753#2791#0" expanded="true" />
+                <element signature="e#3258#3304#0" expanded="true" />
+                <element signature="e#3484#3522#0" expanded="true" />
                 <element signature="e#3678#3720#0" expanded="true" />
                 <element signature="e#3868#3901#0" expanded="true" />
+                <element signature="e#4011#4051#0" expanded="true" />
+                <element signature="e#4164#4208#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="layout_oportunidades.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/layout_oportunidades.xml">
+      <file leaf-file-name="layout_transacao_tab.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/layout_transacao_tab.xml">
           <provider editor-type-id="android-designer">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.034483">
-              <caret line="30" column="59" selection-start-line="30" selection-start-column="59" selection-end-line="30" selection-end-column="59" />
+            <state vertical-scroll-proportion="-87.586205">
+              <caret line="153" column="15" selection-start-line="153" selection-start-column="15" selection-end-line="153" selection-end-column="15" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ListaTransacao.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/ListaTransacao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="61" column="68" selection-start-line="61" selection-start-column="68" selection-end-line="61" selection-end-column="68" />
               <folding />
             </state>
           </provider>
@@ -93,81 +105,97 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/Oportunidades.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="45" column="17" selection-start-line="45" selection-start-column="17" selection-end-line="45" selection-end-column="17" />
+              <caret line="56" column="57" selection-start-line="55" selection-start-column="8" selection-end-line="56" selection-end-column="57" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.7777777">
-              <caret line="11" column="170" selection-start-line="11" selection-start-column="170" selection-end-line="11" selection-end-column="170" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Contatos.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/Contatos.java">
+      <file leaf-file-name="Principal.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/Principal.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="112" column="72" selection-start-line="112" selection-start-column="16" selection-end-line="112" selection-end-column="72" />
-              <folding />
+              <caret line="121" column="0" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
+              <folding>
+                <element signature="e#4439#4875#0" expanded="true" />
+                <element signature="e#4874#4875#0" expanded="true" />
+                <element signature="e#5015#5478#0" expanded="true" />
+                <element signature="e#5477#5478#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activity_iniciar_transacao.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_iniciar_transacao.xml">
+      <file leaf-file-name="activity_principal.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_principal.xml">
           <provider editor-type-id="android-designer">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.39732888">
-              <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-              <folding>
-                <element signature="e#262#297#0" expanded="true" />
-                <element signature="e#323#358#0" expanded="true" />
-                <element signature="e#382#415#0" expanded="true" />
-                <element signature="e#442#475#0" expanded="true" />
-                <element signature="e#2190#2212#0" expanded="true" />
-                <element signature="e#4536#4558#0" expanded="true" />
-                <element signature="e#5046#5072#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="borda2cinza.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/borda2cinza.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="39" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
+            <state vertical-scroll-proportion="-9.655172">
+              <caret line="176" column="59" selection-start-line="176" selection-start-column="41" selection-end-line="176" selection-end-column="59" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="fundo_verde.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/fundo_verde.xml">
+      <file leaf-file-name="ListaTransacaoTab.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/ListaTransacaoTab.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="6" column="127" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="127" />
-              <folding />
+            <state vertical-scroll-proportion="0.62813103">
+              <caret line="99" column="0" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+              <folding>
+                <element signature="e#4722#5585#0" expanded="true" />
+                <element signature="e#5584#5585#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IniciarTransacao.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/IniciarTransacao.java">
+      <file leaf-file-name="Webservice.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/util/Webservice.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="107" column="36" selection-start-line="107" selection-start-column="36" selection-end-line="107" selection-end-column="36" />
+              <caret line="103" column="64" selection-start-line="103" selection-start-column="64" selection-end-line="103" selection-end-column="64" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#465#466#0" expanded="true" />
+                <element signature="e#495#496#0" expanded="true" />
+                <element signature="e#1281#1282#0" expanded="true" />
+                <element signature="e#1356#1357#0" expanded="true" />
+                <element signature="e#1509#1510#0" expanded="true" />
+                <element signature="e#1582#1583#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_lista_transacao_tab.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_lista_transacao_tab.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.275862">
+              <caret line="9" column="44" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="44" />
+              <folding>
+                <element signature="e#223#258#0" expanded="true" />
+                <element signature="e#284#319#0" expanded="true" />
+                <element signature="e#343#376#0" expanded="true" />
+                <element signature="e#403#436#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_oportunidades.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_oportunidades.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-12.310345">
+              <caret line="21" column="15" selection-start-line="11" selection-start-column="4" selection-end-line="21" selection-end-column="15" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -177,8 +205,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="layoutResourceFile_vertical" />
         <option value="resourceFile" />
+        <option value="layoutResourceFile_vertical" />
       </list>
     </option>
   </component>
@@ -1664,12 +1692,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/getyourgame/InteresseCompra.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/getyourgame/InteresseVenda.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/getyourgame/InteresseTroca.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/getyourgame/InteresseTab.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_lista_usuario.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_lista_jogo.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/list_item.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/list_item_pressed.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/list_item_normal.xml" />
@@ -1696,7 +1718,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_contatos_endereco.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_contatos.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/getyourgame/model/Endereco.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/getyourgame/Principal.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_principal.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/getyourgame/util/Util.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/getyourgame/CarregaCadastros.java" />
@@ -1707,14 +1728,21 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/getyourgame/Cadastro.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/layout_oportunidades.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_preferencia_usuario.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/getyourgame/util/Webservice.java" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/getyourgame/IniciarTransacao.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/borda2.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/borda2cinza.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/getyourgame/model/Transacao.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/getyourgame/IniciarTransacao.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_iniciar_transacao.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_lista_transacao.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/layout_transacao_tab.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_lista_transacao_tab.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/getyourgame/util/Webservice.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/getyourgame/ListaTransacao.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/getyourgame/Oportunidades.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/getyourgame/Principal.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/getyourgame/ListaTransacaoTab.java" />
       </list>
     </option>
   </component>
@@ -1750,6 +1778,9 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="ProjectPane" />
+      <pane id="Scope" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -1832,24 +1863,6 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="drawable" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GetYourGame" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
             </PATH_ELEMENT>
@@ -1910,10 +1923,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="ProjectPane" />
       <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2154,16 +2164,15 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18550107" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18550107" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32777777" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2711111" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39222223" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2196162" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24981017" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -2176,6 +2185,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -2196,59 +2206,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/list_item_pressed.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/list.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="42" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_lista_usuario.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.6896553">
-          <caret line="8" column="9" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/list_normal.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/list_item_normal.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="29" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/list_item.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/model/UsuarioJogo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_moeda.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -2272,7 +2229,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="42" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2296,14 +2252,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/InteresseTab.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="233" column="1" selection-start-line="20" selection-start-column="26" selection-end-line="233" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2378,66 +2326,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/model/Usuario.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="21" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#707#708#0" expanded="false" />
-            <element signature="e#740#741#0" expanded="false" />
-            <element signature="e#793#794#0" expanded="false" />
-            <element signature="e#837#838#0" expanded="false" />
-            <element signature="e#868#869#0" expanded="false" />
-            <element signature="e#895#896#0" expanded="false" />
-            <element signature="e#935#936#0" expanded="false" />
-            <element signature="e#967#968#0" expanded="false" />
-            <element signature="e#999#1000#0" expanded="false" />
-            <element signature="e#1027#1028#0" expanded="false" />
-            <element signature="e#1069#1070#0" expanded="false" />
-            <element signature="e#1103#1104#0" expanded="false" />
-            <element signature="e#1135#1136#0" expanded="false" />
-            <element signature="e#1163#1164#0" expanded="false" />
-            <element signature="e#1205#1206#0" expanded="false" />
-            <element signature="e#1239#1240#0" expanded="false" />
-            <element signature="e#1275#1276#0" expanded="false" />
-            <element signature="e#1307#1308#0" expanded="false" />
-            <element signature="e#1357#1358#0" expanded="false" />
-            <element signature="e#1399#1400#0" expanded="false" />
-            <element signature="e#1430#1431#0" expanded="false" />
-            <element signature="e#1456#1457#0" expanded="false" />
-            <element signature="e#1495#1496#0" expanded="false" />
-            <element signature="e#1525#1526#0" expanded="false" />
-            <element signature="e#1568#1569#0" expanded="false" />
-            <element signature="e#1602#1603#0" expanded="false" />
-            <element signature="e#1661#1662#0" expanded="false" />
-            <element signature="e#1707#1708#0" expanded="false" />
-            <element signature="e#1748#1749#0" expanded="false" />
-            <element signature="e#1781#1782#0" expanded="false" />
-            <element signature="e#1837#1838#0" expanded="false" />
-            <element signature="e#1881#1882#0" expanded="false" />
-            <element signature="e#1918#1919#0" expanded="false" />
-            <element signature="e#1950#1951#0" expanded="false" />
-            <element signature="e#2001#2002#0" expanded="false" />
-            <element signature="e#2043#2044#0" expanded="false" />
-            <element signature="e#2077#2078#0" expanded="false" />
-            <element signature="e#2107#2108#0" expanded="false" />
-            <element signature="e#2153#2154#0" expanded="false" />
-            <element signature="e#2191#2192#0" expanded="false" />
-            <element signature="e#2224#2225#0" expanded="false" />
-            <element signature="e#2252#2253#0" expanded="false" />
-            <element signature="e#2295#2296#0" expanded="false" />
-            <element signature="e#2329#2330#0" expanded="false" />
-            <element signature="e#2370#2371#0" expanded="false" />
-            <element signature="e#2406#2407#0" expanded="false" />
-            <element signature="e#2465#2466#0" expanded="false" />
-            <element signature="e#2515#2516#0" expanded="false" />
-            <element signature="e#2613#2614#0" expanded="false" />
-            <element signature="e#2645#2646#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/model/Endereco.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2460,17 +2348,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_principal.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="123" column="47" selection-start-line="123" selection-start-column="47" selection-end-line="123" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_carrega_cadastros.xml">
       <provider editor-type-id="android-designer">
         <state />
@@ -2478,14 +2355,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-14.413794">
           <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/Principal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="139" column="35" selection-start-line="139" selection-start-column="18" selection-end-line="139" selection-end-column="35" />
           <folding />
         </state>
       </provider>
@@ -2498,19 +2367,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/Cadastro.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="60" column="30" selection-start-line="60" selection-start-column="18" selection-end-line="60" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/borda.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="31" column="8" selection-start-line="0" selection-start-column="0" selection-end-line="31" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2518,33 +2378,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="226" column="24" selection-start-line="226" selection-start-column="12" selection-end-line="226" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_interesse.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.91023624">
-          <caret line="34" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/Login.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="301" column="39" selection-start-line="299" selection-start-column="8" selection-end-line="301" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/util/Util.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="163" column="32" selection-start-line="163" selection-start-column="16" selection-end-line="163" selection-end-column="32" />
           <folding />
         </state>
       </provider>
@@ -2574,57 +2407,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_oportunidades.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.137931">
-          <caret line="19" column="44" selection-start-line="19" selection-start-column="44" selection-end-line="19" selection-end-column="44" />
-          <folding>
-            <element signature="e#411#444#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/util/Webservice.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="79" column="49" selection-start-line="79" selection-start-column="49" selection-end-line="79" selection-end-column="49" />
-          <folding>
-            <element signature="e#465#466#0" expanded="false" />
-            <element signature="e#495#496#0" expanded="false" />
-            <element signature="e#1281#1282#0" expanded="false" />
-            <element signature="e#1356#1357#0" expanded="false" />
-            <element signature="e#1509#1510#0" expanded="false" />
-            <element signature="e#1582#1583#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/Interesse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2611367">
-          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/PreferenciaUsuario.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.6813009">
           <caret line="128" column="59" selection-start-line="128" selection-start-column="16" selection-end-line="128" selection-end-column="59" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/IniciarTransacao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="107" column="36" selection-start-line="107" selection-start-column="36" selection-end-line="107" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2640,41 +2427,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.26910827">
           <caret line="11" column="4" selection-start-line="0" selection-start-column="0" selection-end-line="32" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="88" column="28" selection-start-line="88" selection-start-column="28" selection-end-line="88" selection-end-column="28" />
-          <folding>
-            <element signature="e#550#568#0" expanded="true" />
-            <element signature="e#749#765#0" expanded="true" />
-            <element signature="e#967#985#0" expanded="true" />
-            <element signature="e#1150#1168#0" expanded="true" />
-            <element signature="e#1269#1287#0" expanded="true" />
-            <element signature="e#1391#1424#0" expanded="true" />
-            <element signature="e#1529#1563#0" expanded="true" />
-            <element signature="e#1749#1793#0" expanded="true" />
-            <element signature="e#1905#1948#0" expanded="true" />
-            <element signature="e#2056#2094#0" expanded="true" />
-            <element signature="e#2199#2234#0" expanded="true" />
-            <element signature="e#2408#2442#0" expanded="true" />
-            <element signature="e#2550#2588#0" expanded="true" />
-            <element signature="e#3055#3101#0" expanded="true" />
-            <element signature="e#3281#3319#0" expanded="true" />
-            <element signature="e#3678#3720#0" expanded="true" />
-            <element signature="e#3868#3901#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.7777777">
-          <caret line="11" column="170" selection-start-line="11" selection-start-column="170" selection-end-line="11" selection-end-column="170" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2686,30 +2438,79 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/util/Util.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33227345">
+          <caret line="129" column="16" selection-start-line="129" selection-start-column="16" selection-end-line="129" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.4074073">
+          <caret line="12" column="49" selection-start-line="12" selection-start-column="49" selection-end-line="12" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/Cadastro.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="54" column="89" selection-start-line="54" selection-start-column="89" selection-end-line="54" selection-end-column="89" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/model/Usuario.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.48188975">
+          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="21" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/Contatos.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="112" column="72" selection-start-line="112" selection-start-column="16" selection-end-line="112" selection-end-column="72" />
+          <caret line="99" column="114" selection-start-line="99" selection-start-column="16" selection-end-line="99" selection-end-column="114" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/Oportunidades.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/Login.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="45" column="17" selection-start-line="45" selection-start-column="17" selection-end-line="45" selection-end-column="17" />
+          <caret line="261" column="65" selection-start-line="258" selection-start-column="16" selection-end-line="261" selection-end-column="65" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/layout_oportunidades.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/model/UsuarioJogo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.034483">
-          <caret line="30" column="59" selection-start-line="30" selection-start-column="59" selection-end-line="30" selection-end-column="59" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/model/Transacao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/IniciarTransacao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="165" column="108" selection-start-line="165" selection-start-column="108" selection-end-line="165" selection-end-column="108" />
+          <folding>
+            <element signature="e#2962#3617#0" expanded="false" />
+            <element signature="e#3133#3149#0" expanded="false" />
+            <element signature="e#3616#3617#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2718,16 +2519,202 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39732888">
-          <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+        <state vertical-scroll-proportion="-26.758621">
+          <caret line="156" column="0" selection-start-line="156" selection-start-column="0" selection-end-line="156" selection-end-column="0" />
           <folding>
             <element signature="e#262#297#0" expanded="true" />
             <element signature="e#323#358#0" expanded="true" />
             <element signature="e#382#415#0" expanded="true" />
             <element signature="e#442#475#0" expanded="true" />
-            <element signature="e#2190#2212#0" expanded="true" />
-            <element signature="e#4536#4558#0" expanded="true" />
-            <element signature="e#5046#5072#0" expanded="true" />
+            <element signature="e#2206#2228#0" expanded="true" />
+            <element signature="e#4564#4586#0" expanded="true" />
+            <element signature="e#5076#5102#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/Interesse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="57" column="29" selection-start-line="30" selection-start-column="8" selection-end-line="57" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_interesse.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16037735">
+          <caret line="6" column="37" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_lista_transacao.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.034483">
+          <caret line="12" column="40" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="40" />
+          <folding>
+            <element signature="e#223#258#0" expanded="true" />
+            <element signature="e#284#319#0" expanded="true" />
+            <element signature="e#343#376#0" expanded="true" />
+            <element signature="e#403#436#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/layout_oportunidades.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.206897">
+          <caret line="14" column="45" selection-start-line="0" selection-start-column="0" selection-end-line="153" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/layout_transacao_tab.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-87.586205">
+          <caret line="153" column="15" selection-start-line="153" selection-start-column="15" selection-end-line="153" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_oportunidades.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.310345">
+          <caret line="21" column="15" selection-start-line="11" selection-start-column="4" selection-end-line="21" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/InteresseTab.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33233082">
+          <caret line="38" column="53" selection-start-line="37" selection-start-column="8" selection-end-line="38" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_lista_transacao_tab.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.275862">
+          <caret line="9" column="44" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="44" />
+          <folding>
+            <element signature="e#223#258#0" expanded="true" />
+            <element signature="e#284#319#0" expanded="true" />
+            <element signature="e#343#376#0" expanded="true" />
+            <element signature="e#403#436#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/util/Webservice.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="103" column="64" selection-start-line="103" selection-start-column="64" selection-end-line="103" selection-end-column="64" />
+          <folding>
+            <element signature="e#465#466#0" expanded="true" />
+            <element signature="e#495#496#0" expanded="true" />
+            <element signature="e#1281#1282#0" expanded="true" />
+            <element signature="e#1356#1357#0" expanded="true" />
+            <element signature="e#1509#1510#0" expanded="true" />
+            <element signature="e#1582#1583#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/ListaTransacao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="61" column="68" selection-start-line="61" selection-start-column="68" selection-end-line="61" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/Oportunidades.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="56" column="57" selection-start-line="55" selection-start-column="8" selection-end-line="56" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="44" column="28" selection-start-line="44" selection-start-column="28" selection-end-line="44" selection-end-column="28" />
+          <folding>
+            <element signature="e#550#568#0" expanded="true" />
+            <element signature="e#749#765#0" expanded="true" />
+            <element signature="e#967#985#0" expanded="true" />
+            <element signature="e#1150#1168#0" expanded="true" />
+            <element signature="e#1269#1287#0" expanded="true" />
+            <element signature="e#1391#1424#0" expanded="true" />
+            <element signature="e#1529#1563#0" expanded="true" />
+            <element signature="e#1952#1996#0" expanded="true" />
+            <element signature="e#2108#2151#0" expanded="true" />
+            <element signature="e#2259#2297#0" expanded="true" />
+            <element signature="e#2402#2437#0" expanded="true" />
+            <element signature="e#2611#2645#0" expanded="true" />
+            <element signature="e#2753#2791#0" expanded="true" />
+            <element signature="e#3258#3304#0" expanded="true" />
+            <element signature="e#3484#3522#0" expanded="true" />
+            <element signature="e#3678#3720#0" expanded="true" />
+            <element signature="e#3868#3901#0" expanded="true" />
+            <element signature="e#4011#4051#0" expanded="true" />
+            <element signature="e#4164#4208#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_principal.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.655172">
+          <caret line="176" column="59" selection-start-line="176" selection-start-column="41" selection-end-line="176" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/Principal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="121" column="0" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
+          <folding>
+            <element signature="e#4439#4875#0" expanded="true" />
+            <element signature="e#4874#4875#0" expanded="true" />
+            <element signature="e#5015#5478#0" expanded="true" />
+            <element signature="e#5477#5478#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/ListaTransacaoTab.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.62813103">
+          <caret line="99" column="0" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+          <folding>
+            <element signature="e#4722#5585#0" expanded="true" />
+            <element signature="e#5584#5585#0" expanded="true" />
           </folding>
         </state>
       </provider>

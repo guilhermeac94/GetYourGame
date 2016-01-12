@@ -95,4 +95,12 @@ public class Webservice {
     public Webservice buscaEndereco(int id_usuario){
         return new Webservice("endereco/"+id_usuario, HttpMethod.GET, false);
     }
+
+    public Webservice insereTransacao(){
+        return new Webservice("transacao", HttpMethod.POST, false);
+    }
+
+    public Webservice buscaTransacoes(int id_usuario, int status){
+        return new Webservice("transacao/"+id_usuario+";"+status, HttpMethod.GET, false);
+    }
 }

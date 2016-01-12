@@ -6,7 +6,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.getyourgame.getyourgame.Principal"
-    android:id="@+id/transacao">
+    android:id="@+id/iniciarTransacao">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
             android:orientation="vertical"
             android:padding="5dip"
             android:background="@drawable/borda2"
-            android:id="@+id/transacaoOfert">
+            android:id="@+id/iniciarTransacaoOfert">
 
 
             <TextView
@@ -28,7 +28,7 @@
                 android:textSize="24dp"
                 android:text=""
                 android:textAlignment="center"
-                android:id="@+id/tvTDescricaoJogoOfert"
+                android:id="@+id/tvITDescricaoJogoOfert"
                 android:background="@null"/>
 
             <TextView
@@ -38,7 +38,7 @@
                 android:text=""
                 android:textAlignment="center"
                 android:textStyle="italic"
-                android:id="@+id/tvTPlataformaEstadoJogoOfert"
+                android:id="@+id/tvITPlataformaEstadoJogoOfert"
                 android:layout_marginTop="5dp"
                 android:background="@null"/>
 
@@ -47,14 +47,14 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/metodo_envio"
-                android:id="@+id/tvTMetodoEnvioOfert"
+                android:id="@+id/tvITMetodoEnvioOfert"
                 android:layout_marginTop="15dp"
                 android:background="@null"/>
 
             <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/spTMetodoEnvioOfert"
+                android:id="@+id/spITMetodoEnvioOfert"
                 />
 
         </LinearLayout>
@@ -67,7 +67,7 @@
             <ImageView
                 android:layout_width="50dip"
                 android:layout_height="30dip"
-                android:id="@+id/ivTSetasDuplas"
+                android:id="@+id/ivITSetasDuplas"
                 android:src="@drawable/ic_setas_duplas"
                 android:layout_gravity="center_horizontal"
                 />
@@ -80,7 +80,7 @@
             android:orientation="vertical"
             android:padding="5dip"
             android:background="@drawable/borda2"
-            android:id="@+id/transacaoSolic">
+            android:id="@+id/iniciarTransacaoSolic">
 
             <TextView
                 android:layout_width="match_parent"
@@ -88,7 +88,7 @@
                 android:textSize="24dp"
                 android:text=""
                 android:textAlignment="center"
-                android:id="@+id/tvTDescricaoJogo"
+                android:id="@+id/tvITDescricaoJogo"
                 android:background="@null"/>
 
             <TextView
@@ -98,7 +98,7 @@
                 android:text=""
                 android:textAlignment="center"
                 android:textStyle="italic"
-                android:id="@+id/tvTPlataformaEstadoJogo"
+                android:id="@+id/tvITPlataformaEstadoJogo"
                 android:layout_marginTop="5dp"
                 android:background="@null"/>
 
@@ -107,14 +107,14 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/metodo_envio"
-                android:id="@+id/tvTMetodoEnvio"
+                android:id="@+id/tvITMetodoEnvio"
                 android:layout_marginTop="15dp"
                 android:background="@null"/>
 
             <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/spTMetodoEnvio" />
+                android:id="@+id/spITMetodoEnvio" />
 
         </LinearLayout>
 
@@ -125,7 +125,7 @@
             android:textAlignment="center"
             android:textSize="14dp"
             android:textStyle="bold"
-            android:id="@+id/tvTAlerta"
+            android:id="@+id/tvITAlerta"
             android:layout_marginTop="20dp"/>
 
     </LinearLayout>
@@ -134,11 +134,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Iniciar Transação"
-        android:id="@+id/btSalvarInteresse"
+        android:id="@+id/btITIniciarTransacao"
         android:layout_gravity="center_horizontal"
         style="@style/botao"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"/>
+
+    <!--
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="@string/aguardando"
+        android:id="@+id/tvITAguardando"
+        android:textAlignment="center"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:visibility="gone"/>
+    -->
 
 </RelativeLayout>

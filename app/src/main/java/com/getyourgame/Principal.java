@@ -37,9 +37,13 @@ public class Principal extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
+
+        /*
         id_usuario = util.recebeIdUsuario(getIntent());
         chave_api = util.recebeChaveApi(getIntent());
-
+        */
+        id_usuario = 5;
+        chave_api = "923798d42ec81ca9f07e3cffd7855748";
 
         sem_usuario = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.ic_user);
 
@@ -111,6 +115,20 @@ public class Principal extends AppCompatActivity{
                 param.putString("chave_api", chave_api);
                 contato.putExtras(param);
                 startActivity(contato);
+            }
+        });
+
+        ImageView ivQuadroTransacoes = (ImageView)findViewById(R.id.ivQuadroTransacoes);
+
+        ivQuadroTransacoes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent listaTransacao = new Intent(Principal.this, ListaTransacao.class);
+                Bundle param = new Bundle();
+                param.putInt("id_usuario", id_usuario);
+                param.putString("chave_api", chave_api);
+                listaTransacao.putExtras(param);
+                startActivity(listaTransacao);
             }
         });
     }

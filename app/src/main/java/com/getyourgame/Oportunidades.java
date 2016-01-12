@@ -50,12 +50,11 @@ public class Oportunidades extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_oportunidades);
 
+        id_usuario = util.recebeIdUsuario(getIntent());
+        chave_api = util.recebeChaveApi(getIntent());
 
-        //id_usuario = util.recebeIdUsuario(getIntent());
-        //chave_api = util.recebeChaveApi(getIntent());
-
-        id_usuario = 5;
-        chave_api = "923798d42ec81ca9f07e3cffd7855748";
+        //id_usuario = 5;
+        //chave_api = "923798d42ec81ca9f07e3cffd7855748";
 
         sem_jogo = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.ic_jogo_default);
         moeda = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.ic_moeda);

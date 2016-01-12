@@ -9,6 +9,7 @@
     <string name="action_meu_perfil">Meu Perfil</string>
     <string name="action_multiple_fotos">Foto</string>
 
+    <string name="aguardando">Aguardando o outro usuário...</string>
     <string name="alerta_transacao">Obs: O GetYourGame não se responsabiliza pela veracidade das informações aqui detalhadas ou pelo não recebimento do pagamento/produto.</string>
     <string name="avancar">Avançar</string>
     <string name="bairro">Bairro</string>
@@ -79,6 +80,8 @@
     <string name="title_activity_contatos">Contatos</string>
     <string name="title_activity_contatos_endereco">ContatosEndereco</string>
     <string name="title_activity_contatos_telefone">ContatosTelefone</string>
+    <string name="title_activity_lista_transacao">ListaTransacao</string>
+    <string name="title_activity_lista_transacao_tab">ListaTransacaoTab</string>
 
 
 

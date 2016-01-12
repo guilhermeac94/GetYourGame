@@ -38,7 +38,11 @@
             android:name=".Principal"
             android:label="@string/title_activity_principal"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".PreferenciaUsuario"
@@ -83,10 +87,6 @@
             android:name=".Oportunidades"
             android:label="@string/title_activity_oportunidades"
             android:theme="@style/AppTheme" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".IniciarTransacao"
@@ -96,6 +96,14 @@
         <activity
             android:name=".Contatos"
             android:label="@string/title_activity_contatos" >
+        </activity>
+        <activity
+            android:name=".ListaTransacao"
+            android:label="@string/title_activity_lista_transacao" >
+        </activity>
+        <activity
+            android:name=".ListaTransacaoTab"
+            android:label="@string/title_activity_lista_transacao_tab" >
         </activity>
     </application>
 
