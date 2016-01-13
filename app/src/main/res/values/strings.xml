@@ -48,6 +48,7 @@
     <string name="numero">Nro</string>
     <string name="ok">OK</string>
     <string name="plataforma">Plataforma</string>
+    <string name="plataformas">Plataformas:</string>
     <string name="plataformaDesejada">Plataforma desejada</string>
     <string name="plataformaOfertada">Plataforma ofertada</string>
     <string name="preco">Preço (R$)</string>
@@ -60,6 +61,7 @@
     <string name="telefone">Telefone</string>
     <string name="troca">Troca</string>
     <string name="uf">UF</string>
+    <string name="usuarios">Usuários que possuem:</string>
     <string name="venda">Venda</string>
 
 
@@ -87,6 +89,7 @@
     <string name="title_activity_lista_transacao">ListaTransacao</string>
     <string name="title_activity_lista_transacao_tab">ListaTransacaoTab</string>
     <string name="title_activity_transacao">Transacao</string>
+    <string name="title_activity_tela_jogo">Jogo</string>
 
 
 
