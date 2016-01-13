@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -44,6 +45,8 @@ public class Oportunidades extends AppCompatActivity {
     String filtro;
     Bitmap sem_jogo;
     Bitmap moeda;
+    ProgressBar pbOportunidadesCarregando;
+    TextView tvOportunidadesNenhum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +64,9 @@ public class Oportunidades extends AppCompatActivity {
 
         lista = new ArrayList();
         lvOportunidades = (ListView) findViewById(R.id.lvOportunidades);
+
+        pbOportunidadesCarregando = (ProgressBar)findViewById(R.id.pbOportunidades);
+        tvOportunidadesNenhum = (TextView)findViewById(R.id.tvOportunidadesNenhum);
 
         View v = (RelativeLayout)this.findViewById(R.id.oportunidades);
         new SwipeDetector(v).setOnSwipeListener(new SwipeDetector.onSwipeEvent() {
@@ -90,45 +96,53 @@ public class Oportunidades extends AppCompatActivity {
         protected void onPostExecute(Object retorno) {
             super.onPostExecute(retorno);
 
-            Object[] l = Util.convertToObjectArray(retorno);
+            if(retorno!=null) {
+                Object[] l = Util.convertToObjectArray(retorno);
 
-            for(Object obj : l) {
-                Map<String, String> map = (Map<String, String>) obj;
+                for (Object obj : l) {
+                    Map<String, String> map = (Map<String, String>) obj;
 
-                int interesse = Integer.parseInt(String.valueOf(map.get("id_interesse")));
+                    int interesse = Integer.parseInt(String.valueOf(map.get("id_interesse")));
 
-                        lista.add(new Item(interesse,
-                                map.get("descricao_jogo"),
-                                map.get("plataforma_jogo"),
-                                interesse == 4 ? moeda : (map.get("foto_jogo").equals("") ? sem_jogo : util.StringToBitMap(map.get("foto_jogo"))),
-                                Integer.parseInt(String.valueOf(map.get("id_usuario_jogo"))),
-                                Integer.parseInt(String.valueOf(map.get("id_usuario_ofert"))),
-                                map.get("nome_ofert"),
-                                Integer.parseInt(String.valueOf(map.get("id_jogo_ofert"))),
-                                map.get("descricao_jogo_ofert"),
-                                map.get("plataforma_jogo_ofert"),
-                                map.get("foto_jogo_ofert").equals("") ? sem_jogo : util.StringToBitMap(map.get("foto_jogo_ofert")),
-                                map.get("preco_jogo_ofert") != null ? df.format(Double.parseDouble(String.valueOf(map.get("preco_jogo_ofert")))) : "",
-                                Integer.parseInt(String.valueOf(map.get("id_usuario_jogo_ofert")))));
-            }
-
-            adapter = new Ladapter(getApplicationContext());
-            lvOportunidades.setAdapter(adapter);
-
-            lvOportunidades.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    Item item = lista.get(i);
-                    Bundle param = new Bundle();
-                    param.putInt("id_usuario", id_usuario);
-                    param.putString("chave_api", chave_api);
-                    param.putInt("id_usuario_jogo_solic", item.id_usuario_jogo);
-                    param.putInt("id_usuario_jogo_ofert", item.id_usuario_jogo_ofert);
-                    Intent intent = new Intent(Oportunidades.this, IniciarTransacao.class);
-                    intent.putExtras(param);
-                    startActivity(intent);
+                    lista.add(new Item(interesse,
+                            map.get("descricao_jogo"),
+                            map.get("plataforma_jogo"),
+                            interesse == 4 ? moeda : (map.get("foto_jogo").equals("") ? sem_jogo : util.StringToBitMap(map.get("foto_jogo"))),
+                            Integer.parseInt(String.valueOf(map.get("id_usuario_jogo"))),
+                            Integer.parseInt(String.valueOf(map.get("id_usuario_ofert"))),
+                            map.get("nome_ofert"),
+                            Integer.parseInt(String.valueOf(map.get("id_jogo_ofert"))),
+                            map.get("descricao_jogo_ofert"),
+                            map.get("plataforma_jogo_ofert"),
+                            map.get("foto_jogo_ofert").equals("") ? sem_jogo : util.StringToBitMap(map.get("foto_jogo_ofert")),
+                            map.get("preco_jogo_ofert") != null ? df.format(Double.parseDouble(String.valueOf(map.get("preco_jogo_ofert")))) : "",
+                            Integer.parseInt(String.valueOf(map.get("id_usuario_jogo_ofert")))));
                 }
-            });
+
+                adapter = new Ladapter(getApplicationContext());
+                lvOportunidades.setAdapter(adapter);
+
+                pbOportunidadesCarregando.setVisibility(View.GONE);
+                lvOportunidades.setVisibility(View.VISIBLE);
+
+                lvOportunidades.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        Item item = lista.get(i);
+                        Bundle param = new Bundle();
+                        param.putInt("id_usuario", id_usuario);
+                        param.putString("chave_api", chave_api);
+                        param.putInt("id_usuario_jogo_solic", item.id_usuario_jogo);
+                        param.putInt("id_usuario_jogo_ofert", item.id_usuario_jogo_ofert);
+                        Intent intent = new Intent(Oportunidades.this, IniciarTransacao.class);
+                        intent.putExtras(param);
+                        startActivity(intent);
+                    }
+                });
+            }else{
+                pbOportunidadesCarregando.setVisibility(View.GONE);
+                tvOportunidadesNenhum.setVisibility(View.VISIBLE);
+            }
         }
     }
 

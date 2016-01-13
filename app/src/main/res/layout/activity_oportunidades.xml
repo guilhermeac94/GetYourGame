@@ -9,6 +9,14 @@
     android:id="@+id/oportunidades"
     tools:context="com.getyourgame.Oportunidades">
 
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pbOportunidades"
+        android:indeterminate="true"
+        android:background="@null"
+        android:layout_centerInParent="true"/>
+
     <ListView
         android:id="@+id/lvOportunidades"
         android:layout_width="match_parent"
@@ -18,7 +26,20 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="20dp"
+        android:visibility="gone">
     </ListView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="@string/nenhum_resultado"
+        android:id="@+id/tvOportunidadesNenhum"
+        android:textAlignment="center"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:visibility="gone"/>
 
 </RelativeLayout>

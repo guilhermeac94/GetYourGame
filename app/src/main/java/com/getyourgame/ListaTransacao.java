@@ -28,7 +28,7 @@ public class ListaTransacao extends TabActivity {
 
         TabHost.TabSpec tab1 = tabHost.newTabSpec("PENDENTES");
         TabHost.TabSpec tab2 = tabHost.newTabSpec("EM ANDAMENTO");
-        TabHost.TabSpec tab3 = tabHost.newTabSpec("ENCERRADAS");
+        TabHost.TabSpec tab3 = tabHost.newTabSpec("CONCLUÍDAS");
         TabHost.TabSpec tab4 = tabHost.newTabSpec("CANCELADAS");
 
         tab1.setIndicator("PENDENTES");
@@ -49,19 +49,19 @@ public class ListaTransacao extends TabActivity {
         intentAndamento.putExtras(paramAndamento);
         tab2.setContent(intentAndamento);
 
-        tab3.setIndicator("ENCERRADAS");
-        Intent intentEncerradas = new Intent(this, ListaTransacaoTab.class);
-        Bundle paramEncerradas = new Bundle();
-        paramEncerradas.putInt("status", 5);
-        paramEncerradas.putInt("id_usuario", id_usuario);
-        paramEncerradas.putString("chave_api", chave_api);
-        intentEncerradas.putExtras(paramEncerradas);
-        tab3.setContent(intentEncerradas);
+        tab3.setIndicator("CONCLUÍDAS");
+        Intent intentConcluidas = new Intent(this, ListaTransacaoTab.class);
+        Bundle paramConcluidas = new Bundle();
+        paramConcluidas.putInt("status", 3);
+        paramConcluidas.putInt("id_usuario", id_usuario);
+        paramConcluidas.putString("chave_api", chave_api);
+        intentConcluidas.putExtras(paramConcluidas);
+        tab3.setContent(intentConcluidas);
 
         tab4.setIndicator("CANCELADAS");
         Intent intentCanceladas = new Intent(this, ListaTransacaoTab.class);
         Bundle paramCanceladas = new Bundle();
-        paramCanceladas.putInt("status", 6);
+        paramCanceladas.putInt("status", 4);
         paramCanceladas.putInt("id_usuario", id_usuario);
         paramCanceladas.putString("chave_api", chave_api);
         intentCanceladas.putExtras(paramCanceladas);

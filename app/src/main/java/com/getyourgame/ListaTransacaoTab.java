@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.getyourgame.util.Http;
@@ -35,11 +36,13 @@ public class ListaTransacaoTab extends AppCompatActivity {
     Util util = new Util();
     DecimalFormat df = new DecimalFormat("0.00");
     ListView lvLTListaTransacoes;
+    TextView tvLTNenhum;
     Ladapter adapter;
     ArrayList<Item> lista;
     String filtro;
     Bitmap sem_jogo;
     Bitmap moeda;
+    ProgressBar pbLTCarregando;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +57,11 @@ public class ListaTransacaoTab extends AppCompatActivity {
 
         sem_jogo = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.ic_jogo_default);
         moeda = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.ic_moeda);
+
+        lista = new ArrayList();
+        lvLTListaTransacoes = (ListView) findViewById(R.id.lvLTListaTransacoes);
+        tvLTNenhum = (TextView)findViewById(R.id.tvLTNenhum);
+        pbLTCarregando = (ProgressBar)findViewById(R.id.pbLTCarregando);
 
         new HttpBuscaTransacoes((new Webservice().buscaTransacoes(id_usuario, status)), null, Object[].class, "").execute();
     }
@@ -116,22 +124,25 @@ public class ListaTransacaoTab extends AppCompatActivity {
                 adapter = new Ladapter(getApplicationContext());
                 lvLTListaTransacoes.setAdapter(adapter);
 
+                pbLTCarregando.setVisibility(View.GONE);
+                lvLTListaTransacoes.setVisibility(View.VISIBLE);
+
                 lvLTListaTransacoes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        /*
                         Item item = lista.get(i);
                         Bundle param = new Bundle();
                         param.putInt("id_usuario", id_usuario);
                         param.putString("chave_api", chave_api);
-                        param.putInt("id_usuario_jogo_solic", item.id_usuario_jogo);
-                        param.putInt("id_usuario_jogo_ofert", item.id_usuario_jogo_ofert);
-                        Intent intent = new Intent(Oportunidades.this, IniciarTransacao.class);
+                        param.putInt("id_transacao", item.id_transacao);
+                        Intent intent = new Intent(ListaTransacaoTab.this, Transacao.class);
                         intent.putExtras(param);
                         startActivity(intent);
-                        */
                     }
                 });
+            }else{
+                pbLTCarregando.setVisibility(View.GONE);
+                tvLTNenhum.setVisibility(View.VISIBLE);
             }
         }
     }
@@ -230,7 +241,7 @@ public class ListaTransacaoTab extends AppCompatActivity {
             if (convertView == null) {
                 LayoutInflater inflater = (LayoutInflater) c
                         .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                row = inflater.inflate(R.layout.layout_oportunidades, parent,
+                row = inflater.inflate(R.layout.layout_transacao_tab, parent,
                         false);
                 holder = new myViewHolder(row);
                 row.setTag(holder);
@@ -240,10 +251,10 @@ public class ListaTransacaoTab extends AppCompatActivity {
 
 
             if(lista.get(position).id_interesse == 4){
-                row.setBackgroundColor(getResources().getColor(R.color.compra));
+                //row.setBackgroundColor(getResources().getColor(R.color.compra));
                 holder.tvLTPrecoOfert.setText(lista.get(position).preco_jogo_ofert);
             }else{
-                row.setBackgroundColor(getResources().getColor(R.color.troca));
+                //row.setBackgroundColor(getResources().getColor(R.color.troca));
                 holder.tvLTDescricaoJogo.setText(lista.get(position).descricao_jogo);
                 holder.tvLTPlataformaJogo.setText(lista.get(position).plataforma_jogo);
                 holder.tvLTPrecoOfert.setText("");

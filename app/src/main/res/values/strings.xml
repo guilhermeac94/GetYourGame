@@ -16,6 +16,7 @@
     <string name="buscar">Buscar</string>
     <string name="cadastrar"><u>Cadastrar-se</u></string>
     <string name="cadastro">Cadastro</string>
+    <string name="cancelar_transacao">Cancelar Transação</string>
     <string name="cep">Cep</string>
     <string name="cidade">Cidade</string>
     <string name="complemento">Complemento</string>
@@ -27,10 +28,12 @@
     <string name="distanciaProgresso">0</string>
     <string name="email">E-mail</string>
     <string name="entrar">Entrar</string>
+    <string name="enviar_transacao">Produto/Pagamento Enviado</string>
     <string name="estado_jogo">Estado do Jogo:</string>
     <string name="estado_jogo_desejado">Estado desejado do Jogo:</string>
     <string name="gps">Permite GPS:</string>
     <string name="cadastrar_interesse">Cadastrar interesse</string>
+    <string name="iniciar_transacao">INICIAR TRANSAÇÃO</string>
     <string name="interesses">Interesses</string>
     <string name="intervalo_preco">Intervalo de preço desejado (R$)</string>
     <string name="jogo">Jogo</string>
@@ -40,6 +43,7 @@
     <string name="logradouro">Logradouro</string>
     <string name="metodo_envio_padrao">Método de envio padrão:</string>
     <string name="metodo_envio">Método de Envio:</string>
+    <string name="nenhum_resultado">Nenhum resultado encontrado!</string>
     <string name="nome">Nome</string>
     <string name="numero">Nro</string>
     <string name="ok">OK</string>
@@ -82,6 +86,7 @@
     <string name="title_activity_contatos_telefone">ContatosTelefone</string>
     <string name="title_activity_lista_transacao">ListaTransacao</string>
     <string name="title_activity_lista_transacao_tab">ListaTransacaoTab</string>
+    <string name="title_activity_transacao">Transacao</string>
 
 
 

@@ -133,7 +133,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Iniciar Transação"
+        android:text="@string/iniciar_transacao"
         android:id="@+id/btITIniciarTransacao"
         android:layout_gravity="center_horizontal"
         style="@style/botao"

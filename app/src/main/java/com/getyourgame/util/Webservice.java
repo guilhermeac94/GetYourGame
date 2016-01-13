@@ -77,7 +77,7 @@ public class Webservice {
     }
 
     public Webservice buscaDadosOportunidade(int id_usuario_jogo_solic, int id_usuario_jogo_ofert){
-        return new Webservice("dados_oportunidade/"+id_usuario_jogo_solic+";"+id_usuario_jogo_ofert, HttpMethod.GET, false);
+        return new Webservice("dados_oportunidade/"+id_usuario_jogo_solic+"/"+id_usuario_jogo_ofert, HttpMethod.GET, false);
     }
 
     public Webservice buscaPreferencias(int id_usuario){
@@ -101,6 +101,14 @@ public class Webservice {
     }
 
     public Webservice buscaTransacoes(int id_usuario, int status){
-        return new Webservice("transacao/"+id_usuario+";"+status, HttpMethod.GET, false);
+        return new Webservice("transacao/"+id_usuario+"/"+status, HttpMethod.GET, false);
+    }
+
+    public Webservice buscaDadosTransacao(int id_transacao){
+        return new Webservice("dados_transacao/"+id_transacao, HttpMethod.GET, false);
+    }
+
+    public Webservice atualizaTransacao(int id_transacao){
+        return new Webservice("transacao/"+id_transacao, HttpMethod.PUT, false);
     }
 }
