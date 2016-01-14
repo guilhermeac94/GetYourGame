@@ -1,5 +1,7 @@
 package com.getyourgame;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -20,6 +22,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.getyourgame.db.SQLiteHandler;
+import com.getyourgame.model.Usuario;
 import com.getyourgame.util.Http;
 import com.getyourgame.util.Util;
 import com.getyourgame.util.Webservice;
@@ -30,71 +33,27 @@ import org.springframework.util.MultiValueMap;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class ListaUsuario extends AppCompatActivity {
+public class ListaUsuario extends AppCompatActivity implements ListaUsuarios.OnSelecionaUsuarioListener{
 
+    FragmentManager manager;
     Util util = new Util();
     Integer id_usuario;
-    ListView lvUsuarios;
-    Ladapter adapter;
-    ArrayList<Item> lista;
-    String filtro;
-    Bitmap sem_usuario;
+    String chave_api;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_usuario);
 
-        Button btBuscarUsuario = (Button) findViewById(R.id.btBuscarUsuario);
-        sem_usuario = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.ic_user);
+        id_usuario = util.recebeIdUsuario(getIntent());
+        chave_api = util.recebeChaveApi(getIntent());
 
-        btBuscarUsuario.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                carregaLista();
-            }
-        });
-        carregaLista();
-    }
-
-    public void carregaLista(){
-
-        EditText etBuscarUsuario = (EditText) findViewById(R.id.etBuscarUsuario);
-        filtro = String.valueOf(etBuscarUsuario.getText().toString());
-
-        lista = new ArrayList();
-        lvUsuarios  = (ListView) findViewById(R.id.lvUsuarios);
-
-        Webservice ws = new Webservice();
-
-        if(filtro.equals("")) {
-            new HttpBuscaUsuarios(ws.buscaUsuarios(), null, Object[].class, "").execute();
-
-        }else {
-            MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
-            map.add("filtro", filtro);
-            new HttpBuscaUsuarios(ws.buscaUsuarios(), map, Object[].class, "").execute();
-        }
-    }
-
-
-    private class HttpBuscaUsuarios extends Http {
-        public HttpBuscaUsuarios(Webservice ws, MultiValueMap<String, String> map, Class classe, String apikey) {
-            super(ws, map, classe, apikey);
-        }
-        @Override
-        protected void onPostExecute(Object retorno) {
-            super.onPostExecute(retorno);
-
-            Object[] l = Util.convertToObjectArray(retorno);
-
-            for(Object obj : l){
-                Map<String, String> map = (Map<String, String>) obj;
-                lista.add(new Item(map.get("nome"), map.get("foto").equals("")?sem_usuario : util.StringToBitMap(map.get("foto"))));
-            }
-            adapter = new Ladapter(getApplicationContext());
-            lvUsuarios.setAdapter(adapter);
-        }
+        manager = getFragmentManager();
+        ListaUsuarios listaUsuarios= new ListaUsuarios();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.add(R.id.layoutListaUsuario, listaUsuarios, "lista_usuarios");
+        transaction.commit();
     }
 
     @Override
@@ -119,83 +78,14 @@ public class ListaUsuario extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    class Item {
-        String nome;
-        Bitmap foto;
-
-        Item(String name, Bitmap foto) {
-            this.nome = name;
-            this.foto = foto;
-        }
-    }
-
-    class Ladapter extends BaseAdapter {
-
-        Context c;
-        myViewHolder holder;
-
-        public Ladapter(Context context) {
-            // TODO Auto-generated constructor stub
-            this.c = context;
-        }
-
-        @Override
-        public int getCount() {
-            // TODO Auto-generated method stub
-            return lista.size();
-        }
-
-        @Override
-        public Object getItem(int position) {
-            // TODO Auto-generated method stub
-            return null;
-        }
-
-        @Override
-        public long getItemId(int position) {
-            // TODO Auto-generated method stub
-            return 0;
-        }
-
-        class myViewHolder {
-            TextView name;
-            ImageView foto;
-
-            public myViewHolder(View v) {
-                // TODO Auto-generated constructor stub
-                name = (TextView) v.findViewById(R.id.tvNomeUsuario);
-                foto = (ImageView) v.findViewById(R.id.ivFotoUsuario);
-            }
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            // TODO Auto-generated method stub
-
-            View row = convertView;
-
-            if (convertView == null) {
-                LayoutInflater inflater = (LayoutInflater) c
-                        .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                row = inflater.inflate(R.layout.layout_usuario, parent,
-                        false);
-                holder = new myViewHolder(row);
-                row.setTag(holder);
-            } else {
-                holder = (myViewHolder) row.getTag();
-            }
-
-            holder.name.setText(lista.get(position).nome);
-            holder.foto.setImageBitmap(lista.get(position).foto);
-
-            if (holder.name.getText().toString().equals("")) {
-                holder.name.setVisibility(View.GONE);
-            } else {
-                holder.name.setVisibility(View.VISIBLE);
-            }
-
-            return row;
-        }
-
+    @Override
+    public void OnSelecionaUsuario(Usuario usuario) {
+        Intent intentTelaJogo = new Intent(ListaUsuario.this,TelaUsuario.class);
+        Bundle param = new Bundle();
+        param.putInt("id_usuario", id_usuario);
+        param.putString("chave_api", chave_api);
+        param.putInt("id_usuario_selec", usuario.getId_usuario());
+        intentTelaJogo.putExtras(param);
+        startActivity(intentTelaJogo);
     }
 }

@@ -51,6 +51,7 @@ public class Transacao extends AppCompatActivity {
     Button btTIniciarTransacao;
     Button btTEnviarTransacao;
     Button btTCancelarTransacao;
+    Button btTRecusarTransacao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +75,7 @@ public class Transacao extends AppCompatActivity {
         btTIniciarTransacao = (Button)findViewById(R.id.btTIniciarTransacao);
         btTEnviarTransacao = (Button)findViewById(R.id.btTEnviarTransacao);
         btTCancelarTransacao = (Button)findViewById(R.id.btTCancelarTransacao);
+        btTRecusarTransacao = (Button)findViewById(R.id.btTRecusarTransacao);
 
         btTIniciarTransacao.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,6 +125,12 @@ public class Transacao extends AppCompatActivity {
             }
         });
 
+        btTRecusarTransacao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new HttpAtualizaTransacao((new Webservice()).deletaTransacao(id_transacao),null,Object.class,"").execute();
+            }
+        });
 
         new HttpBuscaDadosTransacao((new Webservice()).buscaDadosTransacao(id_transacao),null,Object.class,"").execute();
     }
@@ -231,6 +239,7 @@ public class Transacao extends AppCompatActivity {
                 if(solicitante){
                     tvTAguardando.setVisibility(View.VISIBLE);
                 }else{
+                    btTRecusarTransacao.setVisibility(View.VISIBLE);
                     btTIniciarTransacao.setVisibility(View.VISIBLE);
                 }
             }else if(status==2){

@@ -1,0 +1,42 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.getyourgame.ListaUsuarios">
+
+    <ListView
+        android:id="@+id/lvUsuarios"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/list"
+        android:descendantFocusability="beforeDescendants"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/etBuscarUsuario"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="20dp">
+    </ListView>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/etBuscarUsuario"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/btBuscarUsuario"
+        android:layout_toStartOf="@+id/btBuscarUsuario" />
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btBuscarUsuario"
+        style="@style/botaoLupa"
+        android:layout_above="@+id/lvUsuarios"
+        android:layout_alignRight="@+id/lvUsuarios"
+        android:layout_alignEnd="@+id/lvUsuarios"
+        android:layout_alignParentTop="true" />
+
+</RelativeLayout>

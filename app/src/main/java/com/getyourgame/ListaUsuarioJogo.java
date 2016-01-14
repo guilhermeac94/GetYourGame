@@ -27,18 +27,22 @@ public class ListaUsuarioJogo extends TabActivity {
         id_usuario = util.recebeIdUsuario(getIntent());
         chave_api = util.recebeChaveApi(getIntent());
 
+        Bundle param = new Bundle();
+        param.putInt("id_usuario", id_usuario);
+        param.putString("chave_api", chave_api);
+
         TabHost tabHost = (TabHost)findViewById(android.R.id.tabhost);
 
         TabHost.TabSpec tab1 = tabHost.newTabSpec("Usuário");
         TabHost.TabSpec tab2 = tabHost.newTabSpec("Jogo");
+
         tab1.setIndicator("Usuário");
-        tab1.setContent(new Intent(this, ListaUsuario.class));
+        Intent intentListaUsuario = new Intent(ListaUsuarioJogo.this,ListaUsuario.class);
+        intentListaUsuario.putExtras(param);
+        tab1.setContent(intentListaUsuario);
 
         tab2.setIndicator("Jogo");
         Intent intentListaJogo = new Intent(ListaUsuarioJogo.this,ListaJogo.class);
-        Bundle param = new Bundle();
-        param.putInt("id_usuario", id_usuario);
-        param.putString("chave_api", chave_api);
         intentListaJogo.putExtras(param);
         tab2.setContent(intentListaJogo);
 

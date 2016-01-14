@@ -16,6 +16,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -54,6 +55,9 @@ public class TelaJogo extends AppCompatActivity{
     TextView tvJAnoJogo;
 
     ListView lvLTListaPlataformas;
+
+    ProgressBar pbJCarregando;
+    TextView tvJNenhumResultado;
     ListView lvJUsuarios;
 
     @Override
@@ -66,7 +70,6 @@ public class TelaJogo extends AppCompatActivity{
 
         Bundle recebe = getIntent().getExtras();
         id_jogo = recebe.getInt("id_jogo");
-
         //id_jogo = 1;
 
         sem_jogo = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.ic_jogo_default);
@@ -77,6 +80,9 @@ public class TelaJogo extends AppCompatActivity{
         tvJAnoJogo = (TextView)findViewById(R.id.tvJAnoJogo);
 
         lvLTListaPlataformas = (ListView)findViewById(R.id.lvLTListaPlataformas);
+
+        pbJCarregando = (ProgressBar) findViewById(R.id.pbJCarregando);
+        tvJNenhumResultado = (TextView) findViewById(R.id.tvJNenhumResultado);
         lvJUsuarios = (ListView)findViewById(R.id.lvJUsuarios);
 
         new HttpCarregaJogo((new Webservice().buscaJogo(id_jogo)),null,Jogo.class,"").execute();
@@ -246,6 +252,12 @@ public class TelaJogo extends AppCompatActivity{
 
                 adapterUsuarios = new LadapterUsuarios(getApplicationContext());
                 lvJUsuarios.setAdapter(adapterUsuarios);
+
+                pbJCarregando.setVisibility(View.GONE);
+                lvJUsuarios.setVisibility(View.VISIBLE);
+            }else{
+                pbJCarregando.setVisibility(View.GONE);
+                tvJNenhumResultado.setVisibility(View.VISIBLE);
             }
         }
     }

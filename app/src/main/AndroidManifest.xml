@@ -25,11 +25,6 @@
         <activity
             android:name=".CarregaCadastros"
             android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".Login"
@@ -43,7 +38,11 @@
             android:name=".Principal"
             android:label="@string/title_activity_principal"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".PreferenciaUsuario"
@@ -61,9 +60,11 @@
             android:name=".ListaJogo"
             android:label="@string/title_activity_lista_jogo" >
         </activity>
-        <activity android:name=".CarregaFotoUsuario"
+        <activity
+            android:name=".CarregaFotoUsuario"
             android:label="@string/title_activity_carrega_foto_usuario"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >>
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
+>
         </activity>
         <activity
             android:name=".Interesse"
@@ -115,6 +116,10 @@
         <activity
             android:name=".TelaJogo"
             android:label="@string/title_activity_tela_jogo" >
+        </activity>
+        <activity
+            android:name=".TelaUsuario"
+            android:label="@string/title_activity_tela_usuario" >
         </activity>
     </application>
 

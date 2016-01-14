@@ -65,6 +65,7 @@
     <string name="interesses">Interesses</string>
     <string name="intervalo_preco">Intervalo de preço desejado (R$)</string>
     <string name="jogo">Jogo</string>
+    <string name="jogos">Jogos que o usuário possui:</string>
     <string name="jogoDesejado">Jogo desejado</string>
     <string name="jogoOfertado">Jogo ofertado</string>
     <string name="login">Login</string>
@@ -83,6 +84,7 @@
     <string name="precoFinal">Preço Final</string>
     <string name="precoInicial">Preço Inicial</string>
     <string name="preferencias">Preferências</string>
+    <string name="recusar_transacao">RECUSAR TRANSAÇÃO</string>
     <string name="salvar">Salvar</string>
     <string name="selecionar">(Selecionar)</string>
     <string name="senha">Senha</string>
@@ -91,5 +93,6 @@
     <string name="uf">UF</string>
     <string name="usuarios">Usuários que possuem:</string>
     <string name="venda">Venda</string>
+    <string name="title_activity_tela_usuario">TelaUsuario</string>
 
 </resources>

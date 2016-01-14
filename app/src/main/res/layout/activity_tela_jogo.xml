@@ -3,7 +3,8 @@
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context="com.getyourgame.TelaJogo">
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.getyourgame.TelaJogo">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -95,16 +96,32 @@
                     android:id="@+id/tvJUsuarios"
                     android:layout_marginTop="15dp"/>
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:text="@string/nenhum_resultado"
+                    android:id="@+id/tvJNenhumResultado"
+                    android:layout_marginTop="10dp"
+                    android:visibility="gone"/>
+
                 <ListView
                     android:id="@+id/lvJUsuarios"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/list"
                     android:descendantFocusability="beforeDescendants"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentTop="true">
+                    android:visibility="gone">
                 </ListView>
+
+                <ProgressBar
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pbJCarregando"
+                    android:indeterminate="true"
+                    android:background="@null"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="10dp"/>
 
             </LinearLayout>
 

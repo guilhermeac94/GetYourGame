@@ -180,28 +180,32 @@ public class InteresseTroca extends Fragment {
                     }
 
 
-                    final Spinner spEstadoJogo = (Spinner) fragmentView.findViewById(R.id.spEstadoJogo);
-                    if(spEstadoJogo.getSelectedItem() instanceof EstadoJogo){
-                        estado_jogo = (EstadoJogo) spEstadoJogo.getSelectedItem();
-                    }else{
-                        estado_jogo = null;
+                    if(id_jogo_desejado==id_jogo && plataforma!=null && plataformaDesejada!=null && plataforma.getId_plataforma().equals(plataformaDesejada.getId_plataforma())) {
+                        util.msgDialog(getActivity(), "Alerta", "Os jogos e plataformas não podem ser iguais!");
+
+                    }else {
+                        final Spinner spEstadoJogo = (Spinner) fragmentView.findViewById(R.id.spEstadoJogo);
+                        if (spEstadoJogo.getSelectedItem() instanceof EstadoJogo) {
+                            estado_jogo = (EstadoJogo) spEstadoJogo.getSelectedItem();
+                        } else {
+                            estado_jogo = null;
+                        }
+
+                        map = new LinkedMultiValueMap<String, String>();
+                        map.add("id_jogo", String.valueOf(id_jogo));
+                        map.add("id_usuario", String.valueOf(id_usuario));
+                        map.add("id_interesse", String.valueOf(interesse));
+                        map.add("id_estado_jogo", (estado_jogo != null) ? String.valueOf(estado_jogo.getId_estado_jogo()) : "");
+                        map.add("id_nivel", "1");
+                        map.add("distancia", "");
+                        map.add("id_plataforma", (plataforma != null) ? String.valueOf(plataforma.getId_plataforma()) : "");
+                        map.add("preco", "");
+                        map.add("id_jogo_troca", (id_jogo_desejado != 0) ? String.valueOf(id_jogo_desejado) : "");
+                        map.add("id_plataforma_troca", (plataformaDesejada != null) ? String.valueOf(plataformaDesejada.getId_plataforma()) : "");
+                        map.add("preco_inicial", "");
+                        map.add("preco_final", "");
+                        salvarInteresse(map);
                     }
-
-                    map = new LinkedMultiValueMap<String, String>();
-                    map.add("id_jogo", String.valueOf(id_jogo));
-                    map.add("id_usuario", String.valueOf(id_usuario));
-                    map.add("id_interesse", String.valueOf(interesse));
-                    map.add("id_estado_jogo", (estado_jogo!=null)?String.valueOf(estado_jogo.getId_estado_jogo()):"");
-                    map.add("id_nivel", "1");
-                    map.add("distancia", "");
-                    map.add("id_plataforma", (plataforma!=null)?String.valueOf(plataforma.getId_plataforma()):"");
-                    map.add("preco", "");
-                    map.add("id_jogo_troca", (id_jogo_desejado!=0) ? String.valueOf(id_jogo_desejado) : "");
-                    map.add("id_plataforma_troca", (plataformaDesejada!=null)?String.valueOf(plataformaDesejada.getId_plataforma()):"");
-                    map.add("preco_inicial", "");
-                    map.add("preco_final", "");
-                    salvarInteresse(map);
-
                 }else{
                     util.msgDialog(getActivity(), "Alerta", "Selecione o jogo!");
                 }

@@ -7,6 +7,4 @@
     tools:context="com.getyourgame.ListaJogo"
     android:id="@+id/layoutListaJogo">
 
-
-
 </RelativeLayout>

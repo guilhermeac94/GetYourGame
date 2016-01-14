@@ -42,6 +42,11 @@ public class Webservice {
     public Webservice buscaUsuario(int id_usuario){
         return new Webservice("usuario/"+id_usuario, HttpMethod.GET, true);
     }
+
+    public Webservice buscaJogosDoUsuario(int id_usuario){
+        return new Webservice("jogos_do_usuario/"+id_usuario, HttpMethod.GET, false);
+    }
+
     public Webservice buscaUsuarioEmail(String email){
         return new Webservice("usuario_email/"+email, HttpMethod.GET, false);
     }
@@ -114,5 +119,9 @@ public class Webservice {
 
     public Webservice atualizaTransacao(int id_transacao){
         return new Webservice("transacao/"+id_transacao, HttpMethod.PUT, false);
+    }
+
+    public Webservice deletaTransacao(int id_transacao){
+        return new Webservice("transacao/"+id_transacao, HttpMethod.DELETE, false);
     }
 }
