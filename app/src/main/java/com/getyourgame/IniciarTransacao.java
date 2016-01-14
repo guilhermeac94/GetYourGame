@@ -86,8 +86,10 @@ public class IniciarTransacao extends AppCompatActivity {
                 map.add("id_usuario_jogo_solic", String.valueOf(id_usuario_jogo_solic));
                 map.add("id_usuario_jogo_ofert", String.valueOf(id_usuario_jogo_ofert));
 
-                metodo = (MetodoEnvio)spITMetodoEnvio.getSelectedItem();
-                map.add("id_metodo_envio_solicitante", String.valueOf(metodo.getId_metodo_envio()));
+                if(!compra) {
+                    metodo = (MetodoEnvio) spITMetodoEnvio.getSelectedItem();
+                    map.add("id_metodo_envio_solicitante", String.valueOf(metodo.getId_metodo_envio()));
+                }
 
                 new HttpInsereTransacao((new Webservice()).insereTransacao(),map,Object.class,"").execute();
             }

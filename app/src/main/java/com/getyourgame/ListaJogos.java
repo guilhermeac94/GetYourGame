@@ -170,7 +170,7 @@ public class ListaJogos extends Fragment {
         if (context instanceof OnSelecionaJogoListener) {
             mListener = (OnSelecionaJogoListener) context;
         } else {
-            throw new ClassCastException(context.toString() + " must implemenet InteresseCompra.OnCompraListener");
+            throw new ClassCastException(context.toString() + " must implemenet ListaJogos.OnSelecionaJogoListener");
         }
     }
 

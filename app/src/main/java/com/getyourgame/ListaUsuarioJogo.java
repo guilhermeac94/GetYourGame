@@ -35,7 +35,12 @@ public class ListaUsuarioJogo extends TabActivity {
         tab1.setContent(new Intent(this, ListaUsuario.class));
 
         tab2.setIndicator("Jogo");
-        tab2.setContent(new Intent(this, ListaJogo.class));
+        Intent intentListaJogo = new Intent(ListaUsuarioJogo.this,ListaJogo.class);
+        Bundle param = new Bundle();
+        param.putInt("id_usuario", id_usuario);
+        param.putString("chave_api", chave_api);
+        intentListaJogo.putExtras(param);
+        tab2.setContent(intentListaJogo);
 
         /** Add the tabs  to the TabHost to display. */
         tabHost.addTab(tab1);

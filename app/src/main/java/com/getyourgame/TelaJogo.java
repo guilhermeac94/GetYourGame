@@ -1,6 +1,7 @@
 package com.getyourgame;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
@@ -12,12 +13,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.getyourgame.model.Endereco;
 import com.getyourgame.model.Jogo;
 import com.getyourgame.model.Plataforma;
 import com.getyourgame.model.Usuario;
@@ -31,7 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class TelaJogo extends AppCompatActivity {
+public class TelaJogo extends AppCompatActivity{
 
     Util util = new Util();
     Integer id_usuario;
@@ -61,11 +64,10 @@ public class TelaJogo extends AppCompatActivity {
         id_usuario = util.recebeIdUsuario(getIntent());
         chave_api = util.recebeChaveApi(getIntent());
 
-        /*
         Bundle recebe = getIntent().getExtras();
         id_jogo = recebe.getInt("id_jogo");
-        */
-        id_jogo = 1;
+
+        //id_jogo = 1;
 
         sem_jogo = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.ic_jogo_default);
         sem_usuario = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.ic_user);
@@ -79,6 +81,42 @@ public class TelaJogo extends AppCompatActivity {
 
         new HttpCarregaJogo((new Webservice().buscaJogo(id_jogo)),null,Jogo.class,"").execute();
         new HttpBuscaUsuarioTemJogo((new Webservice().buscaUsuarioTemJogo(id_jogo)),null,Object[].class,"").execute();
+
+        Button btJCadastrarInteresse = (Button) findViewById(R.id.btJCadastrarInteresse);
+        btJCadastrarInteresse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new HttpBuscaEndereco((new Webservice()).buscaEndereco(id_usuario), null, Endereco.class, "").execute();
+            }
+        });
+
+    }
+
+    private class HttpBuscaEndereco extends Http {
+        public HttpBuscaEndereco(Webservice ws, MultiValueMap<String, String> map, Class classe, String apikey) {
+            super(ws, map, classe, apikey);
+        }
+
+        @Override
+        protected void onPostExecute(Object retorno) {
+            Endereco endereco = (Endereco) retorno;
+
+            Bundle param = new Bundle();
+            param.putInt("id_usuario", id_usuario);
+            param.putString("chave_api", chave_api);
+
+            if(!endereco.getError()) {
+                Intent interesse = new Intent(TelaJogo.this, Interesse.class);
+                param.putInt("id_jogo", id_jogo);
+                interesse.putExtras(param);
+                startActivity(interesse);
+            }else{
+                param.putString("msg_interesse", "msg_interesse");
+                Intent contato = new Intent(TelaJogo.this, Contatos.class);
+                contato.putExtras(param);
+                startActivity(contato);
+            }
+        }
     }
 
     @Override

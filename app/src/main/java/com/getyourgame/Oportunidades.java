@@ -104,7 +104,8 @@ public class Oportunidades extends AppCompatActivity {
 
                     int interesse = Integer.parseInt(String.valueOf(map.get("id_interesse")));
 
-                    lista.add(new Item(interesse,
+                    lista.add(new Item(Integer.parseInt(String.valueOf(map.get("existe_transacao"))),
+                            interesse,
                             map.get("descricao_jogo"),
                             map.get("plataforma_jogo"),
                             interesse == 4 ? moeda : (map.get("foto_jogo").equals("") ? sem_jogo : util.StringToBitMap(map.get("foto_jogo"))),
@@ -129,14 +130,19 @@ public class Oportunidades extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                         Item item = lista.get(i);
-                        Bundle param = new Bundle();
-                        param.putInt("id_usuario", id_usuario);
-                        param.putString("chave_api", chave_api);
-                        param.putInt("id_usuario_jogo_solic", item.id_usuario_jogo);
-                        param.putInt("id_usuario_jogo_ofert", item.id_usuario_jogo_ofert);
-                        Intent intent = new Intent(Oportunidades.this, IniciarTransacao.class);
-                        intent.putExtras(param);
-                        startActivity(intent);
+
+                        if(item.existe_transacao==1){
+                            util.msgDialog(Oportunidades.this, "Alerta", "Já existe uma transação pendente para esta oportunidade!");
+                        }else {
+                            Bundle param = new Bundle();
+                            param.putInt("id_usuario", id_usuario);
+                            param.putString("chave_api", chave_api);
+                            param.putInt("id_usuario_jogo_solic", item.id_usuario_jogo);
+                            param.putInt("id_usuario_jogo_ofert", item.id_usuario_jogo_ofert);
+                            Intent intent = new Intent(Oportunidades.this, IniciarTransacao.class);
+                            intent.putExtras(param);
+                            startActivity(intent);
+                        }
                     }
                 });
             }else{
@@ -147,6 +153,7 @@ public class Oportunidades extends AppCompatActivity {
     }
 
     class Item {
+        int existe_transacao;
         int id_interesse;
         String descricao_jogo;
         String plataforma_jogo;
@@ -161,7 +168,8 @@ public class Oportunidades extends AppCompatActivity {
         String preco_jogo_ofert;
         int id_usuario_jogo_ofert;
 
-        public Item(int id_interesse, String descricao_jogo, String plataforma_jogo, Bitmap foto_jogo, int id_usuario_jogo, int id_usuario_ofert, String nome_ofert, int id_jogo_ofert, String descricao_jogo_ofert, String plataforma_jogo_ofert, Bitmap foto_jogo_ofert, String preco_jogo_ofert, int id_usuario_jogo_ofert) {
+        public Item(int existe_transacao, int id_interesse, String descricao_jogo, String plataforma_jogo, Bitmap foto_jogo, int id_usuario_jogo, int id_usuario_ofert, String nome_ofert, int id_jogo_ofert, String descricao_jogo_ofert, String plataforma_jogo_ofert, Bitmap foto_jogo_ofert, String preco_jogo_ofert, int id_usuario_jogo_ofert) {
+            this.existe_transacao = existe_transacao;
             this.id_interesse = id_interesse;
             this.descricao_jogo = descricao_jogo;
             this.plataforma_jogo = plataforma_jogo;

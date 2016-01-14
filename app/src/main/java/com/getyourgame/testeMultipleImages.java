@@ -63,7 +63,6 @@ public class testeMultipleImages extends Activity {
 
             @Override
             public void onClick(View arg0) {
-                ImageView imageView = (ImageView) findViewById(R.id.imgView);
                 MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
                 int teste = gridGallery.getAdapter().getCount();
                 for(int x=0;x<teste;x++){
@@ -92,12 +91,12 @@ public class testeMultipleImages extends Activity {
                 Bundle param = new Bundle();
                 //param.putInt("id_usuario", id_usuario);
                 //param.putString("chave_api", chave_api);
-                //redirecionar(testePicture.this, Principal.class, param);
+                //redirecionar(CarregaFotoUsuario.this, Principal.class, param);
 
-                //util.toast(testePicture.this, "Foto salva com sucesso!");
+                //util.toast(CarregaFotoUsuario.this, "Foto salva com sucesso!");
                 //testePicture.this.finish();
             }else{
-                //util.msgDialog(testePicture.this, "Alerta", usuario.getMessage());
+                //util.msgDialog(CarregaFotoUsuario.this, "Alerta", usuario.getMessage());
             }
         }
     }

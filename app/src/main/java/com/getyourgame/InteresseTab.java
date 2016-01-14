@@ -29,6 +29,8 @@ public class InteresseTab extends AppCompatActivity implements InteresseTroca.On
     Integer id_usuario;
     String chave_api;
 
+    Integer id_jogo = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +42,7 @@ public class InteresseTab extends AppCompatActivity implements InteresseTroca.On
 
         Bundle recebe = getIntent().getExtras();
         tipo = recebe.getInt("tipo");
+        id_jogo = recebe.getInt("id_jogo");
 
         RadioButton rbCompraVenda = (RadioButton) findViewById(R.id.rbCompraVenda);
 
@@ -70,7 +73,7 @@ public class InteresseTab extends AppCompatActivity implements InteresseTroca.On
                     param.putInt("interesse", interesse);
                     param.putInt("id_usuario", id_usuario);
                     param.putString("chave_api", chave_api);
-                    //param.putInt("id_jogo", 1);
+                    param.putInt("id_jogo", id_jogo);
 
                     Fragment fr = manager.findFragmentByTag("interesse_troca");
                     if (fr == null) {
@@ -95,7 +98,7 @@ public class InteresseTab extends AppCompatActivity implements InteresseTroca.On
                         param.putInt("interesse", interesse);
                         param.putInt("id_usuario", id_usuario);
                         param.putString("chave_api", chave_api);
-                        //param.putInt("id_jogo", 1);
+                        param.putInt("id_jogo", id_jogo);
 
                         Fragment fr = manager.findFragmentByTag("interesse_venda");
                         if (fr == null) {
@@ -119,7 +122,7 @@ public class InteresseTab extends AppCompatActivity implements InteresseTroca.On
                         param.putInt("interesse", interesse);
                         param.putInt("id_usuario", id_usuario);
                         param.putString("chave_api", chave_api);
-                        //param.putInt("id_jogo", 1);
+                        param.putInt("id_jogo", id_jogo);
 
                         Fragment fr = manager.findFragmentByTag("interesse_compra");
                         if (fr == null) {

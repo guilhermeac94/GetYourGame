@@ -4,18 +4,16 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.getyourgame.model.Endereco;
 import com.getyourgame.model.Usuario;
 import com.getyourgame.util.Http;
 import com.getyourgame.util.SwipeDetector;
@@ -32,6 +30,7 @@ public class Principal extends AppCompatActivity{
     Integer id_usuario;
     String chave_api;
     Bitmap sem_usuario;
+    ImageView ivPrincFotoUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,14 +85,6 @@ public class Principal extends AppCompatActivity{
         Webservice ws = new Webservice();
         new HttpCadastro(ws.buscaUsuario(id_usuario),null,Usuario.class,chave_api).execute();
 
-        Button btCadastrarInteresse = (Button) findViewById(R.id.btCadastrarInteresse);
-        btCadastrarInteresse.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                new HttpBuscaEndereco((new Webservice()).buscaEndereco(id_usuario),null,Endereco.class,"").execute();
-            }
-        });
-
         TextView tvPrincPreferencias = (TextView) findViewById(R.id.tvPrincPreferencias);
 
         tvPrincPreferencias.setOnClickListener(new View.OnClickListener() {
@@ -119,6 +110,20 @@ public class Principal extends AppCompatActivity{
                 param.putString("chave_api", chave_api);
                 contato.putExtras(param);
                 startActivity(contato);
+            }
+        });
+
+        ImageView ivQuadroJogosUsuarios = (ImageView)findViewById(R.id.ivQuadroJogosUsuarios);
+
+        ivQuadroJogosUsuarios.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent listaUsuarioJogo = new Intent(Principal.this, ListaUsuarioJogo.class);
+                Bundle param = new Bundle();
+                param.putInt("id_usuario", id_usuario);
+                param.putString("chave_api", chave_api);
+                listaUsuarioJogo.putExtras(param);
+                startActivity(listaUsuarioJogo);
             }
         });
 
@@ -150,6 +155,19 @@ public class Principal extends AppCompatActivity{
                 startActivity(listaTransacao);
             }
         });
+
+        ivPrincFotoUsuario = (ImageView) findViewById(R.id.ivPrincFotoUsuario);
+        ivPrincFotoUsuario.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Bundle param = new Bundle();
+                param.putInt("id_usuario", id_usuario);
+                param.putString("chave_api", chave_api);
+                param.putString("foto", util.BitMapToString(((BitmapDrawable) ivPrincFotoUsuario.getDrawable()).getBitmap()));
+                redirecionar(Principal.this, CarregaFotoUsuario.class, param);
+                return false;
+            }
+        });
     }
 
     private class HttpCadastro extends Http {
@@ -163,10 +181,10 @@ public class Principal extends AppCompatActivity{
             if(!usuario.getError()) {
                 final TextView tvPrincNomeUsuario = (TextView) findViewById(R.id.tvPrincNomeUsuario);
                 final TextView tvPrincEmailUsuario = (TextView) findViewById(R.id.tvPrincEmailUsuario);
-                ImageView ivPrincFotoUsuario = (ImageView) findViewById(R.id.ivPrincFotoUsuario);
+                ivPrincFotoUsuario = (ImageView) findViewById(R.id.ivPrincFotoUsuario);
 
                 tvPrincNomeUsuario.setText(usuario.getNome());
-                tvPrincEmailUsuario.setText("("+usuario.getEmail()+")");
+                tvPrincEmailUsuario.setText("(" + usuario.getEmail() + ")");
                 ivPrincFotoUsuario.setImageBitmap(usuario.getFoto().equals("") ? sem_usuario : util.StringToBitMap(usuario.getFoto()));
             }else{
                 util.msgDialog(Principal.this, "Alerta", usuario.getMessage());
@@ -174,31 +192,6 @@ public class Principal extends AppCompatActivity{
         }
     }
 
-    private class HttpBuscaEndereco extends Http {
-        public HttpBuscaEndereco(Webservice ws, MultiValueMap<String, String> map, Class classe, String apikey) {
-            super(ws, map, classe, apikey);
-        }
-
-        @Override
-        protected void onPostExecute(Object retorno) {
-            Endereco endereco = (Endereco) retorno;
-
-            Bundle param = new Bundle();
-            param.putInt("id_usuario", id_usuario);
-            param.putString("chave_api", chave_api);
-
-            if(!endereco.getError()) {
-                Intent interesse = new Intent(Principal.this, Interesse.class);
-                interesse.putExtras(param);
-                startActivity(interesse);
-            }else{
-                param.putString("msg_interesse", "msg_interesse");
-                Intent contato = new Intent(Principal.this, Contatos.class);
-                contato.putExtras(param);
-                startActivity(contato);
-            }
-        }
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -216,13 +209,6 @@ public class Principal extends AppCompatActivity{
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
-        }
-        if (id == R.id.action_meu_perfil) {
-            Bundle param = new Bundle();
-            param.putInt("id_usuario", id_usuario);
-            param.putString("chave_api", chave_api);
-            redirecionar(Principal.this, testePicture.class, param);
             return true;
         }
 

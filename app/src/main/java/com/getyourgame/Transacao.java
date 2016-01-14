@@ -102,7 +102,7 @@ public class Transacao extends AppCompatActivity {
                 }
 
                 if((solicitante && envio_ofert) || (!solicitante && envio_solic)){
-                    map.add("tipo_atualizacao", "encerrar");
+                    map.add("tipo_atualizacao", "concluir");
                     map.add("id_estado_transacao", "3");
                 }else{
                     map.add("tipo_atualizacao", "enviar");

@@ -70,7 +70,7 @@ public class Cadastro extends AppCompatActivity {
                 Bundle param = new Bundle();
                 param.putInt("id_usuario", usuario.getId_usuario());
                 param.putString("chave_api", usuario.getChave_api());
-                param.putString("primeiro_cadastro", "1");
+                param.putString("redirecionar", "preferencias_usuario");
                 redirecionar(Cadastro.this, Contatos.class, param);
                 util.toast(getApplicationContext(), "Usuário cadastrado com sucesso!");
                 Cadastro.this.finish();

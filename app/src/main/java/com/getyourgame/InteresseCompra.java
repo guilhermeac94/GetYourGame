@@ -117,9 +117,7 @@ public class InteresseCompra extends Fragment {
             interesse = param.getInt("interesse");
             id_usuario = param.getInt("id_usuario");
             chave_api = param.getString("chave_api");
-            if(String.valueOf(param.getInt("id_jogo")) != null){
-                id_jogo = param.getInt("id_jogo");
-            }
+            id_jogo = param.getInt("id_jogo");
         }
 
         tvPlataforma = (TextView) fragmentView.findViewById(R.id.tvPlataforma);

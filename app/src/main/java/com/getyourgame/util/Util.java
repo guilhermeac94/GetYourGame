@@ -224,4 +224,16 @@ public class Util extends Activity{
         mBuilder.setContentIntent(resultPendingIntent);
         return mBuilder.build();
     }
+
+    public String recebeFoto(Intent intent){
+        try{
+            Intent dadosRecebidos = intent;
+
+            if(dadosRecebidos != null){
+                Bundle recebe = dadosRecebidos.getExtras();
+                return recebe.getString("foto");
+            }
+        }catch(Exception e){}
+        return null;
+    }
 }

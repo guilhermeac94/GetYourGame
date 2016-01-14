@@ -160,14 +160,33 @@ public class Contatos extends AppCompatActivity {
                 param.putInt("id_usuario", id_usuario);
                 param.putString("chave_api", chave_api);
 
-                if(getIntent().getExtras().getString("primeiro_cadastro")!=null) {
-                    Intent intent = new Intent(Contatos.this, PreferenciaUsuario.class);
-                    intent.putExtras(param);
-                    startActivity(intent);
-                }else{
-                    Intent intent = new Intent(Contatos.this, Principal.class);
-                    intent.putExtras(param);
-                    startActivity(intent);
+                String redirecionar = getIntent().getExtras().getString("redirecionar");
+
+                switch (redirecionar) {
+                    case "preferencias_usuario":{
+                        Intent intent = new Intent(Contatos.this, PreferenciaUsuario.class);
+                        intent.putExtras(param);
+                        startActivity(intent);
+                        break;
+                    }
+                    case "principal":{
+                        Intent intent = new Intent(Contatos.this, Principal.class);
+                        intent.putExtras(param);
+                        startActivity(intent);
+                        break;
+                    }
+                    case "tela_jogo":{
+                        Intent intent = new Intent(Contatos.this, TelaJogo.class);
+                        intent.putExtras(param);
+                        startActivity(intent);
+                        break;
+                    }
+                    case "lista_interesse":{
+                        Intent intent = new Intent(Contatos.this, TelaJogo.class);
+                        intent.putExtras(param);
+                        startActivity(intent);
+                        break;
+                    }
                 }
                 Contatos.this.finish();
             }
