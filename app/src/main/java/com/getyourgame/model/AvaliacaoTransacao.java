@@ -5,9 +5,10 @@ package com.getyourgame.model;
  */
 public class AvaliacaoTransacao {
     private Integer id_avaliacao_transacao;
-    private Usuario usuarioAvaliador;
-    private Usuario UsuarioAvaliado;
-    private EstadoAvalicao estadoAvalicao;
+    private Integer id_transacao;
+    private Integer id_usuario_avaliado;
+    private Integer id_usuario_avaliador;
+    private Integer avalicao;
     private String observacao;
 
     public AvaliacaoTransacao() {
@@ -21,28 +22,36 @@ public class AvaliacaoTransacao {
         this.id_avaliacao_transacao = id_avaliacao_transacao;
     }
 
-    public Usuario getUsuarioAvaliador() {
-        return usuarioAvaliador;
+    public Integer getId_transacao() {
+        return id_transacao;
     }
 
-    public void setUsuarioAvaliador(Usuario usuarioAvaliador) {
-        this.usuarioAvaliador = usuarioAvaliador;
+    public void setId_transacao(Integer id_transacao) {
+        this.id_transacao = id_transacao;
     }
 
-    public Usuario getUsuarioAvaliado() {
-        return UsuarioAvaliado;
+    public Integer getId_usuario_avaliador() {
+        return id_usuario_avaliador;
     }
 
-    public void setUsuarioAvaliado(Usuario usuarioAvaliado) {
-        UsuarioAvaliado = usuarioAvaliado;
+    public void setId_usuario_avaliador(Integer id_usuario_avaliador) {
+        this.id_usuario_avaliador = id_usuario_avaliador;
     }
 
-    public EstadoAvalicao getEstadoAvalicao() {
-        return estadoAvalicao;
+    public Integer getId_usuario_avaliado() {
+        return id_usuario_avaliado;
     }
 
-    public void setEstadoAvalicao(EstadoAvalicao estadoAvalicao) {
-        this.estadoAvalicao = estadoAvalicao;
+    public void setId_usuario_avaliado(Integer id_usuario_avaliado) {
+        this.id_usuario_avaliado = id_usuario_avaliado;
+    }
+
+    public Integer getAvalicao() {
+        return avalicao;
+    }
+
+    public void setAvalicao(Integer avalicao) {
+        this.avalicao = avalicao;
     }
 
     public String getObservacao() {

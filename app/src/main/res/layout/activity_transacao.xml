@@ -199,4 +199,19 @@
         android:layout_alignRight="@+id/btTEnviarTransacao"
         android:layout_alignEnd="@+id/btTEnviarTransacao" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/avaliacao"
+        android:id="@+id/btTAvaliacao"
+        android:layout_gravity="center_horizontal"
+        style="@style/botao"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:visibility="gone"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+
 </RelativeLayout>

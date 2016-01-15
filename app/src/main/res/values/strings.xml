@@ -38,6 +38,9 @@
 
     <string name="aguardando">Aguardando o outro usuário...</string>
     <string name="alerta_transacao">Obs: O GetYourGame não se responsabiliza pela veracidade das informações aqui detalhadas ou pelo não recebimento do pagamento/produto.</string>
+    <string name="avaliacao">AVALIAÇÃO</string>
+    <string name="avaliacoes">VER AVALIAÇÕES RECEBIDAS</string>
+    <string name="avaliar">Para avaliar, toque em uma opção e coloque uma observação:</string>
     <string name="avancar">Avançar</string>
     <string name="bairro">Bairro</string>
     <string name="buscar">Buscar</string>
@@ -57,6 +60,7 @@
     <string name="email">E-mail</string>
     <string name="entrar">Entrar</string>
     <string name="enviar_transacao">Produto/Pagamento Enviado</string>
+    <string name="escreva_aqui">Escreva aqui</string>
     <string name="estado_jogo">Estado do Jogo:</string>
     <string name="estado_jogo_desejado">Estado desejado do Jogo:</string>
     <string name="gps">Permite GPS:</string>
@@ -75,6 +79,7 @@
     <string name="nenhum_resultado">Nenhum resultado encontrado!</string>
     <string name="nome">Nome</string>
     <string name="numero">Nro</string>
+    <string name="observacao">Observação:</string>
     <string name="ok">OK</string>
     <string name="plataforma">Plataforma</string>
     <string name="plataformas">Plataformas:</string>
@@ -94,5 +99,7 @@
     <string name="usuarios">Usuários que possuem:</string>
     <string name="venda">Venda</string>
     <string name="title_activity_tela_usuario">TelaUsuario</string>
+    <string name="title_activity_avaliar">Avaliar</string>
+    <string name="title_activity_avaliacao">Avaliacao</string>
 
 </resources>

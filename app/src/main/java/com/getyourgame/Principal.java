@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -31,6 +32,7 @@ public class Principal extends AppCompatActivity{
     String chave_api;
     Bitmap sem_usuario;
     ImageView ivPrincFotoUsuario;
+    Button btAvaliacoes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +41,13 @@ public class Principal extends AppCompatActivity{
 
         id_usuario = 5;
         chave_api = "923798d42ec81ca9f07e3cffd7855748";
-        /*
-        id_usuario = util.recebeIdUsuario(getIntent());
-        chave_api = util.recebeChaveApi(getIntent());
 
+        /*
         id_usuario = 8;
         chave_api = "d5f01d506ef7f209c66726ea52080435";
+
+        id_usuario = util.recebeIdUsuario(getIntent());
+        chave_api = util.recebeChaveApi(getIntent());
         */
 
         sem_usuario = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.ic_user);
@@ -165,6 +168,18 @@ public class Principal extends AppCompatActivity{
                 param.putString("foto", util.BitMapToString(((BitmapDrawable) ivPrincFotoUsuario.getDrawable()).getBitmap()));
                 redirecionar(Principal.this, CarregaFotoUsuario.class, param);
                 return false;
+            }
+        });
+
+        btAvaliacoes = (Button)findViewById(R.id.btAvaliacoes);
+        btAvaliacoes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle param = new Bundle();
+                param.putInt("id_usuario", id_usuario);
+                param.putString("chave_api", chave_api);
+                param.putInt("id_usuario_aval", id_usuario);
+                redirecionar(Principal.this, Avaliacao.class, param);
             }
         });
     }

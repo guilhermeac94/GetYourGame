@@ -124,4 +124,16 @@ public class Webservice {
     public Webservice deletaTransacao(int id_transacao){
         return new Webservice("transacao/"+id_transacao, HttpMethod.DELETE, false);
     }
+
+    public Webservice salvaAvaliacao(){
+        return new Webservice("avaliacao_transacao", HttpMethod.POST, false);
+    }
+
+    public Webservice buscaAvaliacao(int id_transacao, int id_usuario_avaliador){
+        return new Webservice("avaliacao_transacao/"+id_transacao+"/"+id_usuario_avaliador, HttpMethod.GET, false);
+    }
+
+    public Webservice buscaAvaliacoesUsuario(int id_usuario){
+        return new Webservice("avaliacoes_usuario/"+id_usuario, HttpMethod.GET, false);
+    }
 }

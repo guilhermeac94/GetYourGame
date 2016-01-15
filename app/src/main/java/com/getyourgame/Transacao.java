@@ -39,6 +39,7 @@ public class Transacao extends AppCompatActivity {
     Boolean solicitante;
     List<MetodoEnvio> metodos;
     MetodoEnvio metodo;
+    Integer id_outro_usuario;
 
     TextView tvTDescricaoJogoOfert;
     TextView tvTPlataformaEstadoJogoOfert;
@@ -52,6 +53,7 @@ public class Transacao extends AppCompatActivity {
     Button btTEnviarTransacao;
     Button btTCancelarTransacao;
     Button btTRecusarTransacao;
+    Button btTAvaliacao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +78,7 @@ public class Transacao extends AppCompatActivity {
         btTEnviarTransacao = (Button)findViewById(R.id.btTEnviarTransacao);
         btTCancelarTransacao = (Button)findViewById(R.id.btTCancelarTransacao);
         btTRecusarTransacao = (Button)findViewById(R.id.btTRecusarTransacao);
+        btTAvaliacao = (Button)findViewById(R.id.btTAvaliacao);
 
         btTIniciarTransacao.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,6 +132,22 @@ public class Transacao extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 new HttpAtualizaTransacao((new Webservice()).deletaTransacao(id_transacao),null,Object.class,"").execute();
+            }
+        });
+
+        btTAvaliacao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Transacao.this,Avaliar.class);
+                Bundle param = new Bundle();
+                param.putInt("id_usuario", id_usuario);
+                param.putString("chave_api", chave_api);
+                param.putInt("id_transacao", id_transacao);
+                param.putInt("id_usuario_avaliador", id_usuario);
+                param.putInt("id_usuario_avaliado", id_outro_usuario);
+
+                intent.putExtras(param);
+                startActivity(intent);
             }
         });
 
@@ -197,9 +216,14 @@ public class Transacao extends AppCompatActivity {
             Object map_id_usuario_solic = map.get("id_usuario");
             int id_usuario_solic = Integer.parseInt(map_id_usuario_solic.toString());
 
+            Object map_id_usuario_ofert = map.get("id_usuario_ofert");
+            int id_usuario_ofert = Integer.parseInt(map_id_usuario_ofert.toString());
+
             if(id_usuario == id_usuario_solic){
+                id_outro_usuario = id_usuario_ofert;
                 solicitante = true;
             }else{
+                id_outro_usuario = id_usuario_solic;
                 solicitante = false;
             }
 
@@ -253,6 +277,8 @@ public class Transacao extends AppCompatActivity {
                 if(!envio_solic && !envio_ofert){
                     btTCancelarTransacao.setVisibility(View.VISIBLE);
                 }
+            }else if(status==3){
+                btTAvaliacao.setVisibility(View.VISIBLE);
             }
         }
     }

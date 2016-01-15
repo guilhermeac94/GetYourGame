@@ -121,6 +121,14 @@
             android:name=".TelaUsuario"
             android:label="@string/title_activity_tela_usuario" >
         </activity>
+        <activity
+            android:name=".Avaliar"
+            android:label="@string/title_activity_avaliar" >
+        </activity>
+        <activity
+            android:name=".Avaliacao"
+            android:label="@string/title_activity_avaliacao" >
+        </activity>
     </application>
 
 </manifest>

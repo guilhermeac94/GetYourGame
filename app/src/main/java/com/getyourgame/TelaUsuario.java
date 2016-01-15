@@ -1,6 +1,7 @@
 package com.getyourgame;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -50,6 +52,7 @@ public class TelaUsuario extends AppCompatActivity {
     TextView tvUNenhumResultado;
     ListView lvUJogos;
 
+    Button btUAvaliacoes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +75,20 @@ public class TelaUsuario extends AppCompatActivity {
         pbUCarregando = (ProgressBar) findViewById(R.id.pbUCarregando);
         tvUNenhumResultado = (TextView) findViewById(R.id.tvUNenhumResultado);
         lvUJogos = (ListView) findViewById(R.id.lvUJogos);
+
+        btUAvaliacoes = (Button)findViewById(R.id.btUAvaliacoes);
+        btUAvaliacoes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentAvaliacao = new Intent(TelaUsuario.this, Avaliacao.class);
+                Bundle param = new Bundle();
+                param.putInt("id_usuario", id_usuario);
+                param.putString("chave_api", chave_api);
+                param.putInt("id_usuario_aval", id_usuario_selec);
+                intentAvaliacao.putExtras(param);
+                startActivity(intentAvaliacao);
+            }
+        });
 
         new HttpCarregaUsuario(new Webservice().buscaUsuario(id_usuario_selec),null,Usuario.class,chave_api).execute();
         new HttpBuscaJogosDoUsuario(new Webservice().buscaJogosDoUsuario(id_usuario_selec),null,Object[].class,"").execute();
