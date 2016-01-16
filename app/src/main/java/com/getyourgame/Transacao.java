@@ -41,9 +41,12 @@ public class Transacao extends AppCompatActivity {
     MetodoEnvio metodo;
     Integer id_outro_usuario;
 
+    TextView tvTNomeUsuarioOfert;
+    TextView tvTNomeUsuarioSolic;
     TextView tvTDescricaoJogoOfert;
     TextView tvTPlataformaEstadoJogoOfert;
     TextView tvTMetodoEnvio;
+    TextView tvTMetodoEnvioOfert;
     Spinner spTMetodoEnvioOfert;
     TextView tvTDescricaoJogo;
     TextView tvTPlataformaEstadoJogo;
@@ -66,8 +69,11 @@ public class Transacao extends AppCompatActivity {
         Bundle recebe = getIntent().getExtras();
         id_transacao = recebe.getInt("id_transacao");
 
+        tvTNomeUsuarioSolic = (TextView) findViewById(R.id.tvTNomeUsuarioSolic);
+        tvTNomeUsuarioOfert = (TextView) findViewById(R.id.tvTNomeUsuarioOfert);
         tvTDescricaoJogoOfert = (TextView) findViewById(R.id.tvTDescricaoJogoOfert);
         tvTPlataformaEstadoJogoOfert = (TextView) findViewById(R.id.tvTPlataformaEstadoJogoOfert);
+        tvTMetodoEnvioOfert = (TextView) findViewById(R.id.tvTMetodoEnvioOfert);
         spTMetodoEnvioOfert = (Spinner) findViewById(R.id.spTMetodoEnvioOfert);
         tvTDescricaoJogo = (TextView) findViewById(R.id.tvTDescricaoJogo);
         tvTPlataformaEstadoJogo = (TextView) findViewById(R.id.tvTPlataformaEstadoJogo);
@@ -86,9 +92,10 @@ public class Transacao extends AppCompatActivity {
                 MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
                 map.add("id_estado_transacao", "2");
 
-                metodo = (MetodoEnvio)spTMetodoEnvio.getSelectedItem();
-                map.add("id_metodo_envio_ofertante", String.valueOf(metodo.getId_metodo_envio()));
-
+                if(!compra) {
+                    metodo = (MetodoEnvio) spTMetodoEnvio.getSelectedItem();
+                    map.add("id_metodo_envio_ofertante", String.valueOf(metodo.getId_metodo_envio()));
+                }
                 map.add("tipo_atualizacao", "iniciar");
 
                 new HttpAtualizaTransacao((new Webservice()).atualizaTransacao(id_transacao),map,Object.class,"").execute();
@@ -189,7 +196,6 @@ public class Transacao extends AppCompatActivity {
             Object map_status = map.get("id_estado_transacao");
             status = Integer.parseInt(map_status.toString());
 
-
             Object map_envio_solic = map.get("envio_solicitante");
             if(Integer.parseInt(map_envio_solic.toString())==1) {
                 envio_solic = true;
@@ -213,6 +219,9 @@ public class Transacao extends AppCompatActivity {
                 compra = false;
             }
 
+            tvTNomeUsuarioOfert.setText("Ofertante: "+map.get("nome_ofert"));
+            tvTNomeUsuarioSolic.setText("Solicitante: "+map.get("nome"));
+
             Object map_id_usuario_solic = map.get("id_usuario");
             int id_usuario_solic = Integer.parseInt(map_id_usuario_solic.toString());
 
@@ -232,8 +241,8 @@ public class Transacao extends AppCompatActivity {
 
             if(compra){
                 tvTDescricaoJogo.setText("R$ "+df.format(Double.parseDouble(String.valueOf(map.get("preco_jogo_ofert")))));
-                tvTMetodoEnvio.setVisibility(View.GONE);
-                spTMetodoEnvio.setVisibility(View.GONE);
+                tvTMetodoEnvioOfert.setVisibility(View.GONE);
+                spTMetodoEnvioOfert.setVisibility(View.GONE);
             }else{
                 tvTDescricaoJogo.setText(map.get("descricao_jogo"));
                 tvTPlataformaEstadoJogo.setText(map.get("plataforma_jogo") + (map.get("estado_jogo")!=null ? " - "+map.get("estado_jogo") : ""));
@@ -246,17 +255,17 @@ public class Transacao extends AppCompatActivity {
             }
 
             if(!compra) {
-                if (String.valueOf(map.get("metodo_envio")) != null) {
-                    util.carregaSpinner(spTMetodoEnvio, Transacao.this, metodos, String.valueOf(map.get("metodo_envio")));
+                if(String.valueOf(map.get("metodo_envio_ofert")) != null) {
+                    util.carregaSpinner(spTMetodoEnvioOfert, Transacao.this, metodos, String.valueOf(map.get("metodo_envio_ofert")));
                 }else{
-                    util.carregaSpinner(spTMetodoEnvio, Transacao.this, metodos, null);
+                    util.carregaSpinner(spTMetodoEnvioOfert, Transacao.this, metodos, null);
                 }
             }
 
-            if(String.valueOf(map.get("metodo_envio_ofert")) != null) {
-                util.carregaSpinner(spTMetodoEnvioOfert, Transacao.this, metodos, String.valueOf(map.get("metodo_envio_ofert")));
+            if (String.valueOf(map.get("metodo_envio")) != null) {
+                util.carregaSpinner(spTMetodoEnvio, Transacao.this, metodos, String.valueOf(map.get("metodo_envio")));
             }else{
-                util.carregaSpinner(spTMetodoEnvioOfert, Transacao.this, metodos, null);
+                util.carregaSpinner(spTMetodoEnvio, Transacao.this, metodos, null);
             }
 
             if(status==1){
@@ -279,6 +288,12 @@ public class Transacao extends AppCompatActivity {
                 }
             }else if(status==3){
                 btTAvaliacao.setVisibility(View.VISIBLE);
+            }
+
+            if(solicitante){
+                spTMetodoEnvioOfert.setEnabled(false);
+            }else{
+                spTMetodoEnvio.setEnabled(false);
             }
         }
     }

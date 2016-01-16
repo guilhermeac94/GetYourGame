@@ -57,6 +57,15 @@
                 android:id="@+id/spITMetodoEnvioOfert"
                 />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@android:color/holo_blue_dark"
+                android:id="@+id/tvITNomeUsuarioOfert"
+                android:layout_marginTop="15dp"
+                android:background="@null"/>
+
         </LinearLayout>
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -115,6 +124,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/spITMetodoEnvio" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@android:color/holo_blue_dark"
+                android:id="@+id/tvITNomeUsuarioSolic"
+                android:layout_marginTop="15dp"
+                android:background="@null"/>
 
         </LinearLayout>
 

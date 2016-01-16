@@ -75,7 +75,7 @@
     <string name="login">Login</string>
     <string name="logradouro">Logradouro</string>
     <string name="metodo_envio_padrao">Método de envio padrão:</string>
-    <string name="metodo_envio">Método de Envio:</string>
+    <string name="metodo_envio">Método de envio desejado:</string>
     <string name="nenhum_resultado">Nenhum resultado encontrado!</string>
     <string name="nome">Nome</string>
     <string name="numero">Nro</string>
