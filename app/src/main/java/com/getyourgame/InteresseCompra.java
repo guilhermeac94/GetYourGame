@@ -128,7 +128,7 @@ public class InteresseCompra extends Fragment {
             tvSelecionaJogo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    abreSelecionaJogo();
+                    abreSelecionaJogo(null);
                 }
             });
         }else{
@@ -223,9 +223,9 @@ public class InteresseCompra extends Fragment {
         }
     }
 
-    public void abreSelecionaJogo(){
+    public void abreSelecionaJogo(Integer interesse){
         if (mListenerJogo != null) {
-            mListenerJogo.OnAbreSelecionaJogo();
+            mListenerJogo.OnAbreSelecionaJogo(interesse);
         }
     }
 
@@ -282,7 +282,7 @@ public class InteresseCompra extends Fragment {
 
     public interface OnAbreSelecionaJogoListener {
         // TODO: Update argument type and name
-        public void OnAbreSelecionaJogo();
+        public void OnAbreSelecionaJogo(Integer interesse);
     }
 
     public interface OnCompraListener {

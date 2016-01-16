@@ -39,17 +39,15 @@ public class Principal extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
 
+/*
         id_usuario = 5;
         chave_api = "923798d42ec81ca9f07e3cffd7855748";
-
-        /*
         id_usuario = 8;
         chave_api = "d5f01d506ef7f209c66726ea52080435";
 
+*/
         id_usuario = util.recebeIdUsuario(getIntent());
         chave_api = util.recebeChaveApi(getIntent());
-        */
-
         sem_usuario = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.ic_user);
 
         //final TextView tvPrincNomeUsuario = (TextView) findViewById(R.id.tvPrincNomeUsuario);

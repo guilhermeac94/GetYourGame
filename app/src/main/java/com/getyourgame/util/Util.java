@@ -187,17 +187,6 @@ public class Util extends Activity{
         return temp;
     }
 
-    public static Bitmap getBitmapFromURL(String src) {
-        try {
-            URL url = new URL(src);
-            Bitmap myBitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-            return myBitmap;
-        } catch (IOException e) {
-            // Log exception
-            return null;
-        }
-    }
-
     public Notification createNotification(Activity act, Class classe, String titulo, String msg){
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(act)

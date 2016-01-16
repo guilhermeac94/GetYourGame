@@ -138,7 +138,7 @@ public class InteresseTroca extends Fragment {
                 @Override
                 public void onClick(View view) {
                     tipo_jogo = 1;
-                    abreSelecionaJogo();
+                    abreSelecionaJogo(null);
                 }
             });
         }else{
@@ -151,7 +151,7 @@ public class InteresseTroca extends Fragment {
             @Override
             public void onClick(View view) {
                 tipo_jogo = 2;
-                abreSelecionaJogo();
+                abreSelecionaJogo(interesse);
             }
         });
 
@@ -251,9 +251,9 @@ public class InteresseTroca extends Fragment {
         }
     }
 
-    public void abreSelecionaJogo(){
+    public void abreSelecionaJogo(Integer interesse){
         if (mListenerJogo != null) {
-            mListenerJogo.OnAbreSelecionaJogo();
+            mListenerJogo.OnAbreSelecionaJogo(interesse);
         }
     }
 
@@ -310,7 +310,7 @@ public class InteresseTroca extends Fragment {
 
     public interface OnAbreSelecionaJogoListener {
         // TODO: Update argument type and name
-        public void OnAbreSelecionaJogo();
+        public void OnAbreSelecionaJogo(Integer interesse);
     }
 
     public interface OnTrocaListener {

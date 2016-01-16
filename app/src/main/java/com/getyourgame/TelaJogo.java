@@ -118,6 +118,8 @@ public class TelaJogo extends AppCompatActivity{
                 startActivity(interesse);
             }else{
                 param.putString("msg_interesse", "msg_interesse");
+                param.putString("redirecionar","tela_jogo");
+                param.putInt("id_jogo", id_jogo);
                 Intent contato = new Intent(TelaJogo.this, Contatos.class);
                 contato.putExtras(param);
                 startActivity(contato);

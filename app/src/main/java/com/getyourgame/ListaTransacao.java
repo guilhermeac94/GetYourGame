@@ -27,7 +27,7 @@ public class ListaTransacao extends TabActivity {
         TabHost tabHost = (TabHost)findViewById(android.R.id.tabhost);
 
         TabHost.TabSpec tab1 = tabHost.newTabSpec("PENDENTES");
-        TabHost.TabSpec tab2 = tabHost.newTabSpec("EM ANDAMENTO");
+        TabHost.TabSpec tab2 = tabHost.newTabSpec("ANDAMENTO");
         TabHost.TabSpec tab3 = tabHost.newTabSpec("CONCLUÍDAS");
         TabHost.TabSpec tab4 = tabHost.newTabSpec("CANCELADAS");
 
@@ -40,7 +40,7 @@ public class ListaTransacao extends TabActivity {
         intentPendentes.putExtras(paramPendentes);
         tab1.setContent(intentPendentes);
 
-        tab2.setIndicator("EM ANDAMENTO");
+        tab2.setIndicator("ANDAMENTO");
         Intent intentAndamento = new Intent(this, ListaTransacaoTab.class);
         Bundle paramAndamento = new Bundle();
         paramAndamento.putInt("status", 2);

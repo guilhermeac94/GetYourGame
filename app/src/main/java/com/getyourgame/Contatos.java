@@ -36,6 +36,8 @@ public class Contatos extends AppCompatActivity {
     EditText etDDD;
     EditText etTelefone;
 
+    Integer id_jogo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +45,7 @@ public class Contatos extends AppCompatActivity {
 
         id_usuario = util.recebeIdUsuario(getIntent());
         chave_api = util.recebeChaveApi(getIntent());
+        id_jogo = getIntent().getExtras().getInt("id_jogo");
 
         if(getIntent().getExtras().getString("msg_interesse")!=null){
             util.msgDialog(Contatos.this, "Alerta", "Você precisa cadastrar um endereço antes de cadastrar interesses!");
@@ -177,6 +180,7 @@ public class Contatos extends AppCompatActivity {
                     }
                     case "tela_jogo":{
                         Intent intent = new Intent(Contatos.this, TelaJogo.class);
+                        param.putInt("id_jogo", id_jogo);
                         intent.putExtras(param);
                         startActivity(intent);
                         break;

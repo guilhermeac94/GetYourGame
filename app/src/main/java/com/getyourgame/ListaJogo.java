@@ -50,6 +50,10 @@ public class ListaJogo extends AppCompatActivity implements ListaJogos.OnSelecio
 
         manager = getFragmentManager();
         ListaJogos listaJogos = new ListaJogos();
+        Bundle param = new Bundle();
+        param.putInt("id_usuario", id_usuario);
+        param.putString("chave_api", chave_api);
+        listaJogos.setArguments(param);
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.add(R.id.layoutListaJogo, listaJogos, "lista_jogos");
         transaction.commit();

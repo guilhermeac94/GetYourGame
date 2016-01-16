@@ -46,9 +46,9 @@ public class InteresseTab extends AppCompatActivity implements InteresseTroca.On
 
         RadioButton rbCompraVenda = (RadioButton) findViewById(R.id.rbCompraVenda);
 
-        if(tipo==1){ //Tenho
+        if (tipo == 1) { //Tenho
             rbCompraVenda.setText(R.string.venda);
-        }else if(tipo==2){ //Quero
+        } else if (tipo == 2) { //Quero
             rbCompraVenda.setText(R.string.compra);
         }
 
@@ -63,9 +63,9 @@ public class InteresseTab extends AppCompatActivity implements InteresseTroca.On
                     finalizaFragment("interesse_venda");
                     finalizaFragment("lista_jogos");
 
-                    if(tipo==1){
+                    if (tipo == 1) {
                         interesse = 1;
-                    }else{
+                    } else {
                         interesse = 3;
                     }
 
@@ -87,7 +87,7 @@ public class InteresseTab extends AppCompatActivity implements InteresseTroca.On
 
                 } else if (i == R.id.rbCompraVenda) {
 
-                    if(tipo==1) { //Tenho
+                    if (tipo == 1) { //Tenho
                         finalizaFragment("interesse_troca");
                         finalizaFragment("interesse_compra");
                         finalizaFragment("lista_jogos");
@@ -110,7 +110,7 @@ public class InteresseTab extends AppCompatActivity implements InteresseTroca.On
                             fragment_atual = "interesse_venda";
                         }
 
-                    }else if(tipo==2) { //Quero
+                    } else if (tipo == 2) { //Quero
 
                         finalizaFragment("interesse_troca");
                         finalizaFragment("interesse_venda");
@@ -139,7 +139,7 @@ public class InteresseTab extends AppCompatActivity implements InteresseTroca.On
         });
     }
 
-    public void finalizaFragment(String tag){
+    public void finalizaFragment(String tag) {
         Fragment fr = manager.findFragmentByTag(tag);
         if (fr != null) {
             FragmentTransaction transaction = manager.beginTransaction();
@@ -172,12 +172,12 @@ public class InteresseTab extends AppCompatActivity implements InteresseTroca.On
 
     @Override
     public void onTroca(MultiValueMap<String, String> map) {
-        new HttpUsuarioJogo((new Webservice()).insereUsuarioJogo(),map,UsuarioJogo.class,"").execute();
+        new HttpUsuarioJogo((new Webservice()).insereUsuarioJogo(), map, UsuarioJogo.class, "").execute();
     }
 
     @Override
     public void onCompra(MultiValueMap<String, String> map) {
-        new HttpUsuarioJogo((new Webservice()).insereUsuarioJogo(),map,UsuarioJogo.class,"").execute();
+        new HttpUsuarioJogo((new Webservice()).insereUsuarioJogo(), map, UsuarioJogo.class, "").execute();
     }
 
     @Override
@@ -194,38 +194,47 @@ public class InteresseTab extends AppCompatActivity implements InteresseTroca.On
         protected void onPostExecute(Object retorno) {
             UsuarioJogo usuarioJogo = (UsuarioJogo) retorno;
             util.toast(getApplicationContext(), usuarioJogo.getMessage());
-            if(!usuarioJogo.getError()){
+            if (!usuarioJogo.getError()) {
                 InteresseTab.this.finish();
             }
         }
     }
 
     @Override
-    public void OnAbreSelecionaJogo() {
+    public void OnAbreSelecionaJogo(Integer interesse) {
         Fragment fr = manager.findFragmentByTag(fragment_atual);
         ListaJogos listaJogos = new ListaJogos();
 
+        Bundle param = new Bundle();
+        param.putInt("id_usuario", id_usuario);
+        param.putString("chave_api", chave_api);
+
+        if (interesse != null) {
+            param.putInt("interesse", interesse);
+        }
+        listaJogos.setArguments(param);
+
         manager.beginTransaction()
-          .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
-          .hide(fr)
-          .add(R.id.layoutFragments, listaJogos, "lista_jogos")
-          .commit();
+                .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
+                .hide(fr)
+                .add(R.id.layoutFragments, listaJogos, "lista_jogos")
+                .commit();
     }
 
     @Override
     public void OnSelecionaJogo(Jogo jogo) {
         finalizaFragment("lista_jogos");
 
-        if(interesse==4){
-            InteresseCompra fr = (InteresseCompra)manager.findFragmentByTag("interesse_compra");
+        if (interesse == 4) {
+            InteresseCompra fr = (InteresseCompra) manager.findFragmentByTag("interesse_compra");
             fr.carregaJogo(jogo);
 
-        }else if(interesse==2){
-            InteresseVenda fr = (InteresseVenda)manager.findFragmentByTag("interesse_venda");
+        } else if (interesse == 2) {
+            InteresseVenda fr = (InteresseVenda) manager.findFragmentByTag("interesse_venda");
             fr.carregaJogo(jogo);
 
-        }else if(interesse==1 || interesse==3){
-            InteresseTroca fr = (InteresseTroca)manager.findFragmentByTag("interesse_troca");
+        } else if (interesse == 1 || interesse == 3) {
+            InteresseTroca fr = (InteresseTroca) manager.findFragmentByTag("interesse_troca");
             fr.carregaJogo(jogo);
         }
 

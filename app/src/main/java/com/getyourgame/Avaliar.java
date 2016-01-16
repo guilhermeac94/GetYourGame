@@ -147,15 +147,7 @@ public class Avaliar extends AppCompatActivity {
         @Override
         protected void onPostExecute(Object retorno) {
             if(retorno!=null) {
-                /*
-                AvaliacaoTransacao avaliacaoTransacao = (AvaliacaoTransacao) retorno;
-                id_avaliacao_transacao = avaliacaoTransacao.getId_avaliacao_transacao();
-                id_transacao = avaliacaoTransacao.getId_transacao();
-                id_usuario_avaliado = avaliacaoTransacao.getId_usuario_avaliado();
-                id_usuario_avaliador = avaliacaoTransacao.getId_usuario_avaliador();
-                avaliacao = avaliacaoTransacao.getAvalicao();
-                observacao = avaliacaoTransacao.getObservacao();
-                */
+
                 Map<String, String> map = (Map<String, String>) retorno;
 
                 Object map_id_avaliacao_transacao = map.get("id_avaliacao_transacao");

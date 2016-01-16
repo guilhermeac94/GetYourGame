@@ -6,6 +6,9 @@ import android.app.PendingIntent;
 import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -39,12 +42,15 @@ import org.json.JSONObject;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
+import java.net.URL;
+
 
 public class Login extends AppCompatActivity {
 
     Util util = new Util();
     MultiValueMap<String, String> FBmap;
     Boolean mata_sessao = false;
+    String urlFoto;
 
     private CallbackManager mCallbackManager;
 
@@ -60,7 +66,7 @@ public class Login extends AppCompatActivity {
                         FBmap.add("nome", jsonObject.getString("name"));
                         FBmap.add("email", jsonObject.getString("email"));
                         FBmap.add("senha", jsonObject.getString("id"));
-                        String urlFoto = jsonObject.getJSONObject("picture").getJSONObject("data").getString("url");
+                        urlFoto = jsonObject.getJSONObject("picture").getJSONObject("data").getString("url");
 
                         new HttpBuscaEmailFB((new Webservice()).buscaUsuarioEmail(jsonObject.getString("email")), null, Usuario.class, "").execute();
 
@@ -123,12 +129,14 @@ public class Login extends AppCompatActivity {
         protected void onPostExecute(Object retorno) {
             Usuario usuario = (Usuario) retorno;
             if (!usuario.getError()) {
+                new RecuperaFotoFacebook(urlFoto).execute(usuario.getId_usuario());
                 Bundle param = new Bundle();
                 param.putInt("id_usuario", usuario.getId_usuario());
                 param.putString("chave_api", usuario.getChave_api());
                 param.putString("primeiro_cadastro", "1");
+                param.putString("redirecionar", "preferencias_usuario");
                 redirecionar(Login.this, Contatos.class, param);
-                util.toast(getApplicationContext(), "Login efetuado com sucesso!!!");
+                util.toast(getApplicationContext(), "Login efetuado com sucesso!");
             } else {
                 util.msgDialog(Login.this, "Alerta", usuario.getMessage());
             }
@@ -300,6 +308,57 @@ public class Login extends AppCompatActivity {
         Intent intentPrincipal = new Intent(atual, destino);
         intentPrincipal.putExtras(param);
         startActivity(intentPrincipal);
+    }
+
+
+    private class HttpAtualizaUsuarioFB extends Http {
+        public HttpAtualizaUsuarioFB(Webservice ws, MultiValueMap<String, String> map, Class classe, String apiKey) {
+            super(ws, map, classe, apiKey);
+        }
+
+        @Override
+        protected void onPostExecute(Object retorno) {
+            System.out.println("teste");
+        }
+    }
+
+    class RecuperaFotoFacebook extends AsyncTask<Integer, Void, Bitmap> {
+
+        private String url;
+        private Integer id_usuario;
+
+        public RecuperaFotoFacebook(String imageUrl) {
+            this.url = imageUrl;
+        }
+
+        @Override
+        protected Bitmap doInBackground(Integer... params) {
+            id_usuario = params[0];
+            Bitmap retVal = null;
+            try {
+                URL imageUrl = new URL(url);
+                return BitmapFactory.decodeStream(imageUrl.openConnection().getInputStream());
+            } catch (Exception ex) {
+            }
+            return retVal;
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap result) {
+            MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
+            map.add("foto", util.BitMapToString(result));
+
+            Webservice ws = new Webservice();
+            new HttpAtualizaUsuarioFB(ws.atualizarUsuario(id_usuario), map, Usuario.class, "").execute();
+        }
+
+        @Override
+        protected void onPreExecute() {
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+        }
     }
 
 }
