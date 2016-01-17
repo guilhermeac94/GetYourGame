@@ -40,8 +40,6 @@ public class PreferenciaUsuario extends AppCompatActivity {
     String chave_api;
     Spinner spEstadoJogo;
     Spinner spMetodoEnvio;
-    Switch gps;
-    SeekBar distancia;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,38 +54,16 @@ public class PreferenciaUsuario extends AppCompatActivity {
 
         new HttpBuscaPreferencias((new Webservice()).buscaPreferencias(id_usuario),null,Object.class,"").execute();
 
-        SeekBar seekBar = (SeekBar) findViewById(R.id.sbDistancia);
-        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                TextView tvDistanciaProgresso = (TextView) findViewById(R.id.tvDistanciaProgresso);
-                tvDistanciaProgresso.setText(String.valueOf(progress));
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-            }
-        });
-
-        gps = (Switch) findViewById(R.id.swGPS);
-        distancia = (SeekBar) findViewById(R.id.sbDistancia);
-
         Button btSalvar = (Button) findViewById(R.id.btSalvar);
         btSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
-                map.add("gps", String.valueOf(gps.isChecked() ? 1 : 0));
                 MetodoEnvio metodoEnvio = (MetodoEnvio) spMetodoEnvio.getSelectedItem();
                 EstadoJogo estadoJogo = (EstadoJogo) spEstadoJogo.getSelectedItem();
 
                 map.add("id_metodo_envio",String.valueOf(metodoEnvio.getId_metodo_envio()));
                 map.add("id_estado_jogo", String.valueOf(estadoJogo.getId_estado_jogo()));
-                map.add("distancia",String.valueOf(distancia.getProgress()));
 
                 Webservice ws = new Webservice();
                 new HttpAtualizaUsuario(ws.atualizarUsuario(id_usuario),map,Usuario.class,"").execute();
@@ -120,14 +96,6 @@ public class PreferenciaUsuario extends AppCompatActivity {
                 util.carregaSpinner(spMetodoEnvio, PreferenciaUsuario.this, metodos, map.get("desc_metodo_envio"));
             }else{
                 util.carregaSpinner(spMetodoEnvio, PreferenciaUsuario.this, metodos, null);
-            }
-            if(map.get("gps")!=null) {
-                Object gpsInt = map.get("gps");
-                gps.setChecked(Integer.parseInt(gpsInt.toString()) == 1 ? true : false);
-            }
-            if(map.get("distancia")!=null) {
-                Object distanciaInt = map.get("distancia");
-                distancia.setProgress(Integer.parseInt(distanciaInt.toString()));
             }
         }
     }

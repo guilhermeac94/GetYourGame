@@ -47,61 +47,6 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/tvGPS"
-        android:text="@string/gps"
-        android:layout_below="@+id/spMetodoEnvio"
-        android:layout_alignLeft="@+id/spMetodoEnvio"
-        android:layout_alignStart="@+id/spMetodoEnvio"
-        android:layout_marginTop = "20dp"/>
-
-    <Switch
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:id="@+id/swGPS"
-        android:checked="true"
-        android:layout_alignBottom="@+id/tvGPS"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/distancia"
-        android:id="@+id/tvDistancia"
-        android:layout_below="@+id/tvGPS"
-        android:layout_alignLeft="@+id/tvGPS"
-        android:layout_alignStart="@+id/tvGPS"
-        android:layout_marginTop = "25dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="@string/distanciaProgresso"
-        android:id="@+id/tvDistanciaProgresso"
-        android:layout_alignBottom="@+id/sbDistancia"
-        android:layout_alignRight="@+id/swGPS"
-        android:layout_alignEnd="@+id/swGPS" />
-
-    <SeekBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/sbDistancia"
-        android:max="50"
-        android:layout_below="@+id/tvDistancia"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/swGPS"
-        android:layout_toStartOf="@+id/swGPS"
-        android:layout_marginTop = "15dp"
-        />
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -113,7 +58,5 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
-
-
 
 </RelativeLayout>

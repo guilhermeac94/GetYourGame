@@ -38,13 +38,9 @@ public class CarregaCadastros extends AppCompatActivity {
     }
 
     public void carregaCadastros(){
-        db.delete("estado_avaliacao");
         db.delete("estado_jogo");
         db.delete("estado_transacao");
-        db.delete("interesse");
         db.delete("metodo_envio");
-        db.delete("nivel");
-        db.delete("plataforma");
         Webservice ws = new Webservice();
         new HttpBuscaCadastros(ws.buscaCadastros(),null,Object[].class,"").execute();
     }
@@ -63,9 +59,6 @@ public class CarregaCadastros extends AppCompatActivity {
                 ContentValues content = new ContentValues();
                 content.put(map.get("campo_id"), String.valueOf(map.get("valor_id")));
                 content.put(map.get("campo_des"), map.get("valor_des"));
-                if(map.get("campo_marca")!=null){
-                    content.put(map.get("campo_marca"), map.get("valor_marca"));
-                }
 
                 db.insert(map.get("tabela"), content);
             }

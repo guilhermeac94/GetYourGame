@@ -8,8 +8,6 @@ public class Transacao {
     private UsuarioJogo usuarioSolicitante;
     private UsuarioJogo usuarioOfertante;
     private EstadoTransacao estadoTransacao;
-    private PreferenciaTransacao preferenciaSolicitante;
-    private PreferenciaTransacao preferenciaOfertante;
 
     public Transacao() {
     }
@@ -44,21 +42,5 @@ public class Transacao {
 
     public void setEstadoTransacao(EstadoTransacao estadoTransacao) {
         this.estadoTransacao = estadoTransacao;
-    }
-
-    public PreferenciaTransacao getPreferenciaSolicitante() {
-        return preferenciaSolicitante;
-    }
-
-    public void setPreferenciaSolicitante(PreferenciaTransacao preferenciaSolicitante) {
-        this.preferenciaSolicitante = preferenciaSolicitante;
-    }
-
-    public PreferenciaTransacao getPreferenciaOfertante() {
-        return preferenciaOfertante;
-    }
-
-    public void setPreferenciaOfertante(PreferenciaTransacao preferenciaOfertante) {
-        this.preferenciaOfertante = preferenciaOfertante;
     }
 }

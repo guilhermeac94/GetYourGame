@@ -13,8 +13,6 @@ public class Jogo {
     private Integer ano;
     private String edicao;
     private String desenvolvedor;
-    private Long soma_avaliacao;
-    private Long qtde_avaliacoes;
     private String foto;
 
     private List<Plataforma> plataformas;
@@ -61,22 +59,6 @@ public class Jogo {
 
     public void setDesenvolvedor(String desenvolvedor) {
         this.desenvolvedor = desenvolvedor;
-    }
-
-    public Long getQtde_avaliacoes() {
-        return qtde_avaliacoes;
-    }
-
-    public void setQtde_avaliacoes(Long qtde_avaliacoes) {
-        this.qtde_avaliacoes = qtde_avaliacoes;
-    }
-
-    public Long getSoma_avaliacao() {
-        return soma_avaliacao;
-    }
-
-    public void setSoma_avaliacao(Long soma_avaliacao) {
-        this.soma_avaliacao = soma_avaliacao;
     }
 
     public List<Plataforma> getPlataformas() {

@@ -196,7 +196,6 @@ public class InteresseTroca extends Fragment {
                         map.add("id_usuario", String.valueOf(id_usuario));
                         map.add("id_interesse", String.valueOf(interesse));
                         map.add("id_estado_jogo", (estado_jogo != null) ? String.valueOf(estado_jogo.getId_estado_jogo()) : "");
-                        map.add("id_nivel", "1");
                         map.add("distancia", "");
                         map.add("id_plataforma", (plataforma != null) ? String.valueOf(plataforma.getId_plataforma()) : "");
                         map.add("preco", "");

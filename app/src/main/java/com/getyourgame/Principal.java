@@ -108,6 +108,7 @@ public class Principal extends AppCompatActivity{
                 Bundle param = new Bundle();
                 param.putInt("id_usuario", id_usuario);
                 param.putString("chave_api", chave_api);
+                param.putString("redirecionar", "principal");
                 contato.putExtras(param);
                 startActivity(contato);
             }

@@ -87,30 +87,6 @@ public class SQLiteHandler {
         return metodos;
     }
 
-    public List<Plataforma> selectPlataforma() throws Exception {
-        List<Plataforma> plataformas = new ArrayList<>();
-        Plataforma plataforma = null;
-        Cursor cursor = null;
-
-        SQLiteDatabase db = dbUser.getReadableDatabase();
-
-        String[] colunas = new String[] {"id_plataforma","descricao"};
-
-        cursor = db.query("plataforma", colunas, null, null, null, null, null);
-
-        while (cursor.moveToNext()) {
-            plataforma = new Plataforma();
-            plataforma.setId_plataforma(cursor.getInt(cursor.getColumnIndex("id_plataforma")));
-            plataforma.setDescricao(cursor.getString(cursor.getColumnIndex("descricao")));
-            plataformas.add(plataforma);
-        }
-
-        if (cursor != null)
-            cursor.close();
-
-        return plataformas;
-    }
-
     public void insert(String tabela, ContentValues content){
         SQLiteDatabase sqlLite = dbUser.getWritableDatabase();
         sqlLite.insert(tabela, null, content);

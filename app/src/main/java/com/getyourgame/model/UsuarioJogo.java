@@ -9,7 +9,6 @@ public class UsuarioJogo {
     private Integer id_usuario_jogo;
     private Usuario usuario;
     private Interesse interesse;
-    private Nivel nivel;
     private Integer distancia;
     private Number preco;
     private Jogo jogo;
@@ -55,14 +54,6 @@ public class UsuarioJogo {
 
     public void setInteresse(Interesse interesse) {
         this.interesse = interesse;
-    }
-
-    public Nivel getNivel() {
-        return nivel;
-    }
-
-    public void setNivel(Nivel nivel) {
-        this.nivel = nivel;
     }
 
     public Integer getDistancia() {

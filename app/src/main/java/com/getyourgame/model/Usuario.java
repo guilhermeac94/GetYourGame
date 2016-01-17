@@ -14,17 +14,12 @@ public class Usuario {
     private String email;
     private String senha;
     private String chave_api;
-    private Boolean gps;
     private MetodoEnvio metodoEnvio;
     private EstadoJogo estadoJogo;
-    private Integer distancia;
     private Boolean error;
     private String message;
     private Boolean tem_transacao;
     private String foto;
-
-    private List<Telefone> telefones;
-    private List<Endereco> enderecos;
 
     public Usuario() {
     }
@@ -68,15 +63,6 @@ public class Usuario {
     public void setChave_api(String chave_api) {
         this.chave_api = chave_api;
     }
-
-    public Boolean getGps() {
-        return gps;
-    }
-
-    public void setGps(Boolean gps) {
-        this.gps = gps;
-    }
-
     public MetodoEnvio getMetodoEnvio() {
         return metodoEnvio;
     }
@@ -91,14 +77,6 @@ public class Usuario {
 
     public void setEstadoJogo(EstadoJogo estadoJogo) {
         this.estadoJogo = estadoJogo;
-    }
-
-    public Integer getDistancia() {
-        return distancia;
-    }
-
-    public void setDistancia(Integer distancia) {
-        this.distancia = distancia;
     }
 
     public String getMessage() {

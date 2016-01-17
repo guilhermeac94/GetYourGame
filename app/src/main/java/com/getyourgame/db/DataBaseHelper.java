@@ -95,38 +95,4 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
-    public List<EstadoJogo> select() throws Exception {
-        List<EstadoJogo> estados = new ArrayList<>();
-        EstadoJogo estado = null;
-        Cursor cursor = null;
-
-        SQLiteDatabase sqlLite = new DataBaseHelper(context).getReadableDatabase();
-
-        String[] colunas = new String[] { "id_estado_jogo","descricao"};
-
-        cursor = sqlLite.query("estado_jogo", colunas, null, null, null, null, null);
-
-        while (cursor.moveToNext()) {
-            estado = new EstadoJogo();
-            estado.setId_estado_jogo(cursor.getInt(cursor.getColumnIndex("id_estado_jogo")));
-            estado.setDescricao(cursor.getString(cursor.getColumnIndex("descricao")));
-            estados.add(estado);
-        }
-
-        if (cursor != null)
-            cursor.close();
-
-        return estados;
-    }
-
-    public long insertEstadoJogo(EstadoJogo estadoJogo) throws Exception {
-        SQLiteDatabase sqlLite = this.getWritableDatabase();
-
-        ContentValues content = new ContentValues();
-
-        content.put("id_estado_jogo", estadoJogo.getId_estado_jogo());
-        content.put("descricao", estadoJogo.getDescricao());
-
-        return sqlLite.insert("estado_jogo", null, content);
-    }
 }
