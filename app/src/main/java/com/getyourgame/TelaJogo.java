@@ -257,6 +257,21 @@ public class TelaJogo extends AppCompatActivity{
 
                 pbJCarregando.setVisibility(View.GONE);
                 lvJUsuarios.setVisibility(View.VISIBLE);
+
+                lvJUsuarios.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        Usuario usuario = listaUsuarios.get(i);
+
+                        Bundle param = new Bundle();
+                        param.putInt("id_usuario", id_usuario);
+                        param.putString("chave_api", chave_api);
+                        param.putInt("id_usuario_selec", usuario.getId_usuario());
+                        Intent intent = new Intent(TelaJogo.this, TelaUsuario.class);
+                        intent.putExtras(param);
+                        startActivity(intent);
+                    }
+                });
             }else{
                 pbJCarregando.setVisibility(View.GONE);
                 tvJNenhumResultado.setVisibility(View.VISIBLE);

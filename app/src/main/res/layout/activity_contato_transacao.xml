@@ -1,0 +1,330 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.getyourgame.ContatoTransacao">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:padding="5dip"
+            android:background="@drawable/fundo_verde">
+
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="5dip" >
+
+                <ImageView
+                    android:layout_width="100dip"
+                    android:layout_height="100dip"
+                    android:id="@+id/ivCTFotoUsuario" />
+            </LinearLayout>
+
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="5dip"
+                android:background="@null">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/tvCTNomeUsuario"
+                    android:textColor="@android:color/white"
+                    android:background="@null"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:textStyle="italic"
+                    android:id="@+id/tvCTEmailUsuario"
+                    android:textColor="@android:color/white"
+                    android:background="@null"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/logradouro"
+                    android:id="@+id/tvCTLogradouro"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:id="@+id/etCTLogradouro"
+                    android:enabled="false"
+                    android:layout_marginBottom="10dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/cep"
+                    android:id="@+id/tvCTCep" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:ems="10"
+                    android:id="@+id/etCTCep"
+                    android:enabled="false"
+                    android:layout_marginBottom="10dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/bairro"
+                    android:id="@+id/tvCTBairro" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:ems="10"
+                    android:id="@+id/etCTBairro"
+                    android:enabled="false"
+                    android:layout_marginBottom="10dp"/>
+
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp">
+
+                    <RelativeLayout
+                        android:layout_width="0dip"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="0.15">
+
+                        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                            xmlns:tools="http://schemas.android.com/tools"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="@string/uf"
+                                android:id="@+id/tvCTUF" />
+
+                            <EditText
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
+                                android:maxLength="2"
+                                android:ems="10"
+                                android:id="@+id/etCTUF"
+                                android:enabled="false"/>
+
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dip"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="0.85">
+
+                        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                            xmlns:tools="http://schemas.android.com/tools"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="@string/cidade"
+                                android:id="@+id/tvCTCidade" />
+
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
+                                android:ems="10"
+                                android:id="@+id/etCTCidade"
+                                android:enabled="false"/>
+
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp">
+
+                    <RelativeLayout
+                        android:layout_width="0dip"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="0.2">
+
+                        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                            xmlns:tools="http://schemas.android.com/tools"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="@string/numero"
+                                android:id="@+id/tvCTNumero" />
+
+                            <EditText
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:inputType="number"
+                                android:ems="10"
+                                android:id="@+id/etCTNumero"
+                                android:enabled="false"/>
+
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dip"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="0.8">
+
+                        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                            xmlns:tools="http://schemas.android.com/tools"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="@string/complemento"
+                                android:id="@+id/tvCTComplemento" />
+
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
+                                android:ems="10"
+                                android:id="@+id/etCTComplemento"
+                                android:enabled="false"/>
+
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:layout_width="0dip"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="0.2">
+
+                        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                            xmlns:tools="http://schemas.android.com/tools"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="@string/ddd"
+                                android:id="@+id/tvCTDDD" />
+
+                            <EditText
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:inputType="number"
+                                android:ems="10"
+                                android:id="@+id/etCTDDD"
+                                android:enabled="false"/>
+
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dip"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="0.8">
+
+                        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                            xmlns:tools="http://schemas.android.com/tools"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="@string/telefone"
+                                android:id="@+id/tvCTTelefone" />
+
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="number"
+                                android:ems="10"
+                                android:id="@+id/etCTTelefone"
+                                android:enabled="false"/>
+
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</RelativeLayout>

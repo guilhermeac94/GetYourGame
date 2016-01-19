@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -153,6 +154,21 @@ public class TelaUsuario extends AppCompatActivity {
 
                 pbUCarregando.setVisibility(View.GONE);
                 lvUJogos.setVisibility(View.VISIBLE);
+
+                lvUJogos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        Jogo jogo = listaJogos.get(i);
+
+                        Bundle param = new Bundle();
+                        param.putInt("id_usuario", id_usuario);
+                        param.putString("chave_api", chave_api);
+                        param.putInt("id_jogo", jogo.getId_jogo());
+                        Intent intent = new Intent(TelaUsuario.this, TelaJogo.class);
+                        intent.putExtras(param);
+                        startActivity(intent);
+                    }
+                });
             }else{
                 pbUCarregando.setVisibility(View.GONE);
                 tvUNenhumResultado.setVisibility(View.VISIBLE);

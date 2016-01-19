@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.RelativeLayout;
 import android.widget.TabHost;
 
@@ -23,6 +24,8 @@ public class ListaUsuarioJogo extends TabActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_usuario_jogo);
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         id_usuario = util.recebeIdUsuario(getIntent());
         chave_api = util.recebeChaveApi(getIntent());

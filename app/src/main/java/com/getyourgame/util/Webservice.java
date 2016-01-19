@@ -93,6 +93,11 @@ public class Webservice {
         return new Webservice("preferencias/"+id_usuario, HttpMethod.GET, false);
     }
 
+    public Webservice buscaContatoTransacao(int id_usuario){
+        return new Webservice("contato_transacao/"+id_usuario, HttpMethod.GET, false);
+    }
+
+
     public Webservice buscaContatos(int id_usuario){
         return new Webservice("contato/"+id_usuario, HttpMethod.GET, false);
     }

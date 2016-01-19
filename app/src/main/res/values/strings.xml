@@ -101,5 +101,6 @@
     <string name="title_activity_tela_usuario">TelaUsuario</string>
     <string name="title_activity_avaliar">Avaliar</string>
     <string name="title_activity_avaliacao">Avaliacao</string>
+    <string name="title_activity_contato_transacao">ContatoTransacao</string>
 
 </resources>

@@ -41,6 +41,9 @@ public class Transacao extends AppCompatActivity {
     MetodoEnvio metodo;
     Integer id_outro_usuario;
 
+    Integer id_usuario_ofert;
+    Integer id_usuario_solic;
+
     TextView tvTNomeUsuarioOfert;
     TextView tvTNomeUsuarioSolic;
     TextView tvTDescricaoJogoOfert;
@@ -219,14 +222,11 @@ public class Transacao extends AppCompatActivity {
                 compra = false;
             }
 
-            tvTNomeUsuarioOfert.setText("Ofertante: "+map.get("nome_ofert"));
-            tvTNomeUsuarioSolic.setText("Solicitante: "+map.get("nome"));
-
             Object map_id_usuario_solic = map.get("id_usuario");
-            int id_usuario_solic = Integer.parseInt(map_id_usuario_solic.toString());
+            id_usuario_solic = Integer.parseInt(map_id_usuario_solic.toString());
 
             Object map_id_usuario_ofert = map.get("id_usuario_ofert");
-            int id_usuario_ofert = Integer.parseInt(map_id_usuario_ofert.toString());
+            id_usuario_ofert = Integer.parseInt(map_id_usuario_ofert.toString());
 
             if(id_usuario == id_usuario_solic){
                 id_outro_usuario = id_usuario_ofert;
@@ -235,6 +235,34 @@ public class Transacao extends AppCompatActivity {
                 id_outro_usuario = id_usuario_solic;
                 solicitante = false;
             }
+
+            tvTNomeUsuarioOfert.setText("Ofertante: "+map.get("nome_ofert"));
+            tvTNomeUsuarioOfert.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Bundle param = new Bundle();
+                    param.putInt("id_usuario", id_usuario);
+                    param.putString("chave_api", chave_api);
+                    param.putInt("id_usuario_selec", id_usuario_ofert);
+                    Intent intent = new Intent(Transacao.this, ContatoTransacao.class);
+                    intent.putExtras(param);
+                    startActivity(intent);
+                }
+            });
+
+            tvTNomeUsuarioSolic.setText("Solicitante: " + map.get("nome"));
+            tvTNomeUsuarioSolic.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Bundle param = new Bundle();
+                    param.putInt("id_usuario", id_usuario);
+                    param.putString("chave_api", chave_api);
+                    param.putInt("id_usuario_selec", id_usuario_solic);
+                    Intent intent = new Intent(Transacao.this, ContatoTransacao.class);
+                    intent.putExtras(param);
+                    startActivity(intent);
+                }
+            });
 
             tvTDescricaoJogoOfert.setText(map.get("descricao_jogo_ofert"));
             tvTPlataformaEstadoJogoOfert.setText(map.get("plataforma_jogo_ofert") + (map.get("estado_jogo_ofert")!=null ? " - "+map.get("estado_jogo_ofert") : ""));
