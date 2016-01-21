@@ -141,4 +141,8 @@ public class Webservice {
     public Webservice buscaAvaliacoesUsuario(int id_usuario){
         return new Webservice("avaliacoes_usuario/"+id_usuario, HttpMethod.GET, false);
     }
+
+    public Webservice buscaInteresses(int id_usuario, int id_interesse){
+        return new Webservice("interesse/"+id_usuario+"/"+id_interesse, HttpMethod.GET, false);
+    }
 }

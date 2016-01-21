@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="170dp"
+    android:orientation="horizontal"
+    android:padding="5dip" >
+
+    <RelativeLayout
+        android:layout_width="0dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="0.45">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dip" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent">
+
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="170dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/borda2">
+
+                    <TextView
+                        android:id="@+id/tvInteresseTabDescricaoJogo1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold"
+                        />
+
+                    <TextView
+                        android:id="@+id/tvInteresseTabPlataformaJogo1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        />
+
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+                        <ImageView
+                            android:layout_width="50dip"
+                            android:layout_height="50dip"
+                            android:id="@+id/ivInteresseTabFotoJogo1"
+                            />
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent">
+                            <TextView
+                                android:id="@+id/tvInteresseTabPreco1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:textColor="@android:color/black"
+                                android:textStyle="bold"
+                                android:layout_centerInParent="true"
+                                android:layout_marginLeft="10dp"
+                                />
+                        </RelativeLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="0dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="0.15">
+
+        <ImageView
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:layout_width="50dip"
+            android:layout_height="50dip"
+            android:id="@+id/ivLTFotoSeta"
+            android:src="@drawable/ic_seta" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="0dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="0.45">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dip" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent">
+
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="170dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/borda2">
+
+                    <TextView
+                        android:id="@+id/tvInteresseTabDescricaoJogo2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold"
+                        />
+
+                    <TextView
+                        android:id="@+id/tvInteresseTabPlataformaJogo2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        />
+
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+                        <ImageView
+                            android:layout_width="50dip"
+                            android:layout_height="50dip"
+                            android:id="@+id/ivInteresseTabFotoJogo2"
+                            />
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent">
+                            <TextView
+                                android:id="@+id/tvInteresseTabPreco2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:textColor="@android:color/black"
+                                android:textStyle="bold"
+                                android:layout_centerInParent="true"
+                                android:layout_marginLeft="10dp"
+                                />
+                        </RelativeLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

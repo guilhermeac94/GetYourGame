@@ -102,5 +102,7 @@
     <string name="title_activity_avaliar">Avaliar</string>
     <string name="title_activity_avaliacao">Avaliacao</string>
     <string name="title_activity_contato_transacao">ContatoTransacao</string>
+    <string name="title_activity_lista_interesse">ListaInteresse</string>
+    <string name="title_activity_lista_interesse_tab">ListaInteresseTab</string>
 
 </resources>

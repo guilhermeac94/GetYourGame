@@ -135,6 +135,16 @@
             android:name=".ContatoTransacao"
             android:label="@string/title_activity_contato_transacao" >
         </activity>
+        <activity
+            android:name=".ListaInteresse"
+            android:label="@string/title_activity_lista_interesse"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name=".ListaInteresseTab"
+            android:label="@string/title_activity_lista_interesse_tab"
+            android:theme="@style/AppTheme" >
+        </activity>
     </application>
 
 </manifest>

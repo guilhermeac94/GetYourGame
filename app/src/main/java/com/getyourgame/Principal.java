@@ -157,6 +157,21 @@ public class Principal extends AppCompatActivity{
             }
         });
 
+        ImageView ivQuadroInteresses = (ImageView)findViewById(R.id.ivQuadroInteresses);
+
+        ivQuadroInteresses.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent listaInteresse = new Intent(Principal.this, ListaInteresse.class);
+                Bundle param = new Bundle();
+                param.putInt("id_usuario", id_usuario);
+                param.putString("chave_api", chave_api);
+                listaInteresse.putExtras(param);
+                startActivity(listaInteresse);
+            }
+        });
+
+
         ivPrincFotoUsuario = (ImageView) findViewById(R.id.ivPrincFotoUsuario);
         ivPrincFotoUsuario.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
