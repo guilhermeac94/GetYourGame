@@ -61,16 +61,15 @@
       <file leaf-file-name="ListaInteresseTab.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/ListaInteresseTab.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33139536">
-              <caret line="136" column="45" selection-start-line="136" selection-start-column="45" selection-end-line="136" selection-end-column="45" />
+            <state vertical-scroll-proportion="0.5552326">
+              <caret line="143" column="0" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#4766#5239#0" expanded="true" />
                 <element signature="e#5238#5239#0" expanded="true" />
-                <element signature="e#5794#6000#0" expanded="true" />
-                <element signature="e#5999#6000#0" expanded="true" />
-                <element signature="e#6046#6245#0" expanded="true" />
-                <element signature="e#6244#6245#0" expanded="true" />
+                <element signature="e#5793#5997#0" expanded="true" />
+                <element signature="e#5996#5997#0" expanded="true" />
+                <element signature="e#6238#6239#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -2074,7 +2073,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3168654" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3168654" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2322239" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6588889" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -2114,7 +2113,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/ListaInteresseTab.java</url>
-          <line>264</line>
+          <line>257</line>
           <properties />
           <option name="timeStamp" value="43" />
         </line-breakpoint>
@@ -2568,16 +2567,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/getyourgame/ListaInteresseTab.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33139536">
-          <caret line="136" column="45" selection-start-line="136" selection-start-column="45" selection-end-line="136" selection-end-column="45" />
+        <state vertical-scroll-proportion="0.5552326">
+          <caret line="143" column="0" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#4766#5239#0" expanded="true" />
             <element signature="e#5238#5239#0" expanded="true" />
-            <element signature="e#5794#6000#0" expanded="true" />
-            <element signature="e#5999#6000#0" expanded="true" />
-            <element signature="e#6046#6245#0" expanded="true" />
-            <element signature="e#6244#6245#0" expanded="true" />
+            <element signature="e#5793#5997#0" expanded="true" />
+            <element signature="e#5996#5997#0" expanded="true" />
+            <element signature="e#6238#6239#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -135,26 +135,19 @@ public class ListaInteresseTab extends AppCompatActivity {
                 .setTitle("Remover")
                 .setMessage("Deseja remover o interesse?")
                 .setIcon(R.drawable.ic_remove)
-
                 .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-
                     public void onClick(DialogInterface dialog, int whichButton) {
                         dialog.dismiss();
                     }
-
                 })
-
-
                 .setNegativeButton("Não", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
-
                     }
                 })
                 .create();
         return myQuittingDialogBox;
-
-    }
+   }
 
     class Item {
         int id_usuario_jogo;
