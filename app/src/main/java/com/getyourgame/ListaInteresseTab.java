@@ -66,11 +66,17 @@ public class ListaInteresseTab extends AppCompatActivity {
         sem_jogo = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.ic_jogo_default);
         moeda = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.ic_moeda);
 
-        lista = new ArrayList();
         lvListaInteresseTab = (ListView) findViewById(R.id.lvListaInteresseTab);
         tvListaInteresseTabNenhum = (TextView) findViewById(R.id.tvListaInteresseTabNenhum);
         pbListaInteresseTab = (ProgressBar) findViewById(R.id.pbListaInteresseTab);
 
+        buscaInteresses();
+    }
+
+    public void buscaInteresses(){
+        lista = new ArrayList();
+        lvListaInteresseTab.setVisibility(View.GONE);
+        pbListaInteresseTab.setVisibility(View.VISIBLE);
         new HttpBuscaInteresses((new Webservice().buscaInteresses(id_usuario, id_interesse)), null, Object[].class, "").execute();
     }
 
@@ -129,6 +135,28 @@ public class ListaInteresseTab extends AppCompatActivity {
         }
     }
 
+    private class HttpDeletaInteresses extends Http {
+        public HttpDeletaInteresses(Webservice ws, MultiValueMap<String, String> map, Class classe, String apikey) {
+            super(ws, map, classe, apikey);
+        }
+
+        @Override
+        protected void onPostExecute(Object retorno) {
+            super.onPostExecute(retorno);
+
+            Map<String, String> map = (Map<String, String>) retorno;
+
+            Object map_error = map.get("error");
+
+            if(!Boolean.parseBoolean(map_error.toString())){
+                util.toast(getApplicationContext(), map.get("message"));
+                buscaInteresses();
+            }else{
+                util.msgDialog(ListaInteresseTab.this, "Alerta", map.get("message"));
+            }
+        }
+    }
+
     public AlertDialog AskOption(final int id_usuario_jogo) {
         AlertDialog myQuittingDialogBox = new AlertDialog.Builder(this)
                 //set message, title, and icon
@@ -137,6 +165,7 @@ public class ListaInteresseTab extends AppCompatActivity {
                 .setIcon(R.drawable.ic_remove)
                 .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
+                        new HttpDeletaInteresses(new Webservice().deletaInteresse(id_usuario_jogo), null, Object.class, "").execute();
                         dialog.dismiss();
                     }
                 })

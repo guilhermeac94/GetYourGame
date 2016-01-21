@@ -145,4 +145,8 @@ public class Webservice {
     public Webservice buscaInteresses(int id_usuario, int id_interesse){
         return new Webservice("interesse/"+id_usuario+"/"+id_interesse, HttpMethod.GET, false);
     }
+
+    public Webservice deletaInteresse(int id_usuario_jogo){
+        return new Webservice("interesse/"+id_usuario_jogo, HttpMethod.DELETE, false);
+    }
 }
