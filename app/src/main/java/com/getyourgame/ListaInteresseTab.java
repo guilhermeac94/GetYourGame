@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -27,6 +28,7 @@ import android.widget.TextView;
 
 import com.getyourgame.R;
 import com.getyourgame.Transacao;
+import com.getyourgame.model.Endereco;
 import com.getyourgame.util.Http;
 import com.getyourgame.util.Util;
 import com.getyourgame.util.Webservice;
@@ -69,6 +71,14 @@ public class ListaInteresseTab extends AppCompatActivity {
         lvListaInteresseTab = (ListView) findViewById(R.id.lvListaInteresseTab);
         tvListaInteresseTabNenhum = (TextView) findViewById(R.id.tvListaInteresseTabNenhum);
         pbListaInteresseTab = (ProgressBar) findViewById(R.id.pbListaInteresseTab);
+
+        Button btListaInteresseTabCadastrar = (Button) findViewById(R.id.btListaInteresseTabCadastrar);
+        btListaInteresseTabCadastrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new HttpBuscaEndereco((new Webservice()).buscaEndereco(id_usuario), null, Endereco.class, "").execute();
+            }
+        });
 
         buscaInteresses();
     }
@@ -326,6 +336,34 @@ public class ListaInteresseTab extends AppCompatActivity {
             }
 
             return row;
+        }
+    }
+
+
+    private class HttpBuscaEndereco extends Http {
+        public HttpBuscaEndereco(Webservice ws, MultiValueMap<String, String> map, Class classe, String apikey) {
+            super(ws, map, classe, apikey);
+        }
+
+        @Override
+        protected void onPostExecute(Object retorno) {
+            Endereco endereco = (Endereco) retorno;
+
+            Bundle param = new Bundle();
+            param.putInt("id_usuario", id_usuario);
+            param.putString("chave_api", chave_api);
+
+            if(!endereco.getError()) {
+                Intent interesse = new Intent(ListaInteresseTab.this, Interesse.class);
+                interesse.putExtras(param);
+                startActivity(interesse);
+            }else{
+                param.putString("msg_interesse", "msg_interesse");
+                param.putString("redirecionar", "lista_interesse");
+                Intent contato = new Intent(ListaInteresseTab.this, Contatos.class);
+                contato.putExtras(param);
+                startActivity(contato);
+            }
         }
     }
 }

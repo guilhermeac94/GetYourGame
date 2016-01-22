@@ -186,7 +186,7 @@ public class Contatos extends AppCompatActivity {
                         break;
                     }
                     case "lista_interesse":{
-                        Intent intent = new Intent(Contatos.this, TelaJogo.class);
+                        Intent intent = new Intent(Contatos.this, ListaInteresse.class);
                         intent.putExtras(param);
                         startActivity(intent);
                         break;

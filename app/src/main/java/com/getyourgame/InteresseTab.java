@@ -3,6 +3,7 @@ package com.getyourgame;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -242,5 +243,17 @@ public class InteresseTab extends AppCompatActivity implements InteresseTroca.On
                 .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
                 .show(manager.findFragmentByTag(fragment_atual))
                 .commit();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (interesse == 2) {
+            InteresseVenda fr = (InteresseVenda) manager.findFragmentByTag("interesse_venda");
+            fr.carregaFoto(requestCode, resultCode, data);
+
+        } else if (interesse == 1) {
+            InteresseTroca fr = (InteresseTroca) manager.findFragmentByTag("interesse_troca");
+            fr.carregaFoto(requestCode, resultCode, data);
+        }
     }
 }

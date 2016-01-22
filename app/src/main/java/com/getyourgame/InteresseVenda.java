@@ -3,30 +3,46 @@ package com.getyourgame;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.ViewSwitcher;
 
 import com.getyourgame.db.SQLiteHandler;
 import com.getyourgame.model.EstadoJogo;
 import com.getyourgame.model.Jogo;
 import com.getyourgame.model.Plataforma;
 import com.getyourgame.model.UsuarioJogo;
+import com.getyourgame.util.Action;
+import com.getyourgame.util.CustomGallery;
+import com.getyourgame.util.GalleryAdapter;
 import com.getyourgame.util.Http;
 import com.getyourgame.util.Util;
 import com.getyourgame.util.Webservice;
+import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -74,6 +90,20 @@ public class InteresseVenda extends Fragment {
     TextView tvPlataforma;
 
     UsuarioJogo usuarioJogo;
+
+    ArrayList<CustomGallery> dataT;
+
+    Context contexto;
+
+    GridView gridGallery;
+    Handler handler;
+    GalleryAdapter adapter;
+
+    Button btnGalleryPickMul;
+
+    String action;
+    ViewSwitcher viewSwitcher;
+    ImageLoader imageLoader;
 
     /**
      * Use this factory method to create a new instance of
@@ -163,18 +193,25 @@ public class InteresseVenda extends Fragment {
                     map.add("id_usuario", String.valueOf(id_usuario));
                     map.add("id_interesse", String.valueOf(interesse));
                     map.add("id_estado_jogo", (estado_jogo!=null)?String.valueOf(estado_jogo.getId_estado_jogo()):"");
-                    map.add("distancia", "");
                     map.add("id_plataforma", (plataforma!=null)?String.valueOf(plataforma.getId_plataforma()):"");
                     map.add("preco", String.valueOf(etPreco.getText()));
                     map.add("id_jogo_troca", "");
                     map.add("id_plataforma_troca", "");
                     map.add("preco_inicial", "");
                     map.add("preco_final", "");
+
+                    int i =0;
+                    for(CustomGallery cG : dataT){
+                        map.add("foto"+i,util.BitMapToString(BitmapFactory.decodeFile(cG.sdcardPath)));
+                        i++;
+                    }
+
                     salvarInteresse(map);
 
                 }else{
                     util.msgDialog(getActivity(), "Alerta", "Selecione o jogo!");
                 }
+
             }
         });
 
@@ -195,7 +232,68 @@ public class InteresseVenda extends Fragment {
         final Spinner spEstadoJogo = (Spinner) fragmentView.findViewById(R.id.spEstadoJogo);
         util.carregaSpinnerHint(spEstadoJogo, getActivity(), estados_jogo);
 
+        initImageLoader();
+        init();
+
         return fragmentView;
+    }
+
+    private void initImageLoader() {
+        DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
+                .cacheOnDisc().imageScaleType(ImageScaleType.EXACTLY_STRETCHED)
+                .bitmapConfig(Bitmap.Config.RGB_565).build();
+        ImageLoaderConfiguration.Builder builder = new ImageLoaderConfiguration.Builder(
+                getActivity()).defaultDisplayImageOptions(defaultOptions).memoryCache(
+                new WeakMemoryCache());
+
+        ImageLoaderConfiguration config = builder.build();
+        imageLoader = ImageLoader.getInstance();
+        imageLoader.init(config);
+    }
+
+
+    private void init() {
+
+        handler = new Handler();
+        gridGallery = (GridView) fragmentView.findViewById(R.id.gridGallery);
+        gridGallery.setFastScrollEnabled(true);
+        adapter = new GalleryAdapter(contexto, imageLoader);
+        adapter.setMultiplePick(false);
+        gridGallery.setAdapter(adapter);
+
+        viewSwitcher = (ViewSwitcher) fragmentView.findViewById(R.id.viewSwitcher);
+        viewSwitcher.setDisplayedChild(1);
+
+        btnGalleryPickMul = (Button) fragmentView.findViewById(R.id.btnGalleryPickMul);
+        btnGalleryPickMul.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Action.ACTION_MULTIPLE_PICK);
+                getActivity().startActivityForResult(i, 200);
+            }
+        });
+
+    }
+
+    public void carregaFoto(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 200 && resultCode == Activity.RESULT_OK) {
+            String[] all_path = data.getStringArrayExtra("all_path");
+
+            dataT = new ArrayList<CustomGallery>();
+
+            for (String string : all_path) {
+                CustomGallery item = new CustomGallery();
+                item.sdcardPath = string;
+
+                dataT.add(item);
+            }
+
+            viewSwitcher.setDisplayedChild(0);
+            adapter.addAll(dataT);
+        }
     }
 
     private class HttpCarregaJogo extends Http {
@@ -249,6 +347,7 @@ public class InteresseVenda extends Fragment {
      */
     protected void onAttachToContext(Context context) {
         if (context instanceof OnVendaListener && context instanceof OnAbreSelecionaJogoListener) {
+            contexto = context;
             mListener = (OnVendaListener) context;
             mListenerJogo = (OnAbreSelecionaJogoListener) context;
             db = new SQLiteHandler(context);

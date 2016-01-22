@@ -39,4 +39,15 @@
         android:layout_marginTop="20dp"
         android:visibility="gone"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cadastrar_interesse"
+        android:id="@+id/btListaInteresseTabCadastrar"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        style="@style/botao" />
+
 </RelativeLayout>

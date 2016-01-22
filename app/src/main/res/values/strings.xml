@@ -45,9 +45,11 @@
     <string name="bairro">Bairro</string>
     <string name="buscar">Buscar</string>
     <string name="cadastrar"><u>Cadastrar-se</u></string>
+    <string name="cadastrar_interesse">Cadastrar interesse</string>
     <string name="cadastro">Cadastro</string>
     <string name="cancelar_transacao">Cancelar Transação</string>
-    <string name="carrega_foto">Carrega Foto</string>
+    <string name="carrega_foto">Carregar Foto</string>
+    <string name="carrega_foto2"><u>Carregar Foto</u></string>
     <string name="cep">Cep</string>
     <string name="cidade">Cidade</string>
     <string name="complemento">Complemento</string>
@@ -63,8 +65,8 @@
     <string name="escreva_aqui">Escreva aqui</string>
     <string name="estado_jogo">Estado do Jogo:</string>
     <string name="estado_jogo_desejado">Estado desejado do Jogo:</string>
+    <string name="fotos">Fotos:</string>
     <string name="gps">Permite GPS:</string>
-    <string name="cadastrar_interesse">Cadastrar interesse</string>
     <string name="iniciar_transacao">INICIAR TRANSAÇÃO</string>
     <string name="interesses">Interesses</string>
     <string name="intervalo_preco">Intervalo de preço desejado (R$)</string>

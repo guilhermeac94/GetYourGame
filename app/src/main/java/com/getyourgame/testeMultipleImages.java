@@ -58,6 +58,7 @@ public class testeMultipleImages extends Activity {
         initImageLoader();
         init();
 
+        /*
         Button btSalvar = (Button) findViewById(R.id.btnSave);
         btSalvar.setOnClickListener(new View.OnClickListener() {
 
@@ -76,6 +77,7 @@ public class testeMultipleImages extends Activity {
                 //new HttpAtualizaUsuario(ws.cadastrarFotos(), map, Object.class, "").execute();
             }
         });
+        */
     }
 
 
@@ -127,7 +129,8 @@ public class testeMultipleImages extends Activity {
         viewSwitcher = (ViewSwitcher) findViewById(R.id.viewSwitcher);
         viewSwitcher.setDisplayedChild(1);
 
-        imgSinglePick = (ImageView) findViewById(R.id.imgSinglePick);
+
+        /*imgSinglePick = (ImageView) findViewById(R.id.imgSinglePick);
 
         btnGalleryPick = (Button) findViewById(R.id.btnGalleryPick);
         btnGalleryPick.setOnClickListener(new View.OnClickListener() {
@@ -137,7 +140,7 @@ public class testeMultipleImages extends Activity {
                 Intent i = new Intent(Action.ACTION_PICK);
                 startActivityForResult(i, 100);
             }
-        });
+        });*/
 
         btnGalleryPickMul = (Button) findViewById(R.id.btnGalleryPickMul);
         btnGalleryPickMul.setOnClickListener(new View.OnClickListener() {
