@@ -49,6 +49,8 @@ public class ListaTransacaoTab extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_transacao_tab);
 
+        getSupportActionBar().hide();
+
         id_usuario = util.recebeIdUsuario(getIntent());
         chave_api = util.recebeChaveApi(getIntent());
 
@@ -64,28 +66,6 @@ public class ListaTransacaoTab extends AppCompatActivity {
         pbLTCarregando = (ProgressBar)findViewById(R.id.pbLTCarregando);
 
         new HttpBuscaTransacoes((new Webservice().buscaTransacoes(id_usuario, status)), null, Object[].class, "").execute();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_lista_transacao_tab, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     private class HttpBuscaTransacoes extends Http {

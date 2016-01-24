@@ -68,27 +68,6 @@ public class Avaliacao extends AppCompatActivity {
         new HttpBuscaAvaliacoes((new Webservice().buscaAvaliacoesUsuario(id_usuario_aval)), null, Object[].class, "").execute();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_avaliacao, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     private class HttpBuscaAvaliacoes extends Http {
         public HttpBuscaAvaliacoes(Webservice ws, MultiValueMap<String, String> map, Class classe, String apikey) {

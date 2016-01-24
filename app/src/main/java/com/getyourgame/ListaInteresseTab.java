@@ -59,6 +59,8 @@ public class ListaInteresseTab extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_interesse_tab);
 
+        getSupportActionBar().hide();
+
         id_usuario = util.recebeIdUsuario(getIntent());
         chave_api = util.recebeChaveApi(getIntent());
 
