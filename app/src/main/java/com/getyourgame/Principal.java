@@ -240,13 +240,6 @@ public class Principal extends AppCompatActivity{
             return true;
         }
 
-        if (id == R.id.action_multiple_fotos) {
-            Bundle param = new Bundle();
-            param.putInt("id_usuario", id_usuario);
-            param.putString("chave_api", chave_api);
-            redirecionar(Principal.this, testeMultipleImages.class, param);
-            return true;
-        }
         return super.onOptionsItemSelected(item);
     }
 

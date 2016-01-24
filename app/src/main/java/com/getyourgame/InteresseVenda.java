@@ -139,6 +139,7 @@ public class InteresseVenda extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         fragmentView = inflater.inflate(R.layout.fragment_interesse_venda, container, false);
+        dataT = new ArrayList<CustomGallery>();
 
         Bundle param = this.getArguments();
         if(param!=null){

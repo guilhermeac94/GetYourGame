@@ -146,6 +146,8 @@ public class InteresseTroca extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         fragmentView = inflater.inflate(R.layout.fragment_interesse_troca, container, false);
 
+        dataT = new ArrayList<CustomGallery>();
+
         Bundle param = this.getArguments();
         if (param != null) {
             interesse = (param.getInt("interesse"));
