@@ -43,8 +43,7 @@
         </activity>
         <activity
             android:name=".Principal"
-            android:label="@string/title_activity_principal"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
+            android:label="@string/title_activity_principal" >
         </activity>
         <activity
             android:name=".PreferenciaUsuario"
@@ -64,9 +63,7 @@
         </activity>
         <activity
             android:name=".CarregaFotoUsuario"
-            android:label="@string/title_activity_carrega_foto_usuario"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
->
+            android:label="@string/title_activity_carrega_foto_usuario" >
         </activity>
         <activity
             android:name=".Interesse"
@@ -85,19 +82,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".testeMultipleImages"
-            android:label="@string/title_activity_teste_multiple_images"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
-        </activity>
-        <activity
             android:name=".Oportunidades"
-            android:label="@string/title_activity_oportunidades"
-            android:theme="@style/AppTheme" >
+            android:label="@string/title_activity_oportunidades">
         </activity>
         <activity
             android:name=".IniciarTransacao"
-            android:label="@string/title_activity_iniciar_transacao"
-            android:theme="@style/AppTheme" >
+            android:label="@string/title_activity_iniciar_transacao" >
         </activity>
         <activity
             android:name=".Contatos"
@@ -137,13 +127,11 @@
         </activity>
         <activity
             android:name=".ListaInteresse"
-            android:label="@string/title_activity_lista_interesse"
-            android:theme="@style/AppTheme" >
+            android:label="@string/title_activity_lista_interesse" >
         </activity>
         <activity
             android:name=".ListaInteresseTab"
-            android:label="@string/title_activity_lista_interesse_tab"
-            android:theme="@style/AppTheme" >
+            android:label="@string/title_activity_lista_interesse_tab">
         </activity>
     </application>
 
