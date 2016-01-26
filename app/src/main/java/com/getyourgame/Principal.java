@@ -47,7 +47,7 @@ public class Principal extends AppCompatActivity{
 
 */
         id_usuario = util.recebeIdUsuario(getIntent());
-        chave_api = util.recebeChaveApi(getIntent());*/
+        chave_api = util.recebeChaveApi(getIntent());
         sem_usuario = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.ic_user);
 
         //final TextView tvPrincNomeUsuario = (TextView) findViewById(R.id.tvPrincNomeUsuario);
