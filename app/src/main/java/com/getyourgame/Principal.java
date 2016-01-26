@@ -47,7 +47,7 @@ public class Principal extends AppCompatActivity{
 
 */
         id_usuario = util.recebeIdUsuario(getIntent());
-        chave_api = util.recebeChaveApi(getIntent());
+        chave_api = util.recebeChaveApi(getIntent());*/
         sem_usuario = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.ic_user);
 
         //final TextView tvPrincNomeUsuario = (TextView) findViewById(R.id.tvPrincNomeUsuario);
@@ -205,17 +205,21 @@ public class Principal extends AppCompatActivity{
 
         @Override
         protected void onPostExecute(Object retorno) {
-            Usuario usuario = (Usuario) retorno;
-            if(!usuario.getError()) {
-                final TextView tvPrincNomeUsuario = (TextView) findViewById(R.id.tvPrincNomeUsuario);
-                final TextView tvPrincEmailUsuario = (TextView) findViewById(R.id.tvPrincEmailUsuario);
-                ivPrincFotoUsuario = (ImageView) findViewById(R.id.ivPrincFotoUsuario);
+            if(retorno instanceof Exception){
+                util.msgDialog(Principal.this, "Alerta", "Erro ao conectar com o servidor.");
+            }else {
+                Usuario usuario = (Usuario) retorno;
+                if (!usuario.getError()) {
+                    final TextView tvPrincNomeUsuario = (TextView) findViewById(R.id.tvPrincNomeUsuario);
+                    final TextView tvPrincEmailUsuario = (TextView) findViewById(R.id.tvPrincEmailUsuario);
+                    ivPrincFotoUsuario = (ImageView) findViewById(R.id.ivPrincFotoUsuario);
 
-                tvPrincNomeUsuario.setText(usuario.getNome());
-                tvPrincEmailUsuario.setText("(" + usuario.getEmail() + ")");
-                ivPrincFotoUsuario.setImageBitmap(usuario.getFoto().equals("") ? sem_usuario : util.StringToBitMap(usuario.getFoto()));
-            }else{
-                util.msgDialog(Principal.this, "Alerta", usuario.getMessage());
+                    tvPrincNomeUsuario.setText(usuario.getNome());
+                    tvPrincEmailUsuario.setText("(" + usuario.getEmail() + ")");
+                    ivPrincFotoUsuario.setImageBitmap(usuario.getFoto().equals("") ? sem_usuario : util.StringToBitMap(usuario.getFoto()));
+                } else {
+                    util.msgDialog(Principal.this, "Alerta", usuario.getMessage());
+                }
             }
         }
     }

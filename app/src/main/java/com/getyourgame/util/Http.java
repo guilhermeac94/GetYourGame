@@ -7,11 +7,13 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.http.converter.FormHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
+import java.net.ConnectException;
 import java.util.Arrays;
 
 /**
@@ -35,10 +37,14 @@ public class Http extends AsyncTask<String, Void, Object> {
     protected Object doInBackground(String... params) {
         try {
             //String url = "http://10.0.2.2/getYourGameWS/getyourgame/"+ws.getServico();
-            //String url = "http://192.168.25.38/getYourGameWS/getyourgame/"+ws.getServico();
-            String url = "http://192.168.1.112/getYourGameWS/getyourgame/"+ws.getServico();
+            String url = "http://192.168.25.38/getYourGameWS/getyourgame/"+ws.getServico();
+            //String url = "http://192.168.1.112/getYourGameWS/getyourgame/"+ws.getServico();
 
-            RestTemplate restTemplate = new RestTemplate();
+            SimpleClientHttpRequestFactory simpleClientHttpRequestFactory = new SimpleClientHttpRequestFactory();
+            simpleClientHttpRequestFactory.setReadTimeout(5000);
+            simpleClientHttpRequestFactory.setReadTimeout(1000);
+
+            RestTemplate restTemplate = new RestTemplate(simpleClientHttpRequestFactory);
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
             headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
@@ -62,10 +68,8 @@ public class Http extends AsyncTask<String, Void, Object> {
             return retorno.getBody();
 
         } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println(e.getStackTrace().toString());
+            return e;
         }
-        return null;
     }
 
     @Override

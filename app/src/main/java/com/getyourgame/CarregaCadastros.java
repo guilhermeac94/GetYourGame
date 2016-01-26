@@ -49,7 +49,7 @@ public class CarregaCadastros extends AppCompatActivity {
         db.delete("estado_transacao");
         db.delete("metodo_envio");
         Webservice ws = new Webservice();
-        new HttpBuscaCadastros(ws.buscaCadastros(),null,Object[].class,"").execute();
+        new HttpBuscaCadastros(ws.buscaCadastros(), null, Object[].class, "").execute();
     }
     private class HttpBuscaCadastros extends Http {
         public HttpBuscaCadastros(Webservice ws, MultiValueMap<String, String> map, Class classe, String apikey) {
@@ -57,23 +57,27 @@ public class CarregaCadastros extends AppCompatActivity {
         }
         @Override
         protected void onPostExecute(Object retorno) {
-            Object[] lista = Util.convertToObjectArray(retorno);
+            if(retorno instanceof Exception){
+                util.msgDialog(CarregaCadastros.this, "Alerta", "Erro ao conectar com o servidor.");
+            }else {
+                Object[] lista = Util.convertToObjectArray(retorno);
 
-            for(Object obj : lista){
-                Map<String, String> map = (Map<String, String>) obj;
-                System.out.println(String.valueOf(map.get("valor_id")));
+                for (Object obj : lista) {
+                    Map<String, String> map = (Map<String, String>) obj;
+                    System.out.println(String.valueOf(map.get("valor_id")));
 
-                ContentValues content = new ContentValues();
-                content.put(map.get("campo_id"), String.valueOf(map.get("valor_id")));
-                content.put(map.get("campo_des"), map.get("valor_des"));
+                    ContentValues content = new ContentValues();
+                    content.put(map.get("campo_id"), String.valueOf(map.get("valor_id")));
+                    content.put(map.get("campo_des"), map.get("valor_des"));
 
-                db.insert(map.get("tabela"), content);
+                    db.insert(map.get("tabela"), content);
+                }
+
+                Intent intentPreferencia = new Intent(CarregaCadastros.this, Login.class);
+                startActivity(intentPreferencia);
+
+                CarregaCadastros.this.finish();
             }
-
-            Intent intentPreferencia = new Intent(CarregaCadastros.this, Login.class);
-            startActivity(intentPreferencia);
-
-            CarregaCadastros.this.finish();
         }
     }
 
