@@ -30,6 +30,8 @@ public class Transacao extends AppCompatActivity {
     DecimalFormat df = new DecimalFormat("0.00");
     Integer id_usuario;
     String chave_api;
+    int id_usuario_jogo;
+    int id_usuario_jogo_ofert;
     int id_transacao;
     int id_interesse;
     int status;
@@ -61,6 +63,9 @@ public class Transacao extends AppCompatActivity {
     Button btTRecusarTransacao;
     Button btTAvaliacao;
 
+    TextView tvTFotos;
+    TextView tvTFotosOfert;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,6 +93,9 @@ public class Transacao extends AppCompatActivity {
         btTCancelarTransacao = (Button)findViewById(R.id.btTCancelarTransacao);
         btTRecusarTransacao = (Button)findViewById(R.id.btTRecusarTransacao);
         btTAvaliacao = (Button)findViewById(R.id.btTAvaliacao);
+
+        tvTFotos = (TextView) findViewById(R.id.tvTFotos);
+        tvTFotosOfert = (TextView) findViewById(R.id.tvTFotosOfert);
 
         btTIniciarTransacao.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -199,6 +207,37 @@ public class Transacao extends AppCompatActivity {
             }else{
                 compra = false;
             }
+
+            Object map_id_usuario_jogo = map.get("id_usuario_jogo");
+            id_usuario_jogo = Integer.parseInt(map_id_usuario_jogo.toString());
+
+            Object map_id_usuario_jogo_ofert = map.get("id_usuario_jogo_ofert");
+            id_usuario_jogo_ofert = Integer.parseInt(map_id_usuario_jogo_ofert.toString());
+
+            tvTFotos.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    visualizaFotos(id_usuario_jogo);
+                }
+            });
+
+            tvTFotosOfert.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    visualizaFotos(id_usuario_jogo_ofert);
+                }
+            });
+
+            Object map_qtd_foto = map.get("qtd_foto");
+            if(Integer.parseInt(map_qtd_foto.toString()) > 0){
+                tvTFotos.setVisibility(View.VISIBLE);
+            }
+
+            Object map_qtd_foto_ofert = map.get("qtd_foto_ofert");
+            if(Integer.parseInt(map_qtd_foto_ofert.toString()) > 0){
+                tvTFotosOfert.setVisibility(View.VISIBLE);
+            }
+
 
             Object map_id_usuario_solic = map.get("id_usuario");
             id_usuario_solic = Integer.parseInt(map_id_usuario_solic.toString());
@@ -326,5 +365,15 @@ public class Transacao extends AppCompatActivity {
                 Transacao.this.finish();
             }
         }
+    }
+
+    public void visualizaFotos(Integer id_usuario_jogo){
+        Intent intent = new Intent(Transacao.this, VisualizaFotos.class);
+        Bundle param = new Bundle();
+        param.putInt("id_usuario", id_usuario);
+        param.putString("chave_api", chave_api);
+        param.putInt("id_usuario_jogo", id_usuario_jogo);
+        intent.putExtras(param);
+        startActivity(intent);
     }
 }

@@ -83,7 +83,7 @@
         </activity>
         <activity
             android:name=".Oportunidades"
-            android:label="@string/title_activity_oportunidades">
+            android:label="@string/title_activity_oportunidades" >
         </activity>
         <activity
             android:name=".IniciarTransacao"
@@ -131,8 +131,13 @@
         </activity>
         <activity
             android:name=".ListaInteresseTab"
-            android:label="@string/title_activity_lista_interesse_tab">
+            android:label="@string/title_activity_lista_interesse_tab" >
         </activity>
+        <activity
+            android:name=".VisualizaFotos"
+            android:label="@string/title_activity_visualiza_fotos" >
+        </activity>
+
     </application>
 
 </manifest>

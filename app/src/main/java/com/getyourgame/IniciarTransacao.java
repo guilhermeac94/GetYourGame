@@ -59,6 +59,9 @@ public class IniciarTransacao extends AppCompatActivity {
 
     Button btITIniciarTransacao;
 
+    TextView tvITFotos;
+    TextView tvITFotosOfert;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,6 +87,9 @@ public class IniciarTransacao extends AppCompatActivity {
 
         btITIniciarTransacao = (Button) findViewById(R.id.btITIniciarTransacao);
 
+        tvITFotos = (TextView) findViewById(R.id.tvITFotos);
+        tvITFotosOfert = (TextView) findViewById(R.id.tvITFotosOfert);
+
         spITMetodoEnvioOfert.setEnabled(false);
 
         btITIniciarTransacao.setOnClickListener(new View.OnClickListener() {
@@ -100,6 +106,19 @@ public class IniciarTransacao extends AppCompatActivity {
             }
         });
 
+        tvITFotos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                visualizaFotos(id_usuario_jogo_solic);
+            }
+        });
+
+        tvITFotosOfert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                visualizaFotos(id_usuario_jogo_ofert);
+            }
+        });
 
         new HttpBuscaDadosOportunidade((new Webservice()).buscaDadosOportunidade(id_usuario_jogo_solic, id_usuario_jogo_ofert), null, Object.class, "").execute();
     }
@@ -160,6 +179,16 @@ public class IniciarTransacao extends AppCompatActivity {
             } else {
                 util.carregaSpinner(spITMetodoEnvio, IniciarTransacao.this, metodos, null);
             }
+
+            Object map_qtd_foto = map.get("qtd_foto");
+            if(Integer.parseInt(map_qtd_foto.toString()) > 0){
+                tvITFotos.setVisibility(View.VISIBLE);
+            }
+
+            Object map_qtd_foto_ofert = map.get("qtd_foto_ofert");
+            if(Integer.parseInt(map_qtd_foto_ofert.toString()) > 0){
+                tvITFotosOfert.setVisibility(View.VISIBLE);
+            }
         }
     }
 
@@ -179,5 +208,15 @@ public class IniciarTransacao extends AppCompatActivity {
             util.toast(getApplicationContext(), "Transação iniciada! Aguarde a aceitação do outro usuário.");
             IniciarTransacao.this.finish();
         }
+    }
+
+    public void visualizaFotos(Integer id_usuario_jogo){
+        Intent intent = new Intent(IniciarTransacao.this, VisualizaFotos.class);
+        Bundle param = new Bundle();
+        param.putInt("id_usuario", id_usuario);
+        param.putString("chave_api", chave_api);
+        param.putInt("id_usuario_jogo", id_usuario_jogo);
+        intent.putExtras(param);
+        startActivity(intent);
     }
 }

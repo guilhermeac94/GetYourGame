@@ -50,6 +50,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:text="@string/visualizarFotos"
+                    android:id="@+id/tvITFotosOfert"
+                    android:textStyle="italic"
+                    android:layout_marginTop="15dp"
+                    android:visibility="gone"
+                    android:background="@null"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/metodo_envio"
                     android:id="@+id/tvITMetodoEnvioOfert"
                     android:layout_marginTop="15dp"
@@ -113,6 +125,18 @@
                     android:textStyle="italic"
                     android:id="@+id/tvITPlataformaEstadoJogo"
                     android:layout_marginTop="5dp"
+                    android:background="@null"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:text="@string/visualizarFotos"
+                    android:id="@+id/tvITFotos"
+                    android:textStyle="italic"
+                    android:layout_marginTop="15dp"
+                    android:visibility="gone"
                     android:background="@null"/>
 
                 <TextView
