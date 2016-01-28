@@ -8,145 +8,150 @@
     tools:context="com.getyourgame.getyourgame.Principal"
     android:id="@+id/iniciarTransacao">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="5dip"
-            android:background="@drawable/borda2"
-            android:id="@+id/iniciarTransacaoOfert">
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="24dp"
-                android:text=""
-                android:textAlignment="center"
-                android:id="@+id/tvITDescricaoJogoOfert"
-                android:background="@null"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text=""
-                android:textAlignment="center"
-                android:textStyle="italic"
-                android:id="@+id/tvITPlataformaEstadoJogoOfert"
-                android:layout_marginTop="5dp"
-                android:background="@null"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/metodo_envio"
-                android:id="@+id/tvITMetodoEnvioOfert"
-                android:layout_marginTop="15dp"
-                android:background="@null"/>
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/spITMetodoEnvioOfert"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@android:color/holo_blue_dark"
-                android:id="@+id/tvITNomeUsuarioOfert"
-                android:layout_marginTop="15dp"
-                android:background="@null"/>
-
-        </LinearLayout>
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="450dp">
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="50dip"
-                android:layout_height="30dip"
-                android:id="@+id/ivITSetasDuplas"
-                android:src="@drawable/ic_setas_duplas"
-                android:layout_gravity="center_horizontal"
-                />
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="5dip"
+                android:background="@drawable/borda2"
+                android:id="@+id/iniciarTransacaoOfert">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="24dp"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:id="@+id/tvITDescricaoJogoOfert"
+                    android:background="@null"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textStyle="italic"
+                    android:id="@+id/tvITPlataformaEstadoJogoOfert"
+                    android:layout_marginTop="5dp"
+                    android:background="@null"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/metodo_envio"
+                    android:id="@+id/tvITMetodoEnvioOfert"
+                    android:layout_marginTop="15dp"
+                    android:background="@null"/>
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spITMetodoEnvioOfert"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:id="@+id/tvITNomeUsuarioOfert"
+                    android:layout_marginTop="15dp"
+                    android:background="@null"/>
+
+            </LinearLayout>
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="50dip"
+                    android:layout_height="30dip"
+                    android:id="@+id/ivITSetasDuplas"
+                    android:src="@drawable/ic_setas_duplas"
+                    android:layout_gravity="center_horizontal"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="5dip"
+                android:background="@drawable/borda2"
+                android:id="@+id/iniciarTransacaoSolic">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="24dp"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:id="@+id/tvITDescricaoJogo"
+                    android:background="@null"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textStyle="italic"
+                    android:id="@+id/tvITPlataformaEstadoJogo"
+                    android:layout_marginTop="5dp"
+                    android:background="@null"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/metodo_envio"
+                    android:id="@+id/tvITMetodoEnvio"
+                    android:layout_marginTop="15dp"
+                    android:background="@null"/>
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spITMetodoEnvio" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:id="@+id/tvITNomeUsuarioSolic"
+                    android:layout_marginTop="15dp"
+                    android:background="@null"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/alerta_transacao"
+                android:textAlignment="center"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                android:id="@+id/tvITAlerta"
+                android:layout_marginTop="20dp"/>
 
         </LinearLayout>
-
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="5dip"
-            android:background="@drawable/borda2"
-            android:id="@+id/iniciarTransacaoSolic">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="24dp"
-                android:text=""
-                android:textAlignment="center"
-                android:id="@+id/tvITDescricaoJogo"
-                android:background="@null"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text=""
-                android:textAlignment="center"
-                android:textStyle="italic"
-                android:id="@+id/tvITPlataformaEstadoJogo"
-                android:layout_marginTop="5dp"
-                android:background="@null"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/metodo_envio"
-                android:id="@+id/tvITMetodoEnvio"
-                android:layout_marginTop="15dp"
-                android:background="@null"/>
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/spITMetodoEnvio" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@android:color/holo_blue_dark"
-                android:id="@+id/tvITNomeUsuarioSolic"
-                android:layout_marginTop="15dp"
-                android:background="@null"/>
-
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/alerta_transacao"
-            android:textAlignment="center"
-            android:textSize="14dp"
-            android:textStyle="bold"
-            android:id="@+id/tvITAlerta"
-            android:layout_marginTop="20dp"/>
-
-    </LinearLayout>
+    </ScrollView>
 
     <Button
         android:layout_width="match_parent"

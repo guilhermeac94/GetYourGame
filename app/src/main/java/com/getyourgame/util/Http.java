@@ -37,8 +37,8 @@ public class Http extends AsyncTask<String, Void, Object> {
     protected Object doInBackground(String... params) {
         try {
             //String url = "http://10.0.2.2/getYourGameWS/getyourgame/"+ws.getServico();
-            String url = "http://192.168.25.38/getYourGameWS/getyourgame/"+ws.getServico();
-            //String url = "http://192.168.1.112/getYourGameWS/getyourgame/"+ws.getServico();
+            //String url = "http://192.168.25.38/getYourGameWS/getyourgame/"+ws.getServico();
+            String url = "http://192.168.1.112/getYourGameWS/getyourgame/"+ws.getServico();
 
             SimpleClientHttpRequestFactory simpleClientHttpRequestFactory = new SimpleClientHttpRequestFactory();
             simpleClientHttpRequestFactory.setReadTimeout(5000);
