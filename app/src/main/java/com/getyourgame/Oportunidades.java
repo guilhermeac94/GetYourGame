@@ -258,15 +258,23 @@ public class Oportunidades extends AppCompatActivity {
             if(lista.get(position).id_interesse == 4){
                 row.setBackgroundColor(getResources().getColor(R.color.compra));
                 holder.tvPrecoOfert.setText(lista.get(position).preco_jogo_ofert);
+                holder.ivFotoJogo.setImageBitmap(lista.get(position).foto_jogo);
             }else{
                 row.setBackgroundColor(getResources().getColor(R.color.troca));
-                holder.tvDescricaoJogo.setText(lista.get(position).descricao_jogo);
-                holder.tvPlataformaJogo.setText(lista.get(position).plataforma_jogo);
                 holder.tvPrecoOfert.setText("");
                 holder.tvPrecoOfert.setVisibility(View.GONE);
+
+                if(lista.get(position).descricao_jogo!=null){
+                    holder.tvDescricaoJogo.setText(lista.get(position).descricao_jogo);
+                    holder.tvPlataformaJogo.setText(lista.get(position).plataforma_jogo);
+                    holder.ivFotoJogo.setImageBitmap(lista.get(position).foto_jogo);
+                }else{
+                    holder.tvDescricaoJogo.setText("(Qualquer)");
+                    holder.tvPlataformaJogo.setText("");
+                    holder.ivFotoJogo.setImageBitmap(sem_jogo);
+                }
             }
 
-            holder.ivFotoJogo.setImageBitmap(lista.get(position).foto_jogo);
             holder.tvDescricaoJogoOfert.setText(lista.get(position).descricao_jogo_ofert);
             holder.tvPlataformaJogoOfert.setText(lista.get(position).plataforma_jogo_ofert);
             holder.ivFotoJogoOfert.setImageBitmap(lista.get(position).foto_jogo_ofert);

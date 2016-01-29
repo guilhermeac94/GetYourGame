@@ -85,6 +85,8 @@ public class ListaInteresseTab extends AppCompatActivity {
         buscaInteresses();
     }
 
+
+
     public void buscaInteresses(){
         lista = new ArrayList();
         lvListaInteresseTab.setVisibility(View.GONE);
@@ -298,8 +300,8 @@ public class ListaInteresseTab extends AppCompatActivity {
 
                 if(lista.get(position).descricaoJogoTroca!=null){
                     holder.tvInteresseTabDescricaoJogo2.setText(lista.get(position).descricaoJogoTroca);
-                    holder.tvInteresseTabPlataformaJogo2.setText(lista.get(position).plataformaJogo);
-                    holder.ivInteresseTabFotoJogo2.setImageBitmap(lista.get(position).fotoJogo);
+                    holder.tvInteresseTabPlataformaJogo2.setText(lista.get(position).plataformaJogoTroca);
+                    holder.ivInteresseTabFotoJogo2.setImageBitmap(lista.get(position).fotoJogoTroca);
                 }else{
                     holder.tvInteresseTabDescricaoJogo2.setText("(Qualquer)");
                     holder.tvInteresseTabPlataformaJogo2.setText("");
@@ -320,8 +322,8 @@ public class ListaInteresseTab extends AppCompatActivity {
 
                 if(lista.get(position).descricaoJogoTroca!=null){
                     holder.tvInteresseTabDescricaoJogo1.setText(lista.get(position).descricaoJogoTroca);
-                    holder.tvInteresseTabPlataformaJogo1.setText(lista.get(position).plataformaJogo);
-                    holder.ivInteresseTabFotoJogo1.setImageBitmap(lista.get(position).fotoJogo);
+                    holder.tvInteresseTabPlataformaJogo1.setText(lista.get(position).plataformaJogoTroca);
+                    holder.ivInteresseTabFotoJogo1.setImageBitmap(lista.get(position).fotoJogoTroca);
                 }else{
                     holder.tvInteresseTabDescricaoJogo1.setText("(Qualquer)");
                     holder.tvInteresseTabPlataformaJogo1.setText("");
