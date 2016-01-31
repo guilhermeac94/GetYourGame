@@ -4,10 +4,8 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -173,10 +171,14 @@ public class InteresseTab extends AppCompatActivity implements InteresseTroca.On
 
         @Override
         protected void onPostExecute(Object retorno) {
-            UsuarioJogo usuarioJogo = (UsuarioJogo) retorno;
-            util.toast(getApplicationContext(), usuarioJogo.getMessage());
-            if (!usuarioJogo.getError()) {
-                InteresseTab.this.finish();
+            if(retorno instanceof Exception){
+                util.msgDialog(InteresseTab.this, "Alerta", "Erro ao conectar com o servidor.");
+            }else {
+                UsuarioJogo usuarioJogo = (UsuarioJogo) retorno;
+                util.toast(getApplicationContext(), usuarioJogo.getMessage());
+                if (!usuarioJogo.getError()) {
+                    InteresseTab.this.finish();
+                }
             }
         }
     }

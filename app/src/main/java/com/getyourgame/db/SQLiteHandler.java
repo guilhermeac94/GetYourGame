@@ -4,29 +4,18 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.getyourgame.model.EstadoJogo;
 import com.getyourgame.model.MetodoEnvio;
-import com.getyourgame.model.Plataforma;
-import com.getyourgame.util.Http;
-import com.getyourgame.util.Util;
-import com.getyourgame.util.Webservice;
-
-import org.springframework.util.MultiValueMap;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Guilherme on 08/10/2015.
@@ -109,19 +98,6 @@ public class SQLiteHandler {
             // TODO Auto-generated constructor stub
             setContext(context);
         }
-
-        /*@Override
-        public void onCreate(SQLiteDatabase db) {
-            // TODO Auto-generated method stub
-            try {
-                db.execSQL(CREATE_TABLE);
-            } catch (SQLException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-
-        }*/
-
 
         @Override
         public void onCreate(SQLiteDatabase db) {

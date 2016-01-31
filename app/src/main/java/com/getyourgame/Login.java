@@ -2,19 +2,13 @@ package com.getyourgame;
 
 import android.app.Activity;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
-import android.support.v4.app.NotificationCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Base64;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -100,22 +94,26 @@ public class Login extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Object retorno) {
-            Usuario usuario = (Usuario) retorno;
-            if (!usuario.getError()) {
-                if (usuario.getTem_transacao()) {
+            if(retorno instanceof Exception){
+                util.msgDialog(Login.this, "Alerta", "Erro ao conectar com o servidor.");
+            }else {
+                Usuario usuario = (Usuario) retorno;
+                if (!usuario.getError()) {
+                    if (usuario.getTem_transacao()) {
 
-                    NotificationManager mNotificationManager =
-                            (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-                    // mId allows you to update the notification later on.
-                    mNotificationManager.notify(1, util.createNotification(Login.this, Oportunidades.class, "Transações", "Existem novas transações"));
+                        NotificationManager mNotificationManager =
+                                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                        // mId allows you to update the notification later on.
+                        mNotificationManager.notify(1, util.createNotification(Login.this, Oportunidades.class, "Transações", "Existem novas transações"));
+                    }
+                    Bundle param = new Bundle();
+                    param.putInt("id_usuario", usuario.getId_usuario());
+                    param.putString("chave_api", usuario.getChave_api());
+                    redirecionar(Login.this, Principal.class, param);
+                    util.toast(getApplicationContext(), "Login efetuado com sucesso!!!");
+                } else {
+                    new HttpCadastroFB((new Webservice()).cadastro(), FBmap, Usuario.class, "").execute();
                 }
-                Bundle param = new Bundle();
-                param.putInt("id_usuario", usuario.getId_usuario());
-                param.putString("chave_api", usuario.getChave_api());
-                redirecionar(Login.this, Principal.class, param);
-                util.toast(getApplicationContext(), "Login efetuado com sucesso!!!");
-            } else {
-                new HttpCadastroFB((new Webservice()).cadastro(), FBmap, Usuario.class, "").execute();
             }
         }
     }
@@ -127,18 +125,22 @@ public class Login extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Object retorno) {
-            Usuario usuario = (Usuario) retorno;
-            if (!usuario.getError()) {
-                new RecuperaFotoFacebook(urlFoto).execute(usuario.getId_usuario());
-                Bundle param = new Bundle();
-                param.putInt("id_usuario", usuario.getId_usuario());
-                param.putString("chave_api", usuario.getChave_api());
-                param.putString("primeiro_cadastro", "1");
-                param.putString("redirecionar", "preferencias_usuario");
-                redirecionar(Login.this, Contatos.class, param);
-                util.toast(getApplicationContext(), "Login efetuado com sucesso!");
-            } else {
-                util.msgDialog(Login.this, "Alerta", usuario.getMessage());
+            if(retorno instanceof Exception){
+                util.msgDialog(Login.this, "Alerta", "Erro ao conectar com o servidor.");
+            }else {
+                Usuario usuario = (Usuario) retorno;
+                if (!usuario.getError()) {
+                    new RecuperaFotoFacebook(urlFoto).execute(usuario.getId_usuario());
+                    Bundle param = new Bundle();
+                    param.putInt("id_usuario", usuario.getId_usuario());
+                    param.putString("chave_api", usuario.getChave_api());
+                    param.putString("primeiro_cadastro", "1");
+                    param.putString("redirecionar", "preferencias_usuario");
+                    redirecionar(Login.this, Contatos.class, param);
+                    util.toast(getApplicationContext(), "Login efetuado com sucesso!");
+                } else {
+                    util.msgDialog(Login.this, "Alerta", usuario.getMessage());
+                }
             }
         }
     }
@@ -228,23 +230,27 @@ public class Login extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Object retorno) {
-            Usuario usuario = (Usuario) retorno;
-            if (!usuario.getError()) {
-                if (usuario.getTem_transacao()) {
+            if(retorno instanceof Exception){
+                util.msgDialog(Login.this, "Alerta", "Erro ao conectar com o servidor.");
+            }else {
+                Usuario usuario = (Usuario) retorno;
+                if (!usuario.getError()) {
+                    if (usuario.getTem_transacao()) {
 
-                    NotificationManager mNotificationManager =
-                            (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-                    // mId allows you to update the notification later on.
-                    mNotificationManager.notify(1, util.createNotification(Login.this, Oportunidades.class, "Transações", "Existem novas transações"));
+                        NotificationManager mNotificationManager =
+                                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                        // mId allows you to update the notification later on.
+                        mNotificationManager.notify(1, util.createNotification(Login.this, Oportunidades.class, "Transações", "Existem novas transações"));
 
+                    }
+                    Bundle param = new Bundle();
+                    param.putInt("id_usuario", usuario.getId_usuario());
+                    param.putString("chave_api", usuario.getChave_api());
+                    redirecionar(Login.this, Principal.class, param);
+                    util.toast(getApplicationContext(), "Login efetuado com sucesso!!!");
+                } else {
+                    util.msgDialog(Login.this, "Alerta", usuario.getMessage());
                 }
-                Bundle param = new Bundle();
-                param.putInt("id_usuario", usuario.getId_usuario());
-                param.putString("chave_api", usuario.getChave_api());
-                redirecionar(Login.this, Principal.class, param);
-                util.toast(getApplicationContext(), "Login efetuado com sucesso!!!");
-            } else {
-                util.msgDialog(Login.this, "Alerta", usuario.getMessage());
             }
         }
     }
@@ -256,23 +262,27 @@ public class Login extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Object retorno) {
-            Usuario usuario = (Usuario) retorno;
-            if (!usuario.getError()) {
-                if (usuario.getTem_transacao()) {
+            if(retorno instanceof Exception){
+                util.msgDialog(Login.this, "Alerta", "Erro ao conectar com o servidor.");
+            }else {
+                Usuario usuario = (Usuario) retorno;
+                if (!usuario.getError()) {
+                    if (usuario.getTem_transacao()) {
 
-                    NotificationManager mNotificationManager =
-                            (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-                    // mId allows you to update the notification later on.
-                    mNotificationManager.notify(1, util.createNotification(Login.this, Oportunidades.class, "Transações", "Existem novas transações"));
+                        NotificationManager mNotificationManager =
+                                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                        // mId allows you to update the notification later on.
+                        mNotificationManager.notify(1, util.createNotification(Login.this, Oportunidades.class, "Transações", "Existem novas transações"));
 
+                    }
+                    Bundle param = new Bundle();
+                    param.putInt("id_usuario", usuario.getId_usuario());
+                    param.putString("chave_api", usuario.getChave_api());
+                    redirecionar(Login.this, Principal.class, param);
+                    util.toast(getApplicationContext(), "Login efetuado com sucesso!!!");
+                } else {
+                    util.msgDialog(Login.this, "Alerta", usuario.getMessage());
                 }
-                Bundle param = new Bundle();
-                param.putInt("id_usuario", usuario.getId_usuario());
-                param.putString("chave_api", usuario.getChave_api());
-                redirecionar(Login.this, Principal.class, param);
-                util.toast(getApplicationContext(), "Login efetuado com sucesso!!!");
-            } else {
-                util.msgDialog(Login.this, "Alerta", usuario.getMessage());
             }
         }
     }
@@ -297,7 +307,9 @@ public class Login extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Object retorno) {
-            System.out.println("teste");
+            if(retorno instanceof Exception){
+                util.msgDialog(Login.this, "Alerta", "Erro ao conectar com o servidor.");
+            }
         }
     }
 

@@ -4,11 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -76,50 +74,53 @@ public class Avaliacao extends AppCompatActivity {
         @Override
         protected void onPostExecute(Object retorno) {
             super.onPostExecute(retorno);
+            if(retorno instanceof Exception){
+                util.msgDialog(Avaliacao.this, "Alerta", "Erro ao conectar com o servidor.");
+            }else {
+                if (retorno != null) {
+                    Object[] l = Util.convertToObjectArray(retorno);
 
-            if(retorno!=null) {
-                Object[] l = Util.convertToObjectArray(retorno);
+                    for (Object obj : l) {
+                        Map<String, String> map = (Map<String, String>) obj;
 
-                for (Object obj : l) {
-                    Map<String, String> map = (Map<String, String>) obj;
-
-                    lista.add(new Item(Integer.parseInt(String.valueOf(map.get("id_avaliacao_transacao"))),
-                            Integer.parseInt(String.valueOf(map.get("id_transacao"))),
-                            Integer.parseInt(String.valueOf(map.get("id_usuario_avaliador"))),
-                            Integer.parseInt(String.valueOf(map.get("id_usuario_avaliado"))),
-                            Integer.parseInt(String.valueOf(map.get("avaliacao"))),
-                            map.get("observacao"),
-                            map.get("nome"),
-                            map.get("foto").equals("") ? sem_usuario : util.StringToBitMap(map.get("foto"))));
-                }
-
-                adapter = new Ladapter(getApplicationContext());
-                lvAAvaliacoes.setAdapter(adapter);
-
-                pbACarregando.setVisibility(View.GONE);
-                lvAAvaliacoes.setVisibility(View.VISIBLE);
-
-                lvAAvaliacoes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        Item item = lista.get(i);
-
-                        Bundle param = new Bundle();
-                        param.putInt("id_usuario", id_usuario);
-                        param.putString("chave_api", chave_api);
-                        param.putInt("id_avaliacao_transacao", item.id_avaliacao_transacao);
-                        param.putInt("id_transacao", item.id_transacao);
-                        param.putInt("id_usuario_avaliador", item.id_usuario_avaliador);
-                        param.putInt("id_usuario_avaliado", item.id_usuario_avaliado);
-
-                        Intent intent = new Intent(Avaliacao.this, Avaliar.class);
-                        intent.putExtras(param);
-                        startActivity(intent);
+                        lista.add(new Item(Integer.parseInt(String.valueOf(map.get("id_avaliacao_transacao"))),
+                                Integer.parseInt(String.valueOf(map.get("id_transacao"))),
+                                Integer.parseInt(String.valueOf(map.get("id_usuario_avaliador"))),
+                                Integer.parseInt(String.valueOf(map.get("id_usuario_avaliado"))),
+                                Integer.parseInt(String.valueOf(map.get("avaliacao"))),
+                                map.get("observacao"),
+                                map.get("nome"),
+                                map.get("foto").equals("") ? sem_usuario : util.StringToBitMap(map.get("foto"))));
                     }
-                });
-            }else{
-                pbACarregando.setVisibility(View.GONE);
-                tvANenhumResultado.setVisibility(View.VISIBLE);
+
+                    adapter = new Ladapter(getApplicationContext());
+                    lvAAvaliacoes.setAdapter(adapter);
+
+                    pbACarregando.setVisibility(View.GONE);
+                    lvAAvaliacoes.setVisibility(View.VISIBLE);
+
+                    lvAAvaliacoes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                            Item item = lista.get(i);
+
+                            Bundle param = new Bundle();
+                            param.putInt("id_usuario", id_usuario);
+                            param.putString("chave_api", chave_api);
+                            param.putInt("id_avaliacao_transacao", item.id_avaliacao_transacao);
+                            param.putInt("id_transacao", item.id_transacao);
+                            param.putInt("id_usuario_avaliador", item.id_usuario_avaliador);
+                            param.putInt("id_usuario_avaliado", item.id_usuario_avaliado);
+
+                            Intent intent = new Intent(Avaliacao.this, Avaliar.class);
+                            intent.putExtras(param);
+                            startActivity(intent);
+                        }
+                    });
+                } else {
+                    pbACarregando.setVisibility(View.GONE);
+                    tvANenhumResultado.setVisibility(View.VISIBLE);
+                }
             }
         }
     }

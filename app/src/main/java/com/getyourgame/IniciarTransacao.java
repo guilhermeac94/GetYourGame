@@ -1,16 +1,8 @@
 package com.getyourgame;
 
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.app.TaskStackBuilder;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -18,14 +10,12 @@ import android.widget.TextView;
 
 import com.getyourgame.db.SQLiteHandler;
 import com.getyourgame.model.MetodoEnvio;
-import com.getyourgame.model.Transacao;
 import com.getyourgame.util.Http;
 import com.getyourgame.util.Util;
 import com.getyourgame.util.Webservice;
 
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
-import org.w3c.dom.Text;
 
 import java.text.DecimalFormat;
 import java.util.List;
@@ -131,63 +121,66 @@ public class IniciarTransacao extends AppCompatActivity {
         @Override
         protected void onPostExecute(Object retorno) {
             super.onPostExecute(retorno);
+            if(retorno instanceof Exception){
+                util.msgDialog(IniciarTransacao.this, "Alerta", "Erro ao conectar com o servidor.");
+            }else {
+                Map<String, String> map = (Map<String, String>) retorno;
 
-            Map<String, String> map = (Map<String, String>) retorno;
+                Object map_id_interesse = map.get("id_interesse");
+                id_interesse = Integer.parseInt(map_id_interesse.toString());
 
-            Object map_id_interesse = map.get("id_interesse");
-            id_interesse = Integer.parseInt(map_id_interesse.toString());
-
-            if (id_interesse == 4) {
-                compra = true;
-            } else {
-                compra = false;
-            }
-
-            tvITNomeUsuarioOfert.setText("Ofertante: "+map.get("nome_ofert"));
-            tvITNomeUsuarioSolic.setText("Solicitante: "+map.get("nome"));
-
-
-            tvITDescricaoJogoOfert.setText(map.get("descricao_jogo_ofert"));
-            tvITPlataformaEstadoJogoOfert.setText(map.get("plataforma_jogo_ofert") + (map.get("estado_jogo_ofert") != null ? " - " + map.get("estado_jogo_ofert") : ""));
-
-            if (compra) {
-                tvITDescricaoJogo.setText("R$ " + df.format(Double.parseDouble(String.valueOf(map.get("preco_jogo_ofert")))));
-                tvITMetodoEnvioOfert.setVisibility(View.GONE);
-                spITMetodoEnvioOfert.setVisibility(View.GONE);
-            } else {
-                tvITDescricaoJogo.setText(map.get("descricao_jogo"));
-                tvITPlataformaEstadoJogo.setText(map.get("plataforma_jogo") + (map.get("estado_jogo") != null ? " - " + map.get("estado_jogo") : ""));
-            }
-
-            try {
-                metodos = db.selectMetodoEnvio();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            if (!compra) {
-                if (String.valueOf(map.get("metodo_envio_ofert")) != null) {
-                    util.carregaSpinner(spITMetodoEnvioOfert, IniciarTransacao.this, metodos, String.valueOf(map.get("metodo_envio_ofert")));
+                if (id_interesse == 4) {
+                    compra = true;
                 } else {
-                    util.carregaSpinner(spITMetodoEnvioOfert, IniciarTransacao.this, metodos, null);
+                    compra = false;
                 }
 
-            }
+                tvITNomeUsuarioOfert.setText("Ofertante: " + map.get("nome_ofert"));
+                tvITNomeUsuarioSolic.setText("Solicitante: " + map.get("nome"));
 
-            if (String.valueOf(map.get("metodo_envio")) != null) {
-                util.carregaSpinner(spITMetodoEnvio, IniciarTransacao.this, metodos, String.valueOf(map.get("metodo_envio")));
-            } else {
-                util.carregaSpinner(spITMetodoEnvio, IniciarTransacao.this, metodos, null);
-            }
 
-            Object map_qtd_foto = map.get("qtd_foto");
-            if(Integer.parseInt(map_qtd_foto.toString()) > 0){
-                tvITFotos.setVisibility(View.VISIBLE);
-            }
+                tvITDescricaoJogoOfert.setText(map.get("descricao_jogo_ofert"));
+                tvITPlataformaEstadoJogoOfert.setText(map.get("plataforma_jogo_ofert") + (map.get("estado_jogo_ofert") != null ? " - " + map.get("estado_jogo_ofert") : ""));
 
-            Object map_qtd_foto_ofert = map.get("qtd_foto_ofert");
-            if(Integer.parseInt(map_qtd_foto_ofert.toString()) > 0){
-                tvITFotosOfert.setVisibility(View.VISIBLE);
+                if (compra) {
+                    tvITDescricaoJogo.setText("R$ " + df.format(Double.parseDouble(String.valueOf(map.get("preco_jogo_ofert")))));
+                    tvITMetodoEnvioOfert.setVisibility(View.GONE);
+                    spITMetodoEnvioOfert.setVisibility(View.GONE);
+                } else {
+                    tvITDescricaoJogo.setText(map.get("descricao_jogo"));
+                    tvITPlataformaEstadoJogo.setText(map.get("plataforma_jogo") + (map.get("estado_jogo") != null ? " - " + map.get("estado_jogo") : ""));
+                }
+
+                try {
+                    metodos = db.selectMetodoEnvio();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                if (!compra) {
+                    if (String.valueOf(map.get("metodo_envio_ofert")) != null) {
+                        util.carregaSpinner(spITMetodoEnvioOfert, IniciarTransacao.this, metodos, String.valueOf(map.get("metodo_envio_ofert")));
+                    } else {
+                        util.carregaSpinner(spITMetodoEnvioOfert, IniciarTransacao.this, metodos, null);
+                    }
+
+                }
+
+                if (String.valueOf(map.get("metodo_envio")) != null) {
+                    util.carregaSpinner(spITMetodoEnvio, IniciarTransacao.this, metodos, String.valueOf(map.get("metodo_envio")));
+                } else {
+                    util.carregaSpinner(spITMetodoEnvio, IniciarTransacao.this, metodos, null);
+                }
+
+                Object map_qtd_foto = map.get("qtd_foto");
+                if (Integer.parseInt(map_qtd_foto.toString()) > 0) {
+                    tvITFotos.setVisibility(View.VISIBLE);
+                }
+
+                Object map_qtd_foto_ofert = map.get("qtd_foto_ofert");
+                if (Integer.parseInt(map_qtd_foto_ofert.toString()) > 0) {
+                    tvITFotosOfert.setVisibility(View.VISIBLE);
+                }
             }
         }
     }
@@ -199,14 +192,18 @@ public class IniciarTransacao extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Object retorno) {
-            Intent intent = new Intent(IniciarTransacao.this, Principal.class);
-            Bundle param = new Bundle();
-            param.putInt("id_usuario", id_usuario);
-            param.putString("chave_api", chave_api);
-            intent.putExtras(param);
-            startActivity(intent);
-            util.toast(getApplicationContext(), "Transação iniciada! Aguarde a aceitação do outro usuário.");
-            IniciarTransacao.this.finish();
+            if(retorno instanceof Exception){
+                util.msgDialog(IniciarTransacao.this, "Alerta", "Erro ao conectar com o servidor.");
+            }else {
+                Intent intent = new Intent(IniciarTransacao.this, Principal.class);
+                Bundle param = new Bundle();
+                param.putInt("id_usuario", id_usuario);
+                param.putString("chave_api", chave_api);
+                intent.putExtras(param);
+                startActivity(intent);
+                util.toast(getApplicationContext(), "Transação iniciada! Aguarde a aceitação do outro usuário.");
+                IniciarTransacao.this.finish();
+            }
         }
     }
 

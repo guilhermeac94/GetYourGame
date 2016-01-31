@@ -7,9 +7,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -79,17 +79,21 @@ public class CarregaFotoUsuario extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Object retorno) {
-            Usuario usuario = (Usuario) retorno;
-            if(!usuario.getError()) {
-                Bundle param = new Bundle();
-                param.putInt("id_usuario", id_usuario);
-                param.putString("chave_api", chave_api);
-                redirecionar(CarregaFotoUsuario.this, Principal.class, param, true);
+            if(retorno instanceof Exception){
+                util.msgDialog(CarregaFotoUsuario.this, "Alerta", "Erro ao conectar com o servidor.");
+            }else {
+                Usuario usuario = (Usuario) retorno;
+                if (!usuario.getError()) {
+                    Bundle param = new Bundle();
+                    param.putInt("id_usuario", id_usuario);
+                    param.putString("chave_api", chave_api);
+                    redirecionar(CarregaFotoUsuario.this, Principal.class, param, true);
 
-                util.toast(getApplicationContext(), "Foto salva com sucesso!");
-                CarregaFotoUsuario.this.finish();
-            }else{
-                util.msgDialog(CarregaFotoUsuario.this, "Alerta", usuario.getMessage());
+                    util.toast(getApplicationContext(), "Foto salva com sucesso!");
+                    CarregaFotoUsuario.this.finish();
+                } else {
+                    util.msgDialog(CarregaFotoUsuario.this, "Alerta", usuario.getMessage());
+                }
             }
         }
     }

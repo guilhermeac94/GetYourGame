@@ -1,14 +1,10 @@
 package com.getyourgame;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -59,19 +55,22 @@ public class VisualizaFotos extends AppCompatActivity {
         @Override
         protected void onPostExecute(Object retorno) {
             super.onPostExecute(retorno);
+            if(retorno instanceof Exception){
+                util.msgDialog(VisualizaFotos.this, "Alerta", "Erro ao conectar com o servidor.");
+            }else {
+                pbVFCarregando.setVisibility(View.GONE);
 
-            pbVFCarregando.setVisibility(View.GONE);
+                if (retorno != null) {
+                    Object[] l = Util.convertToObjectArray(retorno);
 
-            if(retorno!=null) {
-                Object[] l = Util.convertToObjectArray(retorno);
+                    for (Object obj : l) {
+                        Map<String, String> map = (Map<String, String>) obj;
 
-                for (Object obj : l) {
-                    Map<String, String> map = (Map<String, String>) obj;
+                        ImageView iv = new ImageView(VisualizaFotos.this);
+                        iv.setImageBitmap(map.get("foto").equals("") ? sem_jogo : util.StringToBitMap(map.get("foto")));
 
-                    ImageView iv = new ImageView(VisualizaFotos.this);
-                    iv.setImageBitmap(map.get("foto").equals("") ? sem_jogo : util.StringToBitMap(map.get("foto")));
-
-                    llVisualizaFotos.addView(iv);
+                        llVisualizaFotos.addView(iv);
+                    }
                 }
             }
         }

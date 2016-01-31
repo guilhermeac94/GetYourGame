@@ -4,11 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -105,24 +103,28 @@ public class TelaJogo extends AppCompatActivity{
 
         @Override
         protected void onPostExecute(Object retorno) {
-            Endereco endereco = (Endereco) retorno;
+            if(retorno instanceof Exception){
+                util.msgDialog(TelaJogo.this, "Alerta", "Erro ao conectar com o servidor.");
+            }else {
+                Endereco endereco = (Endereco) retorno;
 
-            Bundle param = new Bundle();
-            param.putInt("id_usuario", id_usuario);
-            param.putString("chave_api", chave_api);
+                Bundle param = new Bundle();
+                param.putInt("id_usuario", id_usuario);
+                param.putString("chave_api", chave_api);
 
-            if(!endereco.getError()) {
-                Intent interesse = new Intent(TelaJogo.this, Interesse.class);
-                param.putInt("id_jogo", id_jogo);
-                interesse.putExtras(param);
-                startActivity(interesse);
-            }else{
-                param.putString("msg_interesse", "msg_interesse");
-                param.putString("redirecionar","tela_jogo");
-                param.putInt("id_jogo", id_jogo);
-                Intent contato = new Intent(TelaJogo.this, Contatos.class);
-                contato.putExtras(param);
-                startActivity(contato);
+                if (!endereco.getError()) {
+                    Intent interesse = new Intent(TelaJogo.this, Interesse.class);
+                    param.putInt("id_jogo", id_jogo);
+                    interesse.putExtras(param);
+                    startActivity(interesse);
+                } else {
+                    param.putString("msg_interesse", "msg_interesse");
+                    param.putString("redirecionar", "tela_jogo");
+                    param.putInt("id_jogo", id_jogo);
+                    Intent contato = new Intent(TelaJogo.this, Contatos.class);
+                    contato.putExtras(param);
+                    startActivity(contato);
+                }
             }
         }
     }
@@ -133,21 +135,26 @@ public class TelaJogo extends AppCompatActivity{
         }
         @Override
         protected void onPostExecute(Object retorno) {
-            if(retorno!=null) {
-                Jogo jogo = (Jogo) retorno;
+            if(retorno instanceof Exception){
+                util.msgDialog(TelaJogo.this, "Alerta", "Erro ao conectar com o servidor.");
+            }else {
+                if (retorno != null) {
+                    Jogo jogo = (Jogo) retorno;
 
-                ivJFotoJogo.setImageBitmap(jogo.getFoto().equals("")?sem_jogo : util.StringToBitMap(jogo.getFoto()));
-                tvJDescricaoJogo.setText(jogo.getDescricao());
-                tvJAnoJogo.setText(jogo.getAno().toString().equals("") ? "" : "("+jogo.getAno().toString()+")");
+                    ivJFotoJogo.setImageBitmap(jogo.getFoto().equals("") ? sem_jogo : util.StringToBitMap(jogo.getFoto()));
+                    tvJDescricaoJogo.setText(jogo.getDescricao());
+                    tvJAnoJogo.setText(jogo.getAno().toString().equals("") ? "" : "(" + jogo.getAno().toString() + ")");
 
 
-                ObjectMapper plataformaMapper = new ObjectMapper();
+                    ObjectMapper plataformaMapper = new ObjectMapper();
 
-                List<Plataforma> plataformas = plataformaMapper.convertValue(jogo.getPlataformas(), new TypeReference<List<Plataforma>>() { });
-                listaPlataformas.addAll(plataformas);
+                    List<Plataforma> plataformas = plataformaMapper.convertValue(jogo.getPlataformas(), new TypeReference<List<Plataforma>>() {
+                    });
+                    listaPlataformas.addAll(plataformas);
 
-                adapterPlataformas = new LadapterPlataformas(getApplicationContext());
-                lvLTListaPlataformas.setAdapter(adapterPlataformas);
+                    adapterPlataformas = new LadapterPlataformas(getApplicationContext());
+                    lvLTListaPlataformas.setAdapter(adapterPlataformas);
+                }
             }
         }
     }
@@ -223,36 +230,40 @@ public class TelaJogo extends AppCompatActivity{
         @Override
         protected void onPostExecute(Object retorno) {
             super.onPostExecute(retorno);
+            if(retorno instanceof Exception){
+                util.msgDialog(TelaJogo.this, "Alerta", "Erro ao conectar com o servidor.");
+            }else {
+                if (retorno != null) {
+                    ObjectMapper usuarioMapper = new ObjectMapper();
 
-            if(retorno!=null) {
-                ObjectMapper usuarioMapper = new ObjectMapper();
+                    List<Usuario> usuarios = usuarioMapper.convertValue(retorno, new TypeReference<List<Usuario>>() {
+                    });
+                    listaUsuarios.addAll(usuarios);
 
-                List<Usuario> usuarios = usuarioMapper.convertValue(retorno, new TypeReference<List<Usuario>>() { });
-                listaUsuarios.addAll(usuarios);
+                    adapterUsuarios = new LadapterUsuarios(getApplicationContext());
+                    lvJUsuarios.setAdapter(adapterUsuarios);
 
-                adapterUsuarios = new LadapterUsuarios(getApplicationContext());
-                lvJUsuarios.setAdapter(adapterUsuarios);
+                    pbJCarregando.setVisibility(View.GONE);
+                    lvJUsuarios.setVisibility(View.VISIBLE);
 
-                pbJCarregando.setVisibility(View.GONE);
-                lvJUsuarios.setVisibility(View.VISIBLE);
+                    lvJUsuarios.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                            Usuario usuario = listaUsuarios.get(i);
 
-                lvJUsuarios.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        Usuario usuario = listaUsuarios.get(i);
-
-                        Bundle param = new Bundle();
-                        param.putInt("id_usuario", id_usuario);
-                        param.putString("chave_api", chave_api);
-                        param.putInt("id_usuario_selec", usuario.getId_usuario());
-                        Intent intent = new Intent(TelaJogo.this, TelaUsuario.class);
-                        intent.putExtras(param);
-                        startActivity(intent);
-                    }
-                });
-            }else{
-                pbJCarregando.setVisibility(View.GONE);
-                tvJNenhumResultado.setVisibility(View.VISIBLE);
+                            Bundle param = new Bundle();
+                            param.putInt("id_usuario", id_usuario);
+                            param.putString("chave_api", chave_api);
+                            param.putInt("id_usuario_selec", usuario.getId_usuario());
+                            Intent intent = new Intent(TelaJogo.this, TelaUsuario.class);
+                            intent.putExtras(param);
+                            startActivity(intent);
+                        }
+                    });
+                } else {
+                    pbJCarregando.setVisibility(View.GONE);
+                    tvJNenhumResultado.setVisibility(View.VISIBLE);
+                }
             }
         }
     }

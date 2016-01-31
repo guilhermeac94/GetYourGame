@@ -6,16 +6,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.support.v7.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -26,8 +19,6 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.getyourgame.R;
-import com.getyourgame.Transacao;
 import com.getyourgame.model.Endereco;
 import com.getyourgame.util.Http;
 import com.getyourgame.util.Util;
@@ -102,49 +93,52 @@ public class ListaInteresseTab extends AppCompatActivity {
         @Override
         protected void onPostExecute(Object retorno) {
             super.onPostExecute(retorno);
+            if(retorno instanceof Exception){
+                util.msgDialog(ListaInteresseTab.this, "Alerta", "Erro ao conectar com o servidor.");
+            }else {
+                if (retorno != null) {
+                    Object[] l = Util.convertToObjectArray(retorno);
 
-            if (retorno != null) {
-                Object[] l = Util.convertToObjectArray(retorno);
+                    for (Object obj : l) {
+                        Map<String, String> map = (Map<String, String>) obj;
 
-                for (Object obj : l) {
-                    Map<String, String> map = (Map<String, String>) obj;
+                        int interesse = Integer.parseInt(String.valueOf(map.get("id_interesse")));
 
-                    int interesse = Integer.parseInt(String.valueOf(map.get("id_interesse")));
-
-                    lista.add(new Item(Integer.parseInt(String.valueOf(map.get("id_usuario_jogo"))),
-                            interesse,
-                            Integer.parseInt(String.valueOf(map.get("id_usuario"))),
-                            map.get("nome"),
-                            map.get("descricao_jogo"),
-                            map.get("plataforma_jogo"),
-                            map.get("foto_jogo").equals("") ? sem_jogo : util.StringToBitMap(map.get("foto_jogo")),
-                            map.get("descricao_jogo_troca"),
-                            map.get("plataforma_jogo_troca"),
-                            map.get("foto_jogo_troca").equals("") ? sem_jogo : util.StringToBitMap(map.get("foto_jogo_troca")),
-                            map.get("preco") != null ? df.format(Double.parseDouble(String.valueOf(map.get("preco")))) : "",
-                            map.get("preco_inicial") != null ? df.format(Double.parseDouble(String.valueOf(map.get("preco_inicial")))) : "",
-                            map.get("preco_final") != null ? df.format(Double.parseDouble(String.valueOf(map.get("preco_final")))) : ""));
-                }
-
-                adapter = new Ladapter(getApplicationContext());
-                lvListaInteresseTab.setAdapter(adapter);
-
-                pbListaInteresseTab.setVisibility(View.GONE);
-                lvListaInteresseTab.setVisibility(View.VISIBLE);
-
-                lvListaInteresseTab.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-                    @Override
-                    public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
-                                                   int pos, long id) {
-                        Item item = lista.get(pos);
-                        AlertDialog diaBox = AskOption(item.id_usuario_jogo);
-                        diaBox.show();
-                        return true;
+                        lista.add(new Item(Integer.parseInt(String.valueOf(map.get("id_usuario_jogo"))),
+                                interesse,
+                                Integer.parseInt(String.valueOf(map.get("id_usuario"))),
+                                map.get("nome"),
+                                map.get("descricao_jogo"),
+                                map.get("plataforma_jogo"),
+                                map.get("foto_jogo").equals("") ? sem_jogo : util.StringToBitMap(map.get("foto_jogo")),
+                                map.get("descricao_jogo_troca"),
+                                map.get("plataforma_jogo_troca"),
+                                map.get("foto_jogo_troca").equals("") ? sem_jogo : util.StringToBitMap(map.get("foto_jogo_troca")),
+                                map.get("preco") != null ? df.format(Double.parseDouble(String.valueOf(map.get("preco")))) : "",
+                                map.get("preco_inicial") != null ? df.format(Double.parseDouble(String.valueOf(map.get("preco_inicial")))) : "",
+                                map.get("preco_final") != null ? df.format(Double.parseDouble(String.valueOf(map.get("preco_final")))) : ""));
                     }
-                });
-            } else {
-                pbListaInteresseTab.setVisibility(View.GONE);
-                tvListaInteresseTabNenhum.setVisibility(View.VISIBLE);
+
+                    adapter = new Ladapter(getApplicationContext());
+                    lvListaInteresseTab.setAdapter(adapter);
+
+                    pbListaInteresseTab.setVisibility(View.GONE);
+                    lvListaInteresseTab.setVisibility(View.VISIBLE);
+
+                    lvListaInteresseTab.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                        @Override
+                        public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+                                                       int pos, long id) {
+                            Item item = lista.get(pos);
+                            AlertDialog diaBox = AskOption(item.id_usuario_jogo);
+                            diaBox.show();
+                            return true;
+                        }
+                    });
+                } else {
+                    pbListaInteresseTab.setVisibility(View.GONE);
+                    tvListaInteresseTabNenhum.setVisibility(View.VISIBLE);
+                }
             }
         }
     }
@@ -157,16 +151,19 @@ public class ListaInteresseTab extends AppCompatActivity {
         @Override
         protected void onPostExecute(Object retorno) {
             super.onPostExecute(retorno);
+            if(retorno instanceof Exception){
+                util.msgDialog(ListaInteresseTab.this, "Alerta", "Erro ao conectar com o servidor.");
+            }else {
+                Map<String, String> map = (Map<String, String>) retorno;
 
-            Map<String, String> map = (Map<String, String>) retorno;
+                Object map_error = map.get("error");
 
-            Object map_error = map.get("error");
-
-            if(!Boolean.parseBoolean(map_error.toString())){
-                util.toast(getApplicationContext(), map.get("message"));
-                buscaInteresses();
-            }else{
-                util.msgDialog(ListaInteresseTab.this, "Alerta", map.get("message"));
+                if (!Boolean.parseBoolean(map_error.toString())) {
+                    util.toast(getApplicationContext(), map.get("message"));
+                    buscaInteresses();
+                } else {
+                    util.msgDialog(ListaInteresseTab.this, "Alerta", map.get("message"));
+                }
             }
         }
     }
@@ -351,22 +348,26 @@ public class ListaInteresseTab extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Object retorno) {
-            Endereco endereco = (Endereco) retorno;
+            if(retorno instanceof Exception){
+                util.msgDialog(ListaInteresseTab.this, "Alerta", "Erro ao conectar com o servidor.");
+            }else {
+                Endereco endereco = (Endereco) retorno;
 
-            Bundle param = new Bundle();
-            param.putInt("id_usuario", id_usuario);
-            param.putString("chave_api", chave_api);
+                Bundle param = new Bundle();
+                param.putInt("id_usuario", id_usuario);
+                param.putString("chave_api", chave_api);
 
-            if(!endereco.getError()) {
-                Intent interesse = new Intent(ListaInteresseTab.this, Interesse.class);
-                interesse.putExtras(param);
-                startActivity(interesse);
-            }else{
-                param.putString("msg_interesse", "msg_interesse");
-                param.putString("redirecionar", "lista_interesse");
-                Intent contato = new Intent(ListaInteresseTab.this, Contatos.class);
-                contato.putExtras(param);
-                startActivity(contato);
+                if (!endereco.getError()) {
+                    Intent interesse = new Intent(ListaInteresseTab.this, Interesse.class);
+                    interesse.putExtras(param);
+                    startActivity(interesse);
+                } else {
+                    param.putString("msg_interesse", "msg_interesse");
+                    param.putString("redirecionar", "lista_interesse");
+                    Intent contato = new Intent(ListaInteresseTab.this, Contatos.class);
+                    contato.putExtras(param);
+                    startActivity(contato);
+                }
             }
         }
     }

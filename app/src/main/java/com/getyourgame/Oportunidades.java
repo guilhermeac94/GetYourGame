@@ -4,13 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.media.Image;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -95,59 +90,62 @@ public class Oportunidades extends AppCompatActivity {
         @Override
         protected void onPostExecute(Object retorno) {
             super.onPostExecute(retorno);
+            if(retorno instanceof Exception){
+                util.msgDialog(Oportunidades.this, "Alerta", "Erro ao conectar com o servidor.");
+            }else {
+                if (retorno != null) {
+                    Object[] l = Util.convertToObjectArray(retorno);
 
-            if(retorno!=null) {
-                Object[] l = Util.convertToObjectArray(retorno);
+                    for (Object obj : l) {
+                        Map<String, String> map = (Map<String, String>) obj;
 
-                for (Object obj : l) {
-                    Map<String, String> map = (Map<String, String>) obj;
+                        int interesse = Integer.parseInt(String.valueOf(map.get("id_interesse")));
 
-                    int interesse = Integer.parseInt(String.valueOf(map.get("id_interesse")));
-
-                    lista.add(new Item(Integer.parseInt(String.valueOf(map.get("existe_transacao"))),
-                            interesse,
-                            map.get("descricao_jogo"),
-                            map.get("plataforma_jogo"),
-                            interesse == 4 ? moeda : (map.get("foto_jogo").equals("") ? sem_jogo : util.StringToBitMap(map.get("foto_jogo"))),
-                            Integer.parseInt(String.valueOf(map.get("id_usuario_jogo"))),
-                            Integer.parseInt(String.valueOf(map.get("id_usuario_ofert"))),
-                            map.get("nome_ofert"),
-                            Integer.parseInt(String.valueOf(map.get("id_jogo_ofert"))),
-                            map.get("descricao_jogo_ofert"),
-                            map.get("plataforma_jogo_ofert"),
-                            map.get("foto_jogo_ofert").equals("") ? sem_jogo : util.StringToBitMap(map.get("foto_jogo_ofert")),
-                            map.get("preco_jogo_ofert") != null ? df.format(Double.parseDouble(String.valueOf(map.get("preco_jogo_ofert")))) : "",
-                            Integer.parseInt(String.valueOf(map.get("id_usuario_jogo_ofert")))));
-                }
-
-                adapter = new Ladapter(getApplicationContext());
-                lvOportunidades.setAdapter(adapter);
-
-                pbOportunidadesCarregando.setVisibility(View.GONE);
-                lvOportunidades.setVisibility(View.VISIBLE);
-
-                lvOportunidades.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        Item item = lista.get(i);
-
-                        if(item.existe_transacao==1){
-                            util.msgDialog(Oportunidades.this, "Alerta", "Já existe uma transação pendente para esta oportunidade!");
-                        }else {
-                            Bundle param = new Bundle();
-                            param.putInt("id_usuario", id_usuario);
-                            param.putString("chave_api", chave_api);
-                            param.putInt("id_usuario_jogo_solic", item.id_usuario_jogo);
-                            param.putInt("id_usuario_jogo_ofert", item.id_usuario_jogo_ofert);
-                            Intent intent = new Intent(Oportunidades.this, IniciarTransacao.class);
-                            intent.putExtras(param);
-                            startActivity(intent);
-                        }
+                        lista.add(new Item(Integer.parseInt(String.valueOf(map.get("existe_transacao"))),
+                                interesse,
+                                map.get("descricao_jogo"),
+                                map.get("plataforma_jogo"),
+                                interesse == 4 ? moeda : (map.get("foto_jogo").equals("") ? sem_jogo : util.StringToBitMap(map.get("foto_jogo"))),
+                                Integer.parseInt(String.valueOf(map.get("id_usuario_jogo"))),
+                                Integer.parseInt(String.valueOf(map.get("id_usuario_ofert"))),
+                                map.get("nome_ofert"),
+                                Integer.parseInt(String.valueOf(map.get("id_jogo_ofert"))),
+                                map.get("descricao_jogo_ofert"),
+                                map.get("plataforma_jogo_ofert"),
+                                map.get("foto_jogo_ofert").equals("") ? sem_jogo : util.StringToBitMap(map.get("foto_jogo_ofert")),
+                                map.get("preco_jogo_ofert") != null ? df.format(Double.parseDouble(String.valueOf(map.get("preco_jogo_ofert")))) : "",
+                                Integer.parseInt(String.valueOf(map.get("id_usuario_jogo_ofert")))));
                     }
-                });
-            }else{
-                pbOportunidadesCarregando.setVisibility(View.GONE);
-                tvOportunidadesNenhum.setVisibility(View.VISIBLE);
+
+                    adapter = new Ladapter(getApplicationContext());
+                    lvOportunidades.setAdapter(adapter);
+
+                    pbOportunidadesCarregando.setVisibility(View.GONE);
+                    lvOportunidades.setVisibility(View.VISIBLE);
+
+                    lvOportunidades.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                            Item item = lista.get(i);
+
+                            if (item.existe_transacao == 1) {
+                                util.msgDialog(Oportunidades.this, "Alerta", "Já existe uma transação pendente para esta oportunidade!");
+                            } else {
+                                Bundle param = new Bundle();
+                                param.putInt("id_usuario", id_usuario);
+                                param.putString("chave_api", chave_api);
+                                param.putInt("id_usuario_jogo_solic", item.id_usuario_jogo);
+                                param.putInt("id_usuario_jogo_ofert", item.id_usuario_jogo_ofert);
+                                Intent intent = new Intent(Oportunidades.this, IniciarTransacao.class);
+                                intent.putExtras(param);
+                                startActivity(intent);
+                            }
+                        }
+                    });
+                } else {
+                    pbOportunidadesCarregando.setVisibility(View.GONE);
+                    tvOportunidadesNenhum.setVisibility(View.VISIBLE);
+                }
             }
         }
     }

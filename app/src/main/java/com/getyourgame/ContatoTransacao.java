@@ -2,10 +2,8 @@ package com.getyourgame;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -76,39 +74,43 @@ public class ContatoTransacao extends AppCompatActivity {
         }
         @Override
         protected void onPostExecute(Object retorno) {
-            if(retorno!=null) {
-                Map<String, String> map = (Map<String, String>) retorno;
+            if(retorno instanceof Exception){
+                util.msgDialog(ContatoTransacao.this, "Alerta", "Erro ao conectar com o servidor.");
+            }else {
+                if (retorno != null) {
+                    Map<String, String> map = (Map<String, String>) retorno;
 
-                tvCTNomeUsuario.setText(map.get("nome"));
-                tvCTEmailUsuario.setText("(" + map.get("email") + ")");
-                ivCTFotoUsuario.setImageBitmap(map.get("foto").equals("") ? sem_usuario : util.StringToBitMap(map.get("foto")));
+                    tvCTNomeUsuario.setText(map.get("nome"));
+                    tvCTEmailUsuario.setText("(" + map.get("email") + ")");
+                    ivCTFotoUsuario.setImageBitmap(map.get("foto").equals("") ? sem_usuario : util.StringToBitMap(map.get("foto")));
 
-                if (map.get("logradouro") != null) {
-                    etCTLogradouro.setText(map.get("logradouro"));
-                }
-                if (map.get("cep") != null) {
-                    etCTCep.setText(String.valueOf(map.get("cep")));
-                }
-                if (map.get("bairro") != null) {
-                    etCTBairro.setText(map.get("bairro"));
-                }
-                if (map.get("cidade") != null) {
-                    etCTCidade.setText(map.get("cidade"));
-                }
-                if (map.get("uf") != null) {
-                    etCTUF.setText(map.get("uf"));
-                }
-                if (map.get("numero") != null) {
-                    etCTNumero.setText(String.valueOf(map.get("numero")));
-                }
-                if (map.get("complemento") != null) {
-                    etCTComplemento.setText(map.get("complemento"));
-                }
-                if (map.get("ddd") != null) {
-                    etCTDDD.setText(String.valueOf(map.get("ddd")));
-                }
-                if (map.get("telefone") != null) {
-                    etCTTelefone.setText(String.valueOf(map.get("telefone")));
+                    if (map.get("logradouro") != null) {
+                        etCTLogradouro.setText(map.get("logradouro"));
+                    }
+                    if (map.get("cep") != null) {
+                        etCTCep.setText(String.valueOf(map.get("cep")));
+                    }
+                    if (map.get("bairro") != null) {
+                        etCTBairro.setText(map.get("bairro"));
+                    }
+                    if (map.get("cidade") != null) {
+                        etCTCidade.setText(map.get("cidade"));
+                    }
+                    if (map.get("uf") != null) {
+                        etCTUF.setText(map.get("uf"));
+                    }
+                    if (map.get("numero") != null) {
+                        etCTNumero.setText(String.valueOf(map.get("numero")));
+                    }
+                    if (map.get("complemento") != null) {
+                        etCTComplemento.setText(map.get("complemento"));
+                    }
+                    if (map.get("ddd") != null) {
+                        etCTDDD.setText(String.valueOf(map.get("ddd")));
+                    }
+                    if (map.get("telefone") != null) {
+                        etCTTelefone.setText(String.valueOf(map.get("telefone")));
+                    }
                 }
             }
         }

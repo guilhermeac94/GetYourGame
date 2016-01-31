@@ -1,7 +1,5 @@
 package com.getyourgame.util;
 
-import java.util.ArrayList;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +10,8 @@ import android.widget.ImageView;
 import com.getyourgame.R;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
+
+import java.util.ArrayList;
 
 public class GalleryAdapter extends BaseAdapter {
 

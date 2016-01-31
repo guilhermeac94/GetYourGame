@@ -1,15 +1,11 @@
 package com.getyourgame;
 
-import android.app.TabActivity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TabHost;
 
 import com.getyourgame.util.Http;
 import com.getyourgame.util.Util;
@@ -112,35 +108,39 @@ public class Contatos extends AppCompatActivity {
         }
         @Override
         protected void onPostExecute(Object retorno) {
-            if(retorno!=null) {
-                Map<String, String> map = (Map<String, String>) retorno;
+            if(retorno instanceof Exception){
+                util.msgDialog(Contatos.this, "Alerta", "Erro ao conectar com o servidor.");
+            }else {
+                if (retorno != null) {
+                    Map<String, String> map = (Map<String, String>) retorno;
 
-                if (map.get("logradouro") != null) {
-                    etLogradouro.setText(map.get("logradouro"));
-                }
-                if (map.get("cep") != null) {
-                    etCep.setText(String.valueOf(map.get("cep")));
-                }
-                if (map.get("bairro") != null) {
-                    etBairro.setText(map.get("bairro"));
-                }
-                if (map.get("cidade") != null) {
-                    etCidade.setText(map.get("cidade"));
-                }
-                if (map.get("uf") != null) {
-                    etUF.setText(map.get("uf"));
-                }
-                if (map.get("numero") != null) {
-                    etNumero.setText(String.valueOf(map.get("numero")));
-                }
-                if (map.get("complemento") != null) {
-                    etComplemento.setText(map.get("complemento"));
-                }
-                if (map.get("ddd") != null) {
-                    etDDD.setText(String.valueOf(map.get("ddd")));
-                }
-                if (map.get("telefone") != null) {
-                    etTelefone.setText(String.valueOf(map.get("telefone")));
+                    if (map.get("logradouro") != null) {
+                        etLogradouro.setText(map.get("logradouro"));
+                    }
+                    if (map.get("cep") != null) {
+                        etCep.setText(String.valueOf(map.get("cep")));
+                    }
+                    if (map.get("bairro") != null) {
+                        etBairro.setText(map.get("bairro"));
+                    }
+                    if (map.get("cidade") != null) {
+                        etCidade.setText(map.get("cidade"));
+                    }
+                    if (map.get("uf") != null) {
+                        etUF.setText(map.get("uf"));
+                    }
+                    if (map.get("numero") != null) {
+                        etNumero.setText(String.valueOf(map.get("numero")));
+                    }
+                    if (map.get("complemento") != null) {
+                        etComplemento.setText(map.get("complemento"));
+                    }
+                    if (map.get("ddd") != null) {
+                        etDDD.setText(String.valueOf(map.get("ddd")));
+                    }
+                    if (map.get("telefone") != null) {
+                        etTelefone.setText(String.valueOf(map.get("telefone")));
+                    }
                 }
             }
         }

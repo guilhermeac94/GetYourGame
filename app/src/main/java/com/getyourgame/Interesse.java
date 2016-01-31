@@ -1,23 +1,13 @@
 package com.getyourgame;
 
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.app.TabActivity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.RadioGroup;
 import android.widget.TabHost;
 
 import com.getyourgame.util.Util;
 
-import java.net.SocketPermission;
-
-public class Interesse extends TabActivity /*implements InteresseTroca.OnTrocaListener, InteresseCompra.OnCompraListener*/{
+public class Interesse extends TabActivity {
 
     Util util = new Util();
     Integer id_usuario;

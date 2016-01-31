@@ -2,19 +2,18 @@ package com.getyourgame;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -351,9 +350,13 @@ public class InteresseTroca extends Fragment {
 
         @Override
         protected void onPostExecute(Object retorno) {
-            Jogo jogo = (Jogo) retorno;
-            if (jogo != null) {
-                carregaJogo(jogo);
+            if(retorno instanceof Exception){
+                util.msgDialog(getActivity(), "Alerta", "Erro ao conectar com o servidor.");
+            }else {
+                Jogo jogo = (Jogo) retorno;
+                if (jogo != null) {
+                    carregaJogo(jogo);
+                }
             }
         }
     }

@@ -13,7 +13,6 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
-import java.net.ConnectException;
 import java.util.Arrays;
 
 /**
@@ -37,11 +36,11 @@ public class Http extends AsyncTask<String, Void, Object> {
     protected Object doInBackground(String... params) {
         try {
             //String url = "http://10.0.2.2/getYourGameWS/getyourgame/"+ws.getServico();
-            //String url = "http://192.168.25.38/getYourGameWS/getyourgame/"+ws.getServico();
-            String url = "http://192.168.1.112/getYourGameWS/getyourgame/"+ws.getServico();
+            String url = "http://192.168.25.38/getYourGameWS/getyourgame/"+ws.getServico();
+            //String url = "http://192.168.1.112/getYourGameWS/getyourgame/"+ws.getServico();
 
             SimpleClientHttpRequestFactory simpleClientHttpRequestFactory = new SimpleClientHttpRequestFactory();
-            simpleClientHttpRequestFactory.setReadTimeout(5000);
+            simpleClientHttpRequestFactory.setConnectTimeout(5000);
             simpleClientHttpRequestFactory.setReadTimeout(1000);
 
             RestTemplate restTemplate = new RestTemplate(simpleClientHttpRequestFactory);
@@ -62,8 +61,6 @@ public class Http extends AsyncTask<String, Void, Object> {
             HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(this.map, headers);
 
             ResponseEntity<Object> retorno = restTemplate.exchange(url, ws.getMetodo(), request, this.classe);
-
-            //System.out.println("Erro: " + response.getEmail());
 
             return retorno.getBody();
 

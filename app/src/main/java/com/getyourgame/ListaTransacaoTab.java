@@ -4,11 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -75,54 +73,57 @@ public class ListaTransacaoTab extends AppCompatActivity {
         @Override
         protected void onPostExecute(Object retorno) {
             super.onPostExecute(retorno);
+            if(retorno instanceof Exception){
+                util.msgDialog(ListaTransacaoTab.this, "Alerta", "Erro ao conectar com o servidor.");
+            }else {
+                if (retorno != null) {
+                    Object[] l = Util.convertToObjectArray(retorno);
 
-            if(retorno!=null){
-                Object[] l = Util.convertToObjectArray(retorno);
+                    for (Object obj : l) {
+                        Map<String, String> map = (Map<String, String>) obj;
 
-                for(Object obj : l) {
-                    Map<String, String> map = (Map<String, String>) obj;
+                        int interesse = Integer.parseInt(String.valueOf(map.get("id_interesse")));
+                        int id_transacao = Integer.parseInt(String.valueOf(map.get("id_transacao")));
 
-                    int interesse = Integer.parseInt(String.valueOf(map.get("id_interesse")));
-                    int id_transacao = Integer.parseInt(String.valueOf(map.get("id_transacao")));
-
-                    lista.add(new Item(id_transacao,
-                            interesse,
-                            map.get("descricao_jogo"),
-                            map.get("plataforma_jogo"),
-                            interesse == 4 ? moeda : (map.get("foto_jogo").equals("") ? sem_jogo : util.StringToBitMap(map.get("foto_jogo"))),
-                            Integer.parseInt(String.valueOf(map.get("id_usuario_jogo"))),
-                            Integer.parseInt(String.valueOf(map.get("id_usuario_ofert"))),
-                            map.get("nome_ofert"),
-                            Integer.parseInt(String.valueOf(map.get("id_jogo_ofert"))),
-                            map.get("descricao_jogo_ofert"),
-                            map.get("plataforma_jogo_ofert"),
-                            map.get("foto_jogo_ofert").equals("") ? sem_jogo : util.StringToBitMap(map.get("foto_jogo_ofert")),
-                            map.get("preco_jogo_ofert") != null ? df.format(Double.parseDouble(String.valueOf(map.get("preco_jogo_ofert")))) : "",
-                            Integer.parseInt(String.valueOf(map.get("id_usuario_jogo_ofert")))));
-                }
-
-                adapter = new Ladapter(getApplicationContext());
-                lvLTListaTransacoes.setAdapter(adapter);
-
-                pbLTCarregando.setVisibility(View.GONE);
-                lvLTListaTransacoes.setVisibility(View.VISIBLE);
-
-                lvLTListaTransacoes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        Item item = lista.get(i);
-                        Bundle param = new Bundle();
-                        param.putInt("id_usuario", id_usuario);
-                        param.putString("chave_api", chave_api);
-                        param.putInt("id_transacao", item.id_transacao);
-                        Intent intent = new Intent(ListaTransacaoTab.this, Transacao.class);
-                        intent.putExtras(param);
-                        startActivity(intent);
+                        lista.add(new Item(id_transacao,
+                                interesse,
+                                map.get("descricao_jogo"),
+                                map.get("plataforma_jogo"),
+                                interesse == 4 ? moeda : (map.get("foto_jogo").equals("") ? sem_jogo : util.StringToBitMap(map.get("foto_jogo"))),
+                                Integer.parseInt(String.valueOf(map.get("id_usuario_jogo"))),
+                                Integer.parseInt(String.valueOf(map.get("id_usuario_ofert"))),
+                                map.get("nome_ofert"),
+                                Integer.parseInt(String.valueOf(map.get("id_jogo_ofert"))),
+                                map.get("descricao_jogo_ofert"),
+                                map.get("plataforma_jogo_ofert"),
+                                map.get("foto_jogo_ofert").equals("") ? sem_jogo : util.StringToBitMap(map.get("foto_jogo_ofert")),
+                                map.get("preco_jogo_ofert") != null ? df.format(Double.parseDouble(String.valueOf(map.get("preco_jogo_ofert")))) : "",
+                                Integer.parseInt(String.valueOf(map.get("id_usuario_jogo_ofert")))));
                     }
-                });
-            }else{
-                pbLTCarregando.setVisibility(View.GONE);
-                tvLTNenhum.setVisibility(View.VISIBLE);
+
+                    adapter = new Ladapter(getApplicationContext());
+                    lvLTListaTransacoes.setAdapter(adapter);
+
+                    pbLTCarregando.setVisibility(View.GONE);
+                    lvLTListaTransacoes.setVisibility(View.VISIBLE);
+
+                    lvLTListaTransacoes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                            Item item = lista.get(i);
+                            Bundle param = new Bundle();
+                            param.putInt("id_usuario", id_usuario);
+                            param.putString("chave_api", chave_api);
+                            param.putInt("id_transacao", item.id_transacao);
+                            Intent intent = new Intent(ListaTransacaoTab.this, Transacao.class);
+                            intent.putExtras(param);
+                            startActivity(intent);
+                        }
+                    });
+                } else {
+                    pbLTCarregando.setVisibility(View.GONE);
+                    tvLTNenhum.setVisibility(View.VISIBLE);
+                }
             }
         }
     }

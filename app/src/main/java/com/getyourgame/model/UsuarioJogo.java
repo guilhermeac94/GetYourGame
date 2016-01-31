@@ -20,7 +20,6 @@ public class UsuarioJogo {
     private Boolean error;
     private String message;
 
-    private List<Foto> fotos;
     public UsuarioJogo() {
     }
 

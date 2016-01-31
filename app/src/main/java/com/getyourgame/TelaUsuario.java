@@ -4,11 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -102,13 +100,17 @@ public class TelaUsuario extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Object retorno) {
-            Usuario usuario = (Usuario) retorno;
-            if(!usuario.getError()) {
-                tvUNomeUsuario.setText(usuario.getNome());
-                tvUEmailUsuario.setText("(" + usuario.getEmail() + ")");
-                ivUFotoUsuario.setImageBitmap(usuario.getFoto().equals("") ? sem_usuario : util.StringToBitMap(usuario.getFoto()));
-            }else{
-                util.msgDialog(TelaUsuario.this, "Alerta", usuario.getMessage());
+            if(retorno instanceof Exception){
+                util.msgDialog(TelaUsuario.this, "Alerta", "Erro ao conectar com o servidor.");
+            }else {
+                Usuario usuario = (Usuario) retorno;
+                if (!usuario.getError()) {
+                    tvUNomeUsuario.setText(usuario.getNome());
+                    tvUEmailUsuario.setText("(" + usuario.getEmail() + ")");
+                    ivUFotoUsuario.setImageBitmap(usuario.getFoto().equals("") ? sem_usuario : util.StringToBitMap(usuario.getFoto()));
+                } else {
+                    util.msgDialog(TelaUsuario.this, "Alerta", usuario.getMessage());
+                }
             }
         }
     }
@@ -120,36 +122,40 @@ public class TelaUsuario extends AppCompatActivity {
         @Override
         protected void onPostExecute(Object retorno) {
             super.onPostExecute(retorno);
+            if(retorno instanceof Exception){
+                util.msgDialog(TelaUsuario.this, "Alerta", "Erro ao conectar com o servidor.");
+            }else {
+                if (retorno != null) {
+                    ObjectMapper usuarioMapper = new ObjectMapper();
 
-            if(retorno!=null) {
-                ObjectMapper usuarioMapper = new ObjectMapper();
+                    List<Jogo> jogos = usuarioMapper.convertValue(retorno, new TypeReference<List<Jogo>>() {
+                    });
+                    listaJogos.addAll(jogos);
 
-                List<Jogo> jogos = usuarioMapper.convertValue(retorno, new TypeReference<List<Jogo>>() { });
-                listaJogos.addAll(jogos);
+                    adapterJogos = new LadapterJogos(getApplicationContext());
+                    lvUJogos.setAdapter(adapterJogos);
 
-                adapterJogos = new LadapterJogos(getApplicationContext());
-                lvUJogos.setAdapter(adapterJogos);
+                    pbUCarregando.setVisibility(View.GONE);
+                    lvUJogos.setVisibility(View.VISIBLE);
 
-                pbUCarregando.setVisibility(View.GONE);
-                lvUJogos.setVisibility(View.VISIBLE);
+                    lvUJogos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                            Jogo jogo = listaJogos.get(i);
 
-                lvUJogos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        Jogo jogo = listaJogos.get(i);
-
-                        Bundle param = new Bundle();
-                        param.putInt("id_usuario", id_usuario);
-                        param.putString("chave_api", chave_api);
-                        param.putInt("id_jogo", jogo.getId_jogo());
-                        Intent intent = new Intent(TelaUsuario.this, TelaJogo.class);
-                        intent.putExtras(param);
-                        startActivity(intent);
-                    }
-                });
-            }else{
-                pbUCarregando.setVisibility(View.GONE);
-                tvUNenhumResultado.setVisibility(View.VISIBLE);
+                            Bundle param = new Bundle();
+                            param.putInt("id_usuario", id_usuario);
+                            param.putString("chave_api", chave_api);
+                            param.putInt("id_jogo", jogo.getId_jogo());
+                            Intent intent = new Intent(TelaUsuario.this, TelaJogo.class);
+                            intent.putExtras(param);
+                            startActivity(intent);
+                        }
+                    });
+                } else {
+                    pbUCarregando.setVisibility(View.GONE);
+                    tvUNenhumResultado.setVisibility(View.VISIBLE);
+                }
             }
         }
     }

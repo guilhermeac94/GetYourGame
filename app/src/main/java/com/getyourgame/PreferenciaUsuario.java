@@ -1,20 +1,12 @@
 package com.getyourgame;
 
 import android.app.Activity;
-import android.content.ContentValues;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.SeekBar;
 import android.widget.Spinner;
-import android.widget.Switch;
-import android.widget.TextView;
 
 import com.getyourgame.db.SQLiteHandler;
 import com.getyourgame.model.EstadoJogo;
@@ -77,25 +69,29 @@ public class PreferenciaUsuario extends AppCompatActivity {
         }
         @Override
         protected void onPostExecute(Object retorno) {
-            Map<String, String> map = (Map<String, String>) retorno;
+            if(retorno instanceof Exception){
+                util.msgDialog(PreferenciaUsuario.this, "Alerta", "Erro ao conectar com o servidor.");
+            }else {
+                Map<String, String> map = (Map<String, String>) retorno;
 
-            try {
-                estados = db.selectEstadoJogo();
-                metodos = db.selectMetodoEnvio();
+                try {
+                    estados = db.selectEstadoJogo();
+                    metodos = db.selectMetodoEnvio();
 
-            }catch (Exception e){
-                e.printStackTrace();
-            }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
-            if(map.get("desc_estado_jogo")!=null){
-                util.carregaSpinner(spEstadoJogo, PreferenciaUsuario.this, estados, map.get("desc_estado_jogo"));
-            }else{
-                util.carregaSpinner(spEstadoJogo, PreferenciaUsuario.this, estados, null);
-            }
-            if(map.get("desc_metodo_envio")!=null) {
-                util.carregaSpinner(spMetodoEnvio, PreferenciaUsuario.this, metodos, map.get("desc_metodo_envio"));
-            }else{
-                util.carregaSpinner(spMetodoEnvio, PreferenciaUsuario.this, metodos, null);
+                if (map.get("desc_estado_jogo") != null) {
+                    util.carregaSpinner(spEstadoJogo, PreferenciaUsuario.this, estados, map.get("desc_estado_jogo"));
+                } else {
+                    util.carregaSpinner(spEstadoJogo, PreferenciaUsuario.this, estados, null);
+                }
+                if (map.get("desc_metodo_envio") != null) {
+                    util.carregaSpinner(spMetodoEnvio, PreferenciaUsuario.this, metodos, map.get("desc_metodo_envio"));
+                } else {
+                    util.carregaSpinner(spMetodoEnvio, PreferenciaUsuario.this, metodos, null);
+                }
             }
         }
     }
@@ -107,17 +103,21 @@ public class PreferenciaUsuario extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Object retorno) {
-            Usuario usuario = (Usuario) retorno;
-            if(!usuario.getError()) {
-                Bundle param = new Bundle();
-                param.putInt("id_usuario", id_usuario);
-                param.putString("chave_api", chave_api);
-                redirecionar(PreferenciaUsuario.this, Principal.class, param);
+            if(retorno instanceof Exception){
+                util.msgDialog(PreferenciaUsuario.this, "Alerta", "Erro ao conectar com o servidor.");
+            }else {
+                Usuario usuario = (Usuario) retorno;
+                if (!usuario.getError()) {
+                    Bundle param = new Bundle();
+                    param.putInt("id_usuario", id_usuario);
+                    param.putString("chave_api", chave_api);
+                    redirecionar(PreferenciaUsuario.this, Principal.class, param);
 
-                util.toast(getApplicationContext(), "Preferências salvas com sucesso!");
-                PreferenciaUsuario.this.finish();
-            }else{
-                util.msgDialog(PreferenciaUsuario.this, "Alerta", usuario.getMessage());
+                    util.toast(getApplicationContext(), "Preferências salvas com sucesso!");
+                    PreferenciaUsuario.this.finish();
+                } else {
+                    util.msgDialog(PreferenciaUsuario.this, "Alerta", usuario.getMessage());
+                }
             }
         }
     }

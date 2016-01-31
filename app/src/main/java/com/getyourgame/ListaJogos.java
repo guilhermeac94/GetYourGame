@@ -2,13 +2,12 @@ package com.getyourgame;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +22,6 @@ import android.widget.TextView;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.getyourgame.model.Jogo;
-import com.getyourgame.model.Plataforma;
 import com.getyourgame.util.Http;
 import com.getyourgame.util.Util;
 import com.getyourgame.util.Webservice;
@@ -33,8 +31,6 @@ import org.springframework.util.MultiValueMap;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
 
 /**
@@ -229,25 +225,28 @@ public class ListaJogos extends Fragment {
         @Override
         protected void onPostExecute(Object retorno) {
             super.onPostExecute(retorno);
+            if(retorno instanceof Exception){
+                util.msgDialog(getActivity(), "Alerta", "Erro ao conectar com o servidor.");
+            }else {
+                ObjectMapper jogoMapper = new ObjectMapper();
 
-            ObjectMapper jogoMapper = new ObjectMapper();
+                List<Jogo> jogos = jogoMapper.convertValue(retorno, new TypeReference<List<Jogo>>() {
+                });
+                lista.addAll(jogos);
 
-            List<Jogo> jogos = jogoMapper.convertValue(retorno, new TypeReference<List<Jogo>>() {
-            });
-            lista.addAll(jogos);
+                adapter = new Ladapter(context);
+                lvJogos.setAdapter(adapter);
 
-            adapter = new Ladapter(context);
-            lvJogos.setAdapter(adapter);
+                lvJogos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        //Item item = lista.get(i);
+                        Jogo jogo = lista.get(i);
 
-            lvJogos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    //Item item = lista.get(i);
-                    Jogo jogo = lista.get(i);
-
-                    seleciona(jogo);
-                }
-            });
+                        seleciona(jogo);
+                    }
+                });
+            }
         }
     }
 

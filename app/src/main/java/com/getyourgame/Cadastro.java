@@ -2,10 +2,8 @@ package com.getyourgame;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -65,17 +63,21 @@ public class Cadastro extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Object retorno) {
-            Usuario usuario = (Usuario) retorno;
-            if(!usuario.getError()) {
-                Bundle param = new Bundle();
-                param.putInt("id_usuario", usuario.getId_usuario());
-                param.putString("chave_api", usuario.getChave_api());
-                param.putString("redirecionar", "preferencias_usuario");
-                redirecionar(Cadastro.this, Contatos.class, param);
-                util.toast(getApplicationContext(), "Usuário cadastrado com sucesso!");
-                Cadastro.this.finish();
-            }else{
-                util.msgDialog(Cadastro.this, "Alerta", usuario.getMessage());
+            if(retorno instanceof Exception){
+                util.msgDialog(Cadastro.this, "Alerta", "Erro ao conectar com o servidor.");
+            }else {
+                Usuario usuario = (Usuario) retorno;
+                if (!usuario.getError()) {
+                    Bundle param = new Bundle();
+                    param.putInt("id_usuario", usuario.getId_usuario());
+                    param.putString("chave_api", usuario.getChave_api());
+                    param.putString("redirecionar", "preferencias_usuario");
+                    redirecionar(Cadastro.this, Contatos.class, param);
+                    util.toast(getApplicationContext(), "Usuário cadastrado com sucesso!");
+                    Cadastro.this.finish();
+                } else {
+                    util.msgDialog(Cadastro.this, "Alerta", usuario.getMessage());
+                }
             }
         }
     }

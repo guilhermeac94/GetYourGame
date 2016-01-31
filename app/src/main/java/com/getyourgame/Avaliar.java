@@ -1,11 +1,7 @@
 package com.getyourgame;
 
-import android.content.Intent;
-import android.speech.tts.TextToSpeech;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.getyourgame.model.AvaliacaoTransacao;
 import com.getyourgame.util.Http;
 import com.getyourgame.util.Util;
 import com.getyourgame.util.Webservice;
@@ -128,14 +123,18 @@ public class Avaliar extends AppCompatActivity {
         }
         @Override
         protected void onPostExecute(Object retorno) {
-            Map<String, String> map = (Map<String, String>) retorno;
+            if(retorno instanceof Exception){
+                util.msgDialog(Avaliar.this, "Alerta", "Erro ao conectar com o servidor.");
+            }else {
+                Map<String, String> map = (Map<String, String>) retorno;
 
-            Object map_error = map.get("error");
-            if(!Boolean.parseBoolean(map_error.toString())){
-                util.toast(getApplicationContext(), map.get("message"));
-                Avaliar.this.finish();
-            }else{
-                util.msgDialog(Avaliar.this, "Alerta", map.get("message"));
+                Object map_error = map.get("error");
+                if (!Boolean.parseBoolean(map_error.toString())) {
+                    util.toast(getApplicationContext(), map.get("message"));
+                    Avaliar.this.finish();
+                } else {
+                    util.msgDialog(Avaliar.this, "Alerta", map.get("message"));
+                }
             }
         }
     }
@@ -146,35 +145,39 @@ public class Avaliar extends AppCompatActivity {
         }
         @Override
         protected void onPostExecute(Object retorno) {
-            if(retorno!=null) {
+            if(retorno instanceof Exception){
+                util.msgDialog(Avaliar.this, "Alerta", "Erro ao conectar com o servidor.");
+            }else {
+                if (retorno != null) {
 
-                Map<String, String> map = (Map<String, String>) retorno;
+                    Map<String, String> map = (Map<String, String>) retorno;
 
-                Object map_id_avaliacao_transacao = map.get("id_avaliacao_transacao");
-                id_avaliacao_transacao = Integer.parseInt(map_id_avaliacao_transacao.toString());
+                    Object map_id_avaliacao_transacao = map.get("id_avaliacao_transacao");
+                    id_avaliacao_transacao = Integer.parseInt(map_id_avaliacao_transacao.toString());
 
-                Object map_id_transacao = map.get("id_transacao");
-                id_transacao = Integer.parseInt(map_id_transacao.toString());
+                    Object map_id_transacao = map.get("id_transacao");
+                    id_transacao = Integer.parseInt(map_id_transacao.toString());
 
-                Object map_id_usuario_avaliado = map.get("id_usuario_avaliado");
-                id_usuario_avaliado = Integer.parseInt(map_id_usuario_avaliado.toString());
+                    Object map_id_usuario_avaliado = map.get("id_usuario_avaliado");
+                    id_usuario_avaliado = Integer.parseInt(map_id_usuario_avaliado.toString());
 
-                Object map_id_usuario_avaliador = map.get("id_usuario_avaliador");
-                id_usuario_avaliador = Integer.parseInt(map_id_usuario_avaliador.toString());
+                    Object map_id_usuario_avaliador = map.get("id_usuario_avaliador");
+                    id_usuario_avaliador = Integer.parseInt(map_id_usuario_avaliador.toString());
 
-                Object map_avaliacao = map.get("avaliacao");
-                avaliacao = Integer.parseInt(map_avaliacao.toString());
+                    Object map_avaliacao = map.get("avaliacao");
+                    avaliacao = Integer.parseInt(map_avaliacao.toString());
 
-                observacao = map.get("observacao");
+                    observacao = map.get("observacao");
 
-                if(avaliacao==1){
-                    layoutPositivo.setBackgroundDrawable(getResources().getDrawable(R.drawable.borda));
-                    layoutNegativo.setBackgroundResource(0);
-                }else{
-                    layoutPositivo.setBackgroundResource(0);
-                    layoutNegativo.setBackgroundDrawable(getResources().getDrawable(R.drawable.borda));
+                    if (avaliacao == 1) {
+                        layoutPositivo.setBackgroundDrawable(getResources().getDrawable(R.drawable.borda));
+                        layoutNegativo.setBackgroundResource(0);
+                    } else {
+                        layoutPositivo.setBackgroundResource(0);
+                        layoutNegativo.setBackgroundDrawable(getResources().getDrawable(R.drawable.borda));
+                    }
+                    etAVObservacao.setText(observacao);
                 }
-                etAVObservacao.setText(observacao);
             }
         }
     }
