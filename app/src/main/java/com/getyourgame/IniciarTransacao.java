@@ -147,8 +147,13 @@ public class IniciarTransacao extends AppCompatActivity {
                     tvITMetodoEnvioOfert.setVisibility(View.GONE);
                     spITMetodoEnvioOfert.setVisibility(View.GONE);
                 } else {
-                    tvITDescricaoJogo.setText(map.get("descricao_jogo"));
-                    tvITPlataformaEstadoJogo.setText(map.get("plataforma_jogo") + (map.get("estado_jogo") != null ? " - " + map.get("estado_jogo") : ""));
+                    if(map.get("descricao_jogo")!=null) {
+                        tvITDescricaoJogo.setText(map.get("descricao_jogo"));
+                        tvITPlataformaEstadoJogo.setText(map.get("plataforma_jogo") + (map.get("estado_jogo") != null ? " - " + map.get("estado_jogo") : ""));
+                    }else{
+                        tvITDescricaoJogo.setText("(Qualquer)");
+                        tvITPlataformaEstadoJogo.setText((map.get("estado_jogo") != null ? " - " + map.get("estado_jogo") : ""));
+                    }
                 }
 
                 try {

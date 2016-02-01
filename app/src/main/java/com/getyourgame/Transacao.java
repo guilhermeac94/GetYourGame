@@ -289,8 +289,13 @@ public class Transacao extends AppCompatActivity {
                     tvTMetodoEnvioOfert.setVisibility(View.GONE);
                     spTMetodoEnvioOfert.setVisibility(View.GONE);
                 } else {
-                    tvTDescricaoJogo.setText(map.get("descricao_jogo"));
-                    tvTPlataformaEstadoJogo.setText(map.get("plataforma_jogo") + (map.get("estado_jogo") != null ? " - " + map.get("estado_jogo") : ""));
+                    if(map.get("descricao_jogo")!=null) {
+                        tvTDescricaoJogo.setText(map.get("descricao_jogo"));
+                        tvTPlataformaEstadoJogo.setText(map.get("plataforma_jogo") + (map.get("estado_jogo") != null ? " - " + map.get("estado_jogo") : ""));
+                    }else{
+                        tvTDescricaoJogo.setText("(Qualquer)");
+                        tvTPlataformaEstadoJogo.setText((map.get("estado_jogo") != null ? " - " + map.get("estado_jogo") : ""));
+                    }
                 }
 
                 try {

@@ -36,14 +36,15 @@ public class Http extends AsyncTask<String, Void, Object> {
     protected Object doInBackground(String... params) {
         try {
             //String url = "http://10.0.2.2/getYourGameWS/getyourgame/"+ws.getServico();
-            String url = "http://192.168.25.38/getYourGameWS/getyourgame/"+ws.getServico();
+            //String url = "http://192.168.25.38/getYourGameWS/getyourgame/"+ws.getServico();
             //String url = "http://192.168.1.112/getYourGameWS/getyourgame/"+ws.getServico();
+            String url = "http://192.168.0.193/getYourGameWS/getyourgame/"+ws.getServico();
 
-            SimpleClientHttpRequestFactory simpleClientHttpRequestFactory = new SimpleClientHttpRequestFactory();
+           /* SimpleClientHttpRequestFactory simpleClientHttpRequestFactory = new SimpleClientHttpRequestFactory();
             simpleClientHttpRequestFactory.setConnectTimeout(5000);
-            simpleClientHttpRequestFactory.setReadTimeout(1000);
+            simpleClientHttpRequestFactory.setReadTimeout(1000);*/
 
-            RestTemplate restTemplate = new RestTemplate(simpleClientHttpRequestFactory);
+            RestTemplate restTemplate = new RestTemplate();//simpleClientHttpRequestFactory);
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
             headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
