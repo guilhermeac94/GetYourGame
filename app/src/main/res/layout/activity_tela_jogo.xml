@@ -80,7 +80,7 @@
                 <ListView
                     android:id="@+id/lvLTListaPlataformas"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="120dp"
                     style="@style/list"
                     android:descendantFocusability="beforeDescendants"
                     android:layout_alignParentRight="true"
@@ -108,7 +108,7 @@
                 <ListView
                     android:id="@+id/lvJUsuarios"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="120dp"
                     style="@style/list"
                     android:descendantFocusability="beforeDescendants"
                     android:visibility="gone">
