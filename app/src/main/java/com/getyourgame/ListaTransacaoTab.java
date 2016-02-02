@@ -98,7 +98,8 @@ public class ListaTransacaoTab extends AppCompatActivity {
                                 map.get("plataforma_jogo_ofert"),
                                 map.get("foto_jogo_ofert").equals("") ? sem_jogo : util.StringToBitMap(map.get("foto_jogo_ofert")),
                                 map.get("preco_jogo_ofert") != null ? df.format(Double.parseDouble(String.valueOf(map.get("preco_jogo_ofert")))) : "",
-                                Integer.parseInt(String.valueOf(map.get("id_usuario_jogo_ofert")))));
+                                Integer.parseInt(String.valueOf(map.get("id_usuario_jogo_ofert"))),
+                                map.get("nome")));
                     }
 
                     adapter = new Ladapter(getApplicationContext());
@@ -143,8 +144,9 @@ public class ListaTransacaoTab extends AppCompatActivity {
         Bitmap foto_jogo_ofert;
         String preco_jogo_ofert;
         int id_usuario_jogo_ofert;
+        String nome;
 
-        public Item(int id_transacao, int id_interesse, String descricao_jogo, String plataforma_jogo, Bitmap foto_jogo, int id_usuario_jogo, int id_usuario_ofert, String nome_ofert, int id_jogo_ofert, String descricao_jogo_ofert, String plataforma_jogo_ofert, Bitmap foto_jogo_ofert, String preco_jogo_ofert, int id_usuario_jogo_ofert) {
+        public Item(int id_transacao, int id_interesse, String descricao_jogo, String plataforma_jogo, Bitmap foto_jogo, int id_usuario_jogo, int id_usuario_ofert, String nome_ofert, int id_jogo_ofert, String descricao_jogo_ofert, String plataforma_jogo_ofert, Bitmap foto_jogo_ofert, String preco_jogo_ofert, int id_usuario_jogo_ofert, String nome) {
             this.id_transacao = id_transacao;
             this.id_interesse = id_interesse;
             this.descricao_jogo = descricao_jogo;
@@ -159,6 +161,7 @@ public class ListaTransacaoTab extends AppCompatActivity {
             this.foto_jogo_ofert = foto_jogo_ofert;
             this.preco_jogo_ofert = preco_jogo_ofert;
             this.id_usuario_jogo_ofert = id_usuario_jogo_ofert;
+            this.nome = nome;
         }
     }
 
@@ -199,6 +202,7 @@ public class ListaTransacaoTab extends AppCompatActivity {
             TextView tvLTPlataformaJogoOfert;
             ImageView ivLTFotoJogoOfert;
             TextView tvLTNomeUsuarioOfert;
+            TextView tvLTUsuarioInfo;
 
             public myViewHolder(View v) {
                 // TODO Auto-generated constructor stub
@@ -210,6 +214,7 @@ public class ListaTransacaoTab extends AppCompatActivity {
                 tvLTPlataformaJogoOfert = (TextView) v.findViewById(R.id.tvLTPlataformaJogoOfert);
                 ivLTFotoJogoOfert = (ImageView) v.findViewById(R.id.ivLTFotoJogoOfert);
                 tvLTNomeUsuarioOfert = (TextView) v.findViewById(R.id.tvLTNomeUsuarioOfert);
+                tvLTUsuarioInfo = (TextView) v.findViewById(R.id.tvLTUsuarioInfo);
             }
         }
 
@@ -234,19 +239,28 @@ public class ListaTransacaoTab extends AppCompatActivity {
             if(lista.get(position).id_interesse == 4){
                 //row.setBackgroundColor(getResources().getColor(R.color.compra));
                 holder.tvLTPrecoOfert.setText(lista.get(position).preco_jogo_ofert);
+                holder.ivLTFotoJogo.setImageBitmap(lista.get(position).foto_jogo);
             }else{
                 //row.setBackgroundColor(getResources().getColor(R.color.troca));
-                holder.tvLTDescricaoJogo.setText(lista.get(position).descricao_jogo);
-                holder.tvLTPlataformaJogo.setText(lista.get(position).plataforma_jogo);
                 holder.tvLTPrecoOfert.setText("");
                 holder.tvLTPrecoOfert.setVisibility(View.GONE);
+
+                if(lista.get(position).descricao_jogo!=null) {
+                    holder.tvLTDescricaoJogo.setText(lista.get(position).descricao_jogo);
+                    holder.tvLTPlataformaJogo.setText(lista.get(position).plataforma_jogo);
+                    holder.ivLTFotoJogo.setImageBitmap(lista.get(position).foto_jogo);
+                }else{
+                    holder.tvLTDescricaoJogo.setText("Qualquer");
+                    holder.tvLTPlataformaJogo.setText("");
+                    holder.ivLTFotoJogo.setImageBitmap(sem_jogo);
+                }
             }
 
-            holder.ivLTFotoJogo.setImageBitmap(lista.get(position).foto_jogo);
             holder.tvLTDescricaoJogoOfert.setText(lista.get(position).descricao_jogo_ofert);
             holder.tvLTPlataformaJogoOfert.setText(lista.get(position).plataforma_jogo_ofert);
             holder.ivLTFotoJogoOfert.setImageBitmap(lista.get(position).foto_jogo_ofert);
             holder.tvLTNomeUsuarioOfert.setText(lista.get(position).nome_ofert);
+            holder.tvLTUsuarioInfo.setText(lista.get(position).nome);
 
             return row;
         }
