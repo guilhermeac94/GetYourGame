@@ -178,7 +178,7 @@ public class Util extends Activity{
         return temp;
     }
 
-    public Notification createNotification(Activity act, Class classe, String titulo, String msg){
+    public Notification createNotification(Activity act, Class classe, String titulo, String msg, Bundle param){
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(act)
                         .setSmallIcon(R.drawable.ic_seta)
@@ -186,6 +186,7 @@ public class Util extends Activity{
                         .setContentText(msg);
         // Creates an explicit intent for an Activity in your app
         Intent resultIntent = new Intent(act, classe);
+        resultIntent.putExtras(param);
 
         // The stack builder object will contain an artificial back stack for the
         // started Activity.

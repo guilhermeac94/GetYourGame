@@ -99,16 +99,16 @@ public class Login extends AppCompatActivity {
             }else {
                 Usuario usuario = (Usuario) retorno;
                 if (!usuario.getError()) {
+                    Bundle param = new Bundle();
+                    param.putInt("id_usuario", usuario.getId_usuario());
+                    param.putString("chave_api", usuario.getChave_api());
                     if (usuario.getTem_transacao()) {
 
                         NotificationManager mNotificationManager =
                                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
                         // mId allows you to update the notification later on.
-                        mNotificationManager.notify(1, util.createNotification(Login.this, Oportunidades.class, "Transações", "Existem novas transações"));
+                        mNotificationManager.notify(1, util.createNotification(Login.this, ListaTransacao.class, "Transações", "Existem novas transações", param));
                     }
-                    Bundle param = new Bundle();
-                    param.putInt("id_usuario", usuario.getId_usuario());
-                    param.putString("chave_api", usuario.getChave_api());
                     redirecionar(Login.this, Principal.class, param);
                     util.toast(getApplicationContext(), "Login efetuado com sucesso!!!");
                 } else {
@@ -235,17 +235,18 @@ public class Login extends AppCompatActivity {
             }else {
                 Usuario usuario = (Usuario) retorno;
                 if (!usuario.getError()) {
+
+                    Bundle param = new Bundle();
+                    param.putInt("id_usuario", usuario.getId_usuario());
+                    param.putString("chave_api", usuario.getChave_api());
                     if (usuario.getTem_transacao()) {
 
                         NotificationManager mNotificationManager =
                                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
                         // mId allows you to update the notification later on.
-                        mNotificationManager.notify(1, util.createNotification(Login.this, Oportunidades.class, "Transações", "Existem novas transações"));
+                        mNotificationManager.notify(1, util.createNotification(Login.this, ListaTransacao.class, "Transações", "Existem novas transações", param));
 
                     }
-                    Bundle param = new Bundle();
-                    param.putInt("id_usuario", usuario.getId_usuario());
-                    param.putString("chave_api", usuario.getChave_api());
                     redirecionar(Login.this, Principal.class, param);
                     util.toast(getApplicationContext(), "Login efetuado com sucesso!!!");
                 } else {
@@ -267,17 +268,17 @@ public class Login extends AppCompatActivity {
             }else {
                 Usuario usuario = (Usuario) retorno;
                 if (!usuario.getError()) {
+                    Bundle param = new Bundle();
+                    param.putInt("id_usuario", usuario.getId_usuario());
+                    param.putString("chave_api", usuario.getChave_api());
                     if (usuario.getTem_transacao()) {
 
                         NotificationManager mNotificationManager =
                                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
                         // mId allows you to update the notification later on.
-                        mNotificationManager.notify(1, util.createNotification(Login.this, Oportunidades.class, "Transações", "Existem novas transações"));
+                        mNotificationManager.notify(1, util.createNotification(Login.this, ListaTransacao.class, "Transações", "Existem novas transações", param));
 
                     }
-                    Bundle param = new Bundle();
-                    param.putInt("id_usuario", usuario.getId_usuario());
-                    param.putString("chave_api", usuario.getChave_api());
                     redirecionar(Login.this, Principal.class, param);
                     util.toast(getApplicationContext(), "Login efetuado com sucesso!!!");
                 } else {
