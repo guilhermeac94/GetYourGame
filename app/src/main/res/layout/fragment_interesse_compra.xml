@@ -1,99 +1,105 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:rsb="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:layout_height="match_parent"
+    android:background="@drawable/borda"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.getyourgame.Interesse"
-    android:background="@drawable/borda">
+    tools:context="com.getyourgame.Interesse">
     <!--android:layout_marginTop="155dp"-->
 
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/jogo"
-            android:id="@+id/tvJogo" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/selecionar"
-            android:id="@+id/tvSelecionaJogo"
-            android:textStyle="italic"
-            android:textColor="@color/colorSecundary"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/plataforma"
-            android:id="@+id/tvPlataforma"
-            android:layout_marginTop="20dp"/>
-
-        <Spinner
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/spPlataforma" />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical">
 
-        <!--
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/etJogo" />
-        -->
+            <TextView
+                android:id="@+id/tvJogo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/jogo"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/estado_jogo"
-            android:id="@+id/tvEstadoJogo"
-            android:layout_marginTop="15dp"/>
+            <TextView
+                android:id="@+id/tvSelecionaJogo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/selecionar"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/colorSecundary"
+                android:textStyle="italic" />
 
-        <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/spEstadoJogo" />
+            <TextView
+                android:id="@+id/tvPlataforma"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/plataforma"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/intervalo_preco"
-            android:id="@+id/tvPrecoFinal"
-            android:layout_marginTop="15dp"/>
+            <Spinner
+                android:id="@+id/spPlataforma"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-        <org.florescu.android.rangeseekbar.RangeSeekBar
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            rsb:absoluteMaxValue="300.0"
-            rsb:absoluteMinValue="0.0"
-            android:id="@+id/rsbPreco"/>
+            <!--
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/etJogo" />
+            -->
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tvEstadoJogo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/estado_jogo"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <Spinner
+                android:id="@+id/spEstadoJogo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tvPrecoFinal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/intervalo_preco"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <org.florescu.android.rangeseekbar.RangeSeekBar
+                android:id="@+id/rsbPreco"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                rsb:absoluteMaxValue="300.0"
+                rsb:absoluteMinValue="0.0" />
+
+        </LinearLayout>
+    </ScrollView>
 
     <Button
+        android:id="@+id/btSalvarInteresse"
+        style="@style/botao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="salvar interesse"
-        android:id="@+id/btSalvarInteresse"
-        android:layout_gravity="center_horizontal"
-        style="@style/botao"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_gravity="center_horizontal"
+        android:text="salvar interesse" />
 
 </RelativeLayout>
